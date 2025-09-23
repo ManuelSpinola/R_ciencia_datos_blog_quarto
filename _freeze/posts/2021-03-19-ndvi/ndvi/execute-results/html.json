@@ -1,0 +1,16 @@
+{
+  "hash": "5c3556ed6e0c06b3d89306a88d5eabbf",
+  "result": {
+    "markdown": "---\ntitle: \"NDVI para Costa Rica 2020 - 2021\"\ndescription: |\n  A short description of the post.\ndate: 03-19-2021\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation_url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ncitation: true\ndraft: true\ncategories:\n  - \"Ecología del paisaje\"\n---\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](ndvi_files/figure-html/unnamed-chunk-48-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](ndvi_files/figure-html/unnamed-chunk-49-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](ndvi_files/figure-html/unnamed-chunk-50-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](ndvi_files/figure-html/unnamed-chunk-51-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](ndvi_files/figure-html/unnamed-chunk-52-1.png){width=672}\n:::\n:::\n\n\n\n",
+    "supporting": [
+      "ndvi_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

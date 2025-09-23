@@ -1,0 +1,17 @@
+{
+  "hash": "5261f65884d73a2bc5621beb6795082e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"crgrids: un paquete de R con grillas espaciales para el estudio y monitoreo de la biodiversidad en Costa Rica\"\nsubtitle: \"Paquete de R con un sistema de grillas espaciales jerárquicas para el estudio y monitoreo de la biodiversidad en Costa Rica\"\nimage: \"imagenes/crgrids_b.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\n  - name: Guido A. Saborío\n    affiliation: Sistema Nacional de Áreas de Conservación, Costa Rica\n    orcid: 0000-0001-9490-2459\n\nformat:\n  html:\n    embed-resources: true\n\ndate: \"2023-04-20\"\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nbibliography: references.bib\nlang: es\ndraft: false\nexecute: \n  echo: false\n  include: false\ncategories:\n  - \"Datos geoespaciales de Costa Rica\"\n  - \"Monitoreo Biológico\"\n  - \"Diseño de muestreo\"\n---\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](imagenes/crgrids_b.png){fig-align='center' width=40%}\n:::\n:::\n\n\n\n# Descripción del paquete\n\n**crgrids** es un paquete de R que contiene grillas espaciales jerárquicas para Costa Rica.\n\nEl paquete incluye 4 grillas de unidades cuadradas de 1km, 2km, 4km y 8km.\n\nPara más detalles del sistema de grillas espaciales jerárquicas ver el post [@Spínola2023].\n\n# Instalación y uso de **crgrids**\n\nPara poder utilizar el paquete se debe instalar el paquete devtools:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"devtools\")\n```\n:::\n\n\n\nCargar el paquete:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(devtools)\n```\n:::\n\n\n\nLuego proceder a instalar crgrids desde github:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndevtools::install_github(\"ManuelSpinola/crgrids\")\n```\n:::\n\n\n\ny cargar el paquete:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(crgrids)\n```\n:::\n\n\n\nPara este ejemplo con los datos que se incluyen en el paquete **crgrids** se requieren los paquetes tidyverse [@Wickham2019] y sf [@Pebesma2018]:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(sf)\n```\n:::\n\n\n\n# Grilla de 8km\n\nPara visualizar la grilla de 8km para Costa Rica:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(cr_grid_8km) +\n  geom_sf(fill = \"dodgerblue3\", color = \"gray\") +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![](crgrids_files/figure-html/unnamed-chunk-7-1.png){width=672}\n:::\n:::\n\n\n\nPara más información del paquete se puede visitar este enlace <https://github.com/ManuelSpinola/crgrids>\n\n# Literatura citada\n\n::: {#refs}\n:::\n",
+    "supporting": [
+      "crgrids_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

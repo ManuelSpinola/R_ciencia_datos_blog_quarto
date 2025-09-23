@@ -1,0 +1,10 @@
+# Local Netlify folder
+.netlify
+
+# Archivos temporales de Quarto
+/.quarto/
+**/*.quarto_ipynb
+
+# Carpeta de salida de Quarto
+/_site/
+.Rproj.user

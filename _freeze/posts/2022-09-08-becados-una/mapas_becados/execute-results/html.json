@@ -1,0 +1,16 @@
+{
+  "hash": "fe876542ada2592d0f562b9a6014b6a9",
+  "result": {
+    "markdown": "---\ntitle: \"Visualización de datos de los estudiantes becados en la UNA\"\nsubtitle: Becados en la UNA 2019 - 2022\nimage: \"imagenes/wordcloud.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid_id: 0000-0002-7839-1908\ndate: 2022-09-28\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nbibliography: references.bib\nlang: es\ndraft: false\nexecute: \n  echo: false\n  include: false\ncategories:\n  - \"Visualización de datos\"\n---\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](mapas_becados_files/figure-html/unnamed-chunk-11-1.png){width=672}\n:::\n:::\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](mapas_becados_files/figure-html/unnamed-chunk-14-1.png){width=672}\n:::\n:::\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](mapas_becados_files/figure-html/unnamed-chunk-16-1.png){width=672}\n:::\n:::\n\n\n\n\nEl análisis lo realicé con R [@R2022], usando los paquetes quanteda [@Benoit2018] y factoextra [@Kassambara2020].\n\nLiteratura citada\n",
+    "supporting": [
+      "mapas_becados_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,297 @@
+---
+title: "Diseño de un sistema jerárquico de grillas espaciales para el estudio y monitoreo de la biodiversidad en Costa Rica"
+subtitle: "Sistema de grillas espaciales jerárquicas para el monitoreo de la biodiversidad en Costa Rica"
+image: preview.png
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+  - name: Guido Saborío
+    affiliation: Sistema Nacional de Áreas de Conservación, Costa Rica
+    orcid: 0000-0001-9490-2459
+date: "2023-02-13"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Monitoreo Biológico"
+  - "Diseño de muestreo"
+---
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(rio)
+library(glue)
+library(sf)
+library(stars)
+library(terra)
+library(tidyterra)
+library(raster)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rnaturalearthhires)
+library(mapview)
+library(plotly)
+library(cowplot)
+library(patchwork)
+library(crgeo)
+```
+
+# Sistema jerárquico de grillas espaciales
+
+Para sistematizar el muestreo de atributos de la biodiversidad en la zona terrestre de Costa Rica se creó un sistema de grillas basadas en la potencia de 2 que genera números en la forma de 2^n^, donde n es un número entero:
+
+-   2^0^ = 1
+
+-   2^1^ = 2
+
+-   2^2^ = 4
+
+-   2^3^ = 8
+
+El uso de la potencia de 2 permite que la grilla sea escalable a celdas de mayor o menor tamaño definiendo áreas que tengan el mismo número de filas y columnas (Figura 1). El sistema es jerárquico es decir que las grillas son anidadas, la mayor es de 8km x 8km, pero se puede escalar a grillas de menor tamaño, 4km x 4km, 2km x 2km y 1km x 1km, permitiendo así celdas de diferente tamaño (@fig-celdas).
+
+```{r}
+#| include: true
+#| label: fig-celdas
+#| fig-cap: Celdas de 1km x 1km, 2km x 2km, 4km x 4km y 8km x 8km.
+df <- data.frame(x = 0:8, y = 0:8)
+ggplot(df, aes(x, y)) +
+  geom_rect(xmin = 0, xmax = 8, ymin = 0, ymax = 8, fill = "gray80") +
+  geom_rect(xmin = 0, xmax = 4,   ymin = 0, ymax = 4, fill = "gray50") +
+  geom_rect(xmin = 0, xmax = 2, ymin = 0, ymax = 2, fill = "gray25") +
+  geom_rect(xmin = 0, xmax = 1, ymin = 0, ymax = 1, fill = "gray0") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.y = element_blank()) +
+  annotate("text", x = 0.5, y = 0.5, label = "1km x 1km", color = "white", size = 2.5) +
+  annotate("text", x = 1, y = 1.5, label = "2km x 2km", color = "white", size = 4) +
+  annotate("text", x = 2, y = 3, label = "4km x 4km", color = "white", size = 6) +
+  annotate("text", x = 4, y = 6, label = "8km x 8km", color = "black", size = 6) +
+  coord_equal()
+```
+
+# Grillas espaciales jerárquicas anidadas para Costa Rica
+
+El sistema jerárquico de grillas espaciales se aplicó a Costa Rica (@fig-cr).
+
+```{r}
+cr_5367 <- st_transform(cr_outline, crs = 5367)
+```
+
+```{r}
+g_8km <- st_read("grids/grid_8km.gpkg")
+g_4km <- st_read("grids/grid_4km.gpkg")
+g_2km <- st_read("grids/grid_2km.gpkg")
+g_1km <- st_read("grids/grid_1km.gpkg")
+```
+
+```{r}
+#| include: true
+#| label: fig-cr
+#| fig-cap: Mapa de Costa Rica.
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = cr_5367, aes(fill = GID_0), fill = "purple") + coord_sf(datum = st_crs(5367))
+```
+
+## Detalle de las celdas de diferente tamaño
+
+La unidad de muestreo de 8km x 8km es la unidad de muestreo de mayor tamaño (@fig-celda_8). Cada celda de 8km x 8km está compuesta a su vez por tétradas de 4 km (@fig-celda_4), y cada celda de 4km x 4km está compuesta por tétradas de 2 km (@fig-celda_2), y cada celda de 2km x 2km está compuesta por tétradas de 1km. Cada celda de 8km x 8km se compone de 64 celdas de 1 km x 1 km (@fig-celda_1).
+
+```{r}
+#| include: true
+#| label: fig-celda_8
+#| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km.
+gg_grilla <- import("df_grillas/gg_grilla_8km.xlsx")
+ggplot(gg_grilla, aes(x, y)) +
+  theme_minimal() +
+  geom_tile(aes(fill = color), color = "black") +
+  geom_text(aes(label = celda), color = "black", size = 3) +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = "gray92") +
+  xlab("8 km") +
+  ylab("8 km") +
+  coord_equal()
+```
+
+```{r}
+#| include: true
+#| label: fig-celda_4
+#| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km, constituida por 4 tétradas de 4km.
+gg_grilla <- import("df_grillas/gg_grilla_4km.xlsx")
+ggplot(gg_grilla, aes(x, y)) +
+  theme_minimal() +
+  geom_tile(aes(fill = color), color = "black") +
+  geom_text(aes(label = celda), color = "black", size = 3) +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("grey", "white")) +
+  xlab("8 km") +
+  ylab("8 km") +
+  coord_equal()
+```
+
+```{r}
+#| include: true
+#| label: fig-celda_2
+#| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km, 16 tétradas de 2km x 2km y 64 celdas de 1km x 1 km.
+gg_grilla <- import("df_grillas/gg_grilla_2km.xlsx")
+ggplot(gg_grilla, aes(x, y)) +
+  theme_minimal() +
+  geom_tile(aes(fill = color), color = "black") +
+  geom_text(aes(label = celda), color = "black", size = 3) +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("grey", "white")) +
+  xlab("8 km") +
+  ylab("8 km") +
+  coord_equal()
+```
+
+```{r}
+#| include: true
+#| label: fig-celda_1
+#| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km, constituida por 4 tétradas de 4km, 16 tétradas de 2km x 2km y 64 celdas de 1km x 1 km.
+gg_grilla <- import("df_grillas/gg_grilla_1km.xlsx")
+ggplot(gg_grilla, aes(x, y)) +
+  theme_minimal() +
+  geom_tile(aes(fill = color), color = "black") +
+  geom_text(aes(label = celda), color = "black", size = 3) +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c("grey", "white")) +
+  xlab("8 km") +
+  ylab("8 km") +
+  coord_equal()
+```
+
+## Grillas espaciales jerárquicas anidadas para Costa Rica
+
+La grilla espacial de 8km x 8km divide la superficie terrestre de Costa en 953 celdas (@fig-grilla_8).
+
+```{r}
+#| include: true
+#| label: fig-grilla_8
+#| fig-cap: Grilla espacial de 8km x 8km para Costa Rica. 
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = g_8km, color = "black", fill = "white") +
+  geom_sf(data = cr_5367, aes(fill = GID_0), fill = "purple", alpha = 0.3) +
+  coord_sf(datum = st_crs(5367))
+```
+
+La grilla espacial de 4km x 4km divide la superficie terrestre de Costa en 3530 celdas (@fig-grilla_4).
+
+```{r}
+#| include: true
+#| label: fig-grilla_4
+#| fig-cap: Grilla espacial de 4km x 4km para Costa Rica.
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = g_4km, color = "black", fill = "white") +
+  geom_sf(data = cr_5367, aes(fill = GID_0), fill = "purple", alpha = 0.3) +
+  coord_sf(datum = st_crs(5367))
+```
+
+La grilla espacial de 2km x 2km divide la superficie terrestre de Costa en 13493 celdas (@fig-grilla_2).
+
+```{r}
+#| include: true
+#| label: fig-grilla_2
+#| fig-cap: Grilla espacial de 2km x 2km para Costa Rica.
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = g_2km, color = "black", fill = "white") +
+  geom_sf(data = cr_5367, aes(fill = GID_0), fill = "purple", alpha = 0.3) +
+  coord_sf(datum = st_crs(5367))
+```
+
+```{r}
+g1 <- ggplot() +
+  theme_minimal() +
+  geom_sf(data = g_1km, color = "black", fill = "white") +
+  geom_sf(data = cr_5367, aes(fill = GID_0), fill = "purple", alpha = 0.3) +
+  coord_sf(datum = st_crs(5367)) +
+  theme(axis.text.x = element_text(angle = 35))
+```
+
+```{r}
+g2 <- ggplot() +
+  theme_minimal() +
+  geom_sf(data = g_1km, color = "black", fill = "white") +
+  geom_sf(data = cr_5367, aes(fill = GID_0), fill = "purple", alpha = 0.3) +
+  coord_sf(xlim = c(270000, 420000), ylim = c(1040000, 1160000), expand = FALSE, datum = st_crs(5367)) +
+  theme(axis.text.x = element_text(angle = 35))
+```
+
+La grilla espacial de 1km x 1km divide la superficie terrestre de Costa en 52660 celdas (@fig-grilla_1).
+
+```{r}
+#| include: true
+#| label: fig-grilla_1
+#| fig-cap: Grilla espacial de 1km x 1km para Costa Rica.
+g1 + g2
+```
+
+Para identificar cada una de las celdas de las grillas espaciales se desarrolló un código que permite identificar cada celda a diferentes niveles de resolución.
+
+Por ejemplo, un registro en un punto en la Isla del Coco con las coordenadas geográficas:
+
+lat = -87,07249 lon = 5,52038
+
+corresponde a la celda 1-1-4-1 de la grilla de 1km x 1km (@fig-celda_ejemplo).
+
+1: identifica a la celda de 8km x 8km
+
+1: identifica a la celda de 4km x 4km
+
+4: identifica a la celda de 2km x 2km
+
+1: identifica a la celda de 1km x 1km
+
+```{r}
+#| include: true
+#| label: fig-celda_ejemplo
+#| fig-cap: Ejemplo de ubicación de la celda 1-1-4-1 entre celdas de 1km x 1km que corresponden a la Isla del Coco, Costa Rica.
+ggdraw() + 
+  draw_image("imagenes/isla_del_coco.png")
+```

@@ -1,0 +1,166 @@
+---
+title: "cahexgrids: un paquete de R con grillas geoespaciales hexagonales jerárquicas para el estudio y monitoreo de la biodiversidad en América Central"
+subtitle: "Paquete de R con un sistema de grillas geoespaciales hexagonales jerárquicas para el estudio y monitoreo de la biodiversidad en América Central"
+image: "imagenes/cahexgrids_a.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: "2023-10-16"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Datos geoespaciales de Central America"
+  - "Monitoreo Biológico"
+  - "Diseño de muestreo"
+---
+
+```{r}
+#| include: true
+#| out-width: 40%
+#| fig-align: center
+library(knitr)
+include_graphics("imagenes/cahexgrids_a.png")
+```
+
+# Descripción del paquete
+
+**cahexgrids** es un paquete de R que contiene grillas geoespaciales hexagonales jerárquicas para América Central.
+
+El paquete incluye 5 grillas de unidades hexagonales de resolución 4, 5, 6, 7 y 8, basadas en el sistema [H3](https://h3geo.org).
+
+# Instalación y uso de **cahexgrids**
+
+Para poder utilizar el paquete se debe instalar el paquete devtools:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+install.packages("devtools")
+```
+
+Cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+library(devtools)
+```
+
+Luego proceder a instalar cahexgrids desde github:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+devtools::install_github("ManuelSpinola/cahexgrids")
+```
+
+y cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+library(cahexgrids)
+```
+
+Para este ejemplo con los datos que se incluyen en el paquete **cahexgrids** se requieren los paquetes tidyverse [@Wickham2019] y sf [@Pebesma2018]:
+
+```{r}
+#| include: true
+#| echo: true
+#| message: false
+library(tidyverse)
+library(sf)
+```
+
+# Grillas de diferentes resoluciones
+
+Para visualizar las grillas de resoluciones 4, 5 y 6 para América Central:
+
+```{r}
+#| include: true
+#| echo: true
+#| fig-cap: "Figura 1. Grilla hexagonal de resolución 4 para América Central."
+ggplot(ca_hex_grid_res_4) +
+  geom_sf(fill = "dodgerblue3", color = "gray") +
+  theme_minimal()
+```
+
+\
+
+```{r}
+#| include: true
+#| echo: true
+#| fig-cap: "Figura 2. Grilla hexagonal de resolución 5 para América Central."
+ggplot(ca_hex_grid_res_5) +
+  geom_sf(fill = "dodgerblue3", color = "gray") +
+  theme_minimal()
+```
+
+\
+
+```{r}
+#| include: true
+#| echo: true
+#| fig-cap: "Figura 3. Grilla hexagonal de resolución 6 para América Central."
+ggplot(ca_hex_grid_res_6) +
+  geom_sf(fill = "dodgerblue3", color = "gray") +
+  theme_minimal()
+```
+
+\
+
+```{r}
+#| include: true
+#| echo: false
+#| fig-cap: "Figura 4. Grillas hexagonales jerárquicas de resolución 4, 5, 6 y 7. Cada celda hexagonal tiene 7 celdas anidadas en esta jerarquía."
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = ca_hex_grid_res_4, fill = NA, color = "red", linewidth = 0.8, alpha = 0.2) +
+  geom_sf(data = ca_hex_grid_res_5, fill = NA, color = "blue", linewidth = 0.8) +
+  geom_sf(data = ca_hex_grid_res_6, fill = NA, color = "black", linewidth = 0.4) +
+  geom_sf(data = ca_hex_grid_res_7, fill = NA, color = "green", linewidth = 0.4) +
+  coord_sf(xlim = c(-84.35, -84.10), ylim = c(10, 10.20))
+```
+
+\
+
+```{r}
+library(gt)
+library(rio)
+library(here)
+c <- import(here("posts/2023-10-16-cahexgrids/cuadro_ca_hex.xlsx"))
+```
+
+```{r}
+#| include: true
+#| tbl-cap: "Cuadro 1. Area y número de hexágonos de acuerdo a la resolución."
+gt(c) |>
+   cols_label(
+     res = "Resolución",
+     prom = "Area promedio del hexágono (ha)",
+     min = "Area mínima del hexágono (ha)",
+     max = "Area máxima del hexágono (ha)",
+     numero = "Número") |>
+  opt_stylize(style = 2, add_row_striping = TRUE)
+```
+
+\
+
+Para más información del paquete se puede visitar este enlace <https://github.com/ManuelSpinola/cahexgrids>

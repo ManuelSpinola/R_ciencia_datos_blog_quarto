@@ -1,0 +1,58 @@
+---
+title: "Proyecto Microbiomas"
+description: |
+  Estudio preliminar de los microbiomas intestinales de la nutria (Lontralongicaudis depredador) y el pez guapote (Parachromis dovii, su presa), en relación con la contaminación acuática por antibióticos en el río Peñas Blancas y su divulgación a tomadores de decisiones
+image: nutria.jpeg
+author:
+  - name: Manuel Spínola
+date: 01/01/2022
+citation: true
+draft: true
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(rio)
+library(sf)
+library(mapview)
+library(knitr)
+```
+
+```{r}
+#| echo: false
+#| column: page
+include_graphics("nutria.jpeg")
+```
+
+```{r}
+#| include: false
+area_estudio <- st_read("datos/area_estudio.gpkg")
+```
+
+```{r}
+#| include: false
+muestras_Adonay <- st_read("datos/muestras_adonay.gpkg")
+```
+
+```{r}
+#| include: false
+rios <- st_read("datos/rios.gpkg")
+```
+
+```{r}
+#| include: false
+embalse <- st_read("datos/presa.gpkg")
+```
+
+------------------------------------------------------------------------
+
+### Area de Estudio
+
+```{r}
+#| echo: false
+#| column: screen-inset-shaded
+mapview(rios) + mapview(embalse, color = "red") + mapview(muestras_Adonay) + mapview(area_estudio)
+```

@@ -1,0 +1,253 @@
+---
+title: "Conglomerados (clusters) del paisaje en Costa Rica"
+subtitle: Análisis espacial basado en patrones del paisaje
+image: "clusters.png"
+author:
+  - name: "Manuel Spínola"
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: "2022-04-01"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+categories:
+  - "Análisis del paisaje"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(sf)
+library(stars)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(ggthemes)
+library(colorspace)
+library(RColorBrewer)
+library(here)
+```
+
+```{r}
+#| include: false
+cob_s = read_stars(here("cr_cobertura/cobertura_cop_100_2019.tif"))
+```
+
+```{r}
+#| include: false
+st_crs(cob_s) <- 5367
+```
+
+```{r}
+#| include: false
+box <- st_bbox(c(xmin = 200000, xmax = 700000, ymax = 1250000, ymin = 850000), crs = st_crs(cob_s))
+```
+
+```{r}
+#| include: false
+cob_s <- cob_s[box]
+```
+
+```{r}
+#| include: false
+check_landscape(cob_s)
+```
+
+```{r}
+#| include: false
+grid_cr <- st_read(here("cr_grillas/grilla_cr_5367_8km.gpkg"))
+```
+
+```{r}
+#| include: false
+box <- st_bbox(c(xmin = 200000, xmax = 700000, ymax = 1250000, ymin = 850000), crs = st_crs(grid_cr))
+```
+
+```{r}
+#| include: false
+grid_cr <- st_crop(grid_cr, box)
+```
+
+```{r}
+#| include: false
+rgb(146, 153, 0, maxColorValue = 255)
+```
+
+```{r}
+#| include: false
+rgb(100, 140, 0, maxColorValue = 255)
+```
+
+```{r}
+#| include: false
+table(cob_s)
+```
+
+# Contexto
+
+El análisis espacial basado en patrones permite encontrar conglomerados o clusters de áreas con patrones espaciales similares de cobertura del suelo en Costa Rica.
+
+# Métodos
+
+Usé el mapa de cobertura del suelo de Costa Rica de 100 m de resolución del 2019 [@Buchhorn2020]. El mismo incluye 16 clases de tipos de cobertura del suelo (Figura 1). Los análisis y gráficos los realicé con R [@R2022] y los paquetes motif [@Nowosad2021], sf [@Pebesma2018], stars [@Pebesma2021] y ggplot2 [@Wickham2016].
+
+```{r}
+#| echo: false
+ggplot() +
+  geom_stars(data = cob_s, na.rm = TRUE) +
+  theme_minimal() +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("#282828", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000", "#0032C8", "#0096A0", "#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00", "#000080"), na.value = "transparent", na.translate = FALSE, labels = c("Sin dato", "Matorrales", "Vegetación herbácea", "Cultivo", "Urbano", "Cuerpos de agua", "Humedal herbáceo", "Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido", "Mar abierto")) +
+  coord_sf(datum = st_crs(5367))
+```
+
+Figura 1. Mapa de cobertura del suelo de Costa Rica.
+
+El territorio de Costa Rica fue subdividido en una grilla de celdas de 8km x 8km, cada una de ellas representando un paisaje local de acuerdo a la cobertura del suelo.
+
+```{r}
+#| echo: false
+ggplot() +
+  geom_stars(data = cob_s, na.rm = TRUE) +
+  theme_minimal() +
+  geom_sf(data = grid_cr, alpha = 0, color = "black", size = 0.1) +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("#282828", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000", "#0032C8", "#0096A0", "#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00", "#000080"), na.value = "transparent", na.translate = FALSE, labels = c("Sin dato", "Matorrales", "Vegetación herbácea", "Cultivo", "Urbano", "Cuerpos de agua", "Humedal herbáceo", "Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido", "Mar abierto")) +
+  coord_sf(datum = st_crs(5367))
+```
+
+Figura 2. Grilla con celdas de 8km x 8km.
+
+Calculé la distancia (disimilaridad) entre los patrones de paisaje local. En este caso usé la métrica denominada la divergencia de Jensen-Shannon y definí 6 conglomerdos o clusters.
+
+```{r}
+#| include: false
+cr_cove = lsp_signature(cob_s, type = "cove",
+                                window = grid_cr, normalization = "pdf")
+```
+
+```{r}
+#| include: false
+cr_dist = lsp_to_dist(cr_cove, dist_fun = "jensen-shannon")
+```
+
+```{r}
+#| include: false
+cr_hclust = hclust(cr_dist, method = "ward.D2")
+```
+
+```{r}
+#| include: false
+plot(cr_hclust)
+```
+
+```{r}
+#| include: false
+cr_clusters = cutree(cr_hclust, k = 6)
+```
+
+```{r}
+#| include: false
+cr_grilla_clusters = lsp_add_clusters(cr_cove, cr_clusters, window = grid_cr)
+```
+
+```{r}
+#| include: false
+cr_grilla_clusters$clust_fac <- factor(cr_grilla_clusters$clust)
+```
+
+```{r}
+#| include: false
+#| echo: false
+plot(cr_grilla_clusters["clust"], main = "Clusters")
+```
+
+```{r}
+#| echo: false
+p <- ggplot(cr_grilla_clusters) +
+  theme_minimal() +
+  geom_sf(aes(fill = clust_fac), color = "black") +
+  coord_sf(datum = st_crs(5367)) +
+  scale_fill_manual(name = "Cluster", values = c("navy", "blue", "purple", "hotpink", "orange", "yellow"))
+p
+```
+
+Figura 3. Representación espacial de 6 grupos (conglomerados) de paisajes locales.
+
+```{r}
+#| include: false
+#| echo: false
+p <- ggplot(cr_grilla_clusters) +
+  theme_minimal() +
+  geom_sf(aes(fill = clust_fac), color = "black") +
+  coord_sf(datum = st_crs(5367)) +
+  scale_fill_tableau(name = "Cluster")
+p
+```
+
+# Calidad de los conglomerados
+
+Para evaluar la calidad de los conglomerados usé 3 métricas, inhomogeneidad, distinción y calidad.
+
+```{r}
+#| include: false
+cr_grilla_clusters_calidad = lsp_add_quality(cr_grilla_clusters, cr_dist)
+```
+
+### **Inhomogeneidad**
+
+La inhomogeneidad mide el grado de disimilitud mutua entre todos los elementos de un conglomerado. El valor es entre 0 y 1, valores menores indican que los elementos de un conglomerado representan patrones consistentes, es decir, el conglomerado es homogéneo en cuanto a su patrón.
+
+```{r}
+#| echo: false
+p <- ggplot(cr_grilla_clusters_calidad) +
+  theme_minimal() +
+  geom_sf(aes(fill = inhomogeneity), color = "black") +
+  coord_sf(datum = st_crs(5367)) +
+  scale_fill_continuous_sequential(name = "Inhomogeneity", palette = "ag_GrnYl", n_interp = 6)
+p
+```
+
+Figura 4. Inhomogeneidad de los 6 conglomerados calculada para los paisajes locales basados en patrones de cobertura del suelo.
+
+### **Distinción**
+
+Distinción es una distancia promedio entre el conglomerado focal y todos sus vecinos. El valor es entre 0 y 1, donde valores mayores significan que el conglomerado se destaca más de sus alrededores.
+
+```{r}
+#| echo: false
+p <- ggplot(cr_grilla_clusters_calidad) +
+  theme_minimal() +
+  geom_sf(aes(fill = distinction), color = "black") +
+  coord_sf(datum = st_crs(5367)) +
+  scale_fill_continuous_sequential(name = "Distinción", palette = "YlOrRd", n_interp = 6)
+p
+```
+
+Figura 5. Distinción de los 6 conglomerados calculada para los paisajes locales basados en patrones de cobertura del suelo.
+
+### **Calidad**
+
+La calidad es calculada como 1 - (inhomogeneidad / distinción). Su valor es entre 0 y 1, donde valores mayores indican mayor calidad del conglomerado.
+
+```{r}
+#| echo: false
+p <- ggplot(cr_grilla_clusters_calidad) +
+  theme_minimal() +
+  geom_sf(aes(fill = quality), color = "black") +
+  coord_sf(datum = st_crs(5367)) +
+  scale_fill_continuous_sequential(name = "Calidad", palette = "Viridis", n_interp = 6)
+p
+```
+
+Figura 6. Calidad de los 6 conglomerados calculada para los paisajes locales basados en patrones de cobertura del suelo.
+
+::: {#refs}
+:::

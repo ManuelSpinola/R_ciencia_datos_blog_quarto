@@ -1,0 +1,554 @@
+---
+title: "Conectividad de las áreas protegidas de Costa Rica"
+description: |
+  Indices de conectividad del paisaje de las áreas protegidas de Costa Rica
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation_url: http://www.icomvis.una.ac.cr/
+    orcid_id: 0000-0002-7839-1908
+date: 01/01/2022
+citation: true
+draft: true
+categories:
+  - "Ecología del paisaje"
+  - "Conectividad del paisaje"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+#| eval: false
+library(tidyverse)
+library(rio)
+library(rgdal)
+library(sf)
+library(stars)
+library(raster)
+library(rasterVis)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(ggthemes)
+library(colorspace)
+library(RColorBrewer)
+library(here)
+library(ggthemes)
+library(ggpubr)
+library(kableExtra)
+library(Makurhini)
+library(lconnect)
+library(beepr)
+library(rmapshaper)
+library(wdpar)
+library(mapview)
+library(lwgeom)
+library(tmap)
+library(tmaptools)
+library(cleangeo)
+```
+
+# 1 Introducción
+
+```{r}
+#| include: false
+#| eval: false
+cr_5367 <- st_read(here("cr_mapas/cr_gadm_5367.gpkg"))
+```
+
+```{r}
+#| include: false
+#| eval: false
+lm_box <- st_bbox(c(xmin = 200000, xmax = 700000, ymax = 1250000, ymin = 850000), crs = st_crs(cr_5367))
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_5367 <- st_crop(cr_5367, lm_box)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_5367 <- st_make_valid(cr_5367)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_5367
+```
+
+# 2 Métodos
+
+Para este análisis se consideran las áreas protegidas terrestres de Costa Rica, excepto 1 patrimonio de la humanidad y los 10 sitios Ramsar incluídos en el país (UNEP-WCMC and IUCN 2021).
+
+```{r}
+#| include: false
+#| eval: false
+# areas protegidas
+cr_raw_pa_data <- wdpa_fetch("Costa Rica")
+```
+
+```{r}
+#| include: false
+#| eval: false
+saveRDS(cr_raw_pa_data, "ap_costa_rica.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_raw_pa_data <- readRDS("ap_costa_rica.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data <- wdpa_clean(cr_raw_pa_data)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data <- st_simplify(cr_pa_data)
+```
+
+```{r}
+#| include: false
+#| eval: false
+st_write(cr_pa_data, "pa.xlsx", layer_options = "GEOMETRY=AS_XY")
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367 <- st_transform(cr_pa_data, crs = 5367)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367 <- st_simplify(cr_pa_data_5367)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367 <- st_make_valid(cr_pa_data_5367)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr <- cr_pa_data_5367 %>%
+  filter(MARINE %in% c("terrestrial", "partial")) %>%
+  st_intersection(cr_5367)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr <- st_collection_extract(cr_pa_data_5367_terr, "POLYGON")
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr  <- cr_pa_data_5367_terr %>%
+  mutate_if(is.character, as.factor)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# se eliminan algunas areas
+cr_pa_data_5367_terr_some <- cr_pa_data_5367_terr %>%
+  filter(GOV_TYPE %in% c("Federal or national ministry or agency", "Individual landowners", "Joint governance"))
+```
+
+```{r}
+#| include: false
+#| eval: false
+summary(cr_pa_data_5367_terr_some$GOV_TYPE)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr_some <- cr_pa_data_5367_terr_some %>%
+  dplyr::select(NAME)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr_some$cat <- 1
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr_some$id <- 1:nrow(cr_pa_data_5367_terr_some)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr_some <- cr_pa_data_5367_terr_some %>% relocate(cat, id)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_data_5367_terr_some
+```
+
+```{r}
+#| include: false
+#| eval: false
+lconnect_file <- cr_pa_data_5367_terr_some %>% st_cast("POLYGON", do_split = FALSE)
+```
+
+```{r}
+#| include: false
+#| eval: false
+lconnect_file
+```
+
+```{r}
+#| include: false
+#| eval: false
+iic_file <- dplyr::select(lconnect_file, id)
+```
+
+```{r}
+#| include: false
+#| eval: false
+st_write(lconnect_file, "lconnect_file.shp")
+```
+
+```{r}
+#| include: false
+#| eval: false
+st_write(iic_file, "icc_file.shp")
+```
+
+```{r}
+#| include: false
+#| eval: false
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = cr_5367, fill = "white") +
+  geom_sf(data = cr_pa_data_5367_terr_some, fill = "#007800", color = "orange", size = 0.1) +
+  coord_sf(datum = st_crs(5367))
+```
+
+Figura 1. Areas protegidas terrestres de Costa Rica, 2021.
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_iic <- MK_dPCIIC(nodes = iic_file,
+                       attribute = NULL,
+                       area_unit = "ha",
+                       distance = list(type= "centroid"),
+                       metric = c("IIC"),
+                       probability = NULL,
+                       distance_threshold = 1000,
+                       overall = FALSE,
+                       onlyoverall = FALSE,
+                       LA = NULL,
+                       rasterparallel = NULL,
+                       write = NULL)
+```
+
+```{r}
+#| include: false
+#| eval: false
+plot(cr_pa_icc["dIIC"])
+```
+
+```{r}
+#| include: false
+#| eval: false
+tm_shape(cr_5367) +
+  tm_polygons(col = "grey95") +
+tm_shape(cr_pa_iic) +
+  tm_polygons("dIIC", title = "IIC")
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_pc <- MK_dPCIIC(nodes = iic_file,
+                       attribute = NULL,
+                       area_unit = "ha",
+                       distance = list(type= "centroid"),
+                       metric = c("PC"),
+                       probability = NULL,
+                       distance_threshold = 5000,
+                       overall = FALSE,
+                       onlyoverall = FALSE,
+                       LA = NULL,
+                       rasterparallel = NULL,
+                       write = NULL)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_pa_pc
+```
+
+```{r}
+#| include: false
+#| eval: false
+tm_shape(cr_5367) +
+  tm_polygons(col = "grey95") +
+tm_shape(cr_pa_pc) +
+  tm_polygons("dPC", title = "PC")
+```
+
+```{r}
+#| include: false
+#| eval: false
+a_cons <- st_read("areas_conservacion/AConsevacionSINAC2014.shp")
+```
+
+```{r}
+#| include: false
+#| eval: false
+a_cons <- a_cons %>%
+  mutate_if(is.character, as.factor)
+```
+
+```{r}
+#| include: false
+#| eval: false
+st_crs(a_cons) <- 5367
+```
+
+```{r}
+#| include: false
+#| eval: false
+a_cons_simp <- st_simplify(a_cons)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cr_5367 <- st_buffer(cr_5367, 0)
+a_cons_simp <- st_buffer(a_cons_simp, 0)
+```
+
+```{r}
+#| include: false
+#| eval: false
+a_cons_simp_c <- st_intersection(a_cons_simp, cr_5367)
+```
+
+```{r}
+#| include: false
+#| eval: false
+a_cons_simp_c
+```
+
+```{r}
+#| include: false
+#| eval: false
+a_cons_simp_c_dissolved <- a_cons_simp_c %>% group_by(AREA_CONSE) %>% summarize() 
+```
+
+```{r}
+#| include: false
+#| eval: false
+a_cons_simp_c_dissolved
+```
+
+```{r}
+#| include: false
+#| eval: false
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = a_cons_simp_c_dissolved, aes(fill = AREA_CONSE)) +
+  scale_fill_brewer(name = "Area de Conservación", palette = "Set3")
+```
+
+Figura 2. Areas de Conservación de Costa Rica, 2021. ACA-HN: Arenal-Huetar Norte, ACA-T: Arenal-Tempisque, ACCVC: Cordillera Volcánica Central, ACG: Guanacaste, ACLA-C: La Amistad - Caribe, ACLA-P: La Amistad - Pacífico, ACOPAC: Pacífico Central, ACOSA: Osa, ACT: Tempisque, ACTO: Tortuguero.
+
+```{r}
+#| include: false
+#| eval: false
+plot(a_cons_simp_c_dissolved, key.width = lcm(5))
+```
+
+```{r}
+#| include: false
+#| eval: false
+prot_conn_acons <- MK_ProtConnMult(nodes = cr_pa_data_5367_terr_some,
+                          regions = a_cons_simp_c_dissolved,
+                          area_unit = "ha",
+                          distance = list(type= "centroid"),
+                          distance_threshold = 5000,
+                          probability = 0.5,
+                          transboundary = 5000,
+                          transboundary_type = "region",
+                          plot = TRUE,
+                          write = "./prot_conn_acons",
+                          parallel = NULL,
+                          intern = FALSE)
+```
+
+```{r}
+#| include: false
+#| eval: false
+prot_conn_acons
+```
+
+```{r}
+#| include: false
+#| eval: false
+prot_5000 <- st_read("prot_conn_aconsProtConn_5000.shp")
+```
+
+```{r}
+#| include: false
+#| eval: false
+prot_5000
+```
+
+```{r}
+#| include: false
+#| eval: false
+ggplot() +
+  geom_sf(data = prot_5000, aes(fill = ProtConn)) 
+```
+
+```{r}
+#| include: false
+#| eval: false
+tm_shape(prot_5000) +
+  tm_polygons("ProtConn")
+```
+
+```{r}
+#| include: false
+#| eval: false
+icc_ap <- MK_dPCIIC(nodes = cr_pa_data_5367_terr_some,
+                 attribute = NULL,
+                 area_unit = "ha",
+                 distance = list(type = "centroid"),
+                 metric = "IIC",
+                 distance_threshold = 5000) # 5 and 10 km
+```
+
+```{r}
+#| include: false
+#| eval: false
+IIC
+```
+
+```{r}
+#| include: false
+#| eval: false
+plot(IIC["dPC"])
+```
+
+```{r}
+#| include: false
+#| eval: false
+class(IIC$)
+```
+
+```{r}
+#| include: false
+#| eval: false
+ggplot() +
+  geom_sf(data = IIC$d5000, aes(fill = dIIC))
+```
+
+```{r}
+#| include: false
+#| eval: false
+tm_shape(cr_5367) +
+  tm_polygons() +
+tm_shape(IIC) +
+  tm_polygons("dIIC")
+```
+
+```{r}
+#| include: false
+#| eval: false
+# connectivity indexes in a regular grid
+# ProtConn
+hexagons_protconn <- MK_Connect_grid(nodes = Protected_areas,
+                                     region = ecoregion,
+                                     area_unit = "ha",
+                                     grid_param = list(grid_pol = NULL,
+                                                       hexagonal = TRUE,
+                                                       grid_id = NULL,
+                                                       cellsize = unit_convert(1000, "km2", "m2"),
+                                                       grid_boundary = FALSE, clip = FALSE, tolerance = NULL),
+                                     protconn = TRUE,
+                                     distance_threshold = 3000,
+                                     probability = 0.5,
+                                     transboundary = 6000,
+                                     distance = list(type = "centroid"),
+                                     intern = TRUE,
+                                     parallel = FALSE)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# connectivity indexes in a regular grid
+# PC index
+hexagons_pc <- MK_Connect_grid(nodes = Protected_areas,
+                              region = ecoregion,
+                              area_unit = "ha",
+                              grid_param = list(grid_pol = NULL,
+                                                hexagonal = TRUE,
+                                                grid_id = NULL,
+                                                cellsize = unit_convert(1000, "km2", "m2"),
+                                                grid_boundary = FALSE, clip = FALSE, tolerance = NULL),
+                              protconn = FALSE,
+                              distance_threshold = 3000,
+                              probability = 0.5,
+                              distance = list(type = "centroid"),
+                              intern = TRUE,
+                              parallel = FALSE)
+```
+
+```{r}
+#| include: false
+#| eval: false
+data("vegetation_patches")
+vegetation_patches
+```
+
+```{r}
+#| include: false
+#| eval: false
+data("Protected_areas")
+Protected_areas
+```
+
+## Literatura Citada
+
+UNEP-WCMC and IUCN (2021), Protected Planet: The World Database on Protected Areas (WDPA)/The Global Database on Protected Areas Management Effectiveness (GD-PAME)\] \[On-line\], February/2021, Cambridge, UK: UNEP-WCMC and IUCN. Available at: www.protectedplanet.net.

@@ -1,0 +1,604 @@
+---
+title: "Registros de especies de vertebrados en Costa Rica en GBIF entre 2015-2020"
+description: |
+  Registros de especies en GBIF
+image: diagram.png
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation_url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 04/10/2022
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+lang: es
+draft: true
+categories:
+  - "Vertebrados de Costa Rica"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(rinat)
+library(rgbif)
+library(spocc)
+library(sf)
+library(taxize)
+library(g2r)
+library(echarts4r)
+library(highcharter)
+library(googleVis)
+library(scrubr)
+library(ggiraphExtra)
+library(magick)
+library(rphylopic)
+library(ggpubr)
+library(RCurl)
+library(png)
+library(cowplot)
+library(ggiraph)
+library(png)
+```
+
+# ¿Qué es GBIF?
+
+GBIF (Infraestructura Mundial de Información en Biodiversidad) es una organización internacional y una red de datos financiada por gobiernos de todo el mundo, destinada a proporcionar a cualquier persona, en cualquier lugar, acceso abierto y gratuito a datos sobre cualquier tipo de forma de vida que hay en la Tierra.
+
+En la siguiente entrada (post) se describe el número de ocurrencias de especies de vertebrados registradas en Costa Rica entre los años 2015-2020.
+
+Las aves constituyen la gran mayoría de registros para Costa Rica através de todos los años analizados. En la Figura 1, se muestra un gráfico interactivo con el número de ocurrencias registradas en Costa Rica para los grupos de vertebrados entre 2015-2020.
+
+<br>
+
+```{r}
+#| include: false
+cr <- st_read("cr_gadm.gpkg")
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2015_00 <- get_inat_obs(taxon_name = "Mammalia",
+                    year = 2015,
+                    bounds = cr,
+                    maxresults = 10000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2016_00 <- get_inat_obs(taxon_name = "Mammalia",
+                    year = 2016,
+                    bounds = cr,
+                    maxresults = 10000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2017_00 <- get_inat_obs(taxon_name = "Mammalia",
+                    year = 2017,
+                    bounds = cr,
+                    maxresults = 10000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2018_00 <- get_inat_obs(taxon_name = "Mammalia",
+                    year = 2018,
+                    bounds = cr,
+                    maxresults = 10000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2019_00 <- get_inat_obs(taxon_name = "Mammalia",
+                    year = 2019,
+                    bounds = cr,
+                    maxresults = 10000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2020_00 <- get_inat_obs(taxon_name = "Mammalia",
+                    year = 2020,
+                    bounds = cr,
+                    maxresults = 10000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2019_00
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_2015_00$year <- 2015
+mam_2016_00$year <- 2016
+mam_2017_00$year <- 2017
+mam_2018_00$year <- 2018
+mam_2019_00$year <- 2019
+mam_2020_00$year <- 2020
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_all <- bind_rows(mam_2015_00, mam_2016_00, mam_2017_00, mam_2018_00, mam_2019_00, mam_2020_00)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_all$year <- factor(mam_all$year)
+mam_all$quality_grade <- factor(mam_all$quality_grade)
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_all
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_all_sf <- st_as_sf(mam_all, coords = c("longitude", "latitude"), crs = 4326)
+```
+
+```{r}
+#| include: false
+#| eval: false
+ggplot(cr) +
+  theme_minimal() +
+  geom_sf(aes(fill = NAME_0)) +
+  geom_sf(data = mam_all_sf)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cri <- get_gadm_data("CRI", level = 0, keep = 0.01)
+cro <- get_map_data("Costa Rica")
+```
+
+```{r}
+#| include: false
+#| eval: false
+g2() %>% 
+  fig_map(asp(color = NAME_0), map = cri) %>%
+  fig_point(data = mam_all, asp(longitude, latitude, shape = "circle", color = quality_grade)) %>%
+  gauge_color(c("firebrick", "orange", "steelblue")) %>%
+  axis_hide()
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_all_group <- mam_all %>%
+  group_by(year, quality_grade) %>%
+  summarise(conteo = n())
+```
+
+```{r}
+#| include: false
+#| eval: false
+mam_all_group
+```
+
+```{r}
+#| include: false
+#| eval: false
+ggplot(mam_all_group) +
+  geom_col(aes(year, conteo, fill = quality_grade))
+```
+
+```{r}
+#| include: false
+#| eval: false
+g2(mam_all_group, asp(year, conteo, color = quality_grade)) %>%
+  fig_interval(adjust("dodge")) %>%
+  gauge_color(c("firebrick", "orange", "steelblue"))
+```
+
+```{r}
+#| include: false
+#| eval: false
+hchart(mam_all_group,
+       "column",
+       hcaes(x = year, y = conteo, group = quality_grade),
+       color = c("firebrick", "orange", "steelblue"),
+       name = c("Casual", "Needs id", "Research"))
+```
+
+```{r}
+#| include: false
+#| eval: false
+occ_count(taxonKey = 359, year = 2016, country = "CR")
+```
+
+```{r}
+#| include: false
+#| eval: false
+# con rgbif, varios años
+con_2015_2021gbif <- occ_search(taxonKey = 121, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 90000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# con rgbif, varios años
+act_2015_2021gbif <- occ_search(taxonKey = 204, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 90000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# con rgbif, varios años
+anf_2015_2021gbif <- occ_search(taxonKey = 131, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 90000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# con rgbif, varios años
+rep_2015_2021gbif <- occ_search(taxonKey = 358, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 90000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+ave_2015gbif <- occ_search(taxonKey = 212, year = 2015, country = "CR", limit = 100000)
+ave_2016gbif <- occ_search(taxonKey = 212, year = 2016, country = "CR", limit = 90000)
+ave_2017gbif <- occ_search(taxonKey = 212, year = 2017, country = "CR", limit = 90000)
+ave_2018gbif <- occ_search(taxonKey = 212, year = 2018, country = "CR", limit = 90000)
+ave_2019gbif <- occ_search(taxonKey = 212, year = 2019, country = "CR", limit = 90000)
+ave_2020gbif <- occ_search(taxonKey = 212, year = 2020, country = "CR", limit = 90000)
+ave_2021gbif <- occ_search(taxonKey = 212, year = 2021, country = "CR", limit = 90000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# con rgbif, varios años
+mam_2015_2021gbif <- occ_search(taxonKey = 359, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 90000)
+```
+
+```{r}
+#| include: false
+#| eval: false
+con_2015_2021gbif_df <- bind_rows(con_2015_2021gbif$`2015`$data, con_2015_2021gbif$`2016`$data, con_2015_2021gbif$`2017`$data, con_2015_2021gbif$`2018`$data, con_2015_2021gbif$`2019`$data, con_2015_2021gbif$`2020`$data, con_2015_2021gbif$`2021`$data)
+
+act_2015_2021gbif_df <- bind_rows(act_2015_2021gbif$`2015`$data, act_2015_2021gbif$`2016`$data, act_2015_2021gbif$`2017`$data, act_2015_2021gbif$`2018`$data, act_2015_2021gbif$`2019`$data, act_2015_2021gbif$`2020`$data, act_2015_2021gbif$`2021`$data)
+
+anf_2015_2021gbif_df <- bind_rows(anf_2015_2021gbif$`2015`$data, anf_2015_2021gbif$`2016`$data, anf_2015_2021gbif$`2017`$data, anf_2015_2021gbif$`2018`$data, anf_2015_2021gbif$`2019`$data, anf_2015_2021gbif$`2020`$data, anf_2015_2021gbif$`2021`$data)
+
+rep_2015_2021gbif_df <- bind_rows(rep_2015_2021gbif$`2015`$data, rep_2015_2021gbif$`2016`$data, rep_2015_2021gbif$`2017`$data, rep_2015_2021gbif$`2018`$data, rep_2015_2021gbif$`2019`$data, rep_2015_2021gbif$`2020`$data, rep_2015_2021gbif$`2021`$data)
+
+ave_2015_2021gbif_df <- bind_rows(ave_2015gbif$data, ave_2016gbif$data, ave_2017gbif$data, ave_2018gbif$data, ave_2019gbif$data, ave_2020gbif$data, ave_2021gbif$data)
+
+mam_2015_2021gbif_df <- bind_rows(mam_2015_2021gbif$`2015`$data, mam_2015_2021gbif$`2016`$data, mam_2015_2021gbif$`2017`$data, mam_2015_2021gbif$`2018`$data, mam_2015_2021gbif$`2019`$data, mam_2015_2021gbif$`2020`$data, mam_2015_2021gbif$`2021`$data)
+```
+
+```{r}
+#| include: false
+#| eval: false
+todos_gbif_2015_2021_df <- bind_rows(con_2015_2021gbif_df, act_2015_2021gbif_df, anf_2015_2021gbif_df, rep_2015_2021gbif_df, ave_2015_2021gbif_df, mam_2015_2021gbif_df)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# usando spocc
+con_2015_2021_spocc <- occ(query = "", from = "gbif", gbifopts = list(taxonKey = 121, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 80000))
+```
+
+```{r}
+#| include: false
+#| eval: false
+# usando spocc
+act_2015_2021_spocc <- occ(query = "", from = "gbif", gbifopts = list(taxonKey = 204, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 80000))
+```
+
+```{r}
+#| include: false
+#| eval: false
+# usando spocc
+anf_2015_2021_spocc <- occ(query = "", from = "gbif", gbifopts = list(taxonKey = 131, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 80000))
+```
+
+```{r}
+#| include: false
+#| eval: false
+# usando spocc
+rep_2015_2021_spocc <- occ(query = "", from = "gbif", gbifopts = list(taxonKey = 358, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 80000))
+```
+
+```{r}
+#| include: false
+#| eval: false
+# usando spocc
+ave_2015_2018_spocc <- occ(query = "", from = "gbif", gbifopts = list(taxonKey = 212, year = c(2015, 2016, 2017, 2018), country = "CR", limit = 80000))
+```
+
+```{r}
+#| include: false
+#| eval: false
+# usando spocc
+ave_2019_2021_spocc <- occ(query = "", from = "gbif", gbifopts = list(taxonKey = 212, year = c(2019, 2020, 2021), country = "CR", limit = 80000))
+```
+
+```{r}
+#| include: false
+#| eval: false
+# usando spocc
+mam_2015_2021_spocc <- occ(query = "", from = "gbif", gbifopts = list(taxonKey = 359, year = c(2015, 2016, 2017, 2018, 2019, 2020, 2021), country = "CR", limit = 80000))
+```
+
+```{r}
+#| include: false
+#| eval: false
+con_2015_2021_spocc_df <- occ2df(con_2015_2021_spocc, what = "all")
+act_2015_2021_spocc_df <- occ2df(act_2015_2021_spocc, what = "all")
+anf_2015_2021_spocc_df <- occ2df(anf_2015_2021_spocc, what = "all")
+rep_2015_2021_spocc_df <- occ2df(rep_2015_2021_spocc, what = "all")
+ave_2015_2018_spocc_df <- occ2df(ave_2015_2018_spocc, what = "all")
+ave_2019_2021_spocc_df <- occ2df(ave_2019_2021_spocc, what = "all")
+mam_2015_2021_spocc_df <- occ2df(mam_2015_2021_spocc, what = "all")
+```
+
+```{r}
+#| include: false
+#| eval: false
+todos_spocc_2015_2021_df <- bind_rows(con_2015_2021_spocc_df$data, act_2015_2021_spocc_df$data, anf_2015_2021_spocc_df$data, rep_2015_2021_spocc_df$data, ave_2015_2018_spocc_df$data, ave_2019_2021_spocc_df$data, mam_2015_2021_spocc_df$data)
+```
+
+```{r}
+#| include: false
+con_gbif_count_2015 <- occ_count(country = "CR", taxonKey = 121, year = 2015)
+con_gbif_count_2016 <- occ_count(country = "CR", taxonKey = 121, year = 2016)
+con_gbif_count_2017 <- occ_count(country = "CR", taxonKey = 121, year = 2017)
+con_gbif_count_2018 <- occ_count(country = "CR", taxonKey = 121, year = 2018)
+con_gbif_count_2019 <- occ_count(country = "CR", taxonKey = 121, year = 2019)
+con_gbif_count_2020 <- occ_count(country = "CR", taxonKey = 121, year = 2020)
+con_gbif_count_2021 <- occ_count(country = "CR", taxonKey = 121, year = 2021)
+
+act_gbif_count_2015 <- occ_count(country = "CR", taxonKey = 204, year = 2015)
+act_gbif_count_2016 <- occ_count(country = "CR", taxonKey = 204, year = 2016)
+act_gbif_count_2017 <- occ_count(country = "CR", taxonKey = 204, year = 2017)
+act_gbif_count_2018 <- occ_count(country = "CR", taxonKey = 204, year = 2018)
+act_gbif_count_2019 <- occ_count(country = "CR", taxonKey = 204, year = 2019)
+act_gbif_count_2020 <- occ_count(country = "CR", taxonKey = 204, year = 2020)
+act_gbif_count_2021 <- occ_count(country = "CR", taxonKey = 204, year = 2021)
+
+anf_gbif_count_2015 <- occ_count(country = "CR", taxonKey = 131, year = 2015)
+anf_gbif_count_2016 <- occ_count(country = "CR", taxonKey = 131, year = 2016)
+anf_gbif_count_2017 <- occ_count(country = "CR", taxonKey = 131, year = 2017)
+anf_gbif_count_2018 <- occ_count(country = "CR", taxonKey = 131, year = 2018)
+anf_gbif_count_2019 <- occ_count(country = "CR", taxonKey = 131, year = 2019)
+anf_gbif_count_2020 <- occ_count(country = "CR", taxonKey = 131, year = 2020)
+anf_gbif_count_2021 <- occ_count(country = "CR", taxonKey = 131, year = 2021)
+
+rep_gbif_count_2015 <- occ_count(country = "CR", taxonKey = 358, year = 2015)
+rep_gbif_count_2016 <- occ_count(country = "CR", taxonKey = 358, year = 2016)
+rep_gbif_count_2017 <- occ_count(country = "CR", taxonKey = 358, year = 2017)
+rep_gbif_count_2018 <- occ_count(country = "CR", taxonKey = 358, year = 2018)
+rep_gbif_count_2019 <- occ_count(country = "CR", taxonKey = 358, year = 2019)
+rep_gbif_count_2020 <- occ_count(country = "CR", taxonKey = 358, year = 2020)
+rep_gbif_count_2021 <- occ_count(country = "CR", taxonKey = 358, year = 2021)
+
+ave_gbif_count_2015 <- occ_count(country = "CR", taxonKey = 212, year = 2015)
+ave_gbif_count_2016 <- occ_count(country = "CR", taxonKey = 212, year = 2016)
+ave_gbif_count_2017 <- occ_count(country = "CR", taxonKey = 212, year = 2017)
+ave_gbif_count_2018 <- occ_count(country = "CR", taxonKey = 212, year = 2018)
+ave_gbif_count_2019 <- occ_count(country = "CR", taxonKey = 212, year = 2019)
+ave_gbif_count_2020 <- occ_count(country = "CR", taxonKey = 212, year = 2020)
+ave_gbif_count_2021 <- occ_count(country = "CR", taxonKey = 212, year = 2021)
+
+mam_gbif_count_2015 <- occ_count(country = "CR", taxonKey = 359, year = 2015)
+mam_gbif_count_2016 <- occ_count(country = "CR", taxonKey = 359, year = 2016)
+mam_gbif_count_2017 <- occ_count(country = "CR", taxonKey = 359, year = 2017)
+mam_gbif_count_2018 <- occ_count(country = "CR", taxonKey = 359, year = 2018)
+mam_gbif_count_2019 <- occ_count(country = "CR", taxonKey = 359, year = 2019)
+mam_gbif_count_2020 <- occ_count(country = "CR", taxonKey = 359, year = 2020)
+mam_gbif_count_2021 <- occ_count(country = "CR", taxonKey = 359, year = 2021)
+```
+
+```{r}
+#| include: false
+count_gbif_todos <- data.frame(
+  Clase = as.factor(c(rep("Condrictios", 7), rep("Actinopterigios", 7), rep("Anfibios", 7), rep("Reptiles", 7), rep("Aves", 7), rep("Mamíferos", 7))),
+  Año = c(rep(2015:2021, 6)),
+  Conteo = c(con_gbif_count_2015, con_gbif_count_2016, con_gbif_count_2017, con_gbif_count_2018, con_gbif_count_2019, con_gbif_count_2020, con_gbif_count_2021, act_gbif_count_2015, act_gbif_count_2016, act_gbif_count_2017, act_gbif_count_2018, act_gbif_count_2019, act_gbif_count_2020, act_gbif_count_2021, anf_gbif_count_2015, anf_gbif_count_2016, anf_gbif_count_2017, anf_gbif_count_2018, anf_gbif_count_2019, anf_gbif_count_2020, anf_gbif_count_2021, rep_gbif_count_2015, rep_gbif_count_2016, rep_gbif_count_2017, rep_gbif_count_2018, rep_gbif_count_2019, rep_gbif_count_2020, rep_gbif_count_2021, ave_gbif_count_2015, ave_gbif_count_2016, ave_gbif_count_2017, ave_gbif_count_2018, ave_gbif_count_2019, ave_gbif_count_2020, ave_gbif_count_2021, mam_gbif_count_2015, mam_gbif_count_2016, mam_gbif_count_2017, mam_gbif_count_2018, mam_gbif_count_2019, mam_gbif_count_2020, mam_gbif_count_2021))
+```
+
+```{r}
+#| include: false
+#| eval: false
+condric <- rphylopic::image_data("a3b3e80c-22f2-4b8f-a3ac-42fe1583e0be", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+actinop <- rphylopic::image_data("84c7e672-2593-44a6-a807-cffbd3156cc5", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+anfibios <- rphylopic::image_data("35237d88-e323-44dc-8349-b70fe078c5e7", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+reptiles <- rphylopic::image_data("5dec03d9-66a2-4033-b1a9-6dbb3485199f", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+aves <- rphylopic::image_data("ca1082e0-718c-48dc-a011-995511e48180", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+mamiferos <- rphylopic::image_data("7cd56d09-bc93-4974-9e87-65fa1f04652f", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+condric <- image_read("condrictios.png")
+actinop <- image_read("actinopterigios.png")
+anfibios <- image_read("anfibios.png")
+reptiles <- image_read("reptiles.png")
+aves <- image_read("aves.png")
+mamiferos <- image_read("mamiferos.png")
+```
+
+```{r, echo=FALSE}
+#| echo: false
+g2(count_gbif_todos, asp(Año, Conteo, color = Clase)) %>%
+  fig_line(asp(size = 3)) %>%
+  fig_point(asp(size = 3))
+```
+
+Figura 1. Gráfico interactivo con el número de registros de ocurrencias para los grupos vertebrados en Costa Rica entre 2015-2020.
+
+```{r}
+#| include: false
+#| eval: false
+#| echo: false
+count_gbif_todos$faño <- factor(count_gbif_todos$Año)
+count_gbif_todos %>%
+  filter(faño != 2021) %>%
+  group_by(Clase) %>%
+  e_charts(x = faño) %>% 
+  e_line(serie = Conteo)
+```
+
+```{r}
+#| include: false
+#| echo: false
+ggplot(count_gbif_todos, aes(factor(Año), Conteo, group = Clase, color = Clase)) +
+  theme_bw() +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ Clase, scales = "free_y")
+```
+
+## Condrictios
+
+```{r}
+#| echo: false
+p_gbif_con <- count_gbif_todos %>% filter(Clase == "Condrictios" & Año < 2021) %>% ggplot( aes(factor(Año), Conteo, group = Clase)) +
+  theme_minimal(base_size = 14) +
+  geom_line(color = "dodgerblue3", size = 1) +
+  geom_point_interactive(color = "darkorange", size = 2, aes(tooltip = Conteo, data_id = Conteo)) +
+  ggtitle("Condrictios") +
+  xlab("Año") +
+  ylab("Número de ocurrencias") +
+  draw_image(condric, x = 2, y = 20, scale = 10)
+girafe(ggobj = p_gbif_con)
+```
+
+Figura 2. Número de registros de ocurrencias para condrictios en Costa Rica entre 2015-2020.
+
+## Actinopterigios
+
+```{r}
+#| echo: false
+p_gbif_act <- count_gbif_todos %>% filter(Clase == "Actinopterigios" & Año < 2021) %>% ggplot( aes(factor(Año), Conteo, group = Clase)) +
+  theme_minimal(base_size = 14) +
+  geom_line(color = "dodgerblue3", size = 1) +
+  geom_point_interactive(color = "darkorange", size = 2, aes(tooltip = Conteo, data_id = Conteo)) +
+  ggtitle("Actinopterigios") +
+  xlab("Año") +
+  ylab("Número de ocurrencias") +
+  draw_image(actinop, x = 2, y = 200, scale = 40)
+girafe(ggobj = p_gbif_act)
+```
+
+Figura 3. Número de registros de ocurrencias para actinopterigios en Costa Rica entre 2015-2020.
+
+## Anfibios
+
+```{r}
+#| echo: false
+p_gbif_anf <- count_gbif_todos %>% filter(Clase == "Anfibios" & Año < 2021) %>% ggplot( aes(factor(Año), Conteo, group = Clase)) +
+  theme_minimal(base_size = 14) +
+  geom_line(color = "dodgerblue3", size = 1) +
+  geom_point_interactive(color = "darkorange", size = 2, aes(tooltip = Conteo, data_id = Conteo)) +
+  ggtitle("Anfibios") +
+  xlab("Año") +
+  ylab("Número de ocurrencias") +
+  draw_image(anfibios, x = 2, y = 1200, scale = 250)
+girafe(ggobj = p_gbif_anf)
+```
+
+Figura 4. Número de registros de ocurrencias para anfibios en Costa Rica entre 2015-2020.
+
+## Reptiles
+
+```{r}
+#| echo: false
+p_gbif_rep <- count_gbif_todos %>% filter(Clase == "Reptiles" & Año < 2021) %>% ggplot( aes(factor(Año), Conteo, group = Clase)) +
+  theme_minimal(base_size = 14) +
+  geom_line(color = "dodgerblue3", size = 1) +
+  geom_point_interactive(color = "darkorange", size = 2, aes(tooltip = Conteo, data_id = Conteo)) +
+  ggtitle("Reptiles") +
+  xlab("Año") +
+  ylab("Número de ocurrencias") +
+  draw_image(reptiles, x = 2, y = 2400, scale = 700)
+girafe(ggobj = p_gbif_rep)
+```
+
+Figura 5. Número de registros de ocurrencias para reptiles en Costa Rica entre 2015-2020.
+
+## Aves
+
+```{r}
+#| echo: false
+p_gbif_ave <- count_gbif_todos %>% filter(Clase == "Aves" & Año < 2021) %>% ggplot( aes(factor(Año), Conteo, group = Clase)) +
+  theme_minimal(base_size = 14) +
+  geom_line(color = "dodgerblue3", size = 1) +
+  geom_point_interactive(color = "darkorange", size = 2, aes(tooltip = Conteo, data_id = Conteo)) +
+  ggtitle("Aves") +
+  xlab("Año") +
+  ylab("Número de ocurrencias") +
+  draw_image(aves, x = 2, y = 1500000, scale = 500000)
+girafe(ggobj = p_gbif_ave)
+```
+
+Figura 6. Número de registros de ocurrencias para aves en Costa Rica entre 2015-2020.
+
+## Mamíferos
+
+```{r}
+#| echo: false
+p_gbif_mam <- count_gbif_todos %>% filter(Clase == "Mamíferos" & Año < 2021) %>% ggplot( aes(factor(Año), Conteo, group = Clase)) +
+  theme_minimal(base_size = 14) +
+  geom_line(color = "dodgerblue3", size = 1) +
+  geom_point_interactive(color = "darkorange", size = 2, aes(tooltip = Conteo, data_id = Conteo)) +
+  ggtitle("Mamíferos") +
+  xlab("Año") +
+  ylab("Número de ocurrencias") +
+  draw_image(mamiferos, x = 2, y = 2000, scale = 400)
+girafe(ggobj = p_gbif_mam)
+```
+
+Figura 7. Número de registros de ocurrencias para mamíferos en Costa Rica entre 2015-2020.

@@ -1,0 +1,16 @@
+{
+  "hash": "59274e9eb3ec5c05fc26c98e5bddcb8b",
+  "result": {
+    "markdown": "---\ntitle: \"Alternativas a los gráficos de barra o columna\"\ndescription: En esta entrada se muestran alternativas a los gráficos de barra\nimage: \"lollipop.png\"\nauthor:\n  - name: \"Manuel Spínola\"\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation_url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: \"2022-04-14\"\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\ndraft: false\ncategories:\n  - \"Gráficos\"\n  - \"Visualización de datos\"\n\n---\n\n\n\n\n\n# Contexto\n\nEl gráfico de barras es muy utilizado para visualizar información. Es un gráfico que generalmente incluye un eje x representando a una variable categórica (Figura 1)\n\n::: {.cell}\n::: {.cell-output-display}\n![](g_de_b_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\nTambién se usa el gráfico de barras para representar un estadístico (p.e. el promedio) y su precisión de estimación (p.e. intervalo de confianza: Figura 2)\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](g_de_b_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n# Alternativas\n\nPara el caso del gráfico de barras que solo representa frecuencia o conteo de elementos de categorías se puede usar un gráfico de lollipop (Figura 2) y se debe\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](g_de_b_files/figure-html/unnamed-chunk-7-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](g_de_b_files/figure-html/unnamed-chunk-8-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](g_de_b_files/figure-html/unnamed-chunk-9-1.png){width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "g_de_b_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

@@ -1,0 +1,154 @@
+---
+title: "crgeo: un paquete de R con datos geoespaciales de Costa Rica"
+subtitle: Datos geoespaciales de Costa Rica
+image: "imagenes/crgeo_c.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 2023-01-13
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Datos geoespaciales de Costa Rica"
+---
+
+```{r}
+#| include: true
+#| out-width: 40%
+#| fig-align: center
+library(knitr)
+include_graphics("imagenes/crgeo_c.png")
+```
+
+# Descripción del paquete
+
+**crgeo** es un paquete de R que contiene datos geoespaciales de Costa Rica.
+
+## Datos vectoriales
+
+| Datos           | Descripción                                                               |
+|------------------|------------------------------------------------------|
+| cr_cantons      | Mapa de cantones de Costa Rica                                            |
+| cr_cantons_c    | Mapa de cantones de Costa Rica (se excluyen islas)                        |
+| cr_districts    | Mapa de distritos de Costa Rica                                           |
+| cr_districts_c  | Mapa de distritos de Costa Rica (se excluyen islas)                       |
+| cr_osm_highways | Mapa de carreteras de Costa Rica                                          |
+| cr_osm_places   | Mapa de sitios de Costa Rica                                              |
+| cr_osm_railway  | Mapa de vías de tren de Costa Rica                                        |
+| cr_outline      | Mapa del límite territorial de Costa Rica                                 |
+| cr_outline_c    | Mapa del límite territorial continental de Costa Rica (se excluyen islas) |
+| cr_provinces    | Mapa de provincias de Costa Rica                                          |
+| cr_provinces_c  | Mapa de provincias de Costa Rica (se excluyen islas)                      |
+
+## Datos raster
+
+| Datos                     | Descripción                                                           |
+|---------------------|---------------------------------------------------|
+| cr_bio                    | Mapa de 19 variables climáticas de Costa Rica                         |
+| cr_bio_c                  | Mapa de 19 variables climáticas de Costa Rica (se excluyen islas)     |
+| cr_elevation              | Mapa de elevación de Costa Rica                                       |
+| cr_elevation_c            | Mapa de elevación de Costa Rica (se excluyen islas)                   |
+| cr_pop_density_2020_1km   | Densidad de población humana de Costa Rica - 2020                     |
+| cr_pop_density_2020_1km_c | Densidad de población humana de Costa Rica (se excluyen islas) - 2020 |
+| cr_prec                   | Mapa de precipitación de Costa Rica                                   |
+| cr_prec_c                 | Mapa de precipitación de Costa Rica (se excluyen islas)               |
+| cr_srad                   | Mapa de radiación solar de Costa Rica                                 |
+| cr_srad_c                 | Mapa de radiación solar de Costa Rica (se excluyen islas)             |
+| cr_tavg                   | Mapa de temperatura promedio de Costa Rica                            |
+| cr_tavg_c                 | Mapa de temperatura promedio de Costa Rica (se excluyen islas)        |
+| cr_tmax                   | Mapa de temperatura máxima de Costa Rica                              |
+| cr_tmax                   | Mapa de temperatura máxima de Costa Rica (se excluyen islas)          |
+| cr_tmin                   | Mapa de temperatura mínima de Costa Rica                              |
+| cr_tmin_c                 | Mapa de temperatura mínima de Costa Rica (se excluyen islas)          |
+| cr_wind                   | Mapa de velocidad del viento de Costa Rica                            |
+| cr_wind_c                 | Mapa de velocidad del viento en Costa Rica (se excluyen islas)        |
+
+# Instalación y uso de **crgeo**
+
+Para poder utilizar el paquete se debe instalar el paquete devtools:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+install.packages("devtools")
+```
+
+Cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+library(devtools)
+```
+
+Luego proceder a instalar crgeo desde github:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+devtools::install_github("ManuelSpinola/crgeo")
+```
+
+y cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+library(crgeo)
+```
+
+Para este ejemplo con los datos que se incluyen en el paquete **crgeo** se requieren los paquetes tidyverse, sf y stars:
+
+```{r}
+#| include: true
+#| echo: true
+#| message: false
+library(tidyverse)
+library(sf)
+library(stars)
+```
+
+# Datos vectoriales
+
+Para visualizar el mapa del límite territorial de los países de Costa Rica:
+
+```{r}
+#| include: true
+#| echo: true
+ggplot(cr_outline_c) +
+  geom_sf(fill = "dodgerblue4", color = "gray") +
+  theme_minimal()
+```
+
+# Datos raster
+
+Para utilizar los rasters que se incluyen en el paquete, en este ejemplo se usan los datos de elevación de Costa Rica:
+
+```{r}
+#| include: true
+#| echo: true
+ggplot() +
+  geom_stars(data = cr_elevation_c) +
+  scale_fill_viridis_c(name = "Altitud (m)", na.value = "transparent") +
+  theme_minimal() +
+  coord_equal()
+```
+
+Para más información del paquete se puede visitar este enlace <https://github.com/ManuelSpinola/crgeo>

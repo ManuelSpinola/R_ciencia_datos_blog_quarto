@@ -1,0 +1,213 @@
+---
+title: "Conglomerados del paisaje en las zonas de vida de Costa Rica"
+description: |
+  Conglomerdos (clusters) del paisaje
+image: preview.png
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation_url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 01/01/2022
+citation: true
+draft: true
+categories:
+  - "Ecología del paisaje"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(sf)
+library(stars)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(ggthemes)
+library(colorspace)
+library(RColorBrewer)
+library(here)
+library(ggthemes)
+library(ggpubr)
+```
+
+```{r}
+#| include: false
+cob_s = read_stars(here("cr_cobertura/cobertura_cop_100_2019.tif"))
+```
+
+```{r}
+#| include: false
+st_crs(cob_s) <- 5367
+```
+
+```{r}
+#| include: false
+zv_box <- st_bbox(c(xmin = 200000, xmax = 700000, ymax = 1250000, ymin = 850000), crs = st_crs(cob_s))
+```
+
+```{r}
+#| include: false
+cob_s <- cob_s[zv_box]
+```
+
+```{r}
+#| include: false
+check_landscape(cob_s)
+```
+
+```{r}
+#| include: false
+cr_5367 <- st_read(here("cr_mapas/cr_gadm_5367.gpkg"))
+```
+
+```{r}
+#| include: false
+cr_5367 <- st_crop(cr_5367, zv_box)
+```
+
+```{r}
+#| echo: false
+ggplot() +
+  geom_stars(data = cob_s, na.rm = TRUE) +
+  theme_minimal() +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("#282828", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000", "#0032C8", "#0096A0", "#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00", "#000080"), na.value = "transparent", na.translate = FALSE, labels = c("Sin dato", "Matorrales", "Vegetación herbácea", "Cultivo", "Urbano", "Cuerpos de agua", "Humedal herbáceo", "Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido", "Mar abierto")) +
+  coord_sf(datum = st_crs(5367))
+```
+
+Figura 1. Mapa de cobertura del suelo de Costa Rica.
+
+```{r}
+#| include: false
+zv <- read_sf("zonasdevida/zonasvida2008crtm05.shp", options = "ENCODING=UTF-8", stringsAsFactors = TRUE)
+```
+
+```{r}
+#| include: false
+st_crs(zv) <- 5367
+```
+
+```{r}
+#| include: false
+zv_cr <- st_crop(zv, zv_box)
+```
+
+```{r}
+#| include: false
+zv_cr$id <- zv_cr$ZONAS_ID
+```
+
+```{r}
+#| include: false
+zv_cr$id <- as.numeric(zv_cr$id)
+```
+
+```{r}
+#| echo: false
+ggplot(zv_cr) +
+  theme_minimal() +
+  geom_sf(aes(fill = ZONE)) +
+  labs(fill="Zona de vida") +
+  coord_sf(datum = st_crs(5367))
+```
+
+```{r}
+#| include: false
+zv_cove = lsp_signature(cob_s,
+                        type = "cove",
+                        window = zv_cr["id"], normalization = "pdf")
+```
+
+```{r}
+#| include: false
+zv_dist = lsp_to_dist(zv_cove, dist_fun = "jensen-shannon")
+```
+
+```{r}
+#| include: false
+zv_hclust = stats::hclust(zv_dist, method = "ward.D2")
+```
+
+```{r}
+#| include: true
+#| echo: false
+plot(zv_hclust)
+```
+
+```{r}
+#| include: false
+zv_clusters = cutree(zv_hclust, k = 4)
+```
+
+```{r}
+#| include: false
+zv_grilla_clusters = lsp_add_clusters(zv_cove, zv_clusters, window = zv_cr["id"])
+```
+
+```{r}
+#| include: false
+#| echo: false
+plot(zv_grilla_clusters["clust"])
+```
+
+```{r}
+#| include: false
+zv_grilla_clusters$clust_fac <- factor(zv_grilla_clusters$clust)
+```
+
+```{r}
+# echo: false
+p <- ggplot(zv_grilla_clusters) +
+  theme_minimal() +
+  geom_sf(aes(fill = clust_fac), color = "black") +
+  coord_sf(datum = st_crs(5367)) +
+  scale_fill_brewer(name = "Cluster", palette = "Dark2")
+p
+
+zv_grilla_clusters_4 <- subset(zv_grilla_clusters, clust == 4)
+```
+
+```{r}
+#| include: false
+zv_grilla_clusters_4
+```
+
+```{r}
+#| include: false
+clust_4 <- lsp_extract(cob_s, window = zv_cr["id"], id = 24)
+```
+
+```{r}
+#| include: false
+clust_4
+```
+
+```{r}
+#| include: false
+cong_4 <- ggplot() +
+  theme_minimal() +
+  geom_sf(data = cr_5367, fill = "white") +
+  geom_stars(data = clust_4) +
+  coord_equal() +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("#282828", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000", "#0032C8", "#0096A0", "#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00", "#000080"), na.value = "transparent", na.translate = FALSE, labels = c("Sin dato", "Matorrales", "Vegetación herbácea", "Cultivo", "Urbano", "Cuerpos de agua", "Humedal herbáceo", "Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido", "Mar abierto")) +
+  coord_sf(datum = st_crs(5367))
+```
+
+```{r}
+#| include: false
+cong_4b <- ggplot() +
+  theme_bw() +
+  geom_sf(data = cr_5367, fill = "white") +
+  geom_stars(data = clust_4) +
+  coord_equal() +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("#282828", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000", "#0032C8", "#0096A0", "#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00", "#000080"), na.value = "transparent", na.translate = FALSE, labels = c("Sin dato", "Matorrales", "Vegetación herbácea", "Cultivo", "Urbano", "Cuerpos de agua", "Humedal herbáceo", "Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido", "Mar abierto")) +
+  coord_sf(xlim = c(550000, 610000), ylim = c(1020000, 1060000), datum = st_crs(5367))
+```
+
+```{r}
+#| warning: false
+ggarrange(cong_4, cong_4b, common.legend = TRUE)
+```

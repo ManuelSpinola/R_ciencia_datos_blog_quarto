@@ -1,0 +1,120 @@
+---
+title: "crgrids: un paquete de R con grillas espaciales para el estudio y monitoreo de la biodiversidad en Costa Rica"
+subtitle: "Paquete de R con un sistema de grillas espaciales jerárquicas para el estudio y monitoreo de la biodiversidad en Costa Rica"
+image: "imagenes/crgrids_b.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+  - name: Guido A. Saborío
+    affiliation: Sistema Nacional de Áreas de Conservación, Costa Rica
+    orcid: 0000-0001-9490-2459
+
+format:
+  html:
+    embed-resources: true
+
+date: "2023-04-20"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Datos geoespaciales de Costa Rica"
+  - "Monitoreo Biológico"
+  - "Diseño de muestreo"
+---
+
+```{r}
+#| include: true
+#| out-width: 40%
+#| fig-align: center
+library(knitr)
+include_graphics("imagenes/crgrids_b.png")
+```
+
+# Descripción del paquete
+
+**crgrids** es un paquete de R que contiene grillas espaciales jerárquicas para Costa Rica.
+
+El paquete incluye 4 grillas de unidades cuadradas de 1km, 2km, 4km y 8km.
+
+Para más detalles del sistema de grillas espaciales jerárquicas ver el post [@Spínola2023].
+
+# Instalación y uso de **crgrids**
+
+Para poder utilizar el paquete se debe instalar el paquete devtools:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+install.packages("devtools")
+```
+
+Cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+library(devtools)
+```
+
+Luego proceder a instalar crgrids desde github:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+devtools::install_github("ManuelSpinola/crgrids")
+```
+
+y cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+library(crgrids)
+```
+
+Para este ejemplo con los datos que se incluyen en el paquete **crgrids** se requieren los paquetes tidyverse [@Wickham2019] y sf [@Pebesma2018]:
+
+```{r}
+#| include: true
+#| echo: true
+#| message: false
+library(tidyverse)
+library(sf)
+```
+
+# Grilla de 8km
+
+Para visualizar la grilla de 8km para Costa Rica:
+
+```{r}
+#| include: true
+#| echo: true
+ggplot(cr_grid_8km) +
+  geom_sf(fill = "dodgerblue3", color = "gray") +
+  theme_minimal()
+```
+
+Para más información del paquete se puede visitar este enlace <https://github.com/ManuelSpinola/crgrids>
+
+# Literatura citada
+
+::: {#refs}
+:::

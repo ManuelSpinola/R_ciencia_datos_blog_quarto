@@ -1,0 +1,14 @@
+{
+  "hash": "1443d47b860367853d2b8c8c77108537",
+  "result": {
+    "markdown": "---\ntitle: \"Análisis de texto\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation_url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: 01/01/2022\ncitation: true\ndraft: false\ncategories:\n  - \"Minería de texto\"\n---\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

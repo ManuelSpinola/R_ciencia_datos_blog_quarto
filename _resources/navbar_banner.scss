@@ -1,0 +1,29 @@
+/*-- scss:rules --*/
+
+/* Navbar */
+.navbar {
+  background-color: #0d47a1 !important;   /* azul oscuro */
+  color: white !important;
+}
+.navbar a {
+  color: white !important;
+}
+.navbar a:hover {
+  color: #e0f7fa !important;             /* celeste al pasar el mouse */
+}
+
+/* Banner completo */
+.quarto-title-banner {
+  background-color: #1976d2 !important; /* azul del banner */
+  color: white !important;
+}
+
+/* Título dentro del banner */
+.quarto-title-banner .title {
+  color: white !important;
+}
+
+/* Subtítulo dentro del banner */
+.quarto-title-banner .subtitle {
+  color: #e0f7fa !important; /* celeste claro */
+}

@@ -1,0 +1,304 @@
+---
+title: "Como visualizar datos en escala de Likert"
+subtitle: Gráficos para visualizar datos en escala de Likert
+image: "likert.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 2022-06-07
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+categories:
+  - "Escala de Likert"
+  - "Visualización de datos"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(rio)
+library(labelled)
+library(likert)
+library(licorice)
+library(sjPlot)
+library(sjlabelled)
+library(sjmisc)
+library(kableExtra)
+```
+
+```{r}
+#| include: false
+encuesta <- import("datos/encuesta.xlsx")
+```
+
+```{r}
+#| include: false
+encuesta
+```
+
+```{r}
+#| include: false
+encuesta$Género <- factor(encuesta$Género)
+```
+
+```{r}
+#| include: false
+encuesta$`¿Estás de acuerdo con las medidas sanitarias por el COVID-19?` <- factor(encuesta$`¿Estás de acuerdo con las medidas sanitarias por el COVID-19?`, levels = c("Total desacuerdo", "En desacuerdo", "Neutral", "De acuerdo", "Muy de acuerdo"), ordered = TRUE)
+
+encuesta$`¿Estás de acuerdo con las políticas para mitigar el cambio climático?` <- factor(encuesta$`¿Estás de acuerdo con las políticas para mitigar el cambio climático?`, levels = c("Total desacuerdo", "En desacuerdo", "Neutral", "De acuerdo", "Muy de acuerdo"), ordered = TRUE)
+
+encuesta$`¿Estás de acuerdo con el lenguaje inclusivo?` <- factor(encuesta$`¿Estás de acuerdo con el lenguaje inclusivo?`, levels = c("Total desacuerdo", "En desacuerdo", "Neutral", "De acuerdo", "Muy de acuerdo"), ordered = TRUE)
+```
+
+```{r}
+#| include: false
+head(encuesta)
+```
+
+```{r}
+#| include: false
+e_con_grupo <- likert(encuesta[, 2:4], grouping = encuesta$Género)
+```
+
+```{r}
+#| include: false
+summary(e_con_grupo)
+```
+
+```{r}
+#| include: false
+el <- import("datos/encuesta_02.xlsx")
+```
+
+```{r}
+#| include: false
+var_label(el$covid_h) <- "¿Estás de acuerdo con las medidas sanitarias por el COVID-19?"
+```
+
+```{r}
+#| include: false
+var_label(el$covid_m) <- "¿Estás de acuerdo con las medidas sanitarias por el COVID-19?"
+```
+
+```{r}
+#| include: false
+var_label(el$cc_h) <- "¿Estás de acuerdo con las políticas para mitigar el cambio climático?"
+```
+
+```{r}
+#| include: false
+var_label(el$cc_m) <- "¿Estás de acuerdo con las políticas para mitigar el cambio climático?"
+```
+
+```{r}
+#| include: false
+var_label(el$li_h) <- "¿Estás de acuerdo con el lenguaje inclusivo?"
+```
+
+```{r}
+#| include: false
+var_label(el$li_m) <- "¿Estás de acuerdo con el lenguaje inclusivo?"
+```
+
+```{r}
+#| include: false
+el_labelled <- el |> set_labels(covid_h, cc_h, li_h, covid_m, cc_m, li_m,
+  labels = c("Total desacuerdo", "En desacuerdo", "Neutral", "De acuerdo", "Muy de acuerdo"))
+```
+
+```{r}
+#| include: false
+en <- import("datos/encuesta_03.xlsx")
+```
+
+```{r}
+#| include: false
+en$respuesta <- factor(en$respuesta, labels = c("Total desacuerdo", "En desacuerdo", "Neutral", "De acuerdo", "Muy de acuerdo"))
+```
+
+```{r}
+#| include: false
+en_g <- en |>
+  group_by(genero, pregunta, respuesta) |>
+  summarise(conteo = n()) |>
+  mutate(p = conteo/sum(conteo) * 100) |>
+  mutate(perc = scales::percent(conteo/sum(conteo), accuracy = 1))
+en_g
+```
+
+# Contexto
+
+En algunas ocasiones nuestros datos están en escala de Likert. Por ejemplo, se realizan cuestionarios con respuestas predeterminadas que consisten en 5 posibles opciones. Es deseable visualizar estos resultados mediante un gráfico que muestre los porcentajes que obtuvieron cada una de las opciones a la pregunta correspondiente.
+
+Los datos que se muestran a continuación son ficticios.
+
+<br>
+
+### Preguntas
+
+<br>
+
+`r text_spec("Pregunta 1: ¿Estás de acuerdo con las medidas sanitarias por el COVID-19?", color = "dodgerblue", font_size = 20)`
+
+`r text_spec("Pregunta 2:¿Estás de acuerdo con las políticas para mitigar el cambio climático?", color = "dodgerblue", font_size = 20)`
+
+`r text_spec("Pregunta 3: ¿Estás de acuerdo con el lenguaje inclusivo?", color = "dodgerblue", font_size = 20)`
+
+<br>
+
+### Respuestas predeterminadas
+
+<br>
+
+`r text_spec("1.  Total desacuerdo", color = "#b3cde3", font_size = 20)`
+
+`r text_spec("2.  En desacuerdo", color = "#8c96c6", font_size = 20)`
+
+`r text_spec("3.  Neutral", color = "grey", font_size = 20)`
+
+`r text_spec("4.  De acuerdo", color = "#8856a7", font_size = 20)`
+
+`r text_spec("5.  Muy de acuerdo", color = "#810f7c", font_size = 20)`
+
+<br>
+
+Además los datos pueden separarse en grupos, en este caso Hombres y Mujeres.
+
+## Gráficos de barra
+
+Una forma de gráficar datos en escala de Likert podría ser de la siguiente manera (@fig-centrada). Este gráfico está centrado en la categoría o nivel "Neutral", en este gráfico de color gris, y muestra su porcentaje.
+
+```{r}
+#| echo: false
+#| label: fig-centrada
+#| fig-cap: Gráfico de barras para datos en escala de Likert centrados en el nivel neutral y mostrando el porcentaje de dicho nivel. 
+plot(e_con_grupo,
+     low.color = "#b3cde3",
+     high.color = "#810f7c",
+     neutral.color = "grey90",
+     neutral.color.ramp = "white",
+     plot.percent.low = FALSE,
+     plot.percent.high = FALSE,
+     centered = TRUE,
+     plot.percents = TRUE)
+```
+
+Una alternativa sería mostrar un gráfico no centrado en la categoría o nivel "Neutral" y la suma de los porcentajes de todas las categorías o niveles de manera que totalizen el 100% (@fig-no_centrada).
+
+```{r}
+#| echo: false
+#| label: fig-no_centrada
+#| fig-cap: Gráfico de barras para datos en escala de Likert no centrado en el nivel neutral y con todos los niveles totalizando el 100%. 
+plot(e_con_grupo,
+     centered = FALSE,
+     low.color = "#b3cde3",
+     high.color = "#810f7c",
+     neutral.color = "grey90",
+     neutral.color.ramp = "white",
+     plot.percent.low = FALSE,
+     plot.percent.high = FALSE,
+     plot.percent.neutral = FALSE,
+     plot.percents = TRUE)
+```
+
+Otra alternativa puede ser mostrar el nivel "Neutral" separado del resto de los demás categorías o niveles y mostrando el porcentaje de cada uno de las categorías o niveles (@fig-sjplot_01).
+
+```{r}
+#| echo: false
+#| label: fig-sjplot_01
+#| fig-cap: Gráfico de barras de datos en escala de Likert con el nivel neutral separado de los demás niveles. 
+plot_likert(encuesta[, 2:4],
+            values = "hide",
+            cat.neutral = 3,
+            reverse.scale = TRUE,
+            show.prc.sign = TRUE,
+            geom.colors = "Purples") +
+  annotate("text", x = c(1, 2, 3), y = c(0.075, 0.25, 0.075), label = c("5%", "10%", "5%"), size = 2) +
+  annotate("text", x = c(1, 2, 3), y = c(0.025, 0.10, 0.025), label = c("5%", "20%", "5%"), size = 2) +
+  annotate("text", x = c(1, 2, 3), y = c(-0.12, -0.12, -0.085), label = c("25%", "25%", "20%"), size = 2) +
+  annotate("text", x = c(1, 2, 3), y = c(-0.47, -0.37, -0.45), label = c("45%", "25%", "50%"), size = 2) +
+  theme_minimal() +
+  annotate("text", x = c(1, 2, 3), y = c(-0.90, -0.90, -0.90), label = c("20%", "20%", "20%"), size = 2) +
+  theme(legend.position="bottom") +
+  theme(legend.text = element_text(size = 8)) 
+```
+
+Otra alternativa es mostrar todas las categorías o niveles juntos y totalizando el 100% (@fig-sjplot_02)
+
+```{r}
+#| echo: false
+#| label: fig-sjplot_02
+#| fig-cap: Gráfico de barras de datos en escala de Likert con todos los niveles totalizando el 100%. 
+plot_stackfrq(encuesta[, 2:4],
+              geom.colors = "Purples",
+              show.prc = FALSE) +
+  theme_minimal() +
+  annotate("text", x = c(1, 2, 3), y = c(0.025, 0.05, 0.025), label = c("5%", "10%", "5%"), size = 2) +
+  annotate("text", x = c(1, 2, 3), y = c(0.075, 0.20, 0.075), label = c("5%", "20%", "5%"), size = 2) +
+  annotate("text", x = c(1, 2, 3), y = c(0.20, 0.40, 0.20), label = c("20%", "20%", "20%"), size = 2) +
+  annotate("text", x = c(1, 2, 3), y = c(0.40, 0.63, 0.43), label = c("20%", "25%", "25%"), size = 2) +
+  annotate("text", x = c(1, 2, 3), y = c(0.75, 0.88, 0.78), label = c("50%", "25%", "45%"), size = 2, color = "white")
+```
+
+También se puede hacer de manera muy similar pero separando por grupo (@fig-ggplot).
+
+```{r}
+#| echo: false
+#| label: fig-ggplot
+#| fig-cap: Gráfico de barras de datos en escala de Likert con todos los niveles totalizando el 100% y separado por grupo. 
+ggplot(en_g, aes(pregunta, p, fill = fct_rev(respuesta))) +
+  geom_col(position = "stack") +
+  theme_bw() +
+  facet_wrap(vars(genero), ncol = 1) +
+  coord_flip() +
+  scale_fill_brewer(name = "Respuesta", palette = "Purples", direction = -1) +
+  scale_x_discrete(labels = scales::label_wrap(18)) +
+  geom_text(aes(label = perc), position = position_stack(vjust = 0.5), size = 3) 
+```
+
+```{r}
+#| include: false
+e_sin_grupo <- likert(encuesta[, 2:4])
+```
+
+```{r}
+#| include: false
+#| echo: false
+plot(e_sin_grupo,
+     type = "heat",
+     low.color = "#b3cde3",
+     high.color = "#810f7c",
+     text.size = 3,
+     wrap = 20)
+```
+
+## Gráficos de densidad
+
+También se pueden visualizar los datos en escala de Likert en un gráfcio de densidad. En este gráfico se muestra la distribución de los datos por grupo así como la media de cada uno de los grupos (@fig-density)
+
+```{r}
+#| echo: false
+#| label: fig-density
+#| fig-cap: Gráfico de densidad de datos en escala de Likert que muestra la distribución de los datos por grupo y la media de cada grupo. 
+plot(e_con_grupo,
+     type = "density",
+     legend = "Género")
+```
+
+Los análisis y gráficos los realicé con R [@R2022], usando el paquete likert [@Bryer2016], sjPlot [@Lüdecke2021] y ggplot2 [@Wickham2016].
+
+### Literatura citada
+
+::: {#refs}
+:::

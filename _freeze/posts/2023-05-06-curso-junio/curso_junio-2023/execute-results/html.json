@@ -1,0 +1,14 @@
+{
+  "hash": "0b63a34bfeaf9c88784053f84c6aad9e",
+  "result": {
+    "markdown": "---\ntitle: \"Curso-taller: Análisis de datos en R con estadística frecuentista, bayesiana y machine learning\"\nsubtitle: \"Aprende a analizar datos con los 3 paradigmas de la estadística moderna\"\nimage: \"logo/cd.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: \"2023-05-06\"\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nlang: es\ndraft: false\nexecute: \n  echo: false\n  include: false\ncategories:\n  - \"Capacitaciones\"\n---\n\n\n\n\n# Análisis de datos en R con estadística frecuentista, bayesiana y machine learning\n\nR se ha convertido rápidamente en uno de los lenguajes de programación líderes en estadística y ciencia de datos. El número de usuarios de R en el mundo crece notablemente, y cada vez más personas y organizaciones lo están usando para sus actividades que requieren el manejo y análisis de datos. En este curso-taller, el participante podrá aprender a analizar datos en R mediante métodos frecuentistas, bayesianos y machine learning.\n\n\n::: {.cell .column-margin}\n::: {.cell-output-display}\n![](logos/una.jpg){width=60%}\n:::\n:::\n\n\n## Contenido\n\n-   El uso de R a través de RStudio\n\n-   Conceptos básicos de R\n\n-   Introducción al modelaje estadístico\n\n-   Estimación y prueba de hipótesis\n\n\n::: {.cell .column-margin}\n::: {.cell-output-display}\n![](logos/icomvis.png){width=60%}\n:::\n:::\n\n\n-   Modelos estadísticos frecuentistas\n\n-   Modelos estadísticos bayesianos\n\n-   Machine learning para regresión y clasificación\n\n-   Selección de modelos\n\n-   Importancia de las variables\n\n-   Gráficos de modelos estadísticos\n\n\n::: {.cell .column-margin}\n::: {.cell-output-display}\n![](logos/cd.png){width=60%}\n:::\n:::\n\n\n\\\n\n::: {.callout-note icon=\"false\"}\n\n## Información\n\n-   **Fecha:** 6, 8, 13, 15, 20, 22, 27 y 29 de junio 2023.\n\n-   **Modalidad:** Virtual sincrónico\n\n-   **Horario:** 18.00 a 20.00 (16 horas)\n\n-   **Inversión:** 203 dólares (ivai)\n\n-   **Instructor:** Manuel Spínola Parallada (Ph.D) (mspinola\\@una.cr, mspinola10\\@gmail.com)\n\n-   **Contacto e inscripciones:** Aryeri Ramírez, (506) 2277 3599 (aryeri.ramirez.baltodano\\@una.ac.cr)\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

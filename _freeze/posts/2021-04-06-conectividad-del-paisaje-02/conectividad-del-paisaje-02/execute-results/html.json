@@ -1,0 +1,14 @@
+{
+  "hash": "af44b88a4049e0a86aa4f462d9562264",
+  "result": {
+    "markdown": "---\ntitle: \"Conectividad del paisaje 02\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation_url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: 01/01/2022\ncitation: true\ndraft: true\nexecute:\n  eval: false\n---\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncr_5367 <- st_read(here(\"cr_mapas/cr_gadm_5367.gpkg\"))\n```\n:::\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlm_box <- st_bbox(c(xmin = 200000, xmax = 700000, ymax = 1250000, ymin = 850000), crs = st_crs(cr_5367))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ncr_5367 <- st_crop(cr_5367, lm_box)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ncr_5367 <- st_make_valid(cr_5367)\n```\n:::\n\n\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# dissolve polygons\npolygons_s_dissolve <- polygons_s %>% group_by(categoria) %>% summarize()\nbeep()\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nsaveRDS(polygons_s_dissolve, \"polygons_s_dissolve.rds\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\npolygons_s_dissolve <- readRDS(\"polygons_s_dissolve.rds\")\n```\n:::\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# dejar solo bosques\nforest_s <- dplyr::filter(polygons_s, categoria %in% c(\"Closed forest, deciduous\", \"Open forest, unknown\", \"Closed forest, evergreen\", \"Closed forest, mixed\", \"Open forest, deciduous\", \"Closed forest, unknown\", \"Open forest, evergreen\", \"Open forest, mixed\"))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nsaveRDS(forest_s, \"forest_s.rds\")\n```\n:::\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nforest_s_dissolve <- forest_s %>% group_by(categoria) %>% summarize() \n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nsaveRDS(forest_s_dissolve, \"forest_s_dissolve.rds\")\n```\n:::\n\n\n\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

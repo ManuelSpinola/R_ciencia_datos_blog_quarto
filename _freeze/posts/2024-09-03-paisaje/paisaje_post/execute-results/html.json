@@ -1,0 +1,17 @@
+{
+  "hash": "f3b594728b56bf742975b750ce058d38",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"paisaje: un paquete de R para realizar análisis del pasiaje\"\nsubtitle: \"Paquete de R para realizar análisis del paisaje\"\nimage: \"imagenes/paisaje_logo.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: \"2024-08-19\"\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nlang: es\ndraft: false\nexecute: \n  echo: false\n  include: false\ncategories:\n  - \"Análisis del paisaje\"\n  - \"Monitoreo Biológico\"\n  - \"Diseño de muestreo\"\n---\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](imagenes/paisaje_logo.png){fig-align='center' width=40%}\n:::\n:::\n\n\n\n\n# Descripción del paquete\n\n**paisaje** es un paquete de R que permite bajar datos y realizar análisis del pasiaje\n\n# Instalación de **paisaje**\n\nPrimero se debe instalar el paquete devtools\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"devtools\")\n```\n:::\n\n\n\nLuego proceder a instalar paisaje\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndevtools::install_github(\"ManuelSpinola/paisaje\")\n```\n:::\n\n\n\n# Ejemplo de uso de **paisaje**\n\nCargar los paquetes o librerías paisaje, sf, terra, tidyverse y h3jsr\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(paisaje)\nlibrary(sf)\nlibrary(terra)\nlibrary(tidyverse)\nlibrary(h3jsr)\n```\n:::\n\n\n\nTraer un objeto sf como el estado de Carolina del Norte del paquete sf\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nnc = read_sf(system.file(\"shape/nc.shp\", package=\"sf\"))\n```\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](paisaje_post_files/figure-html/unnamed-chunk-6-1.png){width=672}\n:::\n:::\n\n\n\n\nCon el paquete paisaje podemos crear una grilla hexagonal basada en el indexado geoepacial desarrollado por Uber [H3](https://h3geo.org/) de la resolución que uno desee, en este caso una resolución de 4\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nh3_grid_nc <- get_h3_grid(nc, resolution = 4)\n```\n:::\n\n\n\nVisualizar eb un mapa la grilla hexagonal\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot() +\n  theme_minimal() +\n  geom_sf(data = nc, color = \"blue\", linewidth = 0.5) +\n  geom_sf(data = h3_grid_nc, alpha = 0.4, color = \"coral\", linewidth = 0.5)\n```\n\n::: {.cell-output-display}\n![](paisaje_post_files/figure-html/unnamed-chunk-8-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "paisaje_post_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

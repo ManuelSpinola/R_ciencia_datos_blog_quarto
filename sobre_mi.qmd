@@ -1,0 +1,120 @@
+---
+title: "Manuel Spínola Parallada, Ph.D."
+description: |
+  Profesor e investigador del Instituto Internacional en Conservación y Manejo de Vida Silvestre
+  
+  Universidad Nacional, Heredia, Costa Rica
+image: imagenes/mi_foto_2021.png
+about:
+  template: trestles
+---
+
+-   
+
+    ### Ph.D. in Wildlife and Fisheries Science. The Pennsylvania State University, USA
+
+-   
+
+    ### Maestría en Conservación y Manejo de Vida Silvestre. Universidad Nacional, Costa Rica
+
+-   
+
+    ### Licenciatura en Ciencias Biológicas. Universidad de la República, Uruguay
+
+------------------------------------------------------------------------
+
+### Publicaciones:
+
+#### 2021
+
+-   González-Ancín, H., **Spínola, M**., Mora-Benavides, J., Sáenz, J., Paillacar, A., & Fontúrbel, F. 2021. Intermediate levels of wood extraction may facilitate coexistence of an endemic arboreal marsupial and Indigenous communities. *Oryx,* 1-9. doi:10.1017/S003060532000109X
+
+-   Echeverría-Sáenz, S.; **Spínola-Parallada, M.**; Soto, A.C. Pesticides Burden in Neotropical Rivers: Costa Rica as a Case Study. 2021. Molecules, 26, 7235. https://doi.org/10.3390/molecules26237235
+
+-   Retamosa-Izaguirre, M.I., Segura-Sequeira, D., Barrantes-Madrigal, J., **Spínola-Parallada, M.** & Ramírez-Alán, O. 2021. Vegetation, bird and soundscape characterization: a case study in Braulio Carrillo National Park, Costa Rica. Biota Colombiana, 22(1), 57-73. https://doi.org/10.21068/c2021.v22n01a04
+
+-   Kendyl N. Hassler, Charles D. Waggy, **R. Manuel Spínola**, Kevin J. Oxenrider, Rich E. Rogers, Kelly J. Pearce, and Thomas L. Serfass. 2021. Den-Site Selection by Eastern Spotted Skunks in the Central Appalachian Mountains of West Virginia. Southeastern Naturalist 20(sp11), 209-224. https://doi.org/10.1656/058.020.0sp1118
+
+-   Retamosa-Izaguirre. M, Jimy Barrantes-Madrigal, David Segura Sequeira, **Manuel Spínola-Parallada** & Oscar Ramírez-Alán. 2021. It is not just about birds: what do acoustic indices reveal about a Costa Rican tropical rainforest? Neotropical Biodiversity, 7:1, 431-442. https://doi.org/10.1080/23766808.2021.1971042
+
+-   Fonseca-González W., Murillo-Cruz R., Ávila-Arias C., Rojas-Vargas M., **Spínola-Parallada R. M.** 2021. Modelos de biomasa y carbono para árboles de Gmelina arborea en plantaciones clonales. Revista de Ciencias Ambientales (Trop J Environ Sci), Vol 55(1): 143-159. https://doi.org/10.15359/rca.55-1.7
+
+#### 2020
+
+-   Loaiza, C., O. L. Montenegro, D. King, **M. Spínola**, Lilibeth Arinda Palacio, A. Rudas. 2020. Variation in abundance and habitat relationship of three understory insectivorous birds in a disturbed landscape of Neotropical dry forest of Colombia. Avian Research 11, 33. https://doi.org/10.1186/s40657-020-00219-4
+
+-   Niehaus C., **M. Spínola**, C. Su, N. Rojas, O. Rico-Chávez, C. N. Ibarra-Cerdeña, J. Foley, G. Suzán, G. A. Gutiérrez-Espeleta, A. Chaves. 2020. Environmental factors associated With Toxoplasma gondii Exposure in Neotropical Primates of Costa Rica. Frontiers in Veterinary Sciences, Oct 22;7:583032. doi: 10.3389/fvets.2020.583032. PMID: 33195604; PMCID: PMC7642457.
+
+#### 2019
+
+-   Barrantes-Madrigal, J., **Spínola-Parallada, M.**, Alvarado, G., Alvarado, G., & Chaves, V. 2019. Distribution and invasion progress of Eleutherodactylus coqui (Anura: Eleutherodactylidae) introduced in Costa Rica. Phyllomedusa: Journal of Herpetology, 18(1), 101-107. https://doi.org/10.11606/issn.2316-9079.v18i1p101-107
+
+-   **Spínola, M.** 2019. Monitoreo de la Biodiversidad. En Godoy C. & Ramírez, N. (Ed.), Biodiversidad e Inverntario de la Naturaleza (pp. 335-359). Editorial Universidad Estatal a Distancia (EUNED), San José, Costa Rica.
+
+#### 2018
+
+-   Pocasangre-Orellana, X., & **Spínola Parallada, R**. **2018**. Selección de hábitat del lobito de río (Lontra longicaudis) (Carnívora: Mustelidae) en la Reserva Natural Iberá, Argentina. *Revista De Ciencias Ambientales*, *52*(2). https://doi.org/10.15359/rca.52-2.6
+
+-   Mejía Quintanilla, D. J., B. Rodríguez-Herrera, **M. Spinola-Parallada**, J. P. Suazo-Euceda, L. Marineros, F. Elvir. 2018. Situación del uso de la tierra en la distribución de cinco especies de murciélagos de la familia emballonuridae en Honduras, Centroamérica. Revista Mexicana de Zoología (Nueva Epoca) 1( 2): 13-21.
+
+-   Rivas, M. L., **Spínola, M.**, Arrieta, H. and Faife‐Cabrera, M. 2018. Effect of extreme climatic events resulting in prolonged precipitation on the reproductive output of sea turtles. Anim Conserv, 21: 387-395. doi:10.1111/acv.12404
+
+#### 2017
+
+-   Navarro-Picado, J., **Spínola-Parallada, M.**, Madrigal-Mora, A., & Fonseca-Sánchez, A. 2017. Habitat Selection of Lontra Longicaudis (Carnivora, Mustelidae) Under the Influence of the Hydroelectric Dam of Peñas Blancas River and Its Tributaries, Alajuela, Costa Rica. Uniciencia, 31(1), 73-84. https://doi.org/10.15359/ru.31-1.8
+
+-   Pardo , L. E., L. Lafleur, L., **R. M. Spinola**, J. Saenz, J. & M. Cove. 2017. Camera traps provide valuable data to assess the occurrence of the Great Curassow Crax rubra in northeastern Costa Rica, Neotropical Biodiversity, 3:1, 182-188
+
+-   Schank, C J., M. V. Cove, M. J. Kelly, E. Mendoza, G. O'Farrill, R.Reyna-Hurtado, N. Meyer, C. A. Jordan, J.F. González-Maya, D. J. Lizcano, R. Moreno, M. T. Dobbins, V. Montalvo, C. Sáenz-Bolaños, E. Carillo, N. Estrada, J. C. Cruz, J. Saenz, **M. Spínola**, A. Carver, J. Fort, C. K. Nielsen, F. Botello, G. Pozo, M. Rivero, J. A. de la Torre, E. Brenes-Mora, O. Godínez-Gómez, M. A. Wood, J. Gilbert, J.A. Miller. 2017. Using a novel model approach to assess the distribution and conservation status of the endangered Baird's tapir. Diversity andDistributions. 1--13.
+
+#### 2016
+
+-   Aguilar-Amuchastegui, N., Tovar-Martinez, A., Amatya, S., Henebry, G.M., **Spinola, M.**,Sanchun, A., Muss, J., Forrest, J., and D. Delgado. 2016. Sustainable forest management (sfm) and Biodiversity safeguards: how redd+ mrv andmanagement data can be used as proxies for The assessment of biodiversity trends. WWF forest and climate discussion paper sustainable forest management (sfm) and biodiversity safeguards, WWF, Washington DC, USA
+
+-   Pardo, L., Cove, **M. Spinola**, J.C. de la Cruz, and J. Saenz. 2016. Assessing Species Traits and Landscape Relationships of the Mammalian Carnivore Community in a Neotropical Biological Corridor. Biodiversity and Conservation 25:739--752
+
+-   **Spínola R. M.** 2016. Monitoreo y evaluación de proyectos de restauración del paisaje. Páginas 411 -- 434 en Andrés Sanchún, Raúl Botero, Albert Morera Beita, Germán Obando, Ricardo O.Russo, Carola Scholz y Manuel Spinola. Restauración funcional del paisaje rural: manual de técnicas. UICN, San José, Costa Rica.
+
+#### 2014
+
+-   Cove, M., R. **M. Spínola**, V. L. Jackson and J. C. Sáenz. 2014. The role of fragmentation and landscape changes in the ecological release of common nest predators in the Neotropics. PeerJ 2:e464; DOI 10.7717/peerj.464
+
+-   Cove M. V., **R. M. Spínola**, V. L. Jackson, J. C. Sáenz. 2014. Camera trapping ocelots: an evaluation of felids attractans. Hystrix -- Italian Journal of Mammalogy 25(2):113-116.
+
+-   Cove MV, **Spínola RM**, Jackson VL, Saénz JC. 2014. The role of fragmentation and landscape changes in the ecological release of common nest predators in the Neotropics. PeerJ 2:e464 https://dx.doi.org/10.7717/peerj.464
+
+-   Lafleur, L., L. Pardo, **R. M. Spínola**, J. C. Sáenz, M. V. Cove. 2014. Notes on Plumage Patterns and activity of the Great Currasow (Crax Rubra) in northeastern Costa Rica. BULLETIN OF THE CRACID GROUP GALLIFORMES SPECIALIST GROUP (GSG IUCN-SSC/WPA) 36:17-19.
+
+#### 2013
+
+-   Corman VM, Rasche A, Diallo TD, Cottontail VM, Stöcker S, de Carvalho Dominguez Souza BF, Corrêa JI, Carneiro AJB, Franke CR, Nagy M, Metz M, Knörnschild M, Kalko EKV, Ghanem SJ, Morales KDS, Salsamendi E, **Spínola M**, Herrler G, Voigt CC, Tschapka M, Drosten C, Drexler JF. 2013. Highly diversified coronaviruses in neotropical bats. Journal of General Virology 94: 1984-1994.
+
+-   Cove, M. V., **R. M. Spínola**, V. L. Jackson, J. C. Sáenz, and O. Chassot. 2013. Integrating occupancy modeling and camera-trap data to estimate medium and large mammal detection and richness in a Central American biological corridor. Tropical Conservation Science 6 (6): 781-795.
+
+-   Cove, M. V., and **R. M. Spínola**. 2013. Pairing noninvasive surveys with capture-recapture analysis to estimate demographic parameters for Dendrobates auratus (Anura: Dendrobatidae) from an altered habitat in Costa Rica. Phyllomedusa: Journal of Herpetology 12 (2): 107-115.
+
+-   Cove, M. V., L. Pardo, J. C. de la Cruz, V. L. Jackson, J. C. Saenz, O. Chassot, and **R. M. Spínola**. 2013. Factors influencing the occurrence of the endangered Baird's tapir Tapirus bairdii: potential flagship species for a Costa Rican biological corridor. ORYX -- International Journal of Conservation.
+
+#### 2012
+
+-   Chávez-Villavicencio. C., C, Sáenz-Bolaños & **M. Spínola-Parallada**. 2012. Segregación en aves insectívoras con base en la sofometría del pico y longitud total. Aporte Santiguino 5:60-67.
+
+-   Cove, M. V., L. Pardo, **R. M. Spínola**, V. L. Jackson, and J. C. Saenz. 2012. Coyote Canis latrans(Carnivora: Canidae) range extension in northeastern Costa Rica: possible explanations and consequences.Latin American Journal of Conservation 3 (1): 82-86.
+
+-   Just, E. H., S. S. Stevens, **R. M. Spinola**, and T. L. Serfass. 2012. Detecting river otter latrines near bridges: does habitat and season influence survey success? Wildlife Biology 18(3):264-271.
+
+#### 2011
+
+-   Murray, L., R. Gates, and **M. Spínola**. 2011. Evaluation of three methods to estimate density and detectability from roadside point counts. Journal of Wildlife Management 75:1072--1081.
+
+#### 2010
+
+-   Philip N. Smith, Mohamad Afzal, Redha Al-Hasan, Henk Bouwman, Michael H. Depledge, Muralidharan Subramanian, Venugopal Dhananjayan, Cristina Fossi, Malsha Kitulagodage, Henrik Kylin, Robin Law, Letizia Marsili, Todd O'Hara, Paul Story, Céline Godard-Codding, Luisa Eugenia Castillo, and **Manuel Spinola**. 2010. Global perspectives on wildlife toxicology:emerging issues. Páginas 197 - 255 en Ronald J. Kendall, Thomas E. Lacher, George C. Cobb y Stephen Boyd Cox, editores. Wildlife Toxicology: Emerging Contaminant and Biodiversity Issues. CRC Press, Taylor & Francis Group, Boca Ratón, Florida, EE.UU.
+
+#### 2009
+
+-   Fonseca, L G., G. A. Murillo, L. Guadamúz, **R. M. Spínola** and R. A. Valverde. 2009. Downward but Stable Trend in the Abundance of Arribada Olive Ridley Sea Turtles (Lepidochelys olivacea) at Nancite Beach, Costa Rica (1971--2007). Chelonian Conservation and Biology 8(1): 19-27.
+
+#### 2008
+
+-   **Spínola R. M.**, and R. J. Gates. 2008. Population status and trends of northern bobwhite (Colinus virginianus) in Ohio:1984-2004. Ohio Journal of Science 108(3): 26-30.

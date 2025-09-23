@@ -1,0 +1,458 @@
+---
+title: "Prácticamente insignificante"
+subtitle: "Más allá de la significancia estadística: lo que no te dijeron sobre los valores de p"
+
+image: imagenes/the_earth_is_round.png
+
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+
+date: "2025-08-22"
+
+format:
+  html:
+    embed-resources: true
+    title-block-banner: "dodgerblue"
+    title-block-banner-color: "white"
+    backgroundcolor: "white"
+
+citation: true
+
+toc: true
+toc-title: Tabla de contenido
+toc-location: right
+toc-depth: 4
+
+filters:
+  - highlight-text
+
+bibliography: references.bib
+
+lang: es
+
+execute: 
+  echo: false
+  include: false
+
+categories:
+  - "Análisis de datos"
+  - "Significancia estadística"
+---
+
+> **It is foolish to ask “Are the effects of A and B different. They are always different – for some decimal place” – John Tukey**
+
+# [1. Introducción]{color="dodgerblue"}
+
+-   Muchos artículos científicos han sido publicados porque obtuvieron un valor de **p \< 0.05**
+
+-   Por ejemplo, un estudio asegura que comer chocolate mejora tu memoria: p = 0.04. Aunque **estadísticamente significativo**, el efecto fue tan pequeño que la diferencia en la práctica era casi imperceptible.
+
+-   El **valor de p** ha sido durante décadas **la estrella de los análisis estadísticos**. Nos dice la probabilidad de obtener resultados como los observados si la hipótesis nula fuera cierta. Sin embargo, su interpretación errónea ha llevado a malentendidos y a un exceso de resultados sensacionalistas.
+
+-   Existen muchos **"mitos"** sobre qué significa un **valor de p**, y estos **"mitos"** pueden distorsionar la ciencia y su comunicación.
+
+-   Este post explora la realidad detrás del **valor de p**, sus límites, cómo interpretarlo correctamente y alternativas.
+
+------------------------------------------------------------------------
+
+# [2. Breve historia del valor de P]{color="dodgerblue"}
+
+-   En su famoso libro, Design of Experiments (1935), **R. A. Fisher** sugirió que un **5% de margen de error** era una guía práctica para considerar un resultado “estadísticamente notable”.
+
+-   Fisher **no proponía un umbral rígido**, simplemente ofrecía un referente pragmático o medida de evidencia, sin afirmar que p \< 0.05 garantizara que un efecto fuera real.
+
+-   **Neyman y Pearson**, desarrollaron un marco distinto, más formal, para pruebas de hipótesis. Ellos sí propusieron que, antes de analizar los datos, se fijara un nivel de significancia α (probabilidad máxima de cometer un error tipo I). Pero no especificaron que α debía ser 0.05, podía ser 0.01, 0.10, etc., según el contexto y el balance entre riesgos.
+
+-   Lo que ocurrió después es que la **práctica científica** fusionó indebidamente ambas visiones:
+
+    -   el p-value fisheriano se interpretó con la lógica binaria de Neyman–Pearson.
+
+    -   El 0.05 de Fisher se convirtió en el umbral estándar dentro de esa lógica rígida.
+
+-   Esta mezcla de enfoques **generó confusión y malinterpretaciones** en la estadística moderna.
+
+-   La famosa “regla del 0.05” se consolidó posteriormente como una **convención en la práctica estadística**, adoptada por la comunidad científica.
+
+-   Esto se convirtió en una **guía cultural** más que en una **regla formal**, simplificando la evaluación de resultados en publicaciones.
+
+-   El nivel de significancia (α): es la probabilidad de rechazar la hipótesis nula cuando en realidad es verdadera (error tipo I, también llamado falso positivo).
+
+-   Es decir, se detecta un “efecto” que realmente no existe.
+
+-   El 5% como umbral: α = 0.05 significa que existe un 5% de probabilidad de cometer un error tipo I.
+
+-   Si se establece un α = 0.05, significa que se está dispuesto a aceptar una probabilidad del 5% de cometer un falso positivo.
+
+    **Malentendidos comunes:**
+
+    -   **p \< 0.05** no garantiza que un efecto sea real.
+
+    -   **p \> 0.05** no significa que no haya efecto.
+
+    -   La **significancia estadística** no mide la magnitud ni la importancia práctica del efecto.
+
+------------------------------------------------------------------------
+
+# [3. Qué es un valor de P: realidad vs. mito]{color="dodgerblue"}
+
+-   **Definición correcta:** probabilidad de obtener un resultado tan o más extremo que el observado si la hipótesis nula fuera verdadera.
+
+-   **Lo que el valor de p NO es:**
+
+    -   No es la probabilidad de que la hipótesis nula sea verdadera.
+
+    -   No expresa la magnitud del efecto.
+
+    -   No expresa la importancia práctica de un resultado.
+
+------------------------------------------------------------------------
+
+# [4. Mitos más comunes sobre los valores de P]{color="dodgerblue"}
+
+[**Mito 1:** p \< 0.05 significa que el efecto es real.]{color="crimson"}
+
+[**Falso:** solo indica evidencia contra la hipótesis nula, no garantiza que el efecto exista.]{color="steelblue"}
+
+[**Mito 2:** p \< 0.05 significa que la hipótesis nula es falsa.]{color="crimson"}
+
+[**Falso:** no prueba falsedad, solo mide compatibilidad de los datos con la hipótesis nula.]{color="steelblue"}
+
+[**Mito 3:** p \< 0.05 significa que el resultado es importante.]{color="crimson"}
+
+[**Falso:** la significancia estadística no implica relevancia práctica ni tamaño del efecto.]{color="steelblue"}
+
+[**Mito 4:** p \< 0.05 significa que el resultado es reproducible.]{color="crimson"}
+
+[**Falso:** la reproducibilidad depende del diseño, la potencia y la variabilidad, no solo del p.]{color="steelblue"}
+
+[**Mito 5:** p \> 0.05 significa que no hay efecto.]{color="crimson"}
+
+[**Falso:** puede haber efecto, pero el estudio no tuvo suficiente poder estadístico para detectarlo.]{color="steelblue"}
+
+[**Mito 6:** p es la probabilidad de que la hipótesis nula sea cierta.]{color="crimson"}
+
+[**Falso:** p no da probabilidades sobre hipótesis, solo sobre los datos bajo un supuesto modelo.]{color="steelblue"}
+
+-   **Ejemplo:**
+
+    -   Mito: “p = 0.03 → $H_0$ tiene 3% de probabilidad de ser verdadera o cierta”.
+
+    -   Realidad: “p = 0.03 → si $H_0$ fuera verdadera, hay 3% de probabilidad de obtener este resultado o uno más extremo”.
+
+```{r}
+#| message: false
+#| warning: false
+#| include: true
+library(dplyr)
+library(gt)
+
+# Datos
+tabla_mitos <- tibble::tibble(
+  Mito = c(
+    "Un valor-p < 0.05 prueba que la hipótesis nula es falsa",
+    "Un valor-p > 0.05 prueba que la hipótesis nula es verdadera",
+    "El valor-p mide la probabilidad de que la hipótesis nula sea cierta",
+    "Resultados con p < 0.05 son siempre importantes y reproducibles",
+    "El umbral 0.05 es una regla universal y objetiva"
+  ),
+  Realidad = c(
+    "Un valor-p pequeño indica que los datos observados son poco compatibles con la hipótesis nula, **pero no la descarta con certeza**.",
+    "Un valor-p grande indica falta de evidencia contra la hipótesis nula, **pero no la prueba**.",
+    "El valor-p mide la probabilidad de observar datos tan extremos como los obtenidos, **asumiendo que la hipótesis nula es cierta**.",
+    "La significancia estadística no implica importancia práctica ni garantiza reproducibilidad.",
+    "El umbral 0.05 es arbitrario; lo recomendable es reportar el valor exacto de p y considerar el contexto, tamaño del efecto y confianza."
+  )
+)
+
+# Tabla con gt
+tabla_mitos %>%
+  gt() %>%
+  tab_header(
+    title = "Mitos y Realidades sobre los valores-p"
+  ) %>%
+  cols_label(
+    Mito = "Mito",
+    Realidad = "Realidad"
+  ) %>%
+  tab_options(
+    table.font.size = px(14),
+    heading.title.font.size = px(18),
+    heading.title.font.weight = "bold"
+  )
+```
+
+------------------------------------------------------------------------
+
+# [5. Problemas de la significancia estadística]{color="dodgerblue"}
+
+-   **Dicotomía “significativo / no significativo”**
+
+    -   Se interpreta el p \< 0.05 como un “sí/no” absoluto, cuando en realidad refleja un grado de evidencia.
+
+-   **Fomenta prácticas cuestionables**
+
+    -   P-hacking: repetir análisis hasta obtener un resultado “significativo”.
+
+    -   Publicación selectiva: solo se publican estudios con p \< 0.05, ocultando resultados nulos.
+
+-   **Contribuye a la crisis de reproducibilidad**
+
+    -   Muchos hallazgos no pueden replicarse porque dependen de umbrales arbitrarios.
+
+-   **Confusión con la importancia práctica**
+
+    -   Un resultado “estadísticamente significativo” puede carecer de relevancia real en el mundo aplicado.
+
+-   **Sensibilidad al tamaño de muestra**
+
+    -   Con muestras grandes, diferencias triviales se vuelven “significativas”; con muestras pequeñas, efectos reales pueden pasar desapercibidos.
+
+-   **Enfoque reduccionista**
+
+    -   El énfasis en el p-value desplaza otros elementos clave como intervalos de confianza, tamaños de efecto y la plausibilidad teórica.
+
+------------------------------------------------------------------------
+
+# [6. Alternativas y buenas prácticas]{color="dodgerblue"}
+
+**1. Reportar tamaños del efecto con sus intervalos de confianza**
+
+> Por ejemplo: el salario promedio anual de los hombres fue 2500 (95% IC: 2200 - 2700) USD más alto que el de las mujeres.
+
+**2. Probabilidades bayesianas (posterior probabilities)**
+
+En Bayes:
+
+$$
+P(H_1 \mid \text{datos}) = \frac{P(\text{datos} \mid H_1) \cdot P(H_1)}{P(\text{datos})}, \quad
+P(H_0 \mid \text{datos}) = \frac{P(\text{datos} \mid H_0) \cdot P(H_0)}{P(\text{datos})}
+$$
+
+-   A diferencia del **valor de p**, que nunca te dice la probabilidad de que la hipótesis sea cierta, en Bayes sí obtienes:
+
+-   La probabilidad posterior de $H_0$ o $H_1%$.
+
+-   Por ejemplo:
+
+$$
+P(H_1 \mid \text{datos}) = 0.70
+$$
+
+-   En palabras:
+
+“Dados los datos y los supuestos del modelo, y considerando a $H_0$ como hipótesis alternativa, la probabilidad posterior de que $H_1$ sea cierta es 70%.”
+
+-   Ventajas:
+
+    -   Interpretación directa e intuitiva.
+
+    -   Evita la trampa de confundir “p \< 0.05” con “probabilidad del 95% de que el efecto sea real”.
+
+    -   Permite incorporar información previa (priors), mejorando el análisis en áreas con conocimiento acumulado.
+
+**3. Factor de Bayes (Bayes factor)**
+
+Definición
+
+Si tenemos dos hipótesis $H_0$ y $H_1$, el factor de Bayes se define como:
+
+$$
+BF_{10} = \frac{P(\text{datos} \mid H_1)}{P(\text{datos} \mid H_0)}
+$$
+
+-   El factor de Bayes $BF_{10}$ mide cuántas veces los datos son más probables bajo la hipótesis alternativa $H_1$ que bajo la hipótesis nula $H_0$.
+
+-   Si $BF_{10}$ = 1, los datos son igualmente compatibles con $H_0$ y $H_1$.
+
+-   Si $BF_{10}$ \> 1, hay evidencia a favor de $H_1$, y mientras mayor sea el valor, más fuerte es la evidencia.
+
+-   Si $BF_{10}$ \< 1, los datos apoyan más a $H_0$, y su inverso $BF_{01}$ = $1/BF_{10}$ indica la fuerza de esa evidencia.
+
+-   En otras palabras, el factor de Bayes permite cuantificar cuánto respaldan los datos a una hipótesis frente a otra, de manera directa e intuitiva, evitando la confusión que a veces genera el valor de p.
+
+```{r}
+#| include: true
+library(gt)
+
+# Crear tabla
+bf_tab <- data.frame(
+  BF_10 = c("1–3", "3–10", ">10"),
+  Evidencia = c("Débil", "Moderada", "Fuerte")
+)
+
+# Tabla gt
+gt(bf_tab) %>%
+  tab_header(
+    title = md("**Factor de Bayes**"),
+    subtitle = md("BF<sub>10</sub> – Evidencia a favor de H<sub>1</sub>")
+  ) %>%
+  cols_label(
+    BF_10 = "BF₁₀",
+    Evidencia = "Evidencia a favor de H₁"
+  ) %>%
+  opt_align_table_header("center") %>%
+  tab_options(
+    table.width = pct(100),       # Ancho completo
+    table.font.size = px(14),     # Tamaño de fuente
+    heading.title.font.size = px(18),
+    heading.subtitle.font.size = px(14)
+  ) %>%
+  cols_width(
+    BF_10 ~ pct(40),              # 40% del ancho a BF₁₀
+    Evidencia ~ pct(60)           # 60% del ancho a Evidencia
+  )
+```
+
+**4. Likelihood ratios**
+
+Compara directamente qué tan probables son los datos bajo dos hipótesis rivales (generalmente H_0 y H_1)
+
+$$
+LR = \frac{L(\text{datos} \mid H_1)}{L(\text{datos} \mid H_0)}
+$$
+
+-   Si LR \> 1, los datos apoyan más a H_1.
+
+-   Si LR \< 1, apoyan más a H_0.
+
+-   Se interpreta en una escala de evidencia, por ejemplo (regla de Jeffreys):
+
+    -   1–3 → evidencia débil
+    -   3–10 → evidencia moderada
+    -   10 → evidencia fuerte
+
+Diferencias con el valor de p
+
+-   El valor de p solo dice si los datos son consistentes con $H_0$.
+
+-   El LR cuantifica la razón de evidencias entre $H_0$ y $H_1$.
+
+-   El LR es más simétrico y comparativo, mientras que el valor de p está sesgado hacia “rechazar o no” la hipótesis nula.
+
+**5. Consideraciones clave en buenas prácticas**
+
+-   Contextualizar resultados según: **diseño del estudio, tamaño de muestra y plausibilidad teórica**.
+
+-   Tendencia actual: “no abandonar el valor de p, pero dejar de usarlo como juez absoluto”.
+
+------------------------------------------------------------------------
+
+# [7. Representación gráfica del valor de p y el tamaño del efecto]{color="dodgerblue"}
+
+Relación entre significancia estadística y práctica
+
+El siguiente gráfico muestra la diferencia salarial promedio entre hombres y mujeres en distintos escenarios. Cada barra representa el valor estimado de la diferencia salarial, con su **intervalo de confianza del 95%**. Las categorías combinan **significancia estadística** (si el efecto es confiable) y **significancia práctica** (si la magnitud del efecto es relevante en la vida real). Las cajas de texto debajo de las barras resumen el mensaje principal de cada escenario, indicando si la diferencia es grande, pequeña o incierta.
+
+```{r}
+#| include: true
+library(ggplot2)
+
+# Datos base
+f <- data.frame(
+  estimado = c(20, 300, 10, 150),
+  li = c(10, 200, -5, -50),
+  ls = c(30, 400, 25, 350)
+)
+
+f$categoria_unificada <- factor(
+  c(
+    "Estadísticamente significativa \nDiferencia muy pequeña \nPosible no significancia práctica",
+    "Estadísticamente significativa \nDiferencia grande y clara \nPosible significancia práctica",
+    "No estadísticamente significativa \nPrecisa, no hay diferencia \nNo significancia práctica",
+    "No estadísticamente significativa \nImprecisa \nInconclusa"
+  ),
+  levels = rev(
+    c(
+      "Estadísticamente significativa \nDiferencia muy pequeña \nPosible no significancia práctica",
+      "Estadísticamente significativa \nDiferencia grande y clara \nPosible significancia práctica",
+      "No estadísticamente significativa \nPrecisa, no hay diferencia \nNo significancia práctica",
+      "No estadísticamente significativa \nImprecisa \nInconclusa",
+      "espacio_extra"   # nivel adicional para crear espacio visual
+    )
+  )
+)
+
+# Mensajes narrativos
+f$mensaje <- c(
+  "Hombres ganan un poco más\nSignificativo estadísticamente\nDiferencia muy pequeña",
+  "Hombres ganan mucho más\nSignificativo estadísticamente\nDiferencia grande y clara",
+  "Diferencia mínima y confiable\nNo significativo estadísticamente\nPrecisa, no hay diferencia",
+  "Diferencia incierta\nNo significativo estadísticamente\nImprecisa, inconclusa"
+)
+
+# Posición vertical de las cajas
+f$y_label <- as.numeric(f$categoria_unificada) - 0.25
+
+colores <- c(
+  "Estadísticamente significativa \nDiferencia grande y clara \nPosible significancia práctica" = "#2A9D8F",
+  "Estadísticamente significativa \nDiferencia muy pequeña \nPosible no significancia práctica" = "#E63946",
+  "No estadísticamente significativa \nImprecisa \nInconclusa" = "#F4A261",
+  "No estadísticamente significativa \nPrecisa, no hay diferencia \nNo significancia práctica" = "#457B9D"
+)
+
+# Gráfico
+ggplot(f, aes(y = categoria_unificada, x = estimado, xmin = li, xmax = ls, color = categoria_unificada)) +
+  geom_pointrange(size = 0.3, linewidth = 1) +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_label(aes(y = y_label, label = mensaje, fill = categoria_unificada),
+             color = "white", hjust = 0, vjust = 0.9, nudge_x = 26, label.size = 0,
+             size = 4, show.legend = FALSE) +
+  scale_color_manual(values = colores) +
+  scale_fill_manual(values = colores) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none") +
+  labs(x = "Diferencia salarial promedio (Hombre – Mujer, USD)", y = "") +
+  theme(axis.title.x = element_text(size = 12)) +
+  xlim(min(f$li) - 50, max(f$ls) + 300) +
+  coord_cartesian(clip = "off") +
+  scale_y_discrete(expand = expansion(add = 0.5))
+```
+
+Como se puede observar:
+
+[- Tamaño del efecto: 20 (95% IC: 10, 30) USD.\
+Hombres ganan un poco más / Diferencia muy pequeña: estadísticamente significativa, pero con impacto práctico limitado.]{color="#E63946"}
+
+[- Tamaño del efecto: 300 (95% IC: 200, 400) USD.\
+Hombres ganan mucho más / Diferencia grande y clara: estadísticamente significativa y relevante en la práctica.]{color="#2A9D8F"}
+
+[- Tamaño del efecto: 10 (95% IC: -5, 25) USD.\
+Diferencia mínima y confiable: no significativa y precisa.]{color="#457B9D"}
+
+[- Tamaño del efecto: 150 (95% IC: -50, 350) USD.\
+Diferencia incierta: no significativa y con alta incertidumbre en la magnitud.]{color="#F4A261"}
+
+------------------------------------------------------------------------
+
+# [8. Recomendaciones prácticas para investigadores]{color="dodgerblue"}
+
+-   No basar conclusiones en un umbral arbitrario (0.05).
+
+-   Siempre reportar tamaño del efecto e intervalos de confianza.
+
+-   Considerar replicabilidad y contexto antes de sacar conclusiones.
+
+-   Pensar en significancia práctica, no solo estadística.
+
+------------------------------------------------------------------------
+
+# [9. Conclusión crítica]{color="dodgerblue"}
+
+-   Resumen en frase clave:
+
+“El valor de p no es un villano, pero se ha convertido en un falso oráculo. Es una herramienta útil si se interpreta con cuidado, pero peligrosa si se absolutiza.”
+
+-   Cierre reflexivo:
+
+“¿Cómo cambiaría la ciencia si dejáramos de tratar al 0.05 como el semáforo verde/rojo de la verdad?”
+
+# [10. Lecturas recomendadas]{color="dodgerblue"}
+
+[@amrhein2019], [@choi2023], [@halsey2019], [@James2021], [@johnson1999], [@Wasserstein2016],
+
+Redacción asistida por IA. Contenido basado en la experiencia del autor sobre el tema.
+

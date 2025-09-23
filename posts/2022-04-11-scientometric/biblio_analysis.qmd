@@ -1,0 +1,392 @@
+---
+title: "Análisis bibliométrico de las publicaciones  académicas de la Universidad Nacional (Costa Rica) entre 1975 - 2021"
+subtitle: Análisis bibliométrico de las publicaciones académicas de la Universidad Nacional (Costa Rica) entre 1975-2021 registradas en Scopus
+image: "figura_01.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 2022-05-11
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+categories:
+  - "Cienciometría"
+  - "Análisis bibliométrico"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(rio)
+library(knitr)
+library(bibliometrix)
+library(bibliometrixData)
+library(scimetr)
+library(CITAN)
+library(wosr)
+library(rscopus)
+library(rwos)
+library(scimeetr)
+library(ggstance)
+library(g2r)
+library(echarts4r)
+library(charter)
+library(crosstalk)
+library(webshot2)
+library(kableExtra)
+library(gt)
+```
+
+# Contexto
+
+La cienciometría es la ciencia que cuantifica y analiza la literatura académica. En esta entrada se realiza un análisis bibliométrico de las publicaciones científicas realizadas por autores con afiliación a la Universidad Nacional (UNA) entre 1975 - 2021 (47 años) registradas en Scopus, la base de datos de referencias bibliográficas de Elsevier.
+
+::: {.callout-note icon="false"}
+## Sobre Scopus
+
+Scopus cubre aproximadamente 36377 revistas
+:::
+
+# Análisis
+
+```{r}
+#| include: false
+file_1975_2006 <- "scopus_1975-2006.bib"
+file_2005_2021 <- "scopus_2005-2021.bib"
+```
+
+```{r}
+#| include: false
+archivo_1975_2006 <- convert2df(file = file_1975_2006, dbsource = 'scopus', format = "bibtex")
+archivo_2005_2021 <- convert2df(file = file_2005_2021, dbsource = 'scopus', format = "bibtex")
+```
+
+```{r}
+#| include: false
+archivo_2007_2021 <- archivo_2005_2021 |> dplyr::filter(PY %in% c(2007:2021))
+```
+
+```{r}
+#| include: false
+df_1975_2021 <- bind_rows(archivo_1975_2006, archivo_2007_2021)
+```
+
+```{r}
+#| include: false
+results_1975_2021 <- biblioAnalysis(df_1975_2021, sep = ";")
+```
+
+```{r}
+#| include: false
+p_results_1975_2021 <- plot(x = results_1975_2021, k = 10, pause = FALSE)
+```
+
+```{r}
+#| include: false
+s_1975_2021 <- summary(results_1975_2021, k = 10, pause = FALSE)
+```
+
+```{r}
+#| include: false
+mi_1975_2021 <- s_1975_2021$MainInformationDF
+export(mi_1975_2021, file = "mi_1975_2021.xlsx")
+```
+
+```{r}
+#| include: false
+head(mi_1975_2021)
+```
+
+```{r}
+#| include: false
+ap <- s_1975_2021$AnnualProduction
+ap$year <- ap$`Year   `
+ap$articles <- ap$Articles
+```
+
+```{r}
+#| include: false
+ap$grupo <- factor("a")
+```
+
+## Métricas generales y publicaciones por año
+
+La búsqueda por afiliación a la Universidad Nacional de Costa Rica en Scopus arrojó 2542 documentos de varios tipos, con un promedio de 17,7 citas por documento (@tbl-metricas_01). El artículo fue el tipo de documento dominante (@fig-dona).
+
+```{r}
+#| label: tbl-metricas_01
+#| echo: false
+#| tbl-cap: Métricas generales de las publicaciones científicas de autores con afiliación a la Universidad Nacional entre 1975 - 2021 registradas en Scopus.
+c_01 <- rio::import("cuadro_01.xlsx")
+c_01 %>%
+  gt() %>%
+  fmt_number(
+    columns = Resultado,
+    rows = 1:2,
+    decimals = 0,
+    use_seps = FALSE) |>
+  fmt_number(
+    columns = Resultado,
+    rows = 3:5,
+    decimals = 1,
+    use_seps = FALSE,
+    dec_mark = ",") |>
+  tab_style(
+    list(cell_fill(),
+         cell_text(color = "black", weight = "bold")),
+    cells_column_labels(1:2)) |>
+  opt_row_striping(row_striping = TRUE)
+```
+
+<br> <br>
+
+```{r}
+#| label: fig-dona
+#| echo: false
+#| fig.cap: Tipo de documento publicados por académicos de la Universidad Nacional entre 1975 - 2021 registrados en la base de datos bibliográficos Scopus.
+c_02 <- rio::import("cuadro_02.xlsx")
+figura_01 <- c_02 |> 
+  e_charts(tipo_de_documento) |> 
+  e_pie(conteo, radius = c("50%", "70%")) |>
+  e_labels(show = TRUE,
+           formatter = "{c} \n {d}%",
+           position = "outside") %>%
+  e_legend(right = 0, 
+           orient = "vertical")
+figura_01
+```
+
+Se muestra una clara tendencia al incremento de registros de publicaciones académicas con afiliación de la Universidad Nacional en el perído 1975-2021. Especialmente desde 1996 hasta 2021 (@fig-pub_01).
+
+```{r}
+#| include: false
+#| echo: false
+#| fig.cap: Figura 2. Número de artículos publicados por académicos de la Universidad Nacional registrados en Scopus entre 1975 - 2021.
+figura_02 <- ggplot(ap, aes(year, articles, group = grupo)) +
+  theme_minimal() +
+  geom_area(fill = "steelblue") +
+  geom_line(color = "red") +
+  geom_point(color = "orange", size = 1.5) +
+  xlab("Año") +
+  ylab("Número de publicaciones") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8))
+figura_02
+```
+
+```{r}
+#| include: false
+#| echo: false
+#| fig.cap: Figura 2. Número de artículos publicados por académicos de la Universidad Nacional registrados en Scopus entre 2004 - 2021.
+figura_02 <- g2(ap, asp(year, articles, group = grupo)) |> 
+  fig_area() |>
+  fig_line() |>
+  fig_point() |> 
+  slider(start = 0, end = 1)
+figura_02
+```
+
+```{r}
+#| label: fig-pub_01
+#| echo: false
+#| fig.cap: Número de publicaciones científicas de autores con afiliación a la Universidad Nacional registradas en Scopus entre 1975 - 2021.
+figura_02 <- ap |>
+  e_charts(year) |> 
+  e_area(articles) |>
+  e_datazoom(type = "slider") |>
+  e_tooltip(trigger = "axis") |>
+  e_legend(show = FALSE) |>
+  e_axis_labels(
+    x = "Año",
+    y = "Número de Publicaciones"
+  )
+figura_02
+```
+
+```{r}
+#| include: false
+#| eval: false
+htmlwidgets::saveWidget(widget = figura_01, file = "figura_01.html")
+webshot2::webshot('figura_01.html', file = 'figura_01.png', delay = 0.5)
+```
+
+```{r}
+#| include: false
+s_1975_2021$AnnualGrowthRate
+```
+
+::: {.callout-note icon="false"}
+## Tasa de crecimiento anual de publicaciones
+
+La tasa de crecimiento anual de publicaciones académicas en la UNA fue de 12.7
+:::
+
+```{r}
+#| include: false
+promedios <- p_results_1975_2021$AverTotCitperYear$data
+promedios
+```
+
+En el año 1977 se registró el mayor promedio de citas por artículo, 124, aunque este valor se desprende del único artículo que se registró ese año que fue citado 124 veces (@fig-pub_02). Ese mismo año el promedio de citas fue de 2,7 (@fig-pub_03).
+
+```{r}
+#| label: fig-pub_02
+#| echo: false
+#| fig.cap: Promedio anual de veces que ha sido citada una publicación científica de autores con afiliación a la Universidad Nacional registradas en Scopus entre 1975 - 2021.
+figura_03 <- promedios |>
+  mutate(Year = factor(Year)) |>
+  e_charts(Year) |> 
+  e_area(MeanTCperArt) |>
+  e_datazoom(type = "slider") |>
+  e_tooltip(trigger = "axis") |>
+  e_legend(show = FALSE) |>
+  e_axis_labels(
+    x = "Año",
+    y = "Promedio de citas"
+  )
+figura_03
+```
+
+En 2013 fue el año que mostró el mayor promedio de citas, con 2,9 citas, con una disminución hacia el 2021 con un promedio de 1,6 citas (@fig-pub_03).
+
+```{r}
+#| label: fig-pub_03
+#| echo: false
+#| fig.cap: Promedio anual de citas de pubicaciones científicas de autores con afiliación a la Universidad Nacional registradas en Scopus entre 1975 - 2021.
+figura_04 <- promedios |>
+  mutate(Year = factor(Year)) |>
+  e_charts(Year) |> 
+  e_area(MeanTCperYear) |>
+  e_datazoom(type = "slider") |>
+  e_tooltip(trigger = "axis") |>
+  e_legend(show = FALSE) |>
+  e_axis_labels(
+    x = "Año",
+    y = "Promedio de citas"
+  )
+figura_04
+```
+
+## Autoría
+
+Con respecto a las métricas de autoría, se registraron 7640 autores, con un promedio de 3 autores por documento (@tbl-metricas_02).
+
+```{r}
+#| label: tbl-metricas_02
+#| echo: false
+#| tbl-cap: Métricas sobre autoría en publicaciones científicas de autores con afiliación a la Universidad Naciona registradas en Scopus entre 1975 - 2021.
+c_05 <- rio::import("cuadro_05.xlsx")
+c_05 |>
+  gt() |>
+  fmt_number(
+    columns = Resultado,
+    rows = 1:3,
+    decimals = 0,
+    use_seps = FALSE) |>
+  fmt_number(
+    columns = Resultado,
+    rows = 5:7,
+    decimals = 1,
+    use_seps = FALSE,
+    dec_mark = ",") |>
+  tab_style(
+    list(cell_fill(), cell_text(weight = "bold")),
+    cells_column_labels(1:2)) |>
+  opt_row_striping(row_striping = TRUE)
+```
+
+```{r}
+#| include: false
+ms_1975_2021 <- s_1975_2021$MostRelSources
+ms_1975_2021$sources <- factor(ms_1975_2021$`Sources       `)
+ms_1975_2021$articles <- as.numeric(ms_1975_2021$Articles)
+```
+
+```{r}
+#| include: false
+export(ms_1975_2021, file = "ms_1975_2021.xlsx")
+ms_1975_2021 <- rio::import("ms_1975_2021.xlsx")
+```
+
+## Revistas
+
+Dentro de las 10 revistas con más publicaciones científicas de autores afiliados a la UNA, 4 son publicadas en Costa Rica y 6 son publicadas fuera de Costa Rica (@fig-revistas).
+
+```{r}
+#| include: false
+#| echo: false
+#| fig.cap: Figura 3. Las 10 revistas con más publicaciones académicas de autores con afiliación de la Universidad Nacional registradas en Scopus entre 1975 - 2021.
+figura_03 <- ggplot(ms_1975_2021, aes(articles, fct_reorder(sources, articles))) +
+  theme_minimal() +
+  geom_colh(width = 0.06, fill = "steelblue") +
+  geom_point(color = "orange", size = 5) +
+  xlab("Número de publicaciones") +
+  ylab("Revista") +
+  geom_text(aes(label = Articles), size = 2.5) +
+  theme(axis.text.y = element_text(hjust = 1, size = 6))
+figura_03
+```
+
+```{r}
+#| include: false
+#| echo: false
+#| fig.cap: Figura 3. Las 10 revistas con más publicaciones académicas de autores con afiliación de la Universidad Nacional registradas en Scopus entre 1975 - 2021.
+figura_03 <- ms_1975_2021 |>
+  e_charts(sources) |>
+  e_bar(articles) |>
+  e_labels(position = "right") |> 
+  e_tooltip() |>
+  e_grid(left = "40%") |>
+  e_legend(show = FALSE) |>
+  e_flip_coords()
+figura_03
+```
+
+```{r}
+#| label: fig-revistas
+#| echo: false
+#| fig.cap: Las 10 revistas con más publicaciones científicas de autores con afiliación a la Universidad Nacional registradas en Scopus entre 1975 - 2021.
+figura_03 <- g2(ms_1975_2021, asp(sources, articles)) |>
+  fig_interval(asp(label = articles, size = 4)) |>
+  fig_point(asp( size = 10, color = "orange")) |>
+  gauge_label(offset = 0) |>
+  axis_title_y("Número de artículos") |>
+  coord_transpose()
+figura_03
+```
+
+::: {.callout-note icon="false"}
+## Publicaciones con sello UNA
+
+De de las 4 revistas con más publicaciones académicas de de autores afiliados a la UNA, 3 son publicadas en la UNA.
+:::
+
+```{r}
+#| include: false
+NetMatrix <- biblioNetwork(df_1975_2021, analysis = "collaboration", network = "authors", sep = ";")
+```
+
+```{r}
+#| include: false
+net <- networkPlot(NetMatrix, n = 30, type = "auto", Title = "Colaboración",labelsize=0.5) 
+```
+
+```{r}
+#| include: false
+#| eval: false
+df_1975_2021 |> filter(grepl('DE MOOR JM', AU))
+```
+
+Los análisis los realicé con R [@R2022], usando el paquete bibliometrix [@Aria2017]. Los gráficos los realicé con los paquetes echarts4r[@Coene2022], ggplot2 [@Wickham2016].
+
+::: {#refs}
+:::

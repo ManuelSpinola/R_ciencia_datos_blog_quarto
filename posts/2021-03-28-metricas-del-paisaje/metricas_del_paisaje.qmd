@@ -1,0 +1,439 @@
+---
+title: "Métricas de complejidad del paisaje en Costa Rica"
+subtitle: En esta entrada se calculan 5 métricas de complejidad del paisaje para Costa Rica
+image: "preview.png"
+author:
+  - name: "Manuel Spínola"
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: "2022-04-14"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+categories:
+  - "Análisis del paisaje"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(rio)
+library(sf)
+library(stars)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(ggthemes)
+library(colorspace)
+library(RColorBrewer)
+library(here)
+library(ggthemes)
+library(ggpubr)
+library(kableExtra)
+```
+
+# Introducción
+
+Dentro del marco de la teoría de la información es posible calcular 5 métricas de la complejidad del paisaje [@Nowosad2019]:
+
+-   `r text_spec("Entropía marginal:", color = "red", bold = T)` representa la diversidad de categorías espaciales, se calcula como la entropía marginal de la distribución.
+
+-   `r text_spec("Entropía condicional:", color = "red", bold = T)` representa la complejidad de la configuración de un patrón espacial. Sí el valor de la entropía condicional es bajo, las celdas de una categoría tienen celdas adyacentes predominantemente de una categoría. Sin embargo, si el valor es alto, significa que las celdas de una categoría tienen celdas adyacentes de muchas categorías.
+
+-   `r text_spec("Entropía conjunta:", color = "red", bold = T)` representa la incertidumbre en determinar una categoría de la celda focal y la categoría de la celda adyacente. Mide los valores de diversidad en una matriz de co-ocurrencia, a menor diversidad, mayor valor de entropía conjunta.
+
+-   `r text_spec("Información mutua:", color = "red", bold = T)` cuantifica la información que una variable aleatoria provee sobre otra variable aleatoria. Expresa que tan fácil es predecir la categoría de una celda adyacente si la categoría de la celda focal es conocida. La información mutua permite mostrar las diferencias de tipos de patrones del paisaje que tienen el mismo valor general de complejidad. Valores mayores indican que las celdas de la misma categoría están más agregadas, y valores menores indican segregación de las celdas de la misma categoría.
+
+-   `r text_spec("Información mutua relativa:", color = "red", bold = T)` la autocorrelación espacial provoca que el valor de la información mutua aumente con la diversidad del paisaje (entropía marginal). Esto se puede corregir mediante el cálculo de la información mutua relativa, que resulta del cociente entre la información mutua y la entropía marginal. La información mutua relativa va de 0 a 1 y permite la comparación de datos espaciales con diferentes números y distribución de categorías.
+
+Estas métricas proporcionan un marco consistente para el análisis de patrones espaciales del paisaje.
+
+```{r}
+#| include: false
+cob_s = read_stars(here("cr_cobertura/cobertura_cop_100_2019.tif"))
+```
+
+```{r}
+#| include: false
+st_crs(cob_s) <- 5367
+```
+
+```{r}
+#| include: false
+lm_box <- st_bbox(c(xmin = 200000, xmax = 700000, ymax = 1250000, ymin = 850000), crs = st_crs(cob_s))
+```
+
+```{r}
+#| include: false
+cob_s <- st_crop(cob_s, lm_box)
+```
+
+```{r}
+#| include: false
+cr_5367 <- st_read(here("cr_mapas/cr_gadm_5367.gpkg"))
+```
+
+```{r}
+#| include: false
+cr_5367 <- st_crop(cr_5367, lm_box)
+```
+
+```{r}
+#| message: false
+#| include: false
+grid_cr_1km <- st_read(here("cr_grillas/grilla_cr_5367_1km_final.gpkg"))
+```
+
+```{r}
+#| message: false
+#| include: false
+grid_cr_8km <- st_read(here("cr_grillas/grilla_cr_5367_8km.gpkg"))
+```
+
+```{r}
+#| include: false
+grid_cr_1km <- st_crop(grid_cr_1km, lm_box)
+```
+
+```{r}
+#| include: false
+grid_cr_8km <- st_crop(grid_cr_8km, lm_box)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# una métrica
+metrica_1km <- sample_lsm(cob_s,
+                      y = grid_cr_1km,
+                      what = "lsm_l_ent")
+```
+
+```{r}
+#| include: false
+#| eval: false
+# todas las métricas
+metricas_1km <- sample_lsm(cob_s,
+                      y = grid_cr_1km,
+                      level = "landscape",
+                      type = "complexity metric")
+```
+
+```{r}
+#| include: false
+#| eval: false
+export(metricas_1km, "metricas_1km.xlsx")
+```
+
+```{r}
+#| include: false
+metricas_1km <- import("metricas_1km.xlsx")
+```
+
+```{r}
+#| include: false
+metricas_1km
+```
+
+```{r}
+#| include: false
+metricas_1km$metric <- factor(metricas_1km$metric)
+```
+
+```{r}
+#| include: false
+which(duplicated(metricas_1km))
+```
+
+```{r}
+#| include: false
+metricas_1km_w <- metricas_1km %>% distinct() %>% pivot_wider(names_from = metric, values_from = )
+```
+
+```{r}
+#| include: false
+metricas_1km_w
+```
+
+```{r}
+#| include: false
+grid_cr_metricas_1km <- bind_cols(grid_cr_1km, metricas_1km_w)
+```
+
+```{r}
+#| include: false
+grid_cr_metricas_1km
+```
+
+```{r}
+#| include: false
+plot(grid_cr_metricas_1km["ent"], lwd = 0.1, border = "black")
+```
+
+# Métodos
+
+Para calcular las métricas de complejidad del paisaje para Costa Rica se usó un mapa de cobertura de 100 m de resolución del 2019 [@Buchhorn2020]. Las métricas del paisaje se calcularon en 2 sistemas de cuadrículas, uno de 1km x 1km y el otro de 8km x 8km. Los análisis y gráficos los realicé con R [@R2022] y los paquetes landscapemetrics [@Hesselbarth2019], sf [@Pebesma2018], stars [@Pebesma2021] y ggplot2 [@Wickham2016].
+
+```{r}
+#| echo: false
+ggplot() +
+  geom_stars(data = cob_s, na.rm = TRUE) +
+  theme_minimal() +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("#282828", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000", "#0032C8", "#0096A0", "#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00", "#000080"), na.value = "transparent", na.translate = FALSE, labels = c("Sin dato", "Matorrales", "Vegetación herbácea", "Cultivo", "Urbano", "Cuerpos de agua", "Humedal herbáceo", "Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido", "Mar abierto")) +
+  coord_sf(datum = st_crs(5367))
+```
+
+Figura 1. Mapa de cobertura del suelo de Costa Rica, 2019.
+
+# Resultados
+
+En ambos sitemas de cuadrículas se ve un claro patrón de la complejidad del paisaje para Costa Rica. Para las 3 métricas de entropía se puede observar que los lugares de menor entropía son las regiones del la Cordillera de Talamanca y la región sur-oeste de la península de Osa. La entropía marginal representa la diversidad de usos del suelo. Por lo tanto, valores bajos significan menor complejidad temática o de composición, por lo que estas regiones estan dominadas por uno o pocos tipos de uso del suelo (Figura 2 y 7). La entropía condicional que representa la complejidad de configuración de las categorías espaciales, es tambien baja para estas regiones. Las celdas de un tipo de uso de suelo son adyacentes a celdas de un solo tipo de uso del suelo, estando dominadas por uno o pocos tipos de uso de suelo (Figura 3 y 8). La entropía conjunta describe a estas regiones como las más simples en cuanto a complejidad (Figura 4 y 9). La información mutua también muestra un patrón similar, con bajos valores para las regiones mencionadas, indicando que no hay una buena agregación de los diferentes tipos de uso de suelo (Figura 5 y 10). Por último, la información mutua relativa en las regiones mencionadas muestran los valores más altos de la métrica, por lo que significa mayor una agregación de celdas del mismo tipo de uso del suelo (Figura 6 y 11).
+
+## Métricas de complejidad del paisaje para Costa Rica en celdas de 1km x 1km
+
+<br>
+
+**Entropía marginal en celdas de 1km x 1km**
+
+```{r}
+#| echo: false
+lm_ent_1km <- ggplot(grid_cr_metricas_1km) +
+  theme_minimal() +
+  geom_sf(aes(fill = ent), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Entropía \nmarginal", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_ent_1km
+```
+
+Figura 2. Mapa de entropía marginal para Costa Rica en un sistema de cuadrículas de 1km x 1km, 2019.
+
+<br>
+
+**Entropía condicional en celdas de 1km x 1km**
+
+```{r}
+#| echo: false
+lm_condent_1km <- ggplot(grid_cr_metricas_1km) +
+  theme_minimal() +
+  geom_sf(aes(fill = condent), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Entropía \ncondicional", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_condent_1km
+```
+
+Figura 3. Mapa de entropía condicional para Costa Rica en un sistema de cuadrículas de 1km x 1km, 2019.
+
+<br>
+
+**Entropía conjunta en celdas de 1km x 1km**
+
+```{r}
+#| echo: false
+lm_joinent_1km <- ggplot(grid_cr_metricas_1km) +
+  theme_minimal() +
+  geom_sf(aes(fill = joinent), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Entropía \nconjunta", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_joinent_1km
+```
+
+Figura 4. Mapa de entropía conjunta para Costa Rica en un sistema de cuadrículas de 1km x 1km, 2019.
+
+<br>
+
+**Información mutua en celdas de 1km x 1km**
+
+```{r}
+#| echo: false
+lm_mutinf_1km <- ggplot(grid_cr_metricas_1km) +
+  theme_minimal() +
+  geom_sf(aes(fill = mutinf), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Información \nmutua", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_mutinf_1km
+```
+
+Figura 5. Mapa de información mutua para Costa Rica en un sistema de cuadrículas de 1km x 1km, 2019.
+
+<br>
+
+**Información mutua relativa en celdas de 1km x 1km**
+
+```{r}
+#| echo: false
+lm_relmutinf_1km <- ggplot(grid_cr_metricas_1km) +
+  theme_minimal() +
+  geom_sf(aes(fill = relmutinf), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Información \nmutua \nrelativa", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_relmutinf_1km
+```
+
+Figura 6. Mapa de infromación mutua relativa para Costa Rica en un sistema de cuadrículas de 1km x 1km, 2019.
+
+```{r}
+#| include: false
+lm_nada_1km <- ggplot() + theme_void()
+```
+
+```{r}
+#| include: false
+#| eval: false
+# todas las métricas
+metricas_8km <- sample_lsm(cob_s,
+                      y = grid_cr_8km,
+                      level = "landscape",
+                      type = "complexity metric")
+```
+
+```{r}
+#| include: false
+#| eval: false
+export(metricas_8km, "metricas_8km.xlsx")
+```
+
+```{r}
+#| include: false
+metricas_8km <- import("metricas_8km.xlsx")
+```
+
+```{r}
+#| include: false
+metricas_8km
+```
+
+```{r}
+#| include: false
+metricas_8km$metric <- factor(metricas_8km$metric)
+```
+
+```{r}
+#| include: false
+which(duplicated(metricas_8km))
+```
+
+```{r}
+#| include: false
+metricas_8km_w <- metricas_8km %>% distinct() %>% pivot_wider(names_from = metric, values_from = )
+```
+
+```{r}
+#| include: false
+metricas_8km_w
+```
+
+```{r}
+#| include: false
+grid_cr_metricas_8km <- bind_cols(grid_cr_8km, metricas_8km_w)
+```
+
+```{r}
+#| include: false
+grid_cr_metricas_8km
+```
+
+```{r}
+#| include: false
+plot(grid_cr_metricas_8km["ent"])
+```
+
+<br>
+
+## Métricas de complejidad del paisaje para Costa Rica en celdas de 8km x 8km
+
+<br>
+
+**Entropía marginal en celdas de 8km x 8km**
+
+```{r}
+#| echo: false
+lm_ent_8km <- ggplot(grid_cr_metricas_8km) +
+  theme_minimal() +
+  geom_sf(aes(fill = ent), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Entropía \nmarginal", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_ent_8km
+```
+
+Figura 7. Mapa de entropía marginal para Costa Rica en un sistema de cuadrículas de 8km x 8km, 2019.
+
+<br>
+
+**Entropía condicional en celdas de 8km x 8km**
+
+```{r}
+#| echo: false
+lm_condent_8km <- ggplot(grid_cr_metricas_8km) +
+  theme_minimal() +
+  geom_sf(aes(fill = condent), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Entropía \ncondicional", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_condent_8km
+```
+
+Figura 8. Mapa de entropía condicional para Costa Rica en un sistema de cuadrículas de 8km x 8km, 2019.
+
+<br>
+
+**Entropía conjunta en celdas de 8km x 8km**
+
+```{r}
+#| echo: false
+lm_joinent_8km <- ggplot(grid_cr_metricas_8km) +
+  theme_minimal() +
+  geom_sf(aes(fill = joinent), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Entropía \nconjunta", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_joinent_8km
+```
+
+Figura 9. Mapa de entropía conjunta para Costa Rica en un sistema de cuadrículas de 8km x 8km, 2019.
+
+<br>
+
+**Información mutua en celdas de 8km x 8km**
+
+```{r}
+#| echo: false
+lm_mutinf_8km <- ggplot(grid_cr_metricas_8km) +
+  theme_minimal() +
+  geom_sf(aes(fill = mutinf), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Información \nmutua", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_mutinf_8km
+```
+
+Figura 10. Mapa de información mutua para Costa Rica en un sistema de cuadrículas de 8km x 8km, 2019.
+
+<br>
+
+**Entropía mutua relativa en celdas de 8km x 8km**
+
+```{r}
+#| echo: false
+lm_relmutinf_8km <- ggplot(grid_cr_metricas_8km) +
+  theme_minimal() +
+  geom_sf(aes(fill = relmutinf), size = 0.01, color = "black") +
+  scale_fill_viridis_c(name = "Información \nmutua \nrelativa", option = "B", direction = -1) +
+  coord_sf(datum = st_crs(5367))
+lm_relmutinf_8km
+```
+
+Figura 11. Mapa de infromación mutua relativa para Costa Rica en un sistema de cuadrículas de 8km x 8km, 2019.
+
+```{r}
+#| include: false
+lm_nada_8km <- ggplot() + theme_void()
+```
+
+::: {#refs}
+:::

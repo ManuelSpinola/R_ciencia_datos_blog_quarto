@@ -1,0 +1,16 @@
+{
+  "hash": "45f48a2a57c6f36de938c3dc8bf1d247",
+  "result": {
+    "markdown": "---\ntitle: \"Conglomerados del paisaje en las zonas de vida de Costa Rica\"\ndescription: |\n  Conglomerdos (clusters) del paisaje\nimage: preview.png\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation_url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: 01/01/2022\ncitation: true\ndraft: false\ncategories:\n  - \"Ecología del paisaje\"\n---\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](zonas-de-vida-clusters_files/figure-html/unnamed-chunk-9-1.png){width=672}\n:::\n:::\n\nFigura 1. Mapa de cobertura del suelo de Costa Rica.\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](zonas-de-vida-clusters_files/figure-html/unnamed-chunk-15-1.png){width=672}\n:::\n:::\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](zonas-de-vida-clusters_files/figure-html/unnamed-chunk-19-1.png){width=672}\n:::\n:::\n\n\n\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# echo: false\np <- ggplot(zv_grilla_clusters) +\n  theme_minimal() +\n  geom_sf(aes(fill = clust_fac), color = \"black\") +\n  coord_sf(datum = st_crs(5367)) +\n  scale_fill_brewer(name = \"Cluster\", palette = \"Dark2\")\np\n```\n\n::: {.cell-output-display}\n![](zonas-de-vida-clusters_files/figure-html/unnamed-chunk-24-1.png){width=672}\n:::\n\n```{.r .cell-code}\nzv_grilla_clusters_4 <- subset(zv_grilla_clusters, clust == 4)\n```\n:::\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggarrange(cong_4, cong_4b, common.legend = TRUE)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nWarning: Removed 145475 rows containing missing values (geom_raster).\nRemoved 145475 rows containing missing values (geom_raster).\nRemoved 145475 rows containing missing values (geom_raster).\n```\n:::\n\n::: {.cell-output-display}\n![](zonas-de-vida-clusters_files/figure-html/unnamed-chunk-30-1.png){width=672}\n:::\n:::",
+    "supporting": [
+      "zonas-de-vida-clusters_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

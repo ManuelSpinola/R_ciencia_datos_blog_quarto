@@ -1,0 +1,14 @@
+{
+  "hash": "26adf2e19add350f71775366d108f2f3",
+  "result": {
+    "markdown": "---\ntitle: \"Visualización de datos espaciales\"\nsubtitle: Datos por distrito\nimage: \"imagenes/cr_satelite_3d.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: 2022-12-06\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nbibliography: references.bib\nlang: es\ndraft: true\nexecute: \n  echo: false\n  include: false\n  eval: false\ncategories:\n  - \"Análisis y Visualización de Datos\"\n---\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

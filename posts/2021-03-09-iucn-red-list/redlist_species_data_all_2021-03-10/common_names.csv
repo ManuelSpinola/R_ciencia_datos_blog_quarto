@@ -1,0 +1,2726 @@
+internalTaxonId,scientificName,name,language,main
+135803,Bolitoglossa bramei,Brame's Web-footed Salamander,English,true
+136082,Bolitoglossa gomezi,Gomez’s Web-footed Salamander,English,true
+176798,Drymobius melanotropis,Black Forest Racer,English,false
+176798,Drymobius melanotropis,Lower-montane Green Racer,English,false
+176799,Drymobius rhombifer,Esmarald Racer,English,true
+176805,Erythrolamprus bizona,Double-banded Coral Snake Mimic,English,true
+176806,Geophis brachycephalus,Colombian Earth Snake,English,true
+176808,Geophis ruthveni,Ruthven's Earth Snake,English,false
+176820,Imantodes inornatus,Plain Tree Snake,English,false
+176820,Imantodes inornatus,Speckled Blunt-headed Tree Snake,English,false
+176820,Imantodes inornatus,Yellow Blunt-headed Tree Snake,English,false
+176820,Imantodes inornatus,Bejuquillo,Spanish; Castilian,false
+176820,Imantodes inornatus,Western Tree Snake,English,true
+176869,Nothopsis rugosus,Rough Coffee Snake,English,true
+177444,Pliocercus euryzonus,Black Halloween Snake,English,false
+177444,Pliocercus euryzonus,Coral Falsa,Spanish; Castilian,false
+177444,Pliocercus euryzonus,Cope's False Coral Snake,English,true
+177498,Rhinobothryum bovallii,False Tree Coral,English,true
+177499,Siphlophis compressus,Tropical Flat Snake,English,true
+177507,Tantilla vermiformis,Hallowell's Centipede Snake,English,false
+177516,Trimetopon slevini,Slevin's Tropical Ground Snake,English,true
+178254,Echinosaura apodemus,Uzzell's Neusticurus,English,true
+178294,Lepidophyma reticulatum,Lagartija Nocturna de Costa Rica,Spanish; Castilian,false
+178294,Lepidophyma reticulatum,Costa Rican Tropical Night Lizard,English,true
+178482,Holcosus quadrilineatus,Four-lined Ameiva,English,false
+178644,Anolis altae,High Anole,English,true
+178714,Aspidoscelis deppii,Blackbelly Racerunner,English,true
+178725,Anolis carpenteri,Carpenter Anole,English,true
+186063,Bolitoglossa robinsoni,Robinson’s Web-footed Salamander,English,true
+186104,Bolitoglossa pygmaea,Pygmy Web-footed Salamander,English,true
+190508,Thecadactylus rapicauda,Turniptail Gecko,English,true
+190608,Leptodrymus pulcherrimus,Striped Lowland Snake,English,true
+190633,Spilotes pullatus,Yellow Rat Snake,English,false
+190633,Spilotes pullatus,Chicken Snake,English,true
+197428,Amastridium veliferum,Rustyhead Snake,English,false
+197436,Holcosus undulatus,Rainbow Ameiva,English,true
+197440,Anolis cristatellus,Puerto Rico Crested Anole,English,true
+197443,Anolis sagrei,Brown Anole,English,false
+197443,Anolis sagrei,Cuban Brown Anole,English,true
+197460,Basiliscus vittatus,Brown Basilisk,English,true
+197463,Bothriechis schlegelii,Serpiente Loro,Spanish; Castilian,false
+197463,Bothriechis schlegelii,Víbora de Pestañas,Spanish; Castilian,false
+197463,Bothriechis schlegelii,Eyelash Viper,English,true
+197468,Clelia clelia,Culebra Minadora,Spanish; Castilian,false
+197468,Clelia clelia,Lisa,Spanish; Castilian,false
+197468,Clelia clelia,Tiznada,Spanish; Castilian,false
+197468,Clelia clelia,Víbora de Sangre (Juvenile),Spanish; Castilian,false
+197468,Clelia clelia,Zopilota,Spanish; Castilian,false
+197468,Clelia clelia,Mussurana,English,true
+197471,Coniophanes bipunctatus,Two-spotted Snake,English,true
+197476,Corytophanes cristatus,Smooth Helmeted Iguana,English,true
+197480,Crotalus simus,Cascabel,Spanish; Castilian,false
+197480,Crotalus simus,Middle American Rattlesnake,English,true
+197481,Drymobius margaritiferus,Central American Speckled Racer,English,false
+197481,Drymobius margaritiferus,Speckled Racer,English,true
+197484,Enulius flavitorques,Pacific Longtail Snake,English,true
+197487,Gonatodes albogularis,White-throated Gecko,English,false
+197487,Gonatodes albogularis,Yellow-headed Gecko,English,true
+197490,Imantodes gemmistratus,Central American Tree Snake,English,true
+197495,Lepidophyma flavimaculatum,Yellow-spotted Night Lizard,English,true
+197497,Leptodeira annulata,Banded Cat-eyed Snake,English,true
+197498,Leptodeira septentrionalis,Cat-eyed Snake,English,false
+197498,Leptodeira septentrionalis,Northern Cat-eyed Snake,English,true
+197499,Leptophis ahaetulla,Parrot Snake,English,true
+197500,Leptophis mexicanus,Mexican Parrot Snake,English,true
+198388,Ninia sebae,Culebrilla del Café,Spanish; Castilian,false
+198388,Ninia sebae,Redback Coffee Snake,English,true
+198389,Oxybelis fulgidus,Green Vine Snake,English,true
+198390,Oxybelis aeneus,Mexican Vine Snake,English,false
+198390,Oxybelis aeneus,Neotropical Vine Snake,English,false
+198390,Oxybelis aeneus,Brown Vinesnake,English,true
+198391,Oxyrhopus petolarius,Forest Flame Snake,English,true
+198401,Rhadinaea decorata,Adorned Graceful Brown Snake,English,true
+198414,Sceloporus variabilis,Rose-bellied Lizard,English,false
+198414,Sceloporus variabilis,Rosebelly Lizard,English,false
+198423,Sibon nebulatus,Caracolera Subtropical,Spanish; Castilian,false
+198423,Sibon nebulatus,Cloudy Snail-eating Snake,English,true
+198516,Stenorrhina degenhardtii,Degenhardt's Scorpion-eating Snake,English,true
+198521,Thamnophis marcianus,Checkered Gartersnake,English,false
+198521,Thamnophis marcianus,Checkered Garter Snake,English,false
+198522,Thamnophis proximus,Western Ribbonsnake,English,false
+198522,Thamnophis proximus,Western Ribbon Snake,English,false
+198526,Tretanorhinus nigroluteus,Orangebelly Swamp Snake,English,true
+199734,Mesoscincus managuae,Managua Skink,English,true
+203039,Coloptychon rhombifer,Isthmian Alligator Lizard,English,true
+203040,Diploglossus bilobatus,O'Shaughnessy's Galliwasp,English,true
+203042,Diploglossus monotropis,Escorpión Coral,Spanish; Castilian,true
+203044,Basiliscus basiliscus,Common Basilisk,English,true
+203046,Basiliscus plumifrons,Plumed Basilisk,English,false
+203046,Basiliscus plumifrons,Green Basilisk,English,true
+203047,Coleonyx mitratus,Central American Banded Gecko,English,true
+203048,Anadia ocellata,Ocellated Anadia,English,true
+203077,Anolis aquaticus,Aquatic Anole,English,true
+203078,Anolis auratus,Grass Anole,English,true
+203089,Anolis frenatus,Bridled Anole,English,true
+203095,Anolis humilis,Humble Anole,English,true
+203097,Anolis insignis,Decorated Anole,English,true
+203100,Anolis kemptoni,Kempton's Anole,English,true
+203104,Anolis limifrons,Border Anole,English,true
+203115,Anolis polylepis,Many-scaled Anole,English,true
+203123,Anolis townsendi,Cocos Island Anole,English,true
+203132,Anolis woodi,Wood's Anole,English,true
+203161,Polychrus gutturosus,Berthold's Bush Anole,English,true
+203175,Sphaerodactylus graptolaemus,Costa Rica Least Gecko,English,true
+203176,Sphaerodactylus homolepis,Caribbean Least Gecko,English,true
+203178,Sphaerodactylus pacificus,Pacific Least Gecko,English,true
+203180,Ameiva ameiva,Amazon Racerunner,English,false
+203180,Ameiva ameiva,Giant Ameiva,English,true
+203193,Anomalepis mexicanus,Mexican Blind Snake,English,true
+203195,Helminthophis frontalis,Costa Rica Blind Snake,English,true
+203197,Liotyphlops albirostris,Whitenose Blind Snake,English,true
+203206,Corallus annulatus,Ringed Tree Boa,English,true
+203211,Corallus ruschenbergerii,Dormilona,English,false
+203211,Corallus ruschenbergerii,False Manapare,English,false
+203211,Corallus ruschenbergerii,Ruschenberger's Tree Boa,English,true
+203212,Epicrates maurus,Brown Rainbow Boa,English,true
+203279,Chironius exoletus,Linnaeus' Sipo,English,true
+203289,Dendrophidion paucicarinatum,Cope's Forest Racer,English,true
+203292,Leptophis depressirostris,Cope's Parrot Snake,English,true
+203293,Leptophis nebulosus,Oliver's Parrot Snake,English,true
+203294,Leptophis riveti,Despax's Parrot Snake,English,true
+203304,Oxybelis brevirostris,Cope's Vine Snake,English,true
+203307,Scolecophis atrocinctus,Black-banded Snake,English,true
+203309,Tantilla alticola,Boulenger's Centipede Snake,English,true
+203328,Tantilla supracincta,Banded Centipede Snake,English,true
+203336,Trimorphodon quadruplex,Central American Lyre Snake,English,true
+203440,Clelia equatoriana,Equatorial Mussurana,English,true
+203492,Crisantophis nevermanni,Dunn's Road Guarder,English,true
+203501,Dipsas articulata,American Snail-eater,English,true
+203502,Dipsas bicolor,Two-colored Snail-eater,English,true
+203504,Dipsas tenuissima,Taylor's Snail-eater,English,true
+203505,Enuliophis sclateri,Colombian Longtail Snake,English,true
+203511,Erythrolamprus mimus,Mimic False Coral Snake,English,true
+203525,Geophis downsi,Savage's Earth Snake,English,true
+203527,Geophis godmani,Godman's Earth Snake,English,true
+203528,Geophis hoffmanni,Hoffmann's Earth Snake,English,true
+203537,Hydromorphus concolor,Costa Rica Water Snake,English,true
+203551,Ninia maculata,Spotted Coffee Snake,English,true
+203583,Rhadinaea calligaster,Thick Graceful Brown Snake,English,true
+203584,Rhadinaea pulveriventris,Common Graceful Brown Snake,English,true
+203588,Sibon annulatus,Ringed Snail Sucker,English,true
+203589,Sibon anthracops,Cope's Snail Sucker,English,true
+203590,Sibon argus,Argus Snail Sucker,English,true
+203593,Sibon longifrenis,Stejneger's Snail Sucker,English,true
+203603,Trimetopon gracile,Günther's Tropical Ground Snake,English,true
+203604,Trimetopon pliolepis,Cope's Tropical Ground Snake,English,true
+203605,Trimetopon simile,Dunn's Tropical Ground Snake,English,true
+203606,Trimetopon viquezi,Viquez's Tropical Ground Snake,English,true
+203622,Micrurus alleni,Allen's Coral Snake,English,true
+203624,Micrurus clarki,Clark's Coral Snake,English,true
+203630,Micrurus multifasciatus,Many-banded Coral Snake,English,true
+203652,Scaphiodontophis venustissimus,Common Neckband Snake,English,true
+203653,Amerotyphlops costaricensis,Costa Rica Worm Snake,English,true
+203657,Atropoides picadoi,Mano de Piedra,Spanish; Castilian,false
+203657,Atropoides picadoi,Picado's Pit Viper,English,true
+203658,Bothriechis lateralis,Lora,Spanish; Castilian,false
+203658,Bothriechis lateralis,Coffee Palm Viper,English,true
+203660,Bothriechis nigroviridis,Black-speckled Palm Pit Viper,English,true
+203671,Porthidium ophryomegas,Toboba Chinga,Spanish; Castilian,false
+203671,Porthidium ophryomegas,Toboba Gato,Spanish; Castilian,false
+203671,Porthidium ophryomegas,Slender Hognose Viper,English,true
+203676,Anolis pachypus,Thick Anole,English,true
+203879,Boa imperator,Colombian Boa,English,false
+203879,Boa imperator,Common Northern Boa,English,false
+203879,Boa imperator,Hogg Island Boa,English,false
+203879,Boa imperator,Imperator Boa,English,false
+203879,Boa imperator,Panamian Islands Boa,English,false
+203879,Boa imperator,Boa colombiana,Spanish; Castilian,false
+203879,Boa imperator,Boa constrictora,Spanish; Castilian,false
+203879,Boa imperator,Central American Boa,English,true
+44193,Ctenosaura quinquecarinata,Central American Armed Lizard,English,false
+44193,Ctenosaura quinquecarinata,Cola Chata,Spanish; Castilian,false
+44193,Ctenosaura quinquecarinata,Cola Cuape,Spanish; Castilian,false
+44193,Ctenosaura quinquecarinata,Corronchudo,Spanish; Castilian,false
+44193,Ctenosaura quinquecarinata,Jamo,Spanish; Castilian,false
+44193,Ctenosaura quinquecarinata,Lagartija Negra,Spanish; Castilian,false
+44193,Ctenosaura quinquecarinata,Pochota,Spanish; Castilian,false
+44193,Ctenosaura quinquecarinata,Five-keeled Spiny-tailed Iguana,English,true
+46584,Caiman crocodilus,Common Caiman,English,false
+46584,Caiman crocodilus,Lagarto blanco (Peru),English,false
+46584,Caiman crocodilus,Baba (Venezuela),Spanish; Castilian,false
+46584,Caiman crocodilus,Babilla (Colombia),Spanish; Castilian,false
+46584,Caiman crocodilus,Guajipal (Nicaragua),Spanish; Castilian,false
+46584,Caiman crocodilus,Jacare tinga (Brazil),Portuguese,false
+46584,Caiman crocodilus,Tulisio (Mexico),Spanish; Castilian,false
+46584,Caiman crocodilus,Spectacled Caiman,English,true
+54560,Atelopus varius,Clown Frog,English,false
+54560,Atelopus varius,Golden Frog,English,false
+54560,Atelopus varius,Painted Frog,English,false
+54560,Atelopus varius,Veragoa Stubfoot Toad,English,false
+54560,Atelopus varius,Rana Arlequin Variable,Spanish; Castilian,false
+54560,Atelopus varius,Variable Harlequin Frog,English,true
+54660,Rhaebo haematiticus,Truando Toad,English,true
+54920,Sachatamia ilex,Rana de Vidrio Montana,Spanish; Castilian,false
+54920,Sachatamia ilex,Ranita De Cristal,Spanish; Castilian,false
+54920,Sachatamia ilex,Limon Giant Glass Frog,English,true
+54960,Cochranella euknemos,Ranita de Cristal,Spanish; Castilian,false
+54960,Cochranella euknemos,San Jose Cochran Frog,English,true
+54964,Cochranella granulosa,Ranita De Cristal,Spanish; Castilian,false
+54964,Cochranella granulosa,Grainy Cochran Frog,English,true
+55014,Hyalinobatrachium fleischmanni,Northern Glassfrog,English,false
+55014,Hyalinobatrachium fleischmanni,Fleischmann's Glass Frog,English,true
+55030,Teratohyla pulverata,Ranita de Cristal,Spanish; Castilian,false
+55030,Teratohyla pulverata,Chiriqui Glass Frog,English,true
+55036,Hyalinobatrachium valerioi,La Palma Glass Frog,English,true
+55121,Silverstoneia nubicola,Boquete Rocket Frog,English,true
+55174,Dendrobates auratus,Gold Arrow-poison Frog,English,false
+55174,Dendrobates auratus,Golden Poison-arrow Frog,English,false
+55174,Dendrobates auratus,Green and Black Poison-arrow Frog,English,false
+55174,Dendrobates auratus,Green and Black Poison-dart Frog,English,false
+55174,Dendrobates auratus,Green and Golden Poison-arrow Frog,English,false
+55174,Dendrobates auratus,Green Poison-arrow Frog,English,false
+55174,Dendrobates auratus,Green Poison Frog,English,false
+55174,Dendrobates auratus,Rana Dardo Venenosa Verde y Negra,Spanish; Castilian,false
+55174,Dendrobates auratus,Ranita Verdinegra,Spanish; Castilian,false
+55174,Dendrobates auratus,Green And Black Poison Frog,English,true
+55186,Oophaga granulifera,Granular Poison-arrow Frog,English,false
+55186,Oophaga granulifera,Granulated Poison-dart Frog,English,false
+55186,Oophaga granulifera,Granular Poison Frog,English,true
+55196,Oophaga pumilio,Flaming Poison-arrow Frog,English,false
+55196,Oophaga pumilio,Flaming Poison Frog,English,false
+55196,Oophaga pumilio,Red-and-blue Poison Frog,English,false
+55196,Oophaga pumilio,Strawberry Poison-dart Frog,English,false
+55196,Oophaga pumilio,Strawberry Poison Frog,English,true
+55263,Phyllobates lugubris,Lovely Poison-arrow Frog,English,false
+55263,Phyllobates lugubris,Lovely Poison Frog,English,true
+151594717,Cruziohyla calcarifer,Rana de Arból Esplendida,Spanish; Castilian,false
+151594717,Cruziohyla calcarifer,Splendid Tree Frog,English,true
+55290,Agalychnis callidryas,Red-eyed Leaf frog,English,false
+55290,Agalychnis callidryas,Rana Arborícola,Spanish; Castilian,false
+55290,Agalychnis callidryas,Red-eyed Treefrog,English,true
+77651850,Agalychnis spurrelli,Gliding Leaf Frog,English,false
+77651850,Agalychnis spurrelli,Gliding Treefrog,English,true
+55296,Triprion spinosus,Coronated Treefrog,English,false
+55296,Triprion spinosus,Crowned Hyla,English,false
+55296,Triprion spinosus,Spine-headed Tree Frog,English,false
+55296,Triprion spinosus,Spinyhead Treefrog,English,false
+55296,Triprion spinosus,Rana de Corona,Spanish; Castilian,false
+55296,Triprion spinosus,Spiny-headed Treefrog,English,true
+55482,Ecnomiohyla fimbrimembra,Heredia Treefrog,English,true
+55586,Hyloscirtus palmeri,Palmer's Treefrog,English,true
+55627,Isthmohyla rivularis,American Cinchona Plantation Treefrog,English,true
+55632,Boana rosenbergi,Rosenberg's Gladiator Treefrog,English,false
+55632,Boana rosenbergi,Rosenberg's Treefrog,English,true
+55701,Isthmohyla zeteki,Zetek's Treefrog,English,true
+55855,Agalychnis lemur,Lemur Leaf Frog,English,true
+56010,Smilisca sila,Panama Cross-banded Treefrog,English,true
+56406,Pristimantis altae,Sapito De Hojarasca,Spanish; Castilian,false
+56406,Pristimantis altae,Mountain Robber Frog,English,true
+56472,Craugastor bransfordii,Bransford's Robber Frog,English,true
+56482,Strabomantis bufoniformis,Rusty Robber Frog,English,true
+56497,Pristimantis caryophyllaceus,La Loma Robber Frog,English,true
+56501,Pristimantis cerasinus,Limon Robber Frog,English,true
+56528,Craugastor crassidigitus,Isla Bonita Robber Frog,English,true
+56560,Diasporus diastema,Caretta Robber Frog,English,false
+56560,Diasporus diastema,Common Dink Frog,English,true
+5659,Crocodylus acutus,Caiman Aguja,Spanish; Castilian,false
+5659,Crocodylus acutus,Caimán americano,Spanish; Castilian,false
+5659,Crocodylus acutus,Caimán de la Costa,Spanish; Castilian,false
+5659,Crocodylus acutus,Cocodrilo,Spanish; Castilian,false
+5659,Crocodylus acutus,Cocodrilo americano,Spanish; Castilian,false
+5659,Crocodylus acutus,Cocodrilo de Río,Spanish; Castilian,false
+5659,Crocodylus acutus,Crocodile Americain,French,false
+5659,Crocodylus acutus,Lagarto,Spanish; Castilian,false
+5659,Crocodylus acutus,Lagarto aguia,Spanish; Castilian,false
+5659,Crocodylus acutus,Lagarto Amarillo,Spanish; Castilian,false
+5659,Crocodylus acutus,Lagarto blanco,Spanish; Castilian,false
+5659,Crocodylus acutus,Lagarto Real,Spanish; Castilian,false
+5659,Crocodylus acutus,American Crocodile,English,true
+56609,Pristimantis gaigei,Fort Randolph Robber Frog,English,true
+56777,Pristimantis moro,La Hondura Robber Frog,English,true
+56795,Craugastor noblei,Noble's Robber Frog,English,true
+154033310,Craugastor podiciferus,Piglet Flesh-bellied Frog,English,false
+154033310,Craugastor podiciferus,Polymorphic Dirt Frog,English,false
+154033310,Craugastor podiciferus,Cerro Utyum Robber Frog,English,true
+56933,Craugastor rugosus,Veragua Robber Frog,English,true
+56991,Pristimantis taeniatus,Banded Robber Frog,English,true
+56995,Craugastor taurus,South Pacific Streamside Frog,English,false
+56995,Craugastor taurus,Golfito Robber Frog,English,true
+57049,Diasporus vocator,Agua Buena Dink Frog,English,false
+57049,Diasporus vocator,Agua Buena Robber Frog,English,false
+57049,Diasporus vocator,Vocal Dink Frog,English,true
+57816,Hypopachus pictiventris,Southern Narrow-mouthed Toad,English,false
+57816,Hypopachus pictiventris,Nicaragua Narrowmouth Toad,English,true
+57900,Ctenophryne aterrima,Costa Rica Nelson Frog,English,true
+58732,Lithobates taylori,Peralta Frog,English,true
+59147,Bolitoglossa colonnea,La Loma Salamander,English,true
+59155,Bolitoglossa diminuta,Quebrada Valverde Salamander,English,true
+59172,Bolitoglossa lignicolor,Camron Mushroomtongue Salamander,English,true
+59210,Bolitoglossa striatula,Cukra Mushroomtongue Salamander,English,true
+59323,Oedipina savagei,Savage's Worm Salamander,English,true
+59327,Oedipina uniformis,Cienega Colorado Worm Salamander,English,true
+63774,Drymarchon melanurus,Central American Indigo Snake,English,false
+63774,Drymarchon melanurus,Western Indigo Snake,English,true
+63837,Leptodeira nigrofasciata,Black-banded Cat-eyed Snake,English,true
+64003310,Phrynonax poecilonotus,Puffing Snake,English,true
+63917,Sibon dimidiatus,Slender Snail Sucker,English,true
+11534,Lepidochelys olivacea,Pacific Ridley,English,false
+11534,Lepidochelys olivacea,Ridley du Pacifique,French,false
+11534,Lepidochelys olivacea,Tartaruga-comum,Portuguese,false
+11534,Lepidochelys olivacea,Tartaruga-oliva,Portuguese,false
+11534,Lepidochelys olivacea,Tartaruga-pequena,Portuguese,false
+11534,Lepidochelys olivacea,Tortue Bâtarde,French,false
+11534,Lepidochelys olivacea,Tortue de Ridley,French,false
+11534,Lepidochelys olivacea,Tortue Olivâtre,French,false
+11534,Lepidochelys olivacea,Tortuga Carpintera,Spanish; Castilian,false
+11534,Lepidochelys olivacea,Tortuga Golfina,Spanish; Castilian,false
+11534,Lepidochelys olivacea,Tortuga Guaraguá,Spanish; Castilian,false
+11534,Lepidochelys olivacea,Tortuga Lora,Spanish; Castilian,false
+11534,Lepidochelys olivacea,Tortuga Manila,Spanish; Castilian,false
+11534,Lepidochelys olivacea,Tortuga Mulato,Spanish; Castilian,false
+11534,Lepidochelys olivacea,Tortuga Olivacea,Spanish; Castilian,false
+11534,Lepidochelys olivacea,Tortuga Parlama,Spanish; Castilian,false
+11534,Lepidochelys olivacea,الزيتونية ريدلي سلحفاة,Arabic,false
+11534,Lepidochelys olivacea,Olive Ridley,English,true
+176130,Hemidactylus frenatus,Common House Gecko,English,false
+176130,Hemidactylus frenatus,Pacific Gecko,English,false
+176130,Hemidactylus frenatus,疣尾蜥虎,Chinese,false
+19836,Saimiri oerstedii,Black-crowned Central American Squirrel Monkey,English,false
+19836,Saimiri oerstedii,Central American Squirrel Monkey,English,false
+19836,Saimiri oerstedii,Red-backed Squirrel Monkey,English,false
+19836,Saimiri oerstedii,Barizo Dorsirrojo,Spanish; Castilian,false
+19836,Saimiri oerstedii,Mono Ardilla,Spanish; Castilian,false
+19836,Saimiri oerstedii,Mono Titi,Spanish; Castilian,false
+19836,Saimiri oerstedii,Mono Tití,Spanish; Castilian,false
+19836,Saimiri oerstedii,Saïmiri À Dos Roux,French,false
+19836,Saimiri oerstedii,Singe-écureuil À Dos Rouge,French,false
+19836,Saimiri oerstedii,Singe-écureuil À Dos Roux,French,false
+19836,Saimiri oerstedii,Titi,Spanish; Castilian,false
+22103,Trichechus manatus,West Indian Manatee,English,false
+22103,Trichechus manatus,Lamantin,French,false
+22103,Trichechus manatus,Manati,Spanish; Castilian,false
+22103,Trichechus manatus,Peixi-boi,Portuguese,false
+22103,Trichechus manatus,American Manatee,English,true
+41065,Rhinella marina,Agua Toad,English,false
+41065,Rhinella marina,Giant Marine Toad,English,false
+41065,Rhinella marina,Giant Toad,English,false
+41065,Rhinella marina,Marine Toad,English,false
+41065,Rhinella marina,Shoulder-knot Frog,English,false
+41065,Rhinella marina,Crapaud,French,false
+41065,Rhinella marina,Oohikigaeru,Japanese,false
+41065,Rhinella marina,Sapo Común,Spanish; Castilian,false
+41065,Rhinella marina,Sapo Cururu,Portuguese,false
+41065,Rhinella marina,Sapo Grande,Spanish; Castilian,false
+41065,Rhinella marina,Tulumba (quechua),Undetermined,false
+41065,Rhinella marina,Cane Toad,English,true
+41777,Pecari tajacu,Báquiro Cinchado,Spanish; Castilian,false
+41777,Pecari tajacu,Cateto,Portuguese,false
+41777,Pecari tajacu,Coche De Monte,Spanish; Castilian,false
+41777,Pecari tajacu,Pécari à collier,French,false
+41777,Pecari tajacu,Pecarí De Collar,Spanish; Castilian,false
+41777,Pecari tajacu,Porco de Mato,Portuguese,false
+41777,Pecari tajacu,Saíno,Spanish; Castilian,false
+41777,Pecari tajacu,Collared Peccary,English,true
+4615,Chelonia mydas,Aruanã,Portuguese,false
+4615,Chelonia mydas,Tartaruga Verde,Portuguese,false
+4615,Chelonia mydas,Tortue comestible,French,false
+4615,Chelonia mydas,Tortue franche,French,false
+4615,Chelonia mydas,Tortue verte,French,false
+4615,Chelonia mydas,Tortuga Blanca,Spanish; Castilian,false
+4615,Chelonia mydas,Tortuga Verde,Spanish; Castilian,false
+4615,Chelonia mydas,الخضراء السلحفاة,Arabic,false
+4615,Chelonia mydas,Green Turtle,English,true
+55006,Hyalinobatrachium chirripoi,Ranita De Cristal,Spanish; Castilian,false
+55006,Hyalinobatrachium chirripoi,Suretka Glass Frog,English,true
+55367,Hemiphractus fasciatus,Banded Horned Treefrog,English,true
+55329,Gastrotheca cornuta,Horned Marsupial Frog,English,true
+55558,Dendropsophus microcephalus,Yellow Cricket Treefrog,English,false
+55558,Dendropsophus microcephalus,Yellow Treefrog,English,false
+55558,Dendropsophus microcephalus,Ranita Misera,Spanish; Castilian,false
+55558,Dendropsophus microcephalus,Small-headed Treefrog,English,true
+55811,Osteopilus septentrionalis,Giant Tree-frog,English,false
+55811,Osteopilus septentrionalis,Cuban Treefrog,English,true
+56006,Smilisca baudinii,Baudin's Treefrog,English,false
+56006,Smilisca baudinii,Mexican Smilisca,English,false
+56006,Smilisca baudinii,Mexican Tree Frog,English,false
+56006,Smilisca baudinii,Tooter,English,false
+56006,Smilisca baudinii,Van Vliet's Frog,English,false
+56006,Smilisca baudinii,Common Mexican Treefrog,English,true
+56684,Eleutherodactylus johnstonei,Johnstone's Robber Frog,English,false
+56684,Eleutherodactylus johnstonei,Coqui Antillano,Spanish; Castilian,false
+56684,Eleutherodactylus johnstonei,Lesser Antillean Whistling Frog,English,true
+57114,Leptodactylus bolivianus,Sapo-rana Boliviano,Spanish; Castilian,false
+57114,Leptodactylus bolivianus,Bolivian White-lipped Frog,English,true
+57127,Leptodactylus fragilis,Cope's White-lipped Frog,English,false
+57127,Leptodactylus fragilis,Mexican White-lipped Frog,English,false
+57127,Leptodactylus fragilis,White-jawed Frog,English,false
+57127,Leptodactylus fragilis,White-jawed Robber Frog,English,false
+57127,Leptodactylus fragilis,White-lipped Foamfrog,English,false
+57127,Leptodactylus fragilis,White-lipped Frog,English,false
+57127,Leptodactylus fragilis,White-lipped Thin-toed Frog,English,false
+57127,Leptodactylus fragilis,Sapo-rana Labiado,Spanish; Castilian,false
+57127,Leptodactylus fragilis,American White Lipped Frog,English,true
+58565,Lithobates catesbeianus,Bullfrog,English,false
+58565,Lithobates catesbeianus,Common Bullfrog,English,false
+58565,Lithobates catesbeianus,Grenouille-taureau,French,false
+58565,Lithobates catesbeianus,Rana Toro,Spanish; Castilian,false
+58565,Lithobates catesbeianus,Rana Toro,Italian,false
+58565,Lithobates catesbeianus,Ushigaeru,Japanese,false
+58565,Lithobates catesbeianus,American Bullfrog,English,true
+6336,Delphinus delphis,Atlantic Dolphin,English,false
+6336,Delphinus delphis,Pacific Dolphin,English,false
+6336,Delphinus delphis,Saddle-backed Dolphin,English,false
+6336,Delphinus delphis,Short-beaked Saddleback Dolphin,English,false
+6336,Delphinus delphis,Dauphin commun,French,false
+6336,Delphinus delphis,Delfín Común,Spanish; Castilian,false
+6336,Delphinus delphis,Delfín Común,Spanish; Castilian,false
+6336,Delphinus delphis,Short-beaked Common Dolphin,English,true
+63768,Dendrophidion vinitor,Barred Forest Racer,English,true
+64296,Agkistrodon bilineatus,Castellana,Spanish; Castilian,false
+64296,Agkistrodon bilineatus,Cantil,Spanish; Castilian,true
+64344,Porthidium nasutum,Víbora de Hoja Nasal,English,false
+64344,Porthidium nasutum,Tamagá,Spanish; Castilian,false
+64344,Porthidium nasutum,Hognosed Pit Viper,English,true
+8005,Eretmochelys imbricata,Caret,French,false
+8005,Eretmochelys imbricata,Tortue à bec faucon,French,false
+8005,Eretmochelys imbricata,Tortue à écailles,French,false
+8005,Eretmochelys imbricata,Tortue Caret,French,false
+8005,Eretmochelys imbricata,Tortue imbriquée,French,false
+8005,Eretmochelys imbricata,Tortuga de Carey,Spanish; Castilian,false
+8005,Eretmochelys imbricata,سلحفاة صقرية المنقار,Arabic,false
+8005,Eretmochelys imbricata,Hawksbill Turtle,English,true
+55600,Isthmohyla picadoi,Volcan Barba Treefrog,English,true
+203553,Ninia psephota,Cope's Coffee Snake,English,true
+39960,Alouatta palliata,Ecuadorian Mantled Howling Monkey,English,false
+39960,Alouatta palliata,South Pacific Blackish Howling Monkey,English,false
+39960,Alouatta palliata,Aullador De La Costa,Spanish; Castilian,false
+39960,Alouatta palliata,Mantelbrüllaffe,German,false
+39960,Alouatta palliata,Mono Aullador,Spanish; Castilian,false
+39960,Alouatta palliata,Mono Congo,Spanish; Castilian,false
+39960,Alouatta palliata,Saraguato,Spanish; Castilian,false
+39960,Alouatta palliata,Mantled Howler Monkey,English,true
+2279,Ateles geoffroyi,Black-handed Spider Monkey,English,false
+2279,Ateles geoffroyi,Black-headed Spider Monkey,English,false
+2279,Ateles geoffroyi,Central American Spider Monkey,English,false
+2279,Ateles geoffroyi,Central American Spider Monkey,English,false
+2279,Ateles geoffroyi,Mono Colorado,English,false
+2279,Ateles geoffroyi,Atèle De Geoffroy,French,false
+2279,Ateles geoffroyi,Geoffroy-Klammeraffe,German,false
+2279,Ateles geoffroyi,Mico,Spanish; Castilian,false
+2279,Ateles geoffroyi,Mono Araña,Spanish; Castilian,false
+2279,Ateles geoffroyi,Geoffroy’s Spider Monkey,English,true
+81265980,Cebus imitator,Mono Carablanca,Spanish; Castilian,false
+81265980,Cebus imitator,Panama-Kapuzineraffe,German,false
+81265980,Cebus imitator,Sapajou du Panama,French,false
+81265980,Cebus imitator,Panamanian White-throated Capuchin,English,true
+12304,Lontra longicaudis,La Plata Otter,English,false
+12304,Lontra longicaudis,Long-tailed Otter,English,false
+12304,Lontra longicaudis,Neotropical River Otter,English,false
+12304,Lontra longicaudis,South American River Otter,English,false
+12304,Lontra longicaudis,Gato de Agua,Spanish; Castilian,false
+12304,Lontra longicaudis,Lobito del Plata,Spanish; Castilian,false
+12304,Lontra longicaudis,Lobito de Río,Spanish; Castilian,false
+12304,Lontra longicaudis,Loutre à longue queue,French,false
+12304,Lontra longicaudis,Loutre d'AmériquedDu Sud,French,false
+12304,Lontra longicaudis,Nutria De Agua,Spanish; Castilian,false
+12304,Lontra longicaudis,Perro De Agua,Spanish; Castilian,false
+12304,Lontra longicaudis,Taira,Spanish; Castilian,false
+12304,Lontra longicaudis,Neotropical Otter,English,true
+8771,Furipterus horrens,Thumbless Bat,English,false
+17574,Platyrrhinus vittatus,Greater Broad-nosed Bat,English,false
+6510,Desmodus rotundus,Common Vampire Bat,English,false
+6510,Desmodus rotundus,Vampire Bat,English,true
+136524,Eptesicus chiriquinus,Chiriquinan Serotine,English,true
+6520,Diaemus youngi,White-winged Vampire Bat,English,false
+136424,Micronycteris microtis,Common Big-eared Bat,English,false
+21877,Thyroptera discifera,Peters's Disk-winged Bat,English,true
+6561,Diclidurus albus,Northern Ghost Bat,English,false
+13240,Mesophylla macconnelli,Macconnell's Bat,English,false
+136611,Cynomops mexicanus,Mexican Dog-faced Bat,English,false
+136561,Mimon cozumelae,Cozumelan Golden Bat,English,false
+2136,Artibeus lituratus,Großer Fruchtvampir,German,false
+2136,Artibeus lituratus,Great Fruit-eating Bat,English,true
+2130,Enchisthenes hartii,Velvety Fruit-eating Bat,English,true
+99586593,Dermanura watsoni,Thomas-Fruchtvampir,German,false
+99586593,Dermanura watsoni,Thomas's Fruit-eating Bat,English,true
+2140,Dermanura tolteca,Tolteken-Fruchtvampir,German,false
+2140,Dermanura tolteca,Toltec Fruit-eating Bat,English,true
+83683287,Dermanura phaeotis,Dunkelohr-Fruchtvampir,German,false
+83683287,Dermanura phaeotis,Pygmy Fruit-eating Bat,English,true
+2123,Dermanura azteca,Azteken-Fruchtvampir,German,false
+2123,Dermanura azteca,Aztec Fruit-eating Bat,English,true
+136268,Carollia sowelli,Sowell-Kurzschwanzblattnase,German,false
+136268,Carollia sowelli,Sowell’s Short-tailed Bat,English,true
+19804,Saccopteryx bilineata,Greater Sac-winged Bat,English,true
+41530,Tonatia saurophila,Stripe-headed Round-eared Bat,English,true
+19807,Saccopteryx leptura,Lesser Sac-winged Bat,English,true
+41527,Cormura brevirostris,Chestnut Sac-winged Bat,English,false
+41527,Cormura brevirostris,Wagner's Sac-winged Bat,English,false
+19685,Rhogeessa tumida,Black-winged Little Yellow Bat,English,false
+4133,Centurio senex,Lattice-winged Bat,English,false
+4133,Centurio senex,Greisengesicht,German,false
+4133,Centurio senex,Greisenhaupt,German,false
+4133,Centurio senex,Wrinkle-faced Bat,English,true
+19714,Rhynchonycteris naso,Proboscis Bat,English,false
+123984355,Natalus mexicanus,Mexican Greater Funnel-eared Bat,English,true
+14830,Noctilio leporinus,Greater Bulldog Bat,English,true
+88151760,Rhogeessa io,Thomas's Yellow Bat,English,true
+14829,Noctilio albiventris,Lesser Bulldog Bat,English,true
+6206,Cyttarops alecto,Short-eared Bat,English,false
+136350,Centronycteris centralis,Thomas-Spornscheidenschwanz,German,false
+136350,Centronycteris centralis,Thomas's Shaggy Bat,English,true
+8248,Eumops underwoodi,Underwood's Bonneted Bat,English,false
+12615,Macrophyllum macrophyllum,Long-legged Bat,English,false
+8245,Eumops hansae,Sanborn's Bonneted Bat,English,false
+7030,Ectophylla alba,Honduran White Bat,English,false
+7030,Ectophylla alba,White Bat,English,false
+2533,Balantiopteryx plicata,Peters-Sackflügelfledermaus,German,false
+2533,Balantiopteryx plicata,Gray Sac-winged Bat,English,true
+10598,Hylonycteris underwoodi,Underwood's Long-tongued Bat,English,false
+4666,Chiroderma salvini,Salvin-Großaugenfledermaus,German,false
+4666,Chiroderma salvini,Salvin's Big-eyed Bat,English,true
+4667,Chiroderma trinitatum,Kleine Großaugenfledermaus,German,false
+4667,Chiroderma trinitatum,Little Big-eyed Bat,English,true
+4668,Chiroderma villosum,Haarige Großaugenfledermaus,German,false
+4668,Chiroderma villosum,Hairy Big-eyed Bat,English,true
+12268,Lonchophylla robusta,Orange Nectar Bat,English,false
+12270,Lonchorhina aurita,Common Sword-nosed Bat,English,false
+12270,Lonchorhina aurita,Tomes's Sword-nosed Bat,English,false
+6628,Diphylla ecaudata,Hairy-legged Vampire Bat,English,false
+88149202,Lophostoma silvicolum,White-throated Round-eared Bat,English,true
+4772,Choeroniscus godmani,Godmans Langschwanz-Blumenfledermaus,German,false
+4772,Choeroniscus godmani,Godman's Long-tailed Bat,English,true
+4811,Chrotopterus auritus,Big-eared Wooly Bat,English,false
+4811,Chrotopterus auritus,Peter’s Woolly False Vampire Bat,English,false
+4811,Chrotopterus auritus,Großohr-Wollfledermaus,German,false
+4811,Chrotopterus auritus,Peters Wollgesicht-Fledermaus,German,false
+4811,Chrotopterus auritus,Woolly False Vampire Bat,English,true
+22029,Trachops cirrhosus,Fringe-lipped Bat,English,false
+20955,Sturnira luisi,Louis's Yellow-shouldered Bat,English,false
+20957,Sturnira mordax,Talamancan Yellow-shouldered Bat,English,false
+14170,Myotis keaysi,Hairy-legged Myotis,English,true
+88120245,Lichonycteris obscura,Dark Long-tongued Bat,English,true
+22840,Vampyriscus nymphaea,Striped Yellow-eared Bat,English,false
+22843,Vampyrum spectrum,Spectral Bat,English,true
+14195,Myotis riparius,Riparian Myotis,English,true
+14185,Myotis nigricans,Black Myotis,English,false
+14187,Myotis oxyotus,Montane Myotis,English,true
+18706,Pteronotus gymnonotus,Big Naked-backed Bat,English,false
+18705,Pteronotus davyi,Davy's Naked-backed Bat,English,false
+16707,Peropteryx kappleri,Greater Dog-like Bat,English,true
+16709,Peropteryx macrotis,Lesser Dog-like Bat,English,true
+13559,Mimon bennettii,Southern Golden Bat,English,false
+13559,Mimon bennettii,Golden Bat,English,true
+13649,Molossus pretiosus,Miller's Mastiff Bat,English,true
+13650,Molossus sinaloae,Sinaloan Mastiff Bat,English,false
+13648,Molossus molossus,Pallas's Mastiff Bat,English,false
+102208365,Molossus coibensis,Coiban Mastiff Bat,English,true
+1566,Anoura cultrata,Handley-Langnasenfledermaus,German,false
+1566,Anoura cultrata,Handley's Tailless Bat,English,true
+9277,Glossophaga soricina,Pallas's Long-tongued Bat,English,false
+13644,Molossus rufus,Black Mastiff Bat,English,false
+9273,Glossophaga commissarisi,Commissaris's Long-tongued Bat,English,false
+7916,Eptesicus brasiliensis,Brazilian Brown Bat,English,true
+7927,Eptesicus furinalis,Argentinian Brown Bat,English,false
+7927,Eptesicus furinalis,Argentine Brown Bat,English,true
+7928,Eptesicus fuscus,Big Brown Bat,English,true
+11350,Lasiurus ega,Southern Yellow Bat,English,true
+88151055,Lasiurus blossevillii,Southern Red Bat,English,true
+11348,Lasiurus castaneus,Tacarcuna Bat,English,false
+11348,Lasiurus castaneus,Tacarcunan Bat,English,false
+21314,Tadarida brasiliensis,Brazilian Free-tailed Bat,English,false
+21314,Tadarida brasiliensis,Mexican Free-tailed Bat,English,false
+13381,Trinycteris nicefori,Niceforo's Big-eared Bat,English,false
+13384,Glyphonycteris sylvestris,Tricolored Bat,English,false
+13384,Glyphonycteris sylvestris,Tri-colored Big-eared Bat,English,true
+13383,Micronycteris schmidtorum,Schmidts's Big-eared Bat,English,false
+13378,Micronycteris hirsuta,Hairy Big-eared Bat,English,false
+13377,Glyphonycteris daviesi,Davies's Big-eared Bat,English,false
+13377,Glyphonycteris daviesi,Graybeard Bat,English,false
+13380,Micronycteris minuta,Tiny Big-eared Bat,English,false
+13380,Micronycteris minuta,White-bellied Big-eared Bat,English,false
+1789,Bauerus dubiaquercus,Van-Gelder-Fledermaus,German,false
+1789,Bauerus dubiaquercus,Van Gelder's Bat,English,true
+13376,Lampronycteris brachyotis,Orange-throated Bat,English,false
+13376,Lampronycteris brachyotis,Yellow-throated Big-eared Bat,English,true
+3905,Carollia perspicillata,Brillenblattnase,German,false
+3905,Carollia perspicillata,Seba's Short-tailed Bat,English,true
+3906,Carollia subrufa,Grey Short-tailed Bat,English,false
+3906,Carollia subrufa,Graue Kurzschwanzblattnase,German,false
+3906,Carollia subrufa,Gray Short-tailed Bat,English,true
+17168,Phylloderma stenops,Pale-faced Bat,English,false
+17218,Phyllostomus hastatus,Greater Spear-nosed Bat,English,false
+17216,Phyllostomus discolor,Pale Spear-nosed Bat,English,false
+42394,Odocoileus virginianus,Key Deer,English,false
+42394,Odocoileus virginianus,Key Deer Toy Deer,English,false
+42394,Odocoileus virginianus,Cariacú,Spanish; Castilian,false
+42394,Odocoileus virginianus,Venado Cola Blanca,Spanish; Castilian,false
+42394,Odocoileus virginianus,White-tailed Deer,English,true
+136290,Mazama temama,Temazate,Spanish; Castilian,false
+136290,Mazama temama,Veado-mateiro,Portuguese,false
+136290,Mazama temama,Venado Cabrito,Spanish; Castilian,false
+136290,Mazama temama,Venado De Montaña,Spanish; Castilian,false
+136290,Mazama temama,Venado Temazate,Spanish; Castilian,false
+136290,Mazama temama,Central American Red Brocket,English,true
+4671,Chironectes minimus,Yapok,English,false
+4671,Chironectes minimus,Cuica de Agua,Spanish; Castilian,false
+4671,Chironectes minimus,Perrito de Agua,Spanish; Castilian,false
+4671,Chironectes minimus,Raposa de Agua,Spanish; Castilian,false
+4671,Chironectes minimus,Schwimmbeutler,German,false
+4671,Chironectes minimus,Yapó,Spanish; Castilian,false
+4671,Chironectes minimus,Yapock,French,false
+4671,Chironectes minimus,Yapok,German,false
+4671,Chironectes minimus,Water Opossum,English,true
+13296,Marmosa alstoni,Opossum-souris d´Alston,French,false
+13296,Marmosa alstoni,Alston's Woolly Mouse Opossum,English,true
+40504,Marmosa mexicana,Mexican Mouse Opossum,English,false
+40504,Marmosa mexicana,Opossum-souris Du Mexique,French,false
+3650,Caluromys derbianus,Derby’s Woolly Opossum,English,false
+3650,Caluromys derbianus,Derby-Wollbeutelratte,German,false
+3650,Caluromys derbianus,Mittelamerikanische Wollbeutelratte,German,false
+3650,Caluromys derbianus,Opossum de Derby,French,false
+3650,Caluromys derbianus,Central American Woolly Opossum,English,true
+40501,Didelphis marsupialis,Black-eared Opossum,English,false
+40501,Didelphis marsupialis,Southern Opossum,English,false
+40501,Didelphis marsupialis,Comadreja Grande,Spanish; Castilian,false
+40501,Didelphis marsupialis,Sarigue Australe,French,false
+40501,Didelphis marsupialis,Common Opossum,English,true
+40502,Didelphis virginiana,Sarigue de Virginie,French,false
+40502,Didelphis virginiana,Virginia Opossum,English,true
+40516,Philander opossum,Guaiki,English,false
+40516,Philander opossum,Comadreja De Cuatro Ojos,Spanish; Castilian,false
+40516,Philander opossum,Opossum Gris Quatre-yeux,French,false
+40516,Philander opossum,Gray Four-eyed Opossum,English,true
+40509,Metachirus nudicaudatus,Cuica Común,Spanish; Castilian,false
+40509,Metachirus nudicaudatus,Opossum brun à quatre yeux,French,false
+40509,Metachirus nudicaudatus,Brown Four-eyed Opossum,English,true
+699,Cuniculus paca,Spotted Paca,English,false
+699,Cuniculus paca,Paca,Spanish; Castilian,false
+699,Cuniculus paca,Tepezquintle,Spanish; Castilian,false
+699,Cuniculus paca,Agouti,French,true
+10259,Hoplomys gymnurus,Armored Rat,English,false
+18297,Proechimys semispinosus,Tome's Spiny Rat,English,false
+20629,Coendou mexicanus,Mexican Hairy Dwarf Porcupine,English,false
+20629,Coendou mexicanus,Mexican Tree Porcupine,English,false
+20629,Coendou mexicanus,Porc-épic Préhensile,French,false
+15544,Orthogeomys cavator,Chiriqui Pocket Gopher,English,false
+15548,Orthogeomys heterodus,Variable Pocket Gopher,English,false
+42593,Orthogeomys underwoodi,Underwood's Pocket Gopher,English,false
+96802567,Heterogeomys cherriei,Cherrie's Pocket Gopher,English,true
+10010,Heteromys oresterus,Mountain Spiny Pocket Mouse,English,false
+12076,Heteromys salvini,Salvin's Spiny Pocket Mouse,English,true
+20024,Sciurus variegatoides,Variegated Squirrel,English,false
+13409,Microsciurus alfari,Central American Dwarf Squirrel,English,false
+21260,Syntheosciurus brochus,Mountain Squirrel,English,false
+21260,Syntheosciurus brochus,Neotropical Montane Squirrel,English,false
+21260,Syntheosciurus brochus,Bangs's Mountain Squirrel,English,true
+136838,Cryptotis orophila,Central American Least Shrew,English,false
+5764,Cryptotis gracilis,Talamancan Small Eared Shrew,English,false
+5764,Cryptotis gracilis,Talamancan Small-eared Shrew,English,true
+41376,Cryptotis nigrescens,Blackish Small-eared Shrew,English,false
+15593,Nephelomys devius,Boquete Rice Rat,English,true
+15615,Transandinomys talamancae,Talamancan Rice Rat,English,false
+15588,Transandinomys bolivaris,Bolivar Rice Rat,English,false
+22576,Tylomys watsoni,Watson's Climbing Rat,English,false
+19487,Rheomys underwoodi,Underwood's Water Mouse,English,true
+19485,Rheomys raptor,Goldman's Water Mouse,English,true
+23321,Zygodontomys brevicauda,Short-tailed Cane Mouse,English,false
+15254,Oligoryzomys vegetus,Sprightly Pygmy Rice Rat,English,true
+16693,Peromyscus stirtoni,Stirton's Deer Mouse,English,true
+16681,Peromyscus mexicanus,Mexican Deer Mouse,English,true
+15143,Oecomys trinitatis,Trinidad Arboreal Rice Rat,English,false
+15143,Oecomys trinitatis,Long-furred Rice Rat,English,true
+19405,Reithrodontomys creper,Chiriqui Harvest Mouse,English,true
+19402,Reithrodontomys brevirostris,Short-nosed Harvest Mouse,English,true
+19414,Reithrodontomys paradoxus,Nicaraguan Harvest Mouse,English,true
+19415,Reithrodontomys rodriguezi,Rodriguez's Harvest Mouse,English,true
+20222,Tanyuromys aphrastus,Long-tailed Sigmodontomys,English,false
+20222,Tanyuromys aphrastus,Harris's Rice Water Rat,English,true
+20053,Scotinomys xerampelinus,Chiriqui Brown Mouse,English,false
+20053,Scotinomys xerampelinus,Long-tailed Singing Mouse,English,true
+20052,Scotinomys teguina,Alston's Brown Mouse,English,false
+20052,Scotinomys teguina,Short-tailed Singing Mouse,English,true
+6494,Dermochelys coriacea,Coffin-back,English,false
+6494,Dermochelys coriacea,Leatherback Sea Turtle,English,false
+6494,Dermochelys coriacea,Leathery Turtle,English,false
+6494,Dermochelys coriacea,Luth,English,false
+6494,Dermochelys coriacea,Trunkback Turtle,English,false
+6494,Dermochelys coriacea,Trunk Turtle,English,false
+6494,Dermochelys coriacea,Baula,Spanish; Castilian,false
+6494,Dermochelys coriacea,Canal,Spanish; Castilian,false
+6494,Dermochelys coriacea,Cardon,Spanish; Castilian,false
+6494,Dermochelys coriacea,Dorso de Cuero,Spanish; Castilian,false
+6494,Dermochelys coriacea,Galapagos,Spanish; Castilian,false
+6494,Dermochelys coriacea,Lederschildkröte,German,false
+6494,Dermochelys coriacea,Siete Lomos,Spanish; Castilian,false
+6494,Dermochelys coriacea,Siete Quillas,Spanish; Castilian,false
+6494,Dermochelys coriacea,Tartaruga-de-casco-mole,Portuguese,false
+6494,Dermochelys coriacea,Tartaruga-de-couro,Portuguese,false
+6494,Dermochelys coriacea,Tartaruga-gigante,Portuguese,false
+6494,Dermochelys coriacea,Tinglada,Spanish; Castilian,false
+6494,Dermochelys coriacea,Tinglar,Spanish; Castilian,false
+6494,Dermochelys coriacea,Tora,Spanish; Castilian,false
+6494,Dermochelys coriacea,Tortue luth,French,false
+6494,Dermochelys coriacea,Tortuga Caná,Spanish; Castilian,false
+6494,Dermochelys coriacea,Tortuga Laud,Spanish; Castilian,false
+6494,Dermochelys coriacea,سلحفاة المحيط جلدية الظهر,Arabic,false
+6494,Dermochelys coriacea,Leatherback,English,true
+41778,Tayassu pecari,Cariblanco,Spanish; Castilian,false
+41778,Tayassu pecari,Chancho de Monte,Spanish; Castilian,false
+41778,Tayassu pecari,Pécari à lèvres blanches,French,false
+41778,Tayassu pecari,Pecari de Labios Blanco,Spanish; Castilian,false
+41778,Tayassu pecari,White-lipped Peccary,English,true
+44579592,Ameiva praesignis,Amazon Racerunner,English,false
+44579592,Ameiva praesignis,Giant Ameiva,English,true
+21471,Tapirus bairdii,Central American Tapir,English,false
+21471,Tapirus bairdii,Anteburro,Spanish; Castilian,false
+21471,Tapirus bairdii,Danta,Spanish; Castilian,false
+21471,Tapirus bairdii,Dante,Spanish; Castilian,false
+21471,Tapirus bairdii,Danto,Spanish; Castilian,false
+21471,Tapirus bairdii,Macho de Monte,Spanish; Castilian,false
+21471,Tapirus bairdii,Tapir Centroamericano,Spanish; Castilian,false
+21471,Tapirus bairdii,Tapir de Baird,French,false
+21471,Tapirus bairdii,Baird's Tapir,English,true
+21209,Sylvilagus dicei,Dice's Cottontail,English,true
+41299,Sylvilagus floridanus,Florida Cottontail ,English,false
+41299,Sylvilagus floridanus,Conejo Castellano,Spanish; Castilian,false
+41299,Sylvilagus floridanus,Eastern Cottontail,English,true
+48637946,Bassaricyon gabbii,Northern Olingo,English,true
+41633,Conepatus semistriatus,Amazonian Hog-nosed Skunk,English,false
+41633,Conepatus semistriatus,Cangambá,Portuguese,false
+41633,Conepatus semistriatus,Jaritataca,Portuguese,false
+41633,Conepatus semistriatus,Mofeta,Spanish; Castilian,false
+41633,Conepatus semistriatus,Zorro Hediondo,Spanish; Castilian,false
+41633,Conepatus semistriatus,Striped Hog-nosed Skunk,English,true
+41640,Galictis vittata,Grisón,Spanish; Castilian,false
+41640,Galictis vittata,Hurón,Spanish; Castilian,false
+41640,Galictis vittata,Perro de Agua,Spanish; Castilian,false
+41640,Galictis vittata,Greater Grison,English,true
+41644,Eira barbara,Greyheaded Tayra,English,false
+41644,Eira barbara,Amingo,Spanish; Castilian,false
+41644,Eira barbara,Cabeza de Mate,Spanish; Castilian,false
+41644,Eira barbara,Gato Negro,Spanish; Castilian,false
+41644,Eira barbara,Tolomuco,Spanish; Castilian,false
+41644,Eira barbara,Tayra,English,true
+41654,Mustela frenata,Comedreja Andina,Spanish; Castilian,false
+41654,Mustela frenata,Long-tailed Weasel,English,true
+41679,Potos flavus,Chosna,Spanish; Castilian,false
+41679,Potos flavus,Cusu,Spanish; Castilian,false
+41679,Potos flavus,Martilla,Spanish; Castilian,false
+41679,Potos flavus,Mico de Noche,Spanish; Castilian,false
+41679,Potos flavus,Mico León,Spanish; Castilian,false
+41679,Potos flavus,Mono Michi,Spanish; Castilian,false
+41679,Potos flavus,Perro de Monte,Spanish; Castilian,false
+41679,Potos flavus,Kinkajou,English,true
+41683,Nasua narica,Coatimundi,English,false
+41683,Nasua narica,Cozumbo,Spanish; Castilian,false
+41683,Nasua narica,Pizote,Spanish; Castilian,false
+41683,Nasua narica,White-nosed Coati,English,true
+41685,Procyon cancrivorus,Cangrejera,Spanish; Castilian,false
+41685,Procyon cancrivorus,Guaxinim,Portuguese,false
+41685,Procyon cancrivorus,Mão-pelada,Portuguese,false
+41685,Procyon cancrivorus,Mapache Lavador,Spanish; Castilian,false
+41685,Procyon cancrivorus,Mayuato,Spanish; Castilian,false
+41685,Procyon cancrivorus,Crab-eating Raccoon,English,true
+41686,Procyon lotor,Mapache,Spanish; Castilian,false
+41686,Procyon lotor,Mapachín,Spanish; Castilian,false
+41686,Procyon lotor,Raton laveur,French,false
+41686,Procyon lotor,Zorra Manglera,Spanish; Castilian,false
+41686,Procyon lotor,Northern Raccoon,English,true
+136636,Spilogale angustifrons,Southern Spotted Skunk,English,true
+13655,Neomonachus tropicalis,West Indian Monk Seal,English,false
+13655,Neomonachus tropicalis,West Indian Seal,English,false
+13655,Neomonachus tropicalis,Foca Fraile del Caribe,Spanish; Castilian,false
+13655,Neomonachus tropicalis,Caribbean Monk Seal,English,true
+41666,Zalophus californianus,Kalifornischer Seelöwe,German,false
+41666,Zalophus californianus,Lion de mer de Californie,French,false
+41666,Zalophus californianus,lobo común,Spanish; Castilian,false
+41666,Zalophus californianus,Lobo marino de California,Spanish; Castilian,false
+41666,Zalophus californianus,marino de California,Spanish; Castilian,false
+41666,Zalophus californianus,Otarie de Californie,French,false
+41666,Zalophus californianus,Californian Sea Lion,English,true
+41668,Zalophus wollebaeki,Galápagos Seelöwe,German,false
+41668,Zalophus wollebaeki,Leon Marino de Galápagos,Spanish; Castilian,false
+41668,Zalophus wollebaeki,Lobo de un Pelo de Galápagos,Spanish; Castilian,false
+41668,Zalophus wollebaeki,Lobo Marino de Galápagos,Spanish; Castilian,false
+41668,Zalophus wollebaeki,Galápagos Sea Lion,English,true
+45959367,Reithrodontomys musseri,Small Harvest Mouse,English,true
+22780,Urocyon cinereoargenteus,Gray Fox,English,false
+22780,Urocyon cinereoargenteus,Tree Fox,English,false
+22780,Urocyon cinereoargenteus,Gato Cervan,Spanish; Castilian,false
+22780,Urocyon cinereoargenteus,Gato de Monte,Spanish; Castilian,false
+22780,Urocyon cinereoargenteus,Zorra Gris,Spanish; Castilian,false
+22780,Urocyon cinereoargenteus,Zorro Plateado,Spanish; Castilian,false
+22780,Urocyon cinereoargenteus,Grey Fox,English,true
+3038,Bradypus variegatus,Bolivian Three-toed Sloth,English,false
+3038,Bradypus variegatus,Brown-throated Three-toed Sloth,English,false
+3038,Bradypus variegatus,Ai,Portuguese,false
+3038,Bradypus variegatus,Aï De Bolivie,French,false
+3038,Bradypus variegatus,Bicho-Preguiça,Portuguese,false
+3038,Bradypus variegatus,Bradype,French,false
+3038,Bradypus variegatus,Braunkehl-Faultier,German,false
+3038,Bradypus variegatus,Guasa,Spanish; Castilian,false
+3038,Bradypus variegatus,Paresseux Tridactyle,French,false
+3038,Bradypus variegatus,Paresseux Tridactyle De Bolivie,French,false
+3038,Bradypus variegatus,Perezoso Bayo,Spanish; Castilian,false
+3038,Bradypus variegatus,Perezoso Grisaceo,Spanish; Castilian,false
+3038,Bradypus variegatus,Perezoso Tridáctilo,Spanish; Castilian,false
+3038,Bradypus variegatus,Preguiça,Portuguese,false
+3038,Bradypus variegatus,Preguiça-Comum,Portuguese,false
+3038,Bradypus variegatus,Preguiça de Óculos,Portuguese,false
+3038,Bradypus variegatus,Brown-throated Sloth,English,true
+3412,Cabassous centralis,Armadillo Cola de Trapo,Spanish; Castilian,false
+3412,Cabassous centralis,Armadillo de Cola Desnuda de Centro América,Spanish; Castilian,false
+3412,Cabassous centralis,Mittelamerikanisches Nacktschwanz-Gürteltier,German,false
+3412,Cabassous centralis,Nacktschwanz-Gürteltier,German,false
+3412,Cabassous centralis,Nördliches Nacktschwanz-Gürteltier,German,false
+3412,Cabassous centralis,Tatou,French,false
+3412,Cabassous centralis,Tatú de Rabo Molle,Spanish; Castilian,false
+3412,Cabassous centralis,Northern Naked-tailed Armadillo,English,true
+4778,Choloepus hoffmanni,Hoffmann-Zweifingerfaultier,German,false
+4778,Choloepus hoffmanni,Hoffmann-Zweifinger-Faultier,German,false
+4778,Choloepus hoffmanni,Perezoso,Spanish; Castilian,false
+4778,Choloepus hoffmanni,Perico Ligero,Spanish; Castilian,false
+4778,Choloepus hoffmanni,Unau,Spanish; Castilian,false
+4778,Choloepus hoffmanni,Unau D'Hoffmann,French,false
+4778,Choloepus hoffmanni,Hoffmann's Two-toed Sloth,English,true
+6019,Cyclopes didactylus,Pygmy Anteater,English,false
+6019,Cyclopes didactylus,Inti Pelejo,Spanish; Castilian,false
+6019,Cyclopes didactylus,Serafín,Spanish; Castilian,false
+6019,Cyclopes didactylus,Serafín del Platanar,Spanish; Castilian,false
+6019,Cyclopes didactylus,Tamandua-Cigarra,Portuguese,false
+6019,Cyclopes didactylus,Tamanduaí,Portuguese,false
+6019,Cyclopes didactylus,Silky Anteater,English,true
+6290,Dasypus novemcinctus,Common Long-nosed Armadillo,English,false
+6290,Dasypus novemcinctus,Cachicamo,Spanish; Castilian,false
+6290,Dasypus novemcinctus,Neunbinden-Gürteltier,German,false
+6290,Dasypus novemcinctus,Tatú,Spanish; Castilian,false
+6290,Dasypus novemcinctus,Tatu-Galinha,Portuguese,false
+6290,Dasypus novemcinctus,Nine-banded Armadillo,English,true
+14224,Myrmecophaga tridactyla,Grand Fourmilier,French,false
+14224,Myrmecophaga tridactyla,Hormiguero Gigante,Spanish; Castilian,false
+14224,Myrmecophaga tridactyla,Oso Caballo,Spanish; Castilian,false
+14224,Myrmecophaga tridactyla,Oso Hormiguero,Spanish; Castilian,false
+14224,Myrmecophaga tridactyla,Oso Palmero,Spanish; Castilian,false
+14224,Myrmecophaga tridactyla,Tamanduá Bandeira,Portuguese,false
+14224,Myrmecophaga tridactyla,Tamanoir,French,false
+14224,Myrmecophaga tridactyla,Giant Anteater,English,true
+21349,Tamandua mexicana,Oso Hormiguero,Spanish; Castilian,false
+21349,Tamandua mexicana,Oso Melero,Spanish; Castilian,false
+21349,Tamandua mexicana,Oso Mielero,Spanish; Castilian,false
+21349,Tamandua mexicana,Tamandua,Spanish; Castilian,false
+21349,Tamandua mexicana,Tamandua Mexicana,Portuguese,false
+21349,Tamandua mexicana,Northern Tamandua,English,true
+2476,Balaenoptera edeni,Eden's Whale,English,false
+2476,Balaenoptera edeni,Tropical Whale,English,false
+2476,Balaenoptera edeni,ニタリクジラ,Japanese,false
+2476,Balaenoptera edeni,Baleinoptère de Bryde,French,false
+2476,Balaenoptera edeni,Ballena de Bryde,Spanish; Castilian,false
+2476,Balaenoptera edeni,Brydewal,German,false
+2476,Balaenoptera edeni,Rorqual de Bryde,French,false
+2476,Balaenoptera edeni,Rorqual d'Eden,French,false
+2476,Balaenoptera edeni,Rorqual Tropical,French,false
+2476,Balaenoptera edeni,Bryde's Whale,English,true
+8551,Feresa attenuata,Epaulard pygmée,French,false
+8551,Feresa attenuata,Orca Pigmeo,Spanish; Castilian,false
+8551,Feresa attenuata,Orque pygmée,French,false
+8551,Feresa attenuata,Pygmy Killer Whale,English,true
+9249,Globicephala macrorhynchus,Blackfish,English,false
+9249,Globicephala macrorhynchus,Pacific Pilot Whale,English,false
+9249,Globicephala macrorhynchus,Caldrón Negro,Spanish; Castilian,false
+9249,Globicephala macrorhynchus,Globicéphale tropical,French,false
+9249,Globicephala macrorhynchus,Short-finned Pilot Whale,English,true
+9461,Grampus griseus,Grey Dolphin,English,false
+9461,Grampus griseus,calderón gris,Spanish; Castilian,false
+9461,Grampus griseus,Dauphin de Risso,French,false
+9461,Grampus griseus,Delfín de Risso,Spanish; Castilian,false
+9461,Grampus griseus,delfin griú,Maltese,false
+9461,Grampus griseus,Fabo Calderón,Spanish; Castilian,false
+9461,Grampus griseus,glavati dupin,Croatian,false
+9461,Grampus griseus,grampo,Portuguese,false
+9461,Grampus griseus,grampus,Turkish,false
+9461,Grampus griseus,Grampus,French,false
+9461,Grampus griseus,غرامبوس   (ghrambous),Arabic,false
+9461,Grampus griseus,גרמפוס   (grampus),Hebrew,false
+9461,Grampus griseus,σταχτοδέλφινο (stachtodélfino),"Greek, Modern (1453-)",false
+9461,Grampus griseus,Risso's Dolphin,English,true
+11047,Kogia breviceps,Cachalote Cabeza Chica,Spanish; Castilian,false
+11047,Kogia breviceps,Cachalote Pigmeo,Spanish; Castilian,false
+11047,Kogia breviceps,Cachalot pygmée,French,false
+11047,Kogia breviceps,Pygmy Sperm Whale,English,true
+11048,Kogia sima,Dwarf Sperm Whale,English,false
+11048,Kogia sima,Cachalote Enano,Spanish; Castilian,false
+11048,Kogia sima,Cachalote Enano,Spanish; Castilian,false
+11048,Kogia sima,Cachalot nain,French,false
+11048,Kogia sima,Cachalot nain,French,false
+11048,Kogia sima,Dwarf Sperm Whale,English,true
+11140,Lagenodelphis hosei,Sarawak Dolphin,English,false
+11140,Lagenodelphis hosei,Dauphin de Fraser,French,false
+11140,Lagenodelphis hosei,Delfín de Borneo,Spanish; Castilian,false
+11140,Lagenodelphis hosei,Fraser's Dolphin,English,true
+13006,Megaptera novaeangliae,Baleia jubarte,Portuguese,false
+13006,Megaptera novaeangliae,Baleine à bosse,French,false
+13006,Megaptera novaeangliae,Ballena Jorobada,Spanish; Castilian,false
+13006,Megaptera novaeangliae,Gubarte,Spanish; Castilian,false
+13006,Megaptera novaeangliae,Jubarte,French,false
+13006,Megaptera novaeangliae,Mégaptère,French,false
+13006,Megaptera novaeangliae,Yubarta,Spanish; Castilian,false
+13006,Megaptera novaeangliae,Горбатый кит,Russian,false
+13006,Megaptera novaeangliae,Humpback Whale,English,true
+13244,Mesoplodon densirostris,Blainville's Beaked Whale,English,false
+13244,Mesoplodon densirostris,Ballena de Pico de Blainville,Spanish; Castilian,false
+13244,Mesoplodon densirostris,Ballena de Pico de Blainville,Spanish; Castilian,false
+13244,Mesoplodon densirostris,Kobuha kujira,Japanese,false
+13244,Mesoplodon densirostris,Mésoplodon de Blainville,French,false
+13244,Mesoplodon densirostris,Mésoplodon de Blainville,French,false
+13244,Mesoplodon densirostris,Zifio de Blainville,Spanish; Castilian,false
+13244,Mesoplodon densirostris,Zifio de Blainville,Spanish; Castilian,false
+13244,Mesoplodon densirostris,Blainville's Beaked Whale,English,true
+13245,Mesoplodon europaeus,Gervais' Beaked Whale,English,false
+13245,Mesoplodon europaeus,Gulf Stream Beaked Whale,English,false
+13245,Mesoplodon europaeus,Gulf Stream Beaked Whale,English,false
+13245,Mesoplodon europaeus,Ballena De Pico De Gervais,Spanish; Castilian,false
+13245,Mesoplodon europaeus,Ballena De Pico De Gervais,Spanish; Castilian,false
+13245,Mesoplodon europaeus,Ballena De Pico De Gervais,Spanish; Castilian,false
+13245,Mesoplodon europaeus,Mésoplodon De Gervais,French,false
+13245,Mesoplodon europaeus,Mésoplodon De Gervais,French,false
+13245,Mesoplodon europaeus,Zifio De Gervais,Spanish; Castilian,false
+13245,Mesoplodon europaeus,Zifio De Gervais,Spanish; Castilian,false
+13245,Mesoplodon europaeus,Zifio De Gervais,Spanish; Castilian,false
+13245,Mesoplodon europaeus,Gervais' Beaked Whale,English,true
+13251,Mesoplodon peruvianus,Lesser Beaked Whale,English,false
+13251,Mesoplodon peruvianus,Peruvian Beaked Whale,English,false
+13251,Mesoplodon peruvianus,Mésoplodon Pygmée,French,false
+13251,Mesoplodon peruvianus,Pygmy Beaked Whale,English,true
+15421,Orcinus orca,Orca,English,false
+15421,Orcinus orca,Epaulard,French,false
+15421,Orcinus orca,Espadarte,Spanish; Castilian,false
+15421,Orcinus orca,Orca,Spanish; Castilian,false
+15421,Orcinus orca,Orque,French,false
+15421,Orcinus orca,Killer Whale,English,true
+16564,Peponocephala electra,Electra Dolphin,English,false
+16564,Peponocephala electra,Calderón Pequeño,Spanish; Castilian,false
+16564,Peponocephala electra,Dauphin d'Electre,French,false
+16564,Peponocephala electra,Electra,Spanish; Castilian,false
+16564,Peponocephala electra,Péponocéphale,French,false
+16564,Peponocephala electra,Melon-headed Whale,English,true
+20729,Stenella attenuata,Dauphin tacheté Pantropical,French,false
+20729,Stenella attenuata,Delfín Manchado,Spanish; Castilian,false
+20729,Stenella attenuata,Delfín Pintado,Spanish; Castilian,false
+20729,Stenella attenuata,Pantropical Spotted Dolphin,English,true
+20730,Stenella clymene,Clymene Dolphin ,English,false
+20730,Stenella clymene,Short-beaked Spinner Dolphin,English,false
+20730,Stenella clymene,Short-beaked Spinner Dolphin ,English,false
+20730,Stenella clymene,Dauphin De Clymène,French,false
+20730,Stenella clymene,Dauphin De Clymène ,French,false
+20730,Stenella clymene,Delfín Clymene,Spanish; Castilian,false
+20730,Stenella clymene,Delfín Clymene ,Spanish; Castilian,false
+20730,Stenella clymene,Clymene Dolphin,English,true
+20731,Stenella coeruleoalba,Euphrosyne Dolphin,English,false
+20731,Stenella coeruleoalba,Cizgili Vunus,Turkish,false
+20731,Stenella coeruleoalba,Dauphin bleu et blanc,French,false
+20731,Stenella coeruleoalba,Dauphin rayé,French,false
+20731,Stenella coeruleoalba,Delfin Azrak wa Abyad,Arabic,false
+20731,Stenella coeruleoalba,Delfín Blanco y Azul,Spanish; Castilian,false
+20731,Stenella coeruleoalba,Delfín Listado,Spanish; Castilian,false
+20731,Stenella coeruleoalba,Golfinho Riscado,Portuguese,false
+20731,Stenella coeruleoalba,Prugasti Dupin,Croatian,false
+20731,Stenella coeruleoalba,Stenella Mefuspeset,Hebrew,false
+20731,Stenella coeruleoalba,Stenella Striata,Italian,false
+20731,Stenella coeruleoalba,Zónodelfino,"Greek, Modern (1453-)",false
+20731,Stenella coeruleoalba,Striped Dolphin,English,true
+20732,Stenella frontalis,Bridled Dolphin,English,false
+20732,Stenella frontalis,Dauphin Tacheté De L'Atlantique,French,false
+20732,Stenella frontalis,Delfín Manchado Del Atlántico,Spanish; Castilian,false
+20732,Stenella frontalis,Delfín Pintado,Spanish; Castilian,false
+20732,Stenella frontalis,Atlantic Spotted Dolphin,English,true
+23211,Ziphius cavirostris,Cuvier's Beaked Whale,English,false
+23211,Ziphius cavirostris,Goose-beaked Whale,English,false
+23211,Ziphius cavirostris,Goose-beaked Whale,English,false
+23211,Ziphius cavirostris,Goosebeak Whale,English,false
+23211,Ziphius cavirostris,Goosebeak Whale,English,false
+23211,Ziphius cavirostris,Akabou,Japanese,false
+23211,Ziphius cavirostris,Baleine de Cuvier,French,false
+23211,Ziphius cavirostris,Baleine de Cuvier,French,false
+23211,Ziphius cavirostris,Balene Me Sqep,Albanian,false
+23211,Ziphius cavirostris,Balene Me Sqep,Serbian,false
+23211,Ziphius cavirostris,Baliena Ta’ Kuvjer,Maltese,false
+23211,Ziphius cavirostris,Baliena Ta’ Kuvjer,Maltese,false
+23211,Ziphius cavirostris,Ballena de Cuvier,Spanish; Castilian,false
+23211,Ziphius cavirostris,Ballena de Cuvier,Spanish; Castilian,false
+23211,Ziphius cavirostris,Cuvierov Kit,Croatian,false
+23211,Ziphius cavirostris,Cuvierov Kit,Croatian,false
+23211,Ziphius cavirostris,Kuvier Balinasi,Turkish,false
+23211,Ziphius cavirostris,Kuvier Balinasi,Turkish,false
+23211,Ziphius cavirostris,Nastoyashchii kiyuvoryl,Russian,false
+23211,Ziphius cavirostris,Zifio,Italian,false
+23211,Ziphius cavirostris,Zifio,Portuguese,false
+23211,Ziphius cavirostris,Zifio,Portuguese,false
+23211,Ziphius cavirostris,Ziphio de Cuvier,Spanish; Castilian,false
+23211,Ziphius cavirostris,Ziphio de Cuvier,Spanish; Castilian,false
+23211,Ziphius cavirostris,Ziphius,French,false
+23211,Ziphius cavirostris,Ziphius,French,false
+23211,Ziphius cavirostris,زيفيوس (Zifius),Arabic,false
+23211,Ziphius cavirostris,زيفيوس (Zifius),Arabic,false
+23211,Ziphius cavirostris,וס חלול- חרטום (Zifyus Chalul Chartom),Hebrew,false
+23211,Ziphius cavirostris,זיפיוס חלול- חרטום (Zifyus Chalul Chartom),Hebrew,false
+23211,Ziphius cavirostris,ζιφιός (Zifiós),"Greek, Modern (1453-)",false
+23211,Ziphius cavirostris,ζιφιός (Zifiós),"Greek, Modern (1453-)",false
+23211,Ziphius cavirostris,Cuvier's Beaked Whale,English,true
+9948,Herpailurus yagouaroundi,Eyra Cat,English,false
+9948,Herpailurus yagouaroundi,Gato Colorado,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Gato Moro,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Gato-mourisco,Portuguese,false
+9948,Herpailurus yagouaroundi,Gato-vermelho,Portuguese,false
+9948,Herpailurus yagouaroundi,Jaguarundi,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,León Brenero,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Leoncillo,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Onza,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Tigrillo,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Yaguarundi,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Yaguarundí,Spanish; Castilian,false
+9948,Herpailurus yagouaroundi,Jaguarundi,English,true
+54012637,Leopardus tigrinus,Chat tigre du nord,French,false
+54012637,Leopardus tigrinus,Gato-do-mato,Portuguese,false
+54012637,Leopardus tigrinus,Gato-maracajá,Portuguese,false
+54012637,Leopardus tigrinus,Gato Tigre,Spanish; Castilian,false
+54012637,Leopardus tigrinus,Maracajá-í,Portuguese,false
+54012637,Leopardus tigrinus,Pintadinho,Portuguese,false
+54012637,Leopardus tigrinus,Tigrillo,Spanish; Castilian,false
+54012637,Leopardus tigrinus,Tirica,Spanish; Castilian,false
+54012637,Leopardus tigrinus,Northern Tiger Cat,English,true
+11511,Leopardus wiedii,Tree Ocelot,English,false
+11511,Leopardus wiedii,Caucel,Spanish; Castilian,false
+11511,Leopardus wiedii,Gato Montés,Spanish; Castilian,false
+11511,Leopardus wiedii,Gato Pintado,Spanish; Castilian,false
+11511,Leopardus wiedii,Tigrillo,Spanish; Castilian,false
+11511,Leopardus wiedii,Margay,English,true
+50927240,Bolitoglossa splendida,Splendid Web-footed Salamander,English,true
+50927460,Nototriton matama,Matama Moss Salamander,English,true
+51061256,Oedipina nimaso,Nimaso Worm Salamander,English,true
+54611,Incilius coccifer,Southern Round-gland Toad,English,false
+54611,Incilius coccifer,Southern Roundgland Toad,English,true
+54695,Incilius luetkenii,Yellow Toad,English,true
+55470,Dendropsophus ebraccatus,Hourglass Treefrog,English,true
+55541,Tlalocohyla loquax,Loquacious Treefrog,English,false
+55541,Tlalocohyla loquax,Mahogany Treefrog,English,true
+55997,Scinax staufferi,Stauffer's Long-nosed Treefrog,English,false
+55997,Scinax staufferi,Stauffer's Longnosed Treefrog,English,false
+55997,Scinax staufferi,Stauffer's Treefrog,English,true
+57144,Leptodactylus melanonotus,Black-backed Frog,English,false
+57144,Leptodactylus melanonotus,Black Jungle-Frog,English,false
+57144,Leptodactylus melanonotus,Fringe-toed Foamfrog,English,false
+57144,Leptodactylus melanonotus,Mexican River Frog,English,false
+57144,Leptodactylus melanonotus,Sabinal Frog,English,true
+57272,Engystomops pustulosus,Túngara Frog,English,false
+57272,Engystomops pustulosus,Sapito de Pustulas,Spanish; Castilian,false
+57272,Engystomops pustulosus,Tungara,Spanish; Castilian,false
+57272,Engystomops pustulosus,Tungara Frog,English,true
+57832,Hypopachus variolosus,Sheep Frog,English,false
+57832,Hypopachus variolosus,Mexican Narrow-mouthed Toad,English,true
+58565,Lithobates catesbeianus,Bullfrog,English,false
+58565,Lithobates catesbeianus,Common Bullfrog,English,false
+58565,Lithobates catesbeianus,Grenouille-taureau,French,false
+58565,Lithobates catesbeianus,Rana Toro,Spanish; Castilian,false
+58565,Lithobates catesbeianus,Rana Toro,Italian,false
+58565,Lithobates catesbeianus,Ushigaeru,Japanese,false
+58565,Lithobates catesbeianus,American Bullfrog,English,true
+58599,Lithobates forreri,Forrer's Leopard Frog,English,false
+58599,Lithobates forreri,Forrer's Grass Frog,English,true
+58744,Lithobates vaillanti,Common Marsh-Frog,English,false
+58744,Lithobates vaillanti,Vaillant's Frog,English,true
+59040,Rhinophrynus dorsalis,Cone-nosed Frog,English,false
+59040,Rhinophrynus dorsalis,Mexican Burrowing Toad,English,false
+59040,Rhinophrynus dorsalis,Middle American Burrowing Toad,English,false
+59040,Rhinophrynus dorsalis,Rhinophryne,English,false
+59040,Rhinophrynus dorsalis,Sapo Borracho,Spanish; Castilian,false
+59040,Rhinophrynus dorsalis,Burrowing Toad,English,true
+54498,Atelopus chiriquiensis,Lewis' Stubfoot Toad,English,false
+54498,Atelopus chiriquiensis,Rana Arlequín de Chiriqui,Spanish; Castilian,false
+54498,Atelopus chiriquiensis,Chiriqui Harlequin Frog,English,true
+54614,Incilius coniferus,Evergreen Toad,English,true
+54635,Incilius fastidiosus,Pico Blanco Toad,English,true
+54803,Incilius epioticus,Cerro Utyum Toad,English,true
+78163669,Espadarana prosoblepon,Emerald Glassfrog,English,false
+78163669,Espadarana prosoblepon,Ranita De Cristal,Spanish; Castilian,false
+78163669,Espadarana prosoblepon,Nicaragua Giant Glass Frog,English,true
+54944,Sachatamia albomaculata,Ranita de Cristal,Spanish; Castilian,false
+54944,Sachatamia albomaculata,White-spotted Cochran Frog,English,true
+54996,Teratohyla spinosa,Spiny Cochran Frog,English,true
+55323729,Hyalinobatrachium colymbiphyllum,Plantation Glass Frog,English,true
+55082,Silverstoneia flotator,Rainforest Rocket Frog,English,true
+55155,Allobates talamancae,Rana Dardo de Talamanca,Spanish; Castilian,false
+55155,Allobates talamancae,Talamanca Rocket Frog,English,true
+55314,Duellmanohyla uranochroa,Costa Rica Brook Frog,English,true
+55390,Isthmohyla angustilineata,Narrow-lined Treefrog,English,true
+55462,Isthmohyla debilis,Isla Bonita Treefrog,English,true
+55529,Isthmohyla lancasteri,Lancaster's Treefrog,English,true
+55561,Ecnomiohyla miliaria,Cope's Brown Treefrog,English,true
+55598,Dendropsophus phlebodes,San Carlos Treefrog,English,true
+55616,Isthmohyla pseudopuma,Gunther's Costa Rican Treefrog,English,true
+55636,Boana rufitela,Ranita Mano Roja,Spanish; Castilian,false
+55636,Boana rufitela,Canal Zone Treefrog,English,true
+55675,Isthmohyla tica,Starrett's Treefrog,English,true
+55937,Scinax boulengeri,Boulenger's Snouted Treefrog,English,true
+55952,Scinax elaeochroa,Sipurio Snouted Treefrog,English,true
+56008,Smilisca phaeota,Central American Smilisca,English,false
+56008,Smilisca phaeota,New Granada Cross-banded Treefrog,English,true
+56011,Smilisca sordida,Veragua Cross-banded Treefrog,English,true
+56535,Pristimantis cruentus,Chiriqui Robber Frog,English,true
+56577,Craugastor emcelae,Rio Claro Robber Frog,English,true
+88298752,Craugastor fitzingeri,Fitzinger's Robber Frog,English,true
+56623,Craugastor gollmeri,Evergreen Robber Frog,English,true
+56658,Diasporus hylaeformis,Pico Blanco Robber Frog,English,false
+56658,Diasporus hylaeformis,Montane Dink Frog,English,true
+56757,Craugastor melanostictus,Black-lined Robber Frog,English,true
+56828,Pristimantis pardalis,Leopard Robber Frog,English,true
+56901,Craugastor ranoides,Rana Selvática de las Quebradas,Spanish; Castilian,true
+56916,Pristimantis ridens,Rio San Juan Robber Frog,English,true
+56992,Craugastor talamancae,Almirante Robber Frog,English,true
+57158,Leptodactylus poecilochilus,Turbo White-lipped Frog,English,true
+58746,Lithobates vibicarius,Green-eyed Frog,English,false
+58746,Lithobates vibicarius,Rancho Redondo Frog,English,true
+59139,Bolitoglossa anthracina,Coal Black Salamander,English,true
+59177,Bolitoglossa marmorea,Crater Salamander,English,true
+59200,Bolitoglossa robusta,Ringtail Salamander,English,false
+59200,Bolitoglossa robusta,Robust Mushroomtongue Salamander,English,true
+59205,Bolitoglossa schizodactyla,Cocle Mushroomtongue Salamander,English,true
+59305,Oedipina alfaroi,Limon Worm Salamander,English,true
+59309,Oedipina collaris,Salamandra Lombriz de Collar,Spanish; Castilian,false
+59309,Oedipina collaris,Collared Worm Salamander,English,true
+175514743,Oedipina cyclocauda,Salamandra Lombriz,Spanish; Castilian,false
+175514743,Oedipina cyclocauda,Costa Rica Worm Salamander,English,true
+59315,Oedipina grandis,Cerro Pando Worm Salamander,English,true
+59533,Caecilia volcani,Cocle Caecilian,English,true
+59548,Dermophis parviceps,La Loma Caecilian,English,true
+59562,Gymnopis multiplicata,Varagua Caecilian,English,true
+136079,Leptodactylus savagei,Rana de Dedos Delgados de Savage,Spanish; Castilian,false
+136079,Leptodactylus savagei,Rana Grande de la Selva,Spanish; Castilian,false
+136079,Leptodactylus savagei,Savage's Thin-toed Frog,English,true
+3172,Incilius periglenes,Alajuela Toad,English,false
+3172,Incilius periglenes,Monte Verde Golden Toad,English,false
+3172,Incilius periglenes,Monte Verde Toad,English,false
+3172,Incilius periglenes,Orange Toad,English,false
+3172,Incilius periglenes,Sapo Dorado,Spanish; Castilian,false
+3172,Incilius periglenes,Golden Toad,English,true
+54549,Atelopus senex,Wizened Harlequin Frog,English,false
+54549,Atelopus senex,Pass Stubfoot Toad,English,true
+54664,Incilius holdridgei,Holdridge's Toad,English,true
+54705,Incilius melanochlorus,Wet Forest Toad,English,false
+54705,Incilius melanochlorus,Dark Green Toad,English,true
+55037,Hyalinobatrachium vireovittatum,Ranita de Cristal,Spanish; Castilian,false
+55037,Hyalinobatrachium vireovittatum,Starrett's Glass Frog,English,true
+55294,Agalychnis saltator,Misfit Leaf Frog,English,true
+55603,Isthmohyla pictipes,Pico Blanco Treefrog,English,true
+55697,Isthmohyla xanthosticta,South Fork Treefrog,English,true
+56009,Smilisca puma,Tawny Smilisca,English,false
+56009,Smilisca puma,Rana Arbórea Dormilona,Spanish; Castilian,false
+56009,Smilisca puma,Nicaragua Cross-banded Treefrog,English,true
+56414,Craugastor andi,Rana De Hojarasca,Spanish; Castilian,false
+56414,Craugastor andi,Atlantic Robber Frog,English,true
+56418,Craugastor angelicus,Rana De Hojarasca,Spanish; Castilian,false
+56418,Craugastor angelicus,Angel Robber Frog,English,true
+56540,Craugastor cuaquero,Puntarenas Robber Frog,English,true
+56588,Craugastor escoces,Scott's Flesh-bellied Frog,English,false
+56588,Craugastor escoces,Heredia Robber Frog,English,true
+56603,Craugastor fleischmanni,Fleischmann's Robber Frog,English,true
+56766,Craugastor mimus,Tilaran Robber Frog,English,true
+56847,Craugastor persimilis,Similar Flesh-bellied Frog,English,true
+56853,Craugastor phasma,Ghost Flesh-bellied Frog,English,true
+56902,Craugastor rayo,Sabana Robber Frog,English,true
+59138,Bolitoglossa alvaradoi,Moravia de Chirripo Salamander,English,true
+59145,Bolitoglossa cerroensis,Millville Mushroomtongue Salamander,English,true
+59159,Bolitoglossa epimela,Tapanti Mushroomtongue Salamander,English,true
+59164,Bolitoglossa gracilis,Rio Quiri Salamander,English,true
+59186,Bolitoglossa nigrescens,Black Web-fotted Salamander,English,true
+59208,Bolitoglossa sooyorum,Cordillera Talamanca Salamander,English,true
+59212,Bolitoglossa subpalmata,La Palma Salamander,English,true
+59294,Nototriton gamezi,Monteverde Moss Salamander,English,true
+59299,Nototriton picadoi,La Estrella Salamander,English,true
+59300,Nototriton richardi,Richard's Salamander,English,true
+59307,Oedipina altura,Cartago Worm Salamander,English,true
+59308,Oedipina carablanca,Los Diamantes Worm Salamander,English,true
+59320,Oedipina paucidentata,El Empalme Worm Salamander,English,true
+59321,Oedipina poelzi,Quarry Worm Salamander,English,true
+59584,Oscaecilia osae,Airstrip Caecilia,English,true
+61899,Bolitoglossa obscura,Tapantí Giant Salamander,English,false
+61901,Bolitoglossa sombra,Shadowy Web-footed Salamander,English,true
+136005,Bolitoglossa tica,Tico Salamander,English,true
+18435628,Bolitoglossa indio,Salamandra del Río Indio,Spanish; Castilian,true
+174480,Ctenosaura similis,Black Iguana,English,false
+174480,Ctenosaura similis,Black Spiny-tailed Iguana,English,false
+174480,Ctenosaura similis,Iguana Negra,Spanish; Castilian,false
+174480,Ctenosaura similis,Schwarzer Leguan,German,false
+174480,Ctenosaura similis,Common Spiny-tailed Iguana,English,true
+89497686,Dasyprocta punctata,Agouti Ponctué,French,false
+89497686,Dasyprocta punctata,Agoutí Rojizo,Spanish; Castilian,false
+89497686,Dasyprocta punctata,Central American Agouti,English,true
+190631,Senticolis triaspis,Green Ratsnake,English,false
+190631,Senticolis triaspis,Green Rat Snake,English,true
+55455,Hyloscirtus colymba,La Loma Treefrog,English,true
+85854383,Leptodactylus insularum,San Miguel Island Frog,English,true
+22693178,Numenius phaeopus,Courlis corlieu,French,false
+22693178,Numenius phaeopus, كروان الغيط الصغير,Arabic,false
+22693178,Numenius phaeopus,Whimbrel,English,true
+22693468,Calidris pugnax,Chevalier combattant,French,false
+22693468,Calidris pugnax, النفاش المشاكس,Arabic,false
+22693468,Calidris pugnax,Ruff,English,true
+22693369,Calidris alba,Bécasseau sanderling,French,false
+22693369,Calidris alba,المدروان,Arabic,false
+22693369,Calidris alba,Sanderling,English,true
+22693247,Tringa glareola,Chevalier sylvain,French,false
+22693247,Tringa glareola,Wood Sandpiper,English,true
+87491157,Sylvilagus gabbi,Gabb's Cottontail,English,true
+78496268,Ecnomiohyla bailarina,Ballerina Fringe-limbed Frog,English,false
+78496268,Ecnomiohyla bailarina,Golden-eyed Fringe-limbed Treefrog,English,true
+88109511,Anoura geoffroyi,Geoffroys Schwanzlose Fledermaus,German,false
+88109511,Anoura geoffroyi,Geoffroy's Tailless Bat,English,true
+88110411,Carollia castanea,Kastanienbraune Kurzschwanzblattnase,German,false
+88110411,Carollia castanea,Chestnut Short-tailed Bat,English,true
+88159886,Platyrrhinus helleri,Heller's Broad-nosed Bat,English,true
+13560,Gardnerycteris crenulatum,Striped Hairy-nosed Bat,English,true
+22678154,Nothocercus bonapartei,Highland Tinamou,English,true
+22678191,Crypturellus boucardi,Slaty-breasted Tinamou,English,true
+22678308,Ortalis cinereiceps,Gray-headed Chachalaca,English,false
+22678308,Ortalis cinereiceps,Grey-headed Chachalaca,English,true
+22678376,Penelope purpurascens,Crested Guan,English,true
+22679586,Dendrortyx leucophrys,Buffy-crowned Wood Partridge,English,false
+22679586,Dendrortyx leucophrys,Buffy-crowned Wood-Partridge,English,false
+22679586,Dendrortyx leucophrys,Buffy-crowned Wood-partridge,English,true
+22679630,Odontophorus gujanensis,Marbled Wood Quail,English,false
+22679630,Odontophorus gujanensis,Marbled Wood-Quail,English,false
+22679630,Odontophorus gujanensis,Marbled Wood-quail,English,true
+22679640,Odontophorus melanotis,Black-eared Wood Quail,English,false
+22679640,Odontophorus melanotis,Black-eared Wood-Quail,English,false
+22679640,Odontophorus melanotis,Black-eared Wood-quail,English,true
+22679645,Odontophorus erythrops,Rufous-fronted Wood Quail,English,false
+22679645,Odontophorus erythrops,Rufous-fronted Wood-Quail,English,false
+22679645,Odontophorus erythrops,Rufous-fronted Wood-quail,English,true
+22679688,Odontophorus leucolaemus,Black-breasted Wood Quail,English,false
+22679688,Odontophorus leucolaemus,Black-breasted Wood-Quail,English,false
+22679688,Odontophorus leucolaemus,Black-breasted Wood-quail,English,true
+22679703,Odontophorus guttatus,Spotted Wood Quail,English,false
+22679703,Odontophorus guttatus,Spotted Wood-Quail,English,false
+22679703,Odontophorus guttatus,Spotted Wood-quail,English,true
+22679720,Rhynchortyx cinctus,Tawny-faced Quail,English,true
+22679746,Dendrocygna bicolor,Fulvous Duck,English,false
+22679746,Dendrocygna bicolor,Fulvous Whistling Duck,English,false
+22679746,Dendrocygna bicolor,Fulvous Whistling-Duck,English,false
+22679746,Dendrocygna bicolor,Dendrocygne fauve,French,false
+22679746,Dendrocygna bicolor,Fulvous Whistling-duck,English,true
+22679763,Dendrocygna viduata,White-faced Duck,English,false
+22679763,Dendrocygna viduata,White-faced Whistling Duck,English,false
+22679763,Dendrocygna viduata,White-faced Whistling-Duck,English,false
+22679763,Dendrocygna viduata,Dendrocygne veuf,French,false
+22679763,Dendrocygna viduata,White-faced Whistling-duck,English,true
+22679789,Nomonyx dominicus,Masked Duck,English,true
+22680163,Mareca americana,Canard siffleur d'Amérique,French,false
+22680163,Mareca americana,American Wigeon,English,true
+22680229,Spatula discors,Sarcelle à ailes bleues,French,false
+22680229,Spatula discors,Blue-winged Teal,English,true
+22680233,Spatula cyanoptera,Cinnamon Teal,English,true
+22680370,Aythya collaris,Ring-necked Duck,English,true
+22680402,Aythya affinis,Lesser Scaup,English,true
+22680813,Melanerpes formicivorus,Acorn Woodpecker,English,true
+22680868,Sphyrapicus varius,Yellow-bellied Sapsucker,English,true
+22681212,Veniliornis kirkii,Red-rumped Woodpecker,English,true
+22681953,Semnornis frantzii,Prong-billed Barbet,English,true
+22682028,Pteroglossus frantzii,Fiery-billed Araçari,English,true
+22682071,Selenidera spectabilis,Yellow-eared Toucanet,English,true
+22682102,Ramphastos sulfuratus,Keel-billed Toucan,English,true
+22682727,Pharomachrus mocinno,Magnificent Quetzal,English,false
+22682727,Pharomachrus mocinno,Quetzal Centroamericano,Spanish; Castilian,false
+22682727,Pharomachrus mocinno,Resplendent Quetzal,English,true
+22682760,Trogon massena,Slaty-tailed Trogon,English,true
+22682768,Trogon clathratus,Lattice-tailed Trogon,English,true
+22682776,Trogon bairdii,Baird's Trogon,English,true
+22682810,Trogon rufus,Black-throated Trogon,English,true
+22683623,Megaceryle alcyon,Belted Kingfisher,English,true
+22684328,Coccyzus erythropthalmus,Black-billed Cuckoo,English,true
+22684331,Coccyzus americanus,Yellow-billed Cuckoo,English,true
+22684438,Crotophaga sulcirostris,Groove-billed Ani,English,true
+22685563,Ara macao,Scarlet Macaw,English,true
+22685678,Psittacara finschi,Finsch's Parakeet,English,false
+22685678,Psittacara finschi,Crimson-fronted Parakeet,English,true
+22685885,Pyrrhura hoffmanni,Sulphur-winged Parakeet,English,true
+22685913,Bolborhynchus lineola,Barred Parakeet,English,true
+22685980,Brotogeris jugularis,Orange-chinned Parakeet,English,true
+22686097,Pyrilia haematotis,Brown-hooded Parrot,English,true
+22686192,Pionus senilis,White-crowned Parrot,English,true
+22686458,Cypseloides cherriei,Spot-fronted Swift,English,true
+22686903,Glaucis aeneus,Bronzy Hermit,English,true
+22686925,Threnetes ruckeri,Band-tailed Barbthroat,English,true
+22686934,Phaethornis guy,Green Hermit,English,true
+22687013,Eutoxeres aquila,White-tipped Sicklebill,English,true
+22687035,Doryfera ludovicae,Green-fronted Lancebill,English,true
+22687041,Campylopterus cuvierii,Scaly-breasted Sabrewing,English,true
+22687075,Campylopterus hemileucurus,Violet Sabrewing,English,true
+22687097,Florisuga mellivora,White-necked Jacobin,English,true
+22687110,Colibri thalassinus,Green Violetear,English,false
+22687110,Colibri thalassinus,Green Violet-ear,English,true
+22687167,Klais guimeti,Violet-headed Hummingbird,English,true
+22687208,Lophornis delattrei,Rufous-crested Coquette,English,true
+22687241,Lophornis helenae,Black-crested Coquette,English,true
+22687247,Lophornis adorabilis,White-crested Coquette,English,true
+22687304,Chlorostilbon canivetii,Canivet's Emerald,English,false
+22687304,Chlorostilbon canivetii,Canivet's Emerald,English,true
+22687310,Chlorostilbon assimilis,Garden Emerald ,English,true
+22687408,Panterpe insignis,Fiery-throated Hummingbird,English,true
+22687432,Amazilia eliciae,Blue-throated Sapphire,English,false
+22687432,Amazilia eliciae,Blue-throated Goldentail,English,true
+22687513,Amazilia candida,White-bellied Emerald,English,true
+22687552,Amazilia amabilis,Blue-chested Hummingbird,English,true
+22687556,Amazilia decora,Charming Hummingbird,English,true
+22687587,Amazilia cyanura,Blue-tailed Hummingbird,English,true
+22687590,Amazilia saucerottei,Steely-vented Hummingbird,English,true
+22687599,Amazilia edward,Snowy-bellied Hummingbird,English,false
+22687599,Amazilia edward,Snowy-bellied Hummingbird,English,true
+22687603,Amazilia rutila,Cinnamon Hummingbird,English,true
+22687632,Eupherusa eximia,Stripe-tailed Hummingbird,English,true
+22687640,Eupherusa nigriventris,Black-bellied Hummingbird,English,true
+22687643,Elvira chionura,White-tailed Emerald,English,true
+22687646,Elvira cupreiceps,Coppery-headed Emerald,English,true
+22687649,Microchera albocoronata,Snowcap,English,true
+22687655,Chalybura urochrysia,Bronze-tailed Plumeleteer,English,true
+22687680,Lampornis hemileucus,White-bellied Mountaingem,English,false
+22687680,Lampornis hemileucus,White-bellied Mountain-gem,English,true
+22687740,Heliodoxa jacula,Green-crowned Brilliant,English,true
+22687746,Eugenes fulgens,Magnificent Hummingbird,English,true
+22688135,Heliomaster constantii,Plain-capped Starthroat,English,true
+22688153,Calliphlox bryantae,Colibrí Magenta,Spanish; Castilian,false
+22688153,Calliphlox bryantae,Magenta-throated Woodstar,English,true
+22688178,Tilmatura dupontii,Sparkling-tailed Woodstar,English,false
+22688178,Tilmatura dupontii,Sparkling-tailed Woodstar,English,true
+22688193,Archilochus colubris,Ruby-throated Hummingbird,English,true
+22688302,Selasphorus flammula,Volcano Hummingbird,English,true
+22688305,Selasphorus scintilla,Scintillant Hummingbird,English,true
+22688774,Megascops choliba,Tropical Screech Owl,English,false
+22688774,Megascops choliba,Tropical Screech-Owl,English,false
+22688774,Megascops choliba,Tropical Screech-owl,English,true
+22688799,Megascops clarkii,Bare-shanked Screech Owl,English,false
+22688799,Megascops clarkii,Bare-shanked Screech-Owl,English,false
+22688799,Megascops clarkii,Bare-shanked Screech-owl,English,true
+22689122,Ciccaba virgata,Mottled Owl,English,true
+22689353,Athene cunicularia,Burrowing Owl,English,true
+22689366,Aegolius acadicus,Northern Saw-whet Owl,English,true
+22689371,Aegolius ridgwayi,Unspotted Saw-whet Owl,English,false
+22689371,Aegolius ridgwayi,Mochuelo Moreno,Spanish; Castilian,false
+22689371,Aegolius ridgwayi,Unspotted Saw-whet Owl,English,true
+22689522,Asio clamator,Striped Owl,English,true
+22689531,Asio flammeus,Hibou des marais,French,false
+22689531,Asio flammeus,Short-eared Owl,English,true
+22689633,Steatornis caripensis,Oilbird,English,true
+22689711,Chordeiles acutipennis,Lesser Nighthawk,English,true
+22689714,Chordeiles minor,Common Nighthawk,English,true
+22690290,Patagioenas cayennensis,Pale-vented Pigeon,English,true
+22690328,Patagioenas subvinacea,Ruddy Pigeon,English,true
+22690762,Columbina inca,Inca Dove,English,true
+22692174,Aramus guarauna,Limpkin,English,true
+22692343,Laterallus ruber,Ruddy Crake,English,true
+22692346,Laterallus albigularis,White-throated Crake,English,true
+22692565,Aramides axillaris,Rufous-necked Wood Rail,English,false
+22692565,Aramides axillaris,Rufous-necked Wood-Rail,English,false
+22692565,Aramides axillaris,Rufous-necked Wood-rail,English,true
+22692684,Porzana carolina,Sora,English,true
+22692720,Laterallus flaviventer,Yellow-breasted Crake,English,true
+22692760,Neocrex erythrops,Paint-billed Crake,English,true
+22692763,Pardirallus maculatus,Spotted Rail,English,true
+22692827,Porphyrio martinicus,American Purple Gallinule,English,false
+22692827,Porphyrio martinicus,Purple Gallinule,English,false
+22692827,Porphyrio martinicus,Poule sultane d'Amérique,French,false
+22692827,Porphyrio martinicus,Purple Gallinule,English,true
+22693154,Limosa haemastica,Barge hudsonienne,French,false
+22693154,Limosa haemastica,Hudsonian Godwit,English,true
+22693162,Limosa fedoa,Marbled Godwit,English,true
+22693195,Numenius americanus,Zarapito Americano,Spanish; Castilian,false
+22693195,Numenius americanus,Long-billed Curlew,English,true
+22693203,Bartramia longicauda,Maubèche des champs,French,false
+22693203,Bartramia longicauda,Upland Sandpiper,English,true
+22693231,Tringa melanoleuca,Grand Chevalier à pattes jaunes,French,false
+22693231,Tringa melanoleuca,Greater Yellowlegs,English,true
+22693235,Tringa flavipes,Petit Chevalier à pattes jaunes,French,false
+22693235,Tringa flavipes,Lesser Yellowlegs,English,true
+22693277,Actitis macularius,Spotted Sandpiper,English,true
+22693305,Tringa incana,Wandering (Alaskan) Tattler,English,false
+22693305,Tringa incana,Wandering Tattler,English,true
+22693319,Tringa semipalmata,Willet,English,true
+22693344,Limnodromus griseus,Limnodrome à bec court,French,false
+22693344,Limnodromus griseus,Short-billed Dowitcher,English,true
+22693348,Limnodromus scolopaceus,Long-billed Dowitcher,English,true
+22693356,Calidris virgata,Surfbird,English,true
+22693373,Calidris pusilla,Semipalmated Sandpiper,English,true
+22693376,Calidris mauri,Western Sandpiper,English,true
+22693396,Calidris minutilla,Least Sandpiper,English,true
+22693408,Calidris melanotos,Bécasseau tacheté,French,false
+22693408,Calidris melanotos,Pectoral Sandpiper,English,true
+22693437,Calidris himantopus,Stilt Sandpiper,English,true
+22693472,Steganopus tricolor,Phalarope de Wilson,French,false
+22693472,Steganopus tricolor,Wilson's Phalarope,English,true
+22693644,Haematopus palliatus,American Oystercatcher,English,true
+22693717,Recurvirostra americana,American Avocet,English,true
+22693740,Pluvialis dominica,American Golden-Plover,English,false
+22693740,Pluvialis dominica,Lesser Golden Plover,English,false
+22693740,Pluvialis dominica,Pluvier doré américain,French,false
+22693740,Pluvialis dominica,American Golden Plover,English,true
+22693774,Charadrius wilsonia,Wilson's Plover,English,true
+22693777,Charadrius vociferus,Killdeer,English,true
+22694256,Rynchops niger,Black Skimmer,English,true
+22694791,Phaetusa simplex,Large-billed Tern,English,true
+22695017,Elanoides forficatus,Swallow-tailed Kite,English,false
+22695017,Elanoides forficatus,Swallow-tailed Kite,English,true
+22695036,Elanus leucurus,White-tailed Kite,English,true
+22695066,Ictinia mississippiensis,Mississippi Kite,English,true
+22695656,Accipiter cooperii,Cooper's Hawk,English,true
+22695838,Parabuteo unicinctus,Harris's Hawk,English,true
+22695891,Buteo platypterus,Broad-winged Hawk,English,true
+22695903,Buteo swainsoni,Swainson's Hawk,English,true
+22695933,Buteo jamaicensis,Red-tailed Hawk,English,true
+22696197,Spizaetus ornatus,Ornate Hawk-Eagle,English,false
+22696197,Spizaetus ornatus,Ornate Hawk-eagle,English,true
+22696255,Caracara cheriway,Northern Crested Caracara,English,false
+22696255,Caracara cheriway,Crested Caracara,English,true
+22696395,Falco sparverius,American Kestrel,English,true
+22696453,Falco columbarius,Faucon émerillon,French,false
+22696453,Falco columbarius,Merlin,English,true
+22696516,Falco deiroleucus,Halcón Pechianaranjado,Spanish; Castilian,false
+22696516,Falco deiroleucus,Halcón Pechirrojo,Spanish; Castilian,false
+22696516,Falco deiroleucus,Halcón Pechirrufo,Spanish; Castilian,false
+22696516,Falco deiroleucus,Halcón Plomizo,Spanish; Castilian,false
+22696516,Falco deiroleucus,Orange-breasted Falcon,English,true
+22696571,Tachybaptus dominicus,Least Grebe,English,true
+22696574,Podilymbus podiceps,Pied-billed Grebe,English,true
+22696702,Anhinga anhinga,Anhinga,English,true
+22696931,Egretta tricolor,Tricolored Heron,English,false
+22696931,Egretta tricolor,Tricolored Heron,English,true
+22696974,Egretta thula,Snowy Egret,English,true
+22697200,Agamia agami,Agami Heron,English,true
+22697269,Tigrisoma lineatum,Rufescent Tiger Heron,English,false
+22697269,Tigrisoma lineatum,Rufescent Tiger-Heron,English,false
+22697269,Tigrisoma lineatum,Rufescent Tiger-heron,English,true
+22697314,Ixobrychus exilis,Least Bittern,English,true
+22697340,Botaurus lentiginosus,American Bittern,English,true
+22697343,Botaurus pinnatus,Pinnated Bittern,English,true
+22697411,Eudocimus albus,American White Ibis,English,false
+22697411,Eudocimus albus,White Ibis,English,true
+22697426,Plegadis chihi,White-faced Ibis,English,true
+22697460,Mesembrinibis cayennensis,Green Ibis,English,true
+22697574,Platalea ajaja,Roseate Spoonbill,English,true
+22697611,Pelecanus erythrorhynchos,American White Pelican,English,true
+22697624,Coragyps atratus,American Black Vulture,English,true
+22697630,Cathartes burrovianus,Lesser Yellow-headed Vulture,English,true
+22697645,Sarcoramphus papa,King Vulture,English,true
+22697648,Mycteria americana,Wood Stork,English,true
+22697710,Jabiru mycteria,Jabiru,English,true
+103680120,Mionectes olivaceus,Olive-streaked Flycatcher,English,true
+22699007,Poecilotriccus sylvia,Slate-headed Tody-Flycatcher,English,false
+22699007,Poecilotriccus sylvia,Slaty-headed Tody-Flycatcher,English,false
+22699007,Poecilotriccus sylvia,Slate-headed Tody-flycatcher,English,true
+22699027,Todirostrum cinereum,Common Tody-Flycatcher,English,false
+22699027,Todirostrum cinereum,Common Tody-flycatcher,English,true
+22699035,Todirostrum nigriceps,Black-headed Tody-Flycatcher,English,false
+22699035,Todirostrum nigriceps,Black-headed Tody-flycatcher,English,true
+22699163,Ornithion semiflavum,Yellow-bellied Tyrannulet,English,true
+22699166,Ornithion brunneicapillus,Brown-capped Tyrannulet,English,true
+22699177,Camptostoma imberbe,Northern Beardless-tyrannulet,English,false
+22699177,Camptostoma imberbe,Northern Beardless-Tyrannulet,English,false
+22699177,Camptostoma imberbe,Northern Beardless Tyrannulet,English,true
+22699182,Camptostoma obsoletum,Southern Beardless-tyrannulet,English,false
+22699182,Camptostoma obsoletum,Southern Beardless-Tyrannulet,English,false
+22699182,Camptostoma obsoletum,Southern Beardless Tyrannulet,English,true
+103681893,Phaeomyias murina,Mouse-colored Tyrannulet,English,true
+22699248,Myiopagis viridicata,Greenish Elaenia,English,true
+22699262,Elaenia flavogaster,Yellow-bellied Elaenia,English,true
+103681244,Elaenia chiriquensis,Lesser Elaenia,English,true
+22699298,Elaenia frantzii,Mountain Elaenia,English,true
+22699331,Serpophaga cinerea,Torrent Tyrannulet,English,true
+22699544,Myiornis atricapillus,Black-capped Pygmy Tyrant,English,false
+22699544,Myiornis atricapillus,Black-capped Pygmy-Tyrant,English,false
+22699544,Myiornis atricapillus,Black-capped Pygmy-tyrant,English,true
+22699584,Oncostoma cinereigulare,Northern Bentbill,English,true
+22699594,Rhynchocyclus brevirostris,Eye-ringed Flatbill,English,true
+22699605,Tolmomyias sulphurescens,Yellow-olive Flycatcher,English,false
+22699605,Tolmomyias sulphurescens,Yellow-olive Flatbill,English,true
+22699635,Platyrinchus coronatus,Golden-crowned Spadebill,English,true
+103682408,Myiophobus fasciatus,Bran-colored Flycatcher,English,true
+22699711,Terenotriccus erythrurus,Ruddy-tailed Flycatcher,English,true
+22699726,Myiobius atricaudus,Black-tailed Myiobius,English,false
+22699726,Myiobius atricaudus,Black-tailed Flycatcher,English,true
+22699779,Mitrephanes phaeocercus,Northern Tufted Flycatcher,English,false
+22699779,Mitrephanes phaeocercus,Tufted Flycatcher,English,true
+22699808,Contopus ochraceus,Ochraceous Pewee,English,true
+22699811,Contopus sordidulus,Western Wood Pewee,English,false
+22699811,Contopus sordidulus,Western Wood-Pewee,English,false
+22699811,Contopus sordidulus,Western Wood-pewee,English,true
+22699816,Contopus virens,Eastern Wood Pewee,English,false
+22699816,Contopus virens,Eastern Wood-Pewee,English,false
+22699816,Contopus virens,Eastern Wood-pewee,English,true
+22699839,Empidonax flaviventris,Yellow-bellied Flycatcher,English,true
+22699842,Empidonax virescens,Acadian Flycatcher,English,true
+22699845,Empidonax alnorum,Alder Flycatcher,English,true
+22699848,Empidonax traillii,Willow Flycatcher,English,true
+22699851,Empidonax albigularis,White-throated Flycatcher,English,true
+22699854,Empidonax minimus,Least Flycatcher,English,true
+22699877,Empidonax flavescens,Yellowish Flycatcher,English,true
+22699883,Empidonax atriceps,Black-capped Flycatcher,English,true
+22699892,Sayornis nigricans,Black Phoebe,English,true
+22700318,Colonia colonus,Long-tailed Tyrant,English,true
+22700373,Rhytipterna holerythra,Rufous Mourner,English,true
+22700383,Laniocera rufescens,Speckled Mourner,English,true
+22700399,Myiarchus tuberculifer,Dusky-capped Flycatcher,English,true
+22700427,Myiarchus cinerascens,Ash-throated Flycatcher,English,true
+22700430,Myiarchus nuttingi,Nutting's Flycatcher,English,true
+22700433,Myiarchus crinitus,Great Crested Flycatcher,English,true
+22700436,Myiarchus tyrannulus,Brown-crested Flycatcher,English,true
+22700485,Tyrannus melancholicus,Tropical Kingbird,English,true
+22700497,Tyrannus verticalis,Western Kingbird,English,true
+22700500,Tyrannus forficatus,Scissor-tailed Flycatcher,English,true
+22700503,Tyrannus savana,Fork-tailed Flycatcher,English,true
+22700506,Tyrannus tyrannus,Eastern Kingbird,English,true
+22700509,Tyrannus dominicensis,Gray Kingbird,English,false
+22700509,Tyrannus dominicensis,Grey Kingbird,English,true
+22700533,Megarynchus pitangua,Boat-billed Flycatcher,English,true
+22700536,Conopias albovittatus,White-ringed Flycatcher,English,true
+103682222,Myiodynastes maculatus,Northern Streaked Flycatcher,English,true
+22700580,Myiodynastes luteiventris,Sulphur-bellied Flycatcher,English,true
+22700583,Myiozetetes cayanensis,Rusty-margined Flycatcher,English,true
+22700586,Myiozetetes similis,Social Flycatcher,English,true
+22700589,Myiozetetes granadensis,Gray-capped Flycatcher,English,false
+22700589,Myiozetetes granadensis,Grey-capped Flycatcher,English,true
+22700638,Pachyramphus versicolor,Barred Becard,English,true
+22700641,Pachyramphus cinnamomeus,Cinnamon Becard,English,true
+22700670,Pachyramphus aglaiae,Rose-throated Becard,English,true
+22700692,Tityra inquisitor,Black-crowned Tityra,English,true
+22700874,Cotinga ridgwayi,Turquoise Cotinga,English,true
+22700933,Cephalopterus glabricollis,Bare-necked Umbrellabird,English,true
+22700946,Procnias tricarunculatus,Three-wattled Bellbird,English,true
+22700982,Oxyruncus cristatus,Sharpbill,English,true
+22700994,Ceratopipra mentalis,Red-capped Manakin,English,true
+22701009,Pseudopipra pipra,White-crowned Manakin,English,true
+22701012,Lepidothrix coronata,Blue-crowned Manakin,English,true
+22701071,Chiroxiphia linearis,Long-tailed Manakin,English,true
+22701103,Manacus candei,White-collared Manakin,English,true
+22701106,Manacus aurantiacus,Orange-collared Manakin,English,true
+22701223,Cymbilaimus lineatus,Fasciated Antshrike,English,true
+22701293,Thamnophilus bridgesi,Black-hooded Antshrike,English,true
+22701381,Dysithamnus striaticeps,Streak-crowned Antvireo,English,true
+103657467,Myrmotherula axillaris,White-flanked Antwren,English,true
+22701505,Myrmotherula schisticolor,Slaty Antwren,English,true
+22701589,Microrhopias quixensis,Dot-winged Antwren,English,true
+22701650,Euchrepomis callinota,Rufous-rumped Antwren,English,true
+22701669,Cercomacroides tyrannina,Dusky Antbird,English,true
+22701746,Gymnocichla nudiceps,Bare-crowned Antbird,English,true
+103659811,Poliocrania exsul,Chestnut-backed Antbird,English,true
+22701911,Hylophylax naevioides,Spotted Antbird,English,true
+22701971,Phaenostictus mcleannani,Ocellated Antbird,English,true
+22702968,Sclerurus albigularis,Gray-throated Leaftosser,English,false
+22702968,Sclerurus albigularis,Grey-throated Leaftosser,English,true
+22703510,Scytalopus argentifrons,Silvery-fronted Tapaculo,English,true
+22705234,Vireo solitarius,Blue-headed Vireo,English,true
+22705237,Vireo flavifrons,Yellow-throated Vireo,English,true
+22705240,Vireo philadelphicus,Philadelphia Vireo,English,true
+22708136,Ptiliogonys caudatus,Long-tailed Silky-flycatcher,English,true
+22708142,Phainoptila melanoxantha,Black-and-yellow Phainoptila,English,false
+22708142,Phainoptila melanoxantha,Black-and-yellow Silky-flycatcher,English,true
+22708153,Bombycilla cedrorum,Cedar Waxwing,English,true
+22708163,Cinclus mexicanus,American Dipper,English,true
+22708599,Myadestes melanops,Black-faced Solitaire,English,true
+22708627,Catharus gracilirostris,Black-billed Nightingale-Thrush,English,false
+22708627,Catharus gracilirostris,Black-billed Nightingale-thrush,English,true
+22708658,Catharus minimus,Gray-cheeked Thrush,English,false
+22708658,Catharus minimus,Grey-cheeked Thrush,English,true
+22708844,Turdus nigrescens,Sooty Robin,English,false
+22708844,Turdus nigrescens,Sooty Thrush,English,true
+22708905,Turdus obsoletus,Pale-vented Thrush,English,true
+22708938,Turdus assimilis,White-throated Robin,English,false
+22708938,Turdus assimilis,White-throated Thrush,English,true
+22711013,Dumetella carolinensis,Gray Catbird,English,false
+22711013,Dumetella carolinensis,Grey Catbird,English,true
+22711332,Salpinctes obsoletus,Rock Wren,English,true
+103886997,Cistothorus platensis,Grass Wren,English,true
+22711427,Pheugopedius rutilus,Rufous-breasted Wren,English,true
+22711435,Cantorchilus semibadius,Riverside Wren,English,true
+22711438,Cantorchilus nigricapillus,Bay Wren,English,true
+22711447,Thryophilus pleurostictus,Banded Wren,English,true
+103889550,Cantorchilus modestus,Plain Wren,English,true
+22711500,Troglodytes ochraceus,Ochraceous Wren,English,true
+22711512,Thryorchilus browni,Timberline Wren,English,true
+103889800,Henicorhina leucophrys,Grey-breasted Wood-wren,English,true
+22711537,Microcerculus philomela,Nightingale Wren,English,false
+22711537,Microcerculus philomela,Northern Nightingale-Wren,English,false
+22711537,Microcerculus philomela,Northern Nightingale-wren,English,true
+22711542,Microcerculus marginatus,Scaly-breasted Wren,English,false
+22711542,Microcerculus marginatus,Southern Nightingale-Wren,English,false
+22711542,Microcerculus marginatus,Southern Nightingale-wren,English,true
+22711574,Microbates cinereiventris,Half-collared Gnatwren,English,false
+22711574,Microbates cinereiventris,Tawny-faced Gnatwren,English,true
+103882288,Polioptila plumbea,Tropical Gnatcatcher,English,true
+22712057,Tachycineta bicolor,Tree Swallow,English,true
+22712098,Progne subis,Purple Martin,English,true
+22712427,Petrochelidon pyrrhonota,American Cliff Swallow,English,false
+22712427,Petrochelidon pyrrhonota,Cliff Swallow,English,true
+22721064,Melospiza lincolnii,Lincoln's Sparrow,English,true
+103780243,Passerculus sandwichensis,Savannah Sparrow,English,true
+22721191,Chondestes grammacus,Lark Sparrow,English,true
+22721621,Leiothlypis peregrina,Tennessee Warbler,English,true
+22721624,Leiothlypis celata,Orange-crowned Warbler,English,true
+22721627,Leiothlypis ruficapilla,Nashville Warbler,English,true
+22721664,Setophaga pensylvanica,Chestnut-sided Warbler,English,true
+22721667,Setophaga magnolia,Magnolia Warbler,English,true
+22721670,Setophaga tigrina,Cape May Warbler,English,true
+22721683,Setophaga townsendi,Townsend's Warbler,English,true
+22721695,Setophaga fusca,Blackburnian Warbler,English,true
+22721719,Setophaga pinus,Pine Warbler,English,true
+22721725,Setophaga discolor,Prairie Warbler,English,true
+22721758,Mniotilta varia,Black-and-White Warbler,English,false
+22721758,Mniotilta varia,Black-and-white Warbler,English,true
+22721762,Setophaga ruticilla,American Redstart,English,true
+22721765,Protonotaria citrea,Prothonotary Warbler,English,true
+22721768,Helmitheros vermivorum,Worm-eating Warbler,English,true
+22721793,Parkesia noveboracensis,Northern Waterthrush,English,true
+22721803,Parkesia motacilla,Louisiana Waterthrush,English,true
+22721812,Geothlypis formosa,Kentucky Warbler,English,true
+22721818,Oporornis agilis,Connecticut Warbler,English,true
+22721824,Geothlypis philadelphia,Mourning Warbler,English,true
+22721836,Geothlypis trichas,Common Yellowthroat,English,true
+22721876,Setophaga citrina,Hooded Warbler,English,true
+22721879,Cardellina pusilla,Wilson's Warbler,English,true
+22721882,Cardellina canadensis,Canada Warbler,English,true
+22722054,Zeledonia coronata,Wrenthrush,English,true
+22722080,Coereba flaveola,Bananaquit,English,true
+22722281,Chrysothlypis chrysomelas,Black-and-yellow Tanager,English,true
+22722359,Lanio leucothorax,White-throated Shrike-Tanager,English,false
+22722359,Lanio leucothorax,White-throated Shrike-tanager,English,true
+22722430,Habia atrimaxillaris,Black-cheeked Ant Tanager,English,false
+22722430,Habia atrimaxillaris,Black-cheeked Ant-Tanager,English,false
+22722430,Habia atrimaxillaris,Black-cheeked Ant-tanager,English,true
+22722456,Piranga rubra,Summer Tanager,English,true
+22722466,Piranga olivacea,Scarlet Tanager,English,true
+22722471,Piranga ludoviciana,Western Tanager,English,true
+22722803,Tangara inornata,Plain-coloured Tanager,English,false
+22722803,Tangara inornata,Plain-colored Tanager,English,true
+22722918,Tangara larvata,Golden-hooded Tanager,English,true
+22722924,Tangara dowii,Spangle-cheeked Tanager,English,true
+22722991,Dacnis cayana,Blue Dacnis,English,true
+22723000,Chlorophanes spiza,Green Honeycreeper,English,true
+22723128,Acanthidops bairdi,Peg-billed Finch,English,true
+105963139,Sporophila nigricollis,Yellow-bellied Seedeater,English,true
+22723478,Sporophila minuta,Ruddy-breasted Seedeater,English,true
+22723522,Sporophila nuttingi,Nicaraguan Seed Finch,English,false
+22723522,Sporophila nuttingi,Nicaraguan Seed-Finch,English,false
+22723522,Sporophila nuttingi,Nicaraguan Seed-finch,English,true
+22723640,Diglossa plumbea,Slaty Flower-piercer,English,false
+22723640,Diglossa plumbea,Slaty Flowerpiercer,English,true
+22723792,Pinaroloxias inornata,Cocos Island Finch,English,false
+22723792,Pinaroloxias inornata,Cocos Finch,English,true
+22723796,Spiza americana,Dickcissel,English,true
+22723816,Pheucticus melanocephalus,Black-headed Grosbeak,English,true
+22723846,Saltator grossus,Slate-coloured Grosbeak,English,false
+22723846,Saltator grossus,Slate-colored Grosbeak,English,true
+22723869,Saltator atriceps,Black-headed Saltator,English,true
+22723872,Saltator maximus,Buff-throated Saltator,English,true
+103793298,Icterus spurius,Orchard Oriole,English,true
+22724169,Xanthocephalus xanthocephalus,Yellow-headed Blackbird,English,true
+22724367,Dolichonyx oryzivorus,Bobolink,English,true
+22724857,Sipia laemosticta,Dull-mantled Antbird,English,true
+22725270,Patagioenas albilinea,Southern Band-tailed Pigeon,English,true
+22725723,Phaethornis longirostris,Long-billed Hermit,English,true
+22725795,Lampornis castaneoventris,White-throated Mountaingem,English,false
+22725795,Lampornis castaneoventris,White-throated Mountain-gem,English,true
+22725806,Lampornis cinereicauda,Grey-tailed Mountain-gem,English,true
+22726200,Pteroglossus torquatus,Collared Araçari,English,true
+22726263,Aulacorhynchus caeruleogularis,Blue-throated Toucanet,English,true
+22726489,Hylatomus lineatus,Lineated Woodpecker,English,true
+22726696,Thalurania colombica,Crowned Woodnymph,English,true
+22726830,Trogon elegans,Elegant Trogon,English,true
+22727740,Circus hudsonius,Northern Harrier,English,true
+22727999,Ramphastos ambiguus,Yellow-throated Toucan,English,true
+22728182,Butorides striata,Striated Heron,English,false
+22728182,Butorides striata,بلشون محزز,Arabic,false
+22728182,Butorides striata,Green-backed Heron,English,true
+22729005,Glaucidium costaricanum,Costa Rican Pygmy Owl,English,false
+22729005,Glaucidium costaricanum,Costa Rican Pygmy-Owl,English,false
+22729005,Glaucidium costaricanum,Costa Rican Pygmy-owl,English,true
+22729012,Glaucidium griseiceps,Central American Pygmy Owl,English,false
+22729012,Glaucidium griseiceps,Central American Pygmy-Owl,English,false
+22729012,Glaucidium griseiceps,Central American Pygmy-owl,English,true
+22729036,Lampornis calolaemus,Purple-throated Mountaingem,English,false
+22729036,Lampornis calolaemus,Purple-throated Mountain-gem ,English,true
+22729060,Thamnophilus atrinucha,Western Slaty-antshrike,English,false
+22729060,Thamnophilus atrinucha,Western Slaty Antshrike,English,false
+22729060,Thamnophilus atrinucha,Western Slaty-Antshrike,English,false
+22729060,Thamnophilus atrinucha,Black-crowned Antshrike,English,true
+22729087,Ramphocelus costaricensis,Cherrie's Tanager,English,true
+22729123,Icterus bullockiorum,Bullock's Oriole,English,true
+22730119,Chaetura fumosa,Costa Rican Swift,English,true
+22730147,Phaethornis striigularis,Stripe-throated Hermit,English,true
+22730168,Amazilia tzacatl,Rufous-tailed Hummingbird,English,true
+22731699,Myiobius sulphureipygius,Sulphur-rumped Myiobius,English,false
+22731699,Myiobius sulphureipygius,Sulphur-rumped Flycatcher,English,true
+22712152,Stelgidopteryx serripennis,Northern Rough-winged Swallow,English,true
+45093155,Colinus leucopogon,Spot-bellied Bobwhite,English,true
+45418555,Eupsittula astec,Aztec Parakeet,English,true
+45429607,Pionus menstruus,Blue-headed Parrot,English,true
+61214753,Crypturellus cinnamomeus,Eastern Thicket Tinamou,English,true
+61686959,Trogon violaceus,Violaceous Trogon,English,true
+61692251,Trogon collaris,Collared Trogon,English,true
+61769583,Megascops vermiculatus,Vermiculated Screech-owl,English,true
+61815999,Glaucidium brasilianum,Ferruginous Pygmy-owl,English,true
+62120280,Gallinula galeata,Common Gallinule,English,true
+62144610,Neomorphus geoffroyi,Rufous-vented Ground-cuckoo,English,true
+62169677,Fulica americana,American Coot,English,true
+22678169,Crypturellus soui,Little Tinamou,English,true
+22690736,Zenaida macroura,American Mourning Dove,English,false
+22690736,Zenaida macroura,Mourning Dove,English,true
+22692282,Micropygia schomburgkii,Ocellated Crake,English,true
+22692349,Laterallus exilis,Gray-breasted Crake,English,false
+22692349,Laterallus exilis,Grey-breasted Crake,English,true
+22692601,Amaurolimnas concolor,Uniform Crake,English,true
+22733956,Zenaida asiatica,White-winged Dove,English,true
+203072,Sceloporus malachiticus,Green Spiny Lizard,English,true
+55824,Trachycephalus typhonius,Rana Lechera Comun,Spanish; Castilian,false
+8241,Eumops auripendulus,Black Bonneted Bat,English,false
+8241,Eumops auripendulus,Shaw’s Mastiff Bat,English,true
+21879,Thyroptera tricolor,Spix's Disk-winged Bat,English,true
+11509,Leopardus pardalis,Gato Onza,Spanish; Castilian,false
+11509,Leopardus pardalis,Manigordo,Spanish; Castilian,false
+11509,Leopardus pardalis,Ocelote,Spanish; Castilian,false
+11509,Leopardus pardalis,Tigrillo,Spanish; Castilian,false
+11509,Leopardus pardalis,Ocelot,English,true
+18868,Puma concolor,Cougar,English,false
+18868,Puma concolor,Deer Tiger,English,false
+18868,Puma concolor,Mountain Lion,English,false
+18868,Puma concolor,Red Tiger,English,false
+18868,Puma concolor,León Americano,Spanish; Castilian,false
+18868,Puma concolor,León Bayo,Spanish; Castilian,false
+18868,Puma concolor,León Colorado,Spanish; Castilian,false
+18868,Puma concolor,León De Montaña,Spanish; Castilian,false
+18868,Puma concolor,Mitzli,Spanish; Castilian,false
+18868,Puma concolor,Onza Bermeja,Spanish; Castilian,false
+18868,Puma concolor,Puma,English,true
+19501,Rhinoclemmys annulata,Brown Land Turtle,English,false
+19501,Rhinoclemmys annulata,Furrowed Land Terrapin,English,false
+19501,Rhinoclemmys annulata,Brown Wood Turtle,English,true
+19503,Rhinoclemmys funerea,Black River Turtle,English,false
+19503,Rhinoclemmys funerea,Black Terrapin,English,false
+19503,Rhinoclemmys funerea,Black Wood Turtle,English,true
+11005,Kinosternon angustipons,Narrow-bridged Mud Turtle,English,true
+22730409,Gymnopithys bicolor,Bicolored Antbird,English,true
+103660162,Hafferia zeledoni,Zeledon's Antbird,English,true
+103661278,Sittasomus griseus,Western Olivaceous Woodcreeper,English,true
+103672251,Automolus virgatus,Western Woodhaunter,English,true
+103679884,Platyrinchus albogularis,Western White-throated Spadebill,English,true
+103683917,Contopus bogotensis,Northern Tropical Pewee,English,true
+103887650,Campylorhynchus capistratus,Rufous-backed Wren,English,true
+103889576,Cantorchilus zeledoni,Canebrake Wren,English,true
+105209254,Craugastor gabbi,Gabb's Dirt Frog,English,true
+22693431,Calidris ferruginea,Bécasseau cocorli,French,false
+22693431,Calidris ferruginea,كروان الماء,Arabic,false
+22693431,Calidris ferruginea,Curlew Sandpiper,English,true
+22699554,Lophotriccus pileatus,Scale-crested Pygmy Tyrant,English,false
+22699554,Lophotriccus pileatus,Scale-crested Pygmy-Tyrant,English,false
+22699554,Lophotriccus pileatus,Scale-crested Pygmy-tyrant,English,true
+22699787,Contopus cooperi,Olive-sided Flycatcher,English,true
+22700354,Attila spadiceus,Bright-rumped Attila,English,true
+22700907,Carpodectes antoniae,Yellow-billed Cotinga,English,true
+22701074,Chiroxiphia lanceolata,Lance-tailed Manakin,English,true
+22701378,Dysithamnus mentalis,Plain Antvireo,English,true
+22678148,Tinamus major,Great Tinamou,English,true
+22703362,Grallaricula flavirostris,Ochre-breasted Antpitta,English,true
+103886826,Troglodytes aedon,House Wren,English,true
+22693447,Calidris subruficollis,Bécasseau roussâtre,French,false
+22693447,Calidris subruficollis,Correlimos Canelo,Spanish; Castilian,false
+22693447,Calidris subruficollis,Buff-breasted Sandpiper,English,true
+22693764,Charadrius semipalmatus,Semipalmated Plover,English,true
+103676541,Corapipo leucorrhoa,White-ruffed Manakin,English,true
+103680303,Leptopogon superciliaris,Slaty-capped Flycatcher,English,true
+22731691,Tolmomyias flavotectus,Yellow-winged Flatbill,English,true
+103677449,Schiffornis veraepacis,Northern Mourner,English,true
+103680835,Zimmerius parvus,Mistletoe Tyrannulet,English,true
+103660237,Thamnistes anabatinus,Western Russet Antshrike,English,true
+103670275,Xiphorhynchus aequatorialis,Southern Spotted Woodcreeper,English,true
+103670743,Lepidocolaptes neglectus,Southern Spot-crowned Woodcreeper,English,true
+103693676,Hylophilus viridiflavus,Yellow-green Greenlet,English,true
+112686013,Oedipina berlini,Berlin's Flat-headed Salamander,English,true
+103693796,Tunchiornis ochraceiceps,Tawny-crowned Greenlet,English,true
+105209514,Craugastor stejnegerianus,Stejneger's Robber Frog,English,true
+198518,Tantilla schistosa,Red Earth Centipede Snake,English,true
+199753,Marisora unimarginata,Central American Mabuya,English,true
+197469,Clelia scytalina,Mexican Snake Eater,English,true
+11352,Lasiurus intermedius,Northern Yellow Bat,English,true
+13046,Melanomys caliginosus,Dusky Rice Rat,English,false
+14156,Myotis elegans,Elegant Myotis,English,true
+14999,Nyctomys sumichrasti,Vesper Rat,English,false
+15248,Oligoryzomys fulvescens,Fulvous Pygmy Rice Rat,English,false
+15585,Handleyomys alfaroi,Alfaro's Rice Rat,English,false
+15592,Oryzomys couesi,Coues's Rice Rat,English,false
+15612,Handleyomys rostratus,Long-nosed Rice Rat,English,false
+15666,Ototylomys phyllotis,Big-eared Climbing Rat,English,false
+18709,Pteronotus personatus,Wagner's Mustached Bat,English,true
+19408,Reithrodontomys gracilis,Slender Harvest Mouse,English,false
+19411,Reithrodontomys mexicanus,Mexican Harvest Mouse,English,false
+19417,Reithrodontomys sumichrasti,Sumichrast's Harvest Mouse,English,true
+20001,Sciurus deppei,Deppe's Squirrel,English,false
+20001,Sciurus deppei,Ardilla De Deppe,Spanish; Castilian,false
+20001,Sciurus deppei,Ardilla De Los Pinos,Spanish; Castilian,false
+20001,Sciurus deppei,Écureuil De Deppe,French,false
+20001,Sciurus deppei,Écureuil Des Pins,French,false
+20010,Sciurus granatensis,Red-tailed Squirrel,English,false
+20221,Sigmodontomys alfari,Alfaro's Rice Water Rat,English,false
+20221,Sigmodontomys alfari,Short-tailed Sigmodontomys,English,false
+20221,Sigmodontomys alfari,Raton Arrozalero,Spanish; Castilian,false
+21984,Lophostoma brasiliense,Pygmy Round-eared Bat,English,false
+136398,Cryptotis merriami,Merriam's Small-eared Shrew,English,false
+136426,Sigmodon hirsutus,Southern Cotton Rat,English,true
+197429,Holcosus festivus,Middle American Ameiva,English,true
+198925,Masticophis mentovarius,Neotropical Whip Snake,English,true
+203058,Loxopholis southi,Northern Spectacled Lizard,English,true
+203060,Ptychoglossus plicatus,Taylor's Largescale Lizard,English,true
+203181,Holcosus leptophrys,Delicate Whiptail,English,false
+203181,Holcosus leptophrys,Delicate Ameiva,English,true
+203213,Ungaliophis panamensis,Panamanian Dwarf Boa,English,true
+203281,Chironius grandisquamis,Ecuador Sipo,English,true
+203290,Dendrophidion percarinatum,South American Forest Racer,English,true
+203325,Tantilla reticulata,Litter Snake,English,false
+203325,Tantilla reticulata,Reticulate Centipede Snake,English,true
+47804700,Heteromys desmarestianus,Desmarest's Spiny Pocket Mouse,English,true
+176738,Hydrophis platurus,Pelagic Sea Snake,English,false
+176738,Hydrophis platurus,Serpent marin jaune,French,false
+176738,Hydrophis platurus,Serpiente Marina Amarilla,Spanish; Castilian,false
+176738,Hydrophis platurus,افعى المحيطات,Arabic,false
+176738,Hydrophis platurus,Yellow-bellied Sea Snake,English,true
+22695998,Harpia harpyja,American Harpy Eagle,English,false
+22695998,Harpia harpyja,Aguila Arpía,Spanish; Castilian,false
+22695998,Harpia harpyja,Aguila Harpía,Spanish; Castilian,false
+22695998,Harpia harpyja,Arpía,Spanish; Castilian,false
+22695998,Harpia harpyja,Arpía Mayor,Spanish; Castilian,false
+22695998,Harpia harpyja,Harpía,Spanish; Castilian,false
+22695998,Harpia harpyja,Harpy Eagle,English,true
+22695991,Morphnus guianensis,Guianan Crested Eagle,English,false
+22695991,Morphnus guianensis,Aguila Crestada,Spanish; Castilian,false
+22695991,Morphnus guianensis,Aguila Monera,Spanish; Castilian,false
+22695991,Morphnus guianensis,Arpía Menor,Spanish; Castilian,false
+22695991,Morphnus guianensis,Crested Eagle,English,true
+22700647,Pachyramphus polychopterus,White-winged,English,false
+22700647,Pachyramphus polychopterus,White-winged Becard,English,true
+22699531,Phylloscartes superciliaris,Rufous-browed Tyrannulet,English,true
+22699194,Capsiempis flaveola,Yellow Tyrannulet,English,true
+22699075,Phyllomyias zeledoni,Zeledon's Tyrannulet,English,false
+22699075,Phyllomyias zeledoni,White-fronted Tyrannulet,English,true
+22700411,Myiarchus panamensis,Panamanian Flycatcher,English,false
+22700411,Myiarchus panamensis,Panama Flycatcher,English,true
+22699200,Sublegatus arenarum,Northern Scrub Flycatcher,English,false
+22699200,Sublegatus arenarum,Northern Scrub-Flycatcher,English,false
+22699200,Sublegatus arenarum,Northern Scrub-flycatcher,English,true
+22735122,Vireo gilvus,Eastern Warbling-Vireo,English,false
+22735122,Vireo gilvus,Warbling Vireo,English,true
+22705254,Vireo altiloquus,Black-whiskered Vireo,English,true
+22705191,Vireo pallens,Mangrove Vireo,English,true
+22705188,Vireo griseus,White-eyed Vireo,English,true
+22712077,Tachycineta thalassina,Violet-green Swallow,English,true
+22696944,Egretta caerulea,Aigrette bleue,French,false
+22696944,Egretta caerulea,Little Blue Heron,English,true
+22697264,Tigrisoma fasciatum,Fasciated Tiger Heron,English,false
+22697264,Tigrisoma fasciatum,Fasciated Tiger-Heron,English,false
+22697264,Tigrisoma fasciatum,Fasciated Tiger-heron,English,true
+22686342,Amazona auropalliata,Yellow-naped Parrot,English,false
+22686342,Amazona auropalliata,Loro de nuca amarilla,Spanish; Castilian,false
+22686342,Amazona auropalliata,Yellow-naped Amazon,English,true
+119194112,Amazilia alfaroana,Guanacaste Hummingbird,English,true
+119243975,Bolitoglossa aurae,Aura’s Golden Salamander,English,true
+22693399,Calidris fuscicollis,Bécasseau de Bonaparte,French,false
+22693399,Calidris fuscicollis,White-rumped Sandpiper,English,true
+3897,Caretta caretta,Caguama,Spanish; Castilian,false
+3897,Caretta caretta,Careba Amarela,Portuguese,false
+3897,Caretta caretta,Tartaruga Cabeçuda,Portuguese,false
+3897,Caretta caretta,Tartaruga Comum,Portuguese,false
+3897,Caretta caretta,Tartaruga Vermelha,Portuguese,false
+3897,Caretta caretta,Tortue caouanne,French,false
+3897,Caretta caretta,Tortuga Boba,Spanish; Castilian,false
+3897,Caretta caretta,Tortuga Cabezona,Spanish; Castilian,false
+3897,Caretta caretta,Tortuga Careta,Spanish; Castilian,false
+3897,Caretta caretta,Tortuga Comun,Spanish; Castilian,false
+3897,Caretta caretta,سلحفاة بحرية ضخمة الرأس,Arabic,false
+3897,Caretta caretta,Loggerhead Turtle,English,true
+103792619,Cacicus microrhynchus,Scarlet-rumped Cacique,English,true
+103810895,Cyanoloxia cyanoides,Blue-black Grosbeak,English,true
+22722988,Dacnis venusta,Scarlet-thighed Dacnis,English,true
+103811314,Habia carmioli,Carmiol's Tanager,English,true
+22732035,Molothrus aeneus,Bronzed Cowbird,English,true
+103812680,Saltator grandis,Northern Grey Saltator,English,true
+103798425,Setophaga coronata,Myrtle Warbler,English,true
+103817300,Sporophila corvina,Black Seedeater,English,true
+22729107,Sporophila funerea,Thick-billed Seed-Finch,English,false
+22729107,Sporophila funerea,Thick-billed Seed-finch,English,true
+22731776,Sporophila morelleti,White-collared Seedeater,English,true
+103817331,Sporophila ophthalmica,Black-breasted Seedeater,English,true
+22721657,Setophaga petechia,Golden Warbler,English,false
+22721657,Setophaga petechia,Yellow Warbler,English,false
+22721657,Setophaga petechia,American Yellow Warbler,English,true
+15953,Panthera onca,Onca,Portuguese,false
+15953,Panthera onca,Otorongo,Spanish; Castilian,false
+15953,Panthera onca,Tigre,Spanish; Castilian,false
+15953,Panthera onca,Tigre Americano,Spanish; Castilian,false
+15953,Panthera onca,Tigre mariposo,Spanish; Castilian,false
+15953,Panthera onca,Tigre Real,Spanish; Castilian,false
+15953,Panthera onca,Yaguar,Spanish; Castilian,false
+15953,Panthera onca,Yaguareté,Spanish; Castilian,false
+15953,Panthera onca,Jaguar,English,true
+198402,Rhadinella godmani,Godman's Graceful Brown Snake,English,true
+9274,Glossophaga leachii,Gray Long-tongued Bat,English,false
+9274,Glossophaga leachii,Gray's Long-tongued Bat,English,false
+22693404,Calidris bairdii,Bécasseau de Baird,French,false
+22693404,Calidris bairdii,Baird's Sandpiper,English,true
+22682788,Trogon melanocephalus,Black-headed Trogon,English,true
+22687106,Colibri delphinae,Brown Violetear,English,false
+22687106,Colibri delphinae,Brown Violet-ear,English,true
+22687275,Discosura conversii,Green Thorntail,English,true
+22688108,Heliothryx barroti,Purple-crowned Fairy,English,true
+22688138,Heliomaster longirostris,Long-billed Starthroat,English,true
+22689133,Ciccaba nigrolineata,Black-and-white Owl,English,true
+22689177,Lophostrix cristata,Crested Owl,English,true
+22689180,Pulsatrix perspicillata,Spectacled Owl,English,true
+22689240,Glaucidium minutissimum,Brazilian Pygmy-Owl,English,false
+22689240,Glaucidium minutissimum,East Brazilian Pygmy Owl,English,false
+22689240,Glaucidium minutissimum,Least Pygmy-Owl,English,false
+22689240,Glaucidium minutissimum,Least Pygmy-owl,English,true
+22693239,Tringa solitaria,Chevalier solitaire,French,false
+22693239,Tringa solitaria,Solitary Sandpiper,English,true
+22697250,Cochlearius cochlearius,Boat-billed Heron,English,true
+22697259,Tigrisoma mexicanum,Bare-throated Tiger Heron,English,false
+22697259,Tigrisoma mexicanum,Bare-throated Tiger-Heron,English,false
+22697259,Tigrisoma mexicanum,Bare-throated Tiger-heron,English,true
+22698796,Mionectes oleagineus,Ochre-bellied Flycatcher,English,true
+22698813,Leptopogon amaurocephalus,Sepia-capped Flycatcher,English,true
+22699227,Tyrannulus elatus,Yellow-crowned Tyrannulet,English,true
+22699629,Platyrinchus cancrominus,Stub-tailed Spadebill,English,true
+22699801,Contopus lugubris,Dark Pewee,English,true
+22700596,Legatus leucophaius,Piratic Flycatcher,English,true
+22701251,Taraba major,Great Antshrike,English,true
+22701275,Thamnophilus doliatus,Barred Antshrike,English,true
+22701384,Dysithamnus puncticeps,Spot-crowned Antvireo,English,true
+22701469,Epinecrophylla fulviventris,Checker-throated Antwren,English,true
+22700655,Pachyramphus albogriseus,Black-and-white Becard,English,true
+22700689,Tityra semifasciata,Masked Tityra,English,true
+22701216,Piprites griseiceps,Gray-headed Piprites,English,false
+22701216,Piprites griseiceps,Grey-headed Piprites,English,true
+22705124,Cyclarhis gujanensis,Rufous-browed Peppershrike,English,true
+22705134,Vireolanius pulchellus,Green Shrike-Vireo,English,false
+22705134,Vireolanius pulchellus,Green Shrike-vireo,English,true
+22705185,Vireo carmioli,Yellow-winged Vireo,English,true
+22705248,Vireo flavoviridis,Yellow-green Vireo,English,true
+22705273,Vireo leucophrys,Brown-capped Vireo,English,true
+22705321,Pachysylvia decurtata,Lesser Greenlet,English,true
+55309,Duellmanohyla lythrodes,Savage's Brook Frog,English,true
+55912,Ptychohyla legleri,Legler's Stream Frog,English,true
+59148,Bolitoglossa compacta,Cerro Pando Salamander,English,true
+22678443,Chamaepetes unicolor,Black Guan,English,true
+131358269,Myiodynastes hemichrysus,Golden-bellied Flycatcher,English,true
+22721737,Setophaga striata,Blackpoll Warbler,English,true
+22723957,Passerina ciris,Painted Bunting,English,true
+22686017,Touit costaricensis,Cotorrita Costarricense,Spanish; Castilian,false
+22686017,Touit costaricensis,Red-fronted Parrotlet,English,true
+22736393,Antrostomus vociferus,Eastern Whip-poor-will,English,true
+22686709,Chaetura pelagica,Chimney Swift,English,true
+22719837,Lonchura malacca,Black-headed Munia,English,false
+22719837,Lonchura malacca,Tricolored Munia,English,false
+22719837,Lonchura malacca,Tricoloured Munia,English,true
+22721673,Setophaga caerulescens,Black-throated Blue Warbler,English,true
+22723012,Cyanerpes cyaneus,Red-legged Honeycreeper,English,true
+22724345,Molothrus bonariensis,Shiny Cowbird,English,true
+22686440,Cypseloides niger,Black Swift,English,false
+22686440,Cypseloides niger,Black Swift,English,true
+22679780,Dendrocygna autumnalis,Black-bellied Whistling Duck,English,false
+22679780,Dendrocygna autumnalis,Black-bellied Whistling-Duck,English,false
+22679780,Dendrocygna autumnalis,Black-bellied Whistling-duck,English,true
+22680061,Cairina moschata,Muscovy Duck,English,true
+22685745,Eupsittula pertinax,Brown-throated Parakeet,English,true
+22686222,Amazona albifrons,White-fronted Parrot,English,false
+22686222,Amazona albifrons,White-fronted Amazon,English,true
+22686346,Amazona ochrocephala,Yellow-crowned Parrot,English,false
+22686346,Amazona ochrocephala,Yellow-crowned Amazon,English,true
+22687125,Anthracothorax prevostii,Green-breasted Mango,English,true
+22696450,Falco femoralis,Aplomado Falcon,English,true
+22697627,Cathartes aura,Turkey Vulture,English,true
+22708631,Catharus aurantiirostris,Orange-billed Nightingale-Thrush,English,false
+22708631,Catharus aurantiirostris,Orange-billed Nightingale-thrush,English,true
+22708635,Catharus fuscater,Slaty-backed Nightingale-Thrush,English,false
+22708635,Catharus fuscater,Slaty-backed Nightingale-thrush,English,true
+22708643,Catharus frantzii,Ruddy-capped Nightingale-Thrush,English,false
+22708643,Catharus frantzii,Ruddy-capped Nightingale-thrush,English,true
+22708647,Catharus mexicanus,Black-headed Nightingale-Thrush,English,false
+22708647,Catharus mexicanus,Black-headed Nightingale-thrush,English,true
+22708655,Catharus fuscescens,Veery,English,true
+22711313,Campylorhynchus zonatus,Band-backed Wren,English,true
+22711441,Cantorchilus thoracicus,Stripe-breasted Wren,English,true
+22711521,Henicorhina leucosticta,White-breasted Wood Wren,English,false
+22711521,Henicorhina leucosticta,White-breasted Wood-Wren,English,false
+22711521,Henicorhina leucosticta,White-breasted Wood-wren,English,true
+22711554,Cyphorhinus phaeocephalus,Song Wren,English,true
+22721144,Ammodramus savannarum,Grasshopper Sparrow,English,true
+22721392,Arremonops rufivirgatus,Olive Sparrow,English,true
+22721830,Geothlypis tolmiei,MacGillivray's Warbler,English,true
+22722028,Basileuterus tristriatus,Three-striped Warbler,English,true
+22722057,Icteria virens,Yellow-breasted Chat,English,true
+22722343,Eucometis penicillata,Gray-headed Tanager,English,false
+22722343,Eucometis penicillata,Grey-headed Tanager,English,true
+22722374,Heterospingus rubrifrons,Sulphur-rumped Tanager,English,true
+22722394,Chrysocorypha delatrii,Tawny-crested Tanager,English,true
+22723006,Cyanerpes lucidus,Shining Honeycreeper,English,true
+22723370,Emberizoides herbicola,Wedge-tailed Grass Finch,English,false
+22723370,Emberizoides herbicola,Wedge-tailed Grass-Finch,English,false
+22723370,Emberizoides herbicola,Wedge-tailed Grass-finch,English,true
+22724126,Icterus galbula,Baltimore Oriole,English,true
+22724191,Agelaius phoeniceus,Red-winged Blackbird,English,true
+22728292,Amazona autumnalis,Red-lored Amazon,English,true
+45093141,Colinus cristatus,Crested Bobwhite,English,true
+61752071,Bubo virginianus,Great Horned Owl,English,true
+103881682,Catharus ustulatus,Russet-backed Thrush,English,true
+103881981,Catharus swainsoni,Swainson's Thrush,English,true
+22678305,Ortalis vetula,Plain Chachalaca,English,true
+22694629,Sterna paradisaea,Sterne arctique,French,false
+22694629,Sterna paradisaea,Arctic Tern,English,true
+22697203,Nyctanassa violacea,Yellow-crowned Night Heron,English,false
+22697203,Nyctanassa violacea,Yellow-crowned Night-Heron,English,false
+22697203,Nyctanassa violacea,Yellow-crowned Night-heron,English,true
+22700605,Pitangus sulphuratus,Great Kiskadee,English,true
+22708894,Turdus plebejus,American Mountain Thrush,English,false
+22708894,Turdus plebejus,Mountain Robin,English,false
+22708894,Turdus plebejus,Mountain Thrush,English,true
+22708914,Turdus grayi,Clay-colored Robin,English,false
+22708914,Turdus grayi,Clay-coloured Thrush,English,false
+22708914,Turdus grayi,Clay-colored Thrush,English,true
+22711395,Pheugopedius atrogularis,Black-throated Wren,English,true
+22711401,Pheugopedius fasciatoventris,Black-bellied Wren,English,true
+22711422,Pheugopedius maculipectus,Spot-breasted Wren,English,true
+22711455,Thryophilus rufalbus,Rufous-and-white Wren,English,true
+22711578,Ramphocaenus melanurus,Long-billed Gnatwren,English,true
+22711597,Polioptila albiloris,White-lored Gnatcatcher,English,true
+22720410,Spinus psaltria,Lesser Goldfinch,English,true
+22721162,Spizella passerina,Chipping Sparrow,English,true
+22721610,Vermivora cyanoptera,Blue-winged Warbler,English,true
+22721618,Vermivora chrysoptera,Golden-winged Warbler,English,true
+22721639,Setophaga americana,Northern Parula,English,true
+22721686,Setophaga occidentalis,Hermit Warbler,English,true
+22721689,Setophaga virens,Black-throated Green Warbler,English,true
+22721731,Setophaga palmarum,Palm Warbler,English,true
+22721734,Setophaga castanea,Bay-breasted Warbler,English,true
+22721779,Seiurus aurocapilla,Ovenbird,English,true
+22722313,Rhodinocichla rosea,Rosy Thrush-Tanager,English,false
+22722313,Rhodinocichla rosea,Rosy Thrush-tanager,English,true
+22722391,Islerothraupis luctuosa,White-shouldered Tanager,English,true
+22722400,Tachyphonus rufus,White-lined Tanager,English,true
+22722494,Ramphocelus sanguinolentus,Crimson-collared Tanager,English,true
+22722513,Ramphocelus passerinii,Passerini's Tanager,English,false
+22722513,Ramphocelus passerinii,Scarlet-rumped Tanager,English,true
+22722527,Tangara episcopus,Blue-gray Tanager,English,false
+22722527,Tangara episcopus,Blue-grey Tanager,English,true
+22722546,Tangara palmarum,Palm Tanager,English,true
+22722845,Tangara florida,Emerald Tanager,English,true
+22722851,Tangara icterocephala,Silver-throated Tanager,English,true
+22722869,Tangara guttata,Speckled Tanager,English,true
+22722878,Tangara gyrola,Bay-headed Tanager,English,true
+22722881,Tangara lavinia,Rufous-winged Tanager,English,true
+22723122,Spodiornis rusticus,Slaty Finch,English,true
+22723396,Volatinia jacarina,Blue-black Grassquit,English,true
+22723406,Sporophila schistacea,Slate-coloured Seedeater,English,false
+22723406,Sporophila schistacea,Slate-colored Seedeater,English,true
+22723603,Tiaris olivaceus,Yellow-faced Grassquit,English,true
+22723813,Pheucticus ludovicianus,Rose-breasted Grosbeak,English,true
+22723939,Passerina caerulea,Blue Grosbeak,English,true
+22723951,Passerina cyanea,Indigo Bunting,English,true
+22724308,Quiscalus mexicanus,Great-tailed Grackle,English,true
+22724793,Setophaga dominica,Yellow-throated Warbler,English,true
+22735428,Sicalis luteola,Grassland Yellow-Finch,English,false
+22735428,Sicalis luteola,Grassland Yellow-finch,English,true
+22693363,Calidris canutus,Knot,English,false
+22693363,Calidris canutus,Lesser Knot,English,false
+22693363,Calidris canutus,Bécasseau maubèche,French,false
+22693363,Calidris canutus,Red Knot,English,true
+132341128,Hydrobates castro,Band-rumped Storm-Petrel,English,false
+132341128,Hydrobates castro,Pétrel de Castro,French,false
+132341128,Hydrobates castro,Band-rumped Storm-petrel,English,true
+132438298,Hydrobates leucorhous,Leach's Storm Petrel,English,false
+132438298,Hydrobates leucorhous,Leach's Storm-Petrel,English,false
+132438298,Hydrobates leucorhous,Paíño boreal,Spanish; Castilian,false
+132438298,Hydrobates leucorhous,Pétrel cul-blanc,French,false
+132438298,Hydrobates leucorhous,Leach's Storm-petrel,English,true
+22680398,Aythya marila,Scaup,English,false
+22680398,Aythya marila,Greater Scaup,English,true
+22693494,Phalaropus fulicarius,Grey Phalarope,English,false
+22693494,Phalaropus fulicarius,Grey (Red) Phalarope,English,false
+22693494,Phalaropus fulicarius,Phalarope à bec large,French,false
+22693494,Phalaropus fulicarius,Red Phalarope,English,true
+22694218,Catharacta maccormicki,Labbe de McCormick,French,false
+22694218,Catharacta maccormicki,South Polar Skua,English,true
+22694240,Stercorarius pomarinus,Pomarine Skua,English,false
+22694240,Stercorarius pomarinus,Labbe pomarin,French,false
+22694240,Stercorarius pomarinus,Pomarine Jaeger,English,true
+22694245,Stercorarius parasiticus,Arctic Jaeger,English,false
+22694245,Stercorarius parasiticus,Arctic Skua,English,false
+22694245,Stercorarius parasiticus,Labbe parasite,French,false
+22694245,Stercorarius parasiticus,Arctic Jaeger,English,true
+22694251,Stercorarius longicaudus,Long-tailed Skua,English,false
+22694251,Stercorarius longicaudus,Labbe à longue queue,French,false
+22694251,Stercorarius longicaudus,Long-tailed Jaeger,English,true
+22694292,Larus modestus,Gray Gull,English,false
+22694292,Larus modestus,Grey Gull,English,true
+22694317,Larus delawarensis,Goéland à bec cerclé,French,false
+22694317,Larus delawarensis,Ring-billed Gull,English,true
+22694432,Larus philadelphia,Mouette de Bonaparte,French,false
+22694432,Larus philadelphia,Bonaparte's Gull,English,true
+22694455,Larus atricilla,Goéland atricille,French,false
+22694455,Larus atricilla,Laughing Gull,English,true
+22694462,Larus pipixcan,Mouette de Franklin,French,false
+22694462,Larus pipixcan,Franklin's Gull,English,true
+22694493,Creagrus furcatus,Swallow-tailed Gull,English,true
+22694542,Thalasseus maximus,Sterne royale,French,false
+22694542,Thalasseus maximus,Royal Tern,English,true
+22694646,Sterna forsteri,Forster's Tern,English,true
+22694673,Sternula antillarum,Least Tern,English,true
+22694821,Gygis alba,Angel Tern,English,false
+22694821,Gygis alba,Common White-Tern,English,false
+22694821,Gygis alba,Fairy Tern,English,false
+22694821,Gygis alba,White Tem,English,false
+22694821,Gygis alba,White Tern,English,false
+22694821,Gygis alba,Gygis blanche,French,false
+22694821,Gygis alba,Common White Tern,English,true
+22696610,Podiceps nigricollis,Eared Grebe,English,false
+22696610,Podiceps nigricollis,Grèbe à cou noir,French,false
+22696610,Podiceps nigricollis,Black-necked Grebe,English,true
+22696683,Sula nebouxii,Blue-footed Booby,English,true
+22696694,Sula sula,Fou à pieds rouges,French,false
+22696694,Sula sula,Red-footed Booby,English,true
+22696698,Sula leucogaster,Fou brun,French,false
+22696698,Sula leucogaster,Brown Booby,English,true
+22697925,Pseudobulweria rostrata,Petrel de Tahití,Spanish; Castilian,false
+22697925,Pseudobulweria rostrata,Tahiti Petrel,English,true
+22698020,Pterodroma phaeopygia,Dark-rumped Petrel,English,false
+22698020,Pterodroma phaeopygia,Galápagos Petrel,English,false
+22698020,Pterodroma phaeopygia,Petrel de Galápagos,Spanish; Castilian,false
+22698020,Pterodroma phaeopygia,Galapagos Petrel,English,true
+22698027,Pterodroma neglecta,Kermadec Petrel,English,true
+22698030,Pterodroma externa,Juan Fernández Petrel,English,false
+22698030,Pterodroma externa,Fardela blanca de Juan Fernández,Spanish; Castilian,false
+22698030,Pterodroma externa,Fardela de Juan Fernández ,Spanish; Castilian,false
+22698030,Pterodroma externa,Fardela de Más Afuera,Spanish; Castilian,false
+22698030,Pterodroma externa,Petrel cuello blanco,Spanish; Castilian,false
+22698030,Pterodroma externa,Petrel de las Juan Fernádez,Spanish; Castilian,false
+22698030,Pterodroma externa,Juan Fernandez Petrel,English,true
+22698092,Pterodroma hasitata,Pájaro de las tempestades,Spanish; Castilian,false
+22698092,Pterodroma hasitata,Pampero de La Bruja,Spanish; Castilian,false
+22698092,Pterodroma hasitata,Black-capped Petrel,English,true
+22698150,Procellaria parkinsoni,Black (Parkinson's) Petrel,English,false
+22698150,Procellaria parkinsoni,Black Petrel,English,false
+22698150,Procellaria parkinsoni,Black Petrel,English,true
+22698175,Ardenna pacifica,Puffin du Pacifique,French,false
+22698175,Ardenna pacifica,Wedge-tailed Shearwater,English,true
+22698182,Ardenna bulleri,Pardela Dorsigrís,Spanish; Castilian,false
+22698182,Ardenna bulleri,Buller's Shearwater,English,true
+22698195,Ardenna creatopus,Pink-footed Shearwater,English,true
+22698216,Ardenna tenuirostris,Short-tailed Shearwater,English,true
+22698226,Puffinus puffinus,Puffin des Anglais,French,false
+22698226,Puffinus puffinus,Manx Shearwater,English,true
+22698436,Oceanites oceanicus,Wilson's Storm Petrel,English,false
+22698436,Oceanites oceanicus,Wilson's Storm-Petrel,English,false
+22698436,Oceanites oceanicus,Océanite de Wilson,French,false
+22698436,Oceanites oceanicus,Wilson's Storm-petrel,English,true
+22698453,Pelagodroma marina,White-faced Storm Petrel,English,false
+22698453,Pelagodroma marina,White-faced Storm-Petrel,English,false
+22698453,Pelagodroma marina,Océanite frégate,French,false
+22698453,Pelagodroma marina,White-faced Storm-petrel,English,true
+22698485,Hydrobates microsoma,Least Storm Petrel,English,false
+22698485,Hydrobates microsoma,Least Storm-Petrel,English,false
+22698485,Hydrobates microsoma,Least Storm-petrel,English,true
+22698496,Hydrobates tethys,Wedge-rumped Storm Petrel,English,false
+22698496,Hydrobates tethys,Wedge-rumped Storm-Petrel,English,false
+22698496,Hydrobates tethys,Wedge-rumped Storm-petrel,English,true
+22732244,Calonectris borealis,Cory's Shearwater,English,true
+22733979,Puffinus subalaris,Galapagos Shearwater,English,true
+22733989,Pelecanus occidentalis,Brown Pelican,English,true
+22736173,Sula dactylatra,أطيش مبرقع,Arabic,false
+22736173,Sula dactylatra,Masked Booby,English,true
+45959182,Puffinus lherminieri,Audubon's Shearwater,English,true
+22696773,Nannopterum brasilianus,Neotropical Cormorant,English,true
+22723926,Cyanocompsa parellina,Blue Bunting,English,true
+22723807,Pheucticus tibialis,Black-thighed Grosbeak,English,true
+22723828,Caryothraustes poliogaster,Black-faced Grosbeak,English,true
+22724096,Icterus mesomelas,Yellow-tailed Oriole,English,true
+22724111,Icterus pustulatus,Streak-backed Oriole,English,true
+22724317,Quiscalus nicaraguensis,Nicaraguan Grackle,English,true
+22724302,Dives dives,Melodious Blackbird,English,true
+22723994,Psarocolius wagleri,Chestnut-headed Oropendola,English,true
+22724065,Amblycercus holosericeus,Yellow-billed Cacique,English,true
+22722416,Habia fuscicauda,Red-throated Ant Tanager,English,false
+22722416,Habia fuscicauda,Red-throated Ant-Tanager,English,false
+22722416,Habia fuscicauda,Red-throated Ant-tanager,English,true
+22722182,Chlorospingus pileatus,Sooty-capped Bush Tanager,English,false
+22722182,Chlorospingus pileatus,Sooty-capped Bush-Tanager,English,false
+22722182,Chlorospingus pileatus,Sooty-capped Bush-tanager,English,true
+22721094,Junco vulcani,Volcano Junco,English,true
+22721224,Peucaea ruficauda,Stripe-headed Sparrow,English,true
+22721294,Aimophila rufescens,Rusty Sparrow,English,true
+22724923,Arremon costaricensis,Costa Rican Brush-finch,English,true
+22721566,Arremon crassirostris,Sooty-faced Finch,English,true
+22721367,Arremon aurantiirostris,Orange-billed Sparrow,English,true
+22721557,Pezopetes capitalis,Large-footed Finch,English,true
+22721560,Pselliophorus tibialis,Yellow-thighed Finch,English,true
+22722317,Mitrospingus cassinii,Dusky-faced Tanager,English,true
+22721934,Myioborus torquatus,Collared Redstart,English,false
+22721934,Myioborus torquatus,Collared Whitestart,English,true
+22722022,Basileuterus melanogenys,Black-cheeked Warbler,English,true
+22722041,Myiothlypis fulvicauda,Buff-rumped Warbler,English,true
+22721860,Geothlypis poliocephala,Gray-crowned Yellowthroat,English,false
+22721860,Geothlypis poliocephala,Grey-crowned Yellowthroat,English,true
+22721651,Oreothlypis gutturalis,Flame-throated Warbler,English,true
+22722790,Chlorophonia callophrys,Golden-browed Chlorophonia,English,true
+22722763,Euphonia anneae,Tawny-capped Euphonia,English,true
+22722750,Euphonia gouldi,Olive-backed Euphonia,English,true
+22722744,Euphonia imitans,Spot-crowned Euphonia,English,true
+22722703,Euphonia luteicapilla,Yellow-crowned Euphonia,English,true
+22722700,Euphonia affinis,Scrub Euphonia,English,true
+22712252,Hirundo rustica,European Swallow,English,false
+22712252,Hirundo rustica,Swallow,English,false
+22712252,Hirundo rustica,Hirondelle de cheminée,French,false
+22712252,Hirundo rustica," الخطاف, الخطاف الرقيعي, الرقيعي, السنونو",Arabic,false
+22712252,Hirundo rustica,Barn Swallow,English,true
+22712162,Stelgidopteryx ruficollis,Southern Rough-winged Swallow,English,true
+22712122,Pygochelidon cyanoleuca,Blue-and-white Swallow,English,true
+22733821,Tachycineta albilinea,Mangrove Swallow,English,true
+22712092,Progne tapera,Brown-chested Martin,English,true
+22712110,Progne chalybea,Gray-breasted Martin,English,false
+22712110,Progne chalybea,Grey-breasted Martin,English,true
+22705723,Cyanocorax affinis,Black-chested Jay,English,true
+22705742,Cyanocorax morio,Brown Jay,English,true
+22705760,Cyanocorax formosus,White-throated Magpie-Jay,English,false
+22705760,Cyanocorax formosus,White-throated Magpie-jay,English,true
+22705663,Cyanolyca cucullata,Azure-hooded Jay,English,true
+22705678,Cyanolyca argentigula,Silvery-throated Jay,English,true
+155115462,Vireo olivaceus,Red-eyed Vireo,English,true
+22700904,Carpodectes nitidus,Snowy Cotinga,English,true
+22700859,Lipaugus unirufus,Rufous Piha,English,true
+22700871,Cotinga amabilis,Lovely Cotinga,English,true
+22700925,Querula purpurata,Purple-throated Fruitcrow,English,true
+22702978,Sclerurus guatemalensis,Scaly-throated Leaftosser,English,true
+22703026,Dendrocincla homochroa,Ruddy Woodcreeper,English,true
+22702308,Synallaxis brachyura,Slaty Spinetail,English,true
+22702301,Synallaxis albescens,Pale-breasted Spinetail,English,true
+22702408,Cranioleuca erythrops,Red-faced Spinetail,English,true
+22702719,Margarornis rubiginosus,Ruddy Treerunner,English,true
+22702707,Premnoplex brunnescens,Spotted Barbtail,English,true
+22702890,Thripadectes rufobrunneus,Streak-breasted Treehunter,English,true
+22736330,Clibanornis rubiginosus,Ruddy Foliage-gleaner,English,true
+22702771,Syndactyla subalaris,Lineated Foliage-gleaner,English,true
+22702786,Anabacerthia variegaticeps,Scaly-throated Foliage-gleaner,English,true
+22703152,Lepidocolaptes souleyetii,Streak-headed Woodcreeper,English,true
+22703191,Campylorhamphus pusillus,Brown-billed Scythebill,English,true
+22703136,Xiphorhynchus flavigaster,Ivory-billed Woodcreeper,English,false
+22703136,Xiphorhynchus flavigaster,Ivory-billed Woodcreeper,English,true
+22729055,Xiphorhynchus susurrans,Cocoa Woodcreeper,English,true
+22703010,Dendrocincla fuliginosa,Plain-brown Woodcreeper,English,true
+22703020,Dendrocincla anabatina,Tawny-winged Woodcreeper,English,true
+22703209,Formicarius rufipectus,Rufous-breasted Antthrush,English,true
+22703206,Formicarius nigricapillus,Black-headed Antthrush,English,true
+22724004,Psarocolius montezuma,Montezuma Oropendola,English,true
+22723982,Psarocolius decumanus,Crested Oropendola,English,true
+22724105,Icterus pectoralis,Spot-breasted Oriole,English,true
+22731543,Icterus prosthemelas,Black-cowled Oriole,English,true
+22724358,Molothrus oryzivorus,Giant Cowbird,English,true
+22729346,Leistes militaris,Pampas Meadowlark,English,false
+22729346,Leistes militaris,Red-breasted Meadowlark,English,false
+22729346,Leistes militaris,Red-breasted Blackbird,English,true
+22722409,Habia rubica,Red-crowned Ant Tanager,English,false
+22722409,Habia rubica,Red-crowned Ant-Tanager,English,false
+22722409,Habia rubica,Red-crowned Ant-tanager,English,true
+22722476,Piranga leucoptera,White-winged Tanager,English,true
+22722444,Piranga bidentata,Flame-coloured Tanager,English,false
+22722444,Piranga bidentata,Flame-colored Tanager,English,true
+103811627,Piranga hepatica,Hepatic Tanager,English,true
+22722203,Chlorospingus canigularis,Ashy-throated Bush Tanager,English,false
+22722203,Chlorospingus canigularis,Ashy-throated Bush-Tanager,English,false
+22722203,Chlorospingus canigularis,Ashy-throated Bush-tanager,English,true
+22722162,Chlorospingus flavopectus,Common Bush Tanager,English,false
+22722162,Chlorospingus flavopectus,Common Bush-Tanager,English,false
+22722162,Chlorospingus flavopectus,Common Bush-tanager,English,true
+22721079,Zonotrichia capensis,Rufous-collared Sparrow,English,true
+22721264,Peucaea botterii,Botteri's Sparrow,English,true
+22734026,Atlapetes albinucha,White-naped Brush Finch,English,false
+22734026,Atlapetes albinucha,White-naped Brush-Finch,English,false
+22734026,Atlapetes albinucha,White-naped Brush-finch,English,true
+103776706,Melozone leucotis,White-eared Ground-sparrow,English,true
+22721898,Myioborus miniatus,Slate-throated Redstart,English,false
+22721898,Myioborus miniatus,Slate-throated Whitestart,English,true
+22722016,Basileuterus rufifrons,Rufous-capped Warbler,English,true
+103801509,Basileuterus culicivorus,Stripe-crowned Warbler,English,true
+103795596,Geothlypis chiriquensis,Chiriqui Yellowthroat,English,true
+103797492,Geothlypis bairdi,Baird's Yellowthroat,English,true
+22722734,Euphonia elegantissima,Blue-rumped Euphonia,English,false
+22722734,Euphonia elegantissima,Elegant Euphonia,English,true
+22690235,Patagioenas speciosa,Scaled Pigeon,English,true
+22722727,Euphonia hirundinacea,Yellow-throated Euphonia,English,true
+22690334,Patagioenas nigrirostris,Short-billed Pigeon,English,true
+22690296,Patagioenas flavirostris,Red-billed Pigeon,English,true
+22711029,Mimus gilvus,Tropical Mockingbird,English,true
+22690774,Columbina passerina,Common Ground Dove,English,false
+22690774,Columbina passerina,Common Ground-Dove,English,false
+22690774,Columbina passerina,Common Ground-dove,English,true
+22690779,Columbina minuta,Plain-breasted Ground Dove,English,false
+22690779,Columbina minuta,Plain-breasted Ground-Dove,English,false
+22690779,Columbina minuta,Plain-breasted Ground-dove,English,true
+22690784,Columbina talpacoti,Ruddy Ground Dove,English,false
+22690784,Columbina talpacoti,Ruddy Ground-Dove,English,false
+22690784,Columbina talpacoti,Ruddy Ground-dove,English,true
+22690809,Claravis pretiosa,Blue Ground Dove,English,false
+22690809,Claravis pretiosa,Blue Ground-Dove,English,false
+22690809,Claravis pretiosa,Blue Ground-dove,English,true
+22690966,Geotrygon montana,Ruddy Quail-Dove,English,false
+22690966,Geotrygon montana,Ruddy Quail-dove,English,true
+22690928,Leptotrygon veraguensis,Olive-backed Quail-Dove,English,false
+22690928,Leptotrygon veraguensis,Olive-backed Quail-dove,English,true
+103682912,Pyrocephalus rubinus,Common Vermilion Flycatcher,English,true
+22729313,Onychorhynchus mexicanus,Northern Royal-Flycatcher,English,false
+22729313,Onychorhynchus mexicanus,Northern Royal Flycatcher,English,true
+22703140,Xiphorhynchus lachrymosus,Black-striped Woodcreeper,English,true
+22703063,Xiphocolaptes promeropirhynchus,Strong-billed Woodcreeper,English,true
+22703043,Glyphorynchus spirurus,Wedge-billed Woodcreeper,English,true
+22702962,Sclerurus mexicanus,Tawny-throated Leaftosser,English,true
+103661243,Formicarius analis,Black-faced Antthrush,English,true
+103661269,Deconychura typica,Little Long-tailed Woodcreeper,English,true
+103661292,Dendrocolaptes sanctithomae,Western Barred Woodcreeper,English,true
+103670758,Xenops genibarbis,Plain Xenops,English,true
+22702746,Pseudocolaptes lawrencii,Buffy Tuftedcheek,English,true
+22729072,Hylopezus dives,Fulvous-bellied Antpitta,English,false
+22729072,Hylopezus dives,Thicket Antpitta,English,true
+22703339,Hylopezus perspicillatus,Spectacled Antpitta,English,false
+22703339,Hylopezus perspicillatus,Streak-chested Antpitta,English,true
+22703249,Grallaria guatimalensis,Scaled Antpitta,English,true
+22703231,Pittasoma michleri,Black-crowned Antpitta,English,false
+22703231,Pittasoma michleri,Black-crowned Pittasoma,English,true
+22696457,Falco rufigularis,Bat Falcon,English,true
+22696291,Micrastur semitorquatus,Collared Forest Falcon,English,false
+22696291,Micrastur semitorquatus,Collared Forest-Falcon,English,false
+22696291,Micrastur semitorquatus,Collared Forest-falcon,English,true
+22696270,Micrastur ruficollis,Barred Forest Falcon,English,false
+22696270,Micrastur ruficollis,Barred Forest-Falcon,English,false
+22696270,Micrastur ruficollis,Barred Forest-falcon,English,true
+22696267,Herpetotheres cachinnans,Laughing Falcon,English,true
+22681402,Campephilus guatemalensis,Pale-billed Woodpecker,English,true
+22681327,Celeus castaneus,Chestnut-colored Woodpecker,English,false
+22681327,Celeus castaneus,Chestnut-colored Woodpecker,English,true
+22681317,Celeus loricatus,Cinnamon Woodpecker,English,true
+61533973,Colaptes rubiginosus,Golden-olive Woodpecker,English,true
+22681228,Piculus simplex,Rufous-winged Woodpecker,English,true
+22681166,Leuconotopicus villosus,Hairy Woodpecker,English,true
+22681193,Leuconotopicus fumigatus,Smoky-brown Woodpecker,English,true
+181359,Sotalia guianensis,Boto,Portuguese,false
+181359,Sotalia guianensis,Boto-cinza,Portuguese,false
+181359,Sotalia guianensis,Bufeo Blanco,Spanish; Castilian,false
+181359,Sotalia guianensis,Bufeo Gris,Spanish; Castilian,false
+181359,Sotalia guianensis,Bufeo Negro,Spanish; Castilian,false
+181359,Sotalia guianensis,Guiana Dolphin,English,true
+18596,Pseudorca crassidens,Faux-orque,French,false
+18596,Pseudorca crassidens,Orca Falsa,Spanish; Castilian,false
+18596,Pseudorca crassidens,False Killer Whale,English,true
+58749,Lithobates warszewitschii,Warszewitsch's Frog,English,true
+150088916,Craugastor aenigmaticus,Montane Dirt Frog,English,true
+197472,Coniophanes fissidens,Yellowbelly Snake,English,true
+151594796,Cruziohyla sylviae,Rana Arbórea de Sylvia,Spanish; Castilian,false
+151594796,Cruziohyla sylviae,Sylvia's Tree Frog,English,true
+22680816,Melanerpes pucherani,Black-cheeked Woodpecker,English,true
+22690891,Leptotila cassinii,Gray-chested Dove,English,false
+22690891,Leptotila cassinii,Grey-chested Dove,English,true
+22690862,Leptotila plumbeiceps,Gray-headed Dove,English,false
+22690862,Leptotila plumbeiceps,Grey-headed Dove,English,true
+22684447,Morococcyx erythropygus,Lesser Ground Cuckoo,English,false
+22684447,Morococcyx erythropygus,Lesser Ground-Cuckoo,English,false
+22684447,Morococcyx erythropygus,Lesser Ground-cuckoo,English,true
+155658784,Megascops cooperi,Pacific Screech Owl,English,false
+155658784,Megascops cooperi,Pacific Screech-Owl,English,false
+155658784,Megascops cooperi,Autillo de manglar,Spanish; Castilian,false
+155658784,Megascops cooperi,Mangrovekreischeule,German,false
+155658784,Megascops cooperi,Petit-duc de Cooper,French,false
+155658784,Megascops cooperi,Pacific Screech-owl,English,true
+22682980,Hylomanes momotula,Tody Motmot,English,true
+22682292,Malacoptila panamensis,White-whiskered Puffbird,English,true
+22684337,Coccyzus minor,Mangrove Cuckoo,English,true
+198510,Scincella cherriei,Brown Forest Skink,English,true
+152342874,Diasporus amirae,Amira's Dink Frog,English,true
+22721740,Setophaga cerulea,Cerulean Warbler,English,true
+62026481,Gelochelidon nilotica,الخرشنة نورسية المنقار,Arabic,false
+62026481,Gelochelidon nilotica,Common Gull-billed Tern,English,true
+22680247,Spatula clypeata,Shoveler,English,false
+22680247,Spatula clypeata,Canard souchet,French,false
+22680247,Spatula clypeata,"أبو مجرف, أ الكيش",Arabic,false
+22680247,Spatula clypeata,Northern Shoveler,English,true
+22680301,Anas acuta,Pintail,English,false
+22680301,Anas acuta,Canard pilet,French,false
+22680301,Anas acuta,البلبول الشائع,Arabic,false
+22680301,Anas acuta,Northern Pintail,English,true
+154032898,Craugastor zunigai,Zúñiga’s Dirt Frog,English,true
+22689778,Antrostomus carolinensis,Chuck-will's-widow,English,true
+22696916,Egretta rufescens,Reddish Egret,English,true
+154107179,Nototriton costaricense,Southern Moss Salamander,English,true
+22708670,Hylocichla mustelina,Wood Thrush,English,true
+22692353,Laterallus jamaicensis,Black Rail,English,true
+22698209,Ardenna grisea,Fardela negra,Spanish; Castilian,false
+22698209,Ardenna grisea,Pardela oscura,Spanish; Castilian,false
+22698209,Ardenna grisea,Pardela sombría,Spanish; Castilian,false
+22698209,Ardenna grisea,Puffin fuligineux,French,false
+22698209,Ardenna grisea,جلم اسحم,Arabic,false
+22698209,Ardenna grisea,Sooty Shearwater,English,true
+22693749,Pluvialis squatarola,Black-bellied Plover,English,false
+22693749,Pluvialis squatarola,Pluvier argenté,French,false
+22693749,Pluvialis squatarola,الزقزاق الرمادي,Arabic,false
+22693749,Pluvialis squatarola,Grey Plover,English,true
+22694591,Thalasseus sandvicensis,Sterne caugek,French,false
+22694591,Thalasseus sandvicensis,خرشنة الساندويش,Arabic,false
+22694591,Thalasseus sandvicensis,Sandwich Tern,English,true
+22693336,Arenaria interpres,Turnstone,English,false
+22693336,Arenaria interpres,Tournepierre à collier,French,false
+22693336,Arenaria interpres,قنبرة الماء,Arabic,false
+22693336,Arenaria interpres,Ruddy Turnstone,English,true
+22694730,Onychoprion anaethetus,Sterne bridée,French,false
+22694730,Onychoprion anaethetus,الخرشنة المُلجَمة,Arabic,false
+22694730,Onychoprion anaethetus,Bridled Tern,English,true
+154837348,Aramides cajaneus,Grey-necked Wood-rail,English,false
+154837348,Aramides cajaneus,Grey-cowled Wood-rail,English,true
+154837304,Aramides albiventris,Russet-naped Wood-rail,English,true
+22734130,Accipiter striatus,Sharp-shinned Hawk,English,true
+22718575,Anthus rubescens,American Pipit,English,false
+22718575,Anthus rubescens,Buff-bellied Pipit,English,true
+22727969,Himantopus himantopus," الكرسوع, الكرسوع أبومغازل",Arabic,false
+22727969,Himantopus himantopus,Black-winged Stilt,English,true
+22680186,Anas platyrhynchos,Common Mallard,English,false
+22680186,Anas platyrhynchos,Northern Mallard,English,false
+22680186,Anas platyrhynchos,Canard colvert,French,false
+22680186,Anas platyrhynchos,"البُركة,  الخضيري",Arabic,false
+22680186,Anas platyrhynchos,Mallard,English,true
+22697043,Ardea alba,Great White Egret,English,false
+22697043,Ardea alba,Great White Heron,English,false
+22697043,Ardea alba,Grande aigrette,French,false
+22697043,Ardea alba,"البلشون الأبيض الكبير, بيوضي كبير",Arabic,false
+22697043,Ardea alba,Great White Egret,English,true
+22731538,Saltator striatipectus,Streaked Saltator,English,true
+22697109,Bubulcus ibis,Héron garde-boeufs,French,false
+22697109,Bubulcus ibis, أبوقردان,Arabic,false
+22697109,Bubulcus ibis,Cattle Egret,English,true
+22693427,Calidris alpina,Bécasseau variable,French,false
+22693427,Calidris alpina, الطيطوى الداكنة,Arabic,false
+22693427,Calidris alpina,Dunlin,English,true
+22694787,Chlidonias niger,Guifette noire,French,false
+22694787,Chlidonias niger,Black Tern,English,true
+22690066,Columba livia,Common Pigeon,English,false
+22690066,Columba livia,Rock Dove,English,false
+22690066,Columba livia,Rock DoveI,English,false
+22690066,Columba livia,Pigeon Biset,French,false
+22690066,Columba livia,حمام ازرق,Arabic,false
+22690066,Columba livia,Rock Dove,English,true
+45354964,Falco peregrinus,الشاهين,Arabic,false
+45354964,Falco peregrinus,Peregrine Falcon,English,true
+22694524,Hydroprogne caspia,Sterne caspienne,French,false
+22694524,Hydroprogne caspia, الخرشنة القزوينية,Arabic,false
+22694524,Hydroprogne caspia,Caspian Tern,English,true
+22697211,Nycticorax nycticorax,Black-Crowned Night Heron,English,false
+22697211,Nycticorax nycticorax,Night Heron,English,false
+22697211,Nycticorax nycticorax,Héron bihoreau,French,false
+22697211,Nycticorax nycticorax,"الواق الأخضر الصغير, غراب الليل",Arabic,false
+22697211,Nycticorax nycticorax,Black-crowned Night-heron,English,true
+22694938,Pandion haliaetus,Balbuzard pêcheur,French,false
+22694938,Pandion haliaetus,العقاب النسارية,Arabic,false
+22694938,Pandion haliaetus,Osprey,English,true
+103818789,Passer domesticus,"الدوري البلدي, العصفور الدوري",Arabic,false
+103818789,Passer domesticus,House Sparrow,English,true
+22693490,Phalaropus lobatus,Phalarope à bec étroit,French,false
+22693490,Phalaropus lobatus,الطيطوى حمراء الرقبة,Arabic,false
+22693490,Phalaropus lobatus,Red-necked Phalarope,English,true
+22697422,Plegadis falcinellus,Ibis falcinelle,French,false
+22697422,Plegadis falcinellus,أبو منجل الأسود,Arabic,false
+22697422,Plegadis falcinellus,Glossy Ibis,English,true
+103815961,Riparia riparia,Bank Swallow,English,false
+103815961,Riparia riparia,Sand Martin,English,false
+103815961,Riparia riparia,"خطاف الرمال, خطاف الرمال الرقيعي, سنونو الرمل",Arabic,false
+103815961,Riparia riparia,Collared Sand Martin,English,true
+22694623,Sterna hirundo,Sterne pierregarin,French,false
+22694623,Sterna hirundo,"الخرشنة الشائعة,  خطاف البحر",Arabic,false
+22694623,Sterna hirundo,Common Tern,English,true
+22688504,Tyto alba,Chouette effraie,French,false
+22688504,Tyto alba,الهامة,Arabic,false
+22688504,Tyto alba,Common Barn-owl,English,true
+62030590,Larus smithsonianus,American Herring Gull,English,false
+62030590,Larus smithsonianus,Arctic Herring Gull,English,true
+22698039,Pterodroma ultima,Fardela de Murphy,Spanish; Castilian,false
+22698039,Pterodroma ultima,Petrel de Murphy ,Spanish; Castilian,false
+22698039,Pterodroma ultima,Murphy's Petrel,English,true
+22696637,Phaethon aethereus,Phaéton à bec rouge,French,false
+22696637,Phaethon aethereus,رئيس البحر,Arabic,false
+22696637,Phaethon aethereus,Red-billed Tropicbird,English,true
+22698543,Hydrobates markhami,Markham's Storm Petrel,English,false
+22698543,Hydrobates markhami,Markham's Storm-Petrel,English,false
+22698543,Hydrobates markhami,Golondrina de Mar de Markham,Spanish; Castilian,false
+22698543,Hydrobates markhami,Golondrina de mar negra ,Spanish; Castilian,false
+22698543,Hydrobates markhami,Markham's Storm-petrel,English,true
+55492,Isthmohyla graceae,Continental Divide Treefrog,English,true
+2477,Balaenoptera musculus,Baleine bleue,French,false
+2477,Balaenoptera musculus,Ballena Azul,Spanish; Castilian,false
+2477,Balaenoptera musculus,Blauwal,German,false
+2477,Balaenoptera musculus,Blue Whale,English,true
+20733,Stenella longirostris,Long-beaked Dolphin,English,false
+20733,Stenella longirostris,Long-snouted Dolphin,English,false
+20733,Stenella longirostris,Dauphin longirostre,French,false
+20733,Stenella longirostris,Delfín Tornillón,Spanish; Castilian,false
+20733,Stenella longirostris,Estenela Giradora,Spanish; Castilian,false
+20733,Stenella longirostris,Spinner Dolphin,English,true
+22563,Tursiops truncatus,Bottle-nosed Dolphin,English,false
+22563,Tursiops truncatus,Bottlenosed Dolphin,English,false
+22563,Tursiops truncatus,Bottlenose Dolphin,English,false
+22563,Tursiops truncatus,Afalina,Turkish,false
+22563,Tursiops truncatus,Dauphin Souffleur,French,false
+22563,Tursiops truncatus,Delfin Geddumu Qasir,Maltese,false
+22563,Tursiops truncatus,Delfin I Madh,Albanian,false
+22563,Tursiops truncatus,Delfin Kabir,Arabic,false
+22563,Tursiops truncatus,Delfín Mular,Spanish; Castilian,false
+22563,Tursiops truncatus,Grand Dauphin,French,false
+22563,Tursiops truncatus,Pez Mular,Spanish; Castilian,false
+22563,Tursiops truncatus,Souffleur,French,false
+22563,Tursiops truncatus,Tursión,Spanish; Castilian,false
+22563,Tursiops truncatus,Tursiope,Italian,false
+22563,Tursiops truncatus,Tursiops,French,false
+22563,Tursiops truncatus,Ρινοδέλφινο (Rinodélfino),"Greek, Modern (1453-)",false
+22563,Tursiops truncatus,Common Bottlenose Dolphin,English,true
+22694479,Xema sabini,Mouette de Sabine,French,false
+22694479,Xema sabini,Sabine's Gull,English,true
+55265,Phyllobates vittatus,Golfodulcean Poison-arrow Frog,English,false
+55265,Phyllobates vittatus,Golfodulcean Poison Frog,English,true
+55288,Agalychnis annae,Orange-eyed Tree Frog,English,false
+55288,Agalychnis annae,Blue-sided Treefrog,English,true
+41755,Physeter macrocephalus,Cachelot,English,false
+41755,Physeter macrocephalus,Pot Whale,English,false
+41755,Physeter macrocephalus,Spermacet Whale,English,false
+41755,Physeter macrocephalus,Ballena Esperma,Spanish; Castilian,false
+41755,Physeter macrocephalus,Cachalot,French,false
+41755,Physeter macrocephalus,Cachalote,Spanish; Castilian,false
+41755,Physeter macrocephalus,Cachalote,Portuguese,false
+41755,Physeter macrocephalus,Capodoglio,Italian,false
+41755,Physeter macrocephalus,Gabdoll,Maltese,false
+41755,Physeter macrocephalus,İspermeçet balinası,Turkish,false
+41755,Physeter macrocephalus,Kaşalot,Turkish,false
+41755,Physeter macrocephalus,Kashalot,Albanian,false
+41755,Physeter macrocephalus,Ulješura,Croatian,false
+41755,Physeter macrocephalus,عنبر (anbar),Arabic,false
+41755,Physeter macrocephalus,ראשתן (roshtan),Hebrew,false
+41755,Physeter macrocephalus,φυσητήρας (fysitíras),"Greek, Modern (1453-)",false
+41755,Physeter macrocephalus,Sperm Whale,English,true
+22692192,Heliornis fulica,Sungrebe,English,true
+22693594,Burhinus bistriatus,Double-striped Thick-knee,English,true
+22690962,Geotrygon violacea,Violaceous Quail-Dove,English,false
+22690962,Geotrygon violacea,Violaceous Quail-dove,English,true
+22690908,Zentrygon costaricensis,Buff-fronted Quail-Dove,English,false
+22690908,Zentrygon costaricensis,Buff-fronted Quail-dove,English,true
+22728963,Zentrygon lawrencii,Purplish-backed Quail-Dove,English,false
+22728963,Zentrygon lawrencii,Purplish-backed Quail-dove,English,true
+22690936,Zentrygon chiriquensis,Chiriqui Quail-Dove,English,false
+22690936,Zentrygon chiriquensis,Chiriquí Quail-Dove,English,false
+22690936,Zentrygon chiriquensis,Rufous-breasted Quail-Dove,English,false
+22690936,Zentrygon chiriquensis,Chiriqui Quail-dove,English,true
+22689695,Lurocalis semitorquatus,Short-tailed Nighthawk,English,true
+22689773,Nyctiphrynus ocellatus,Ocellated Poorwill,English,true
+22689781,Antrostomus rufus,Rufous Nightjar,English,true
+22689813,Antrostomus saturatus,Dusky Nightjar,English,true
+3745,Canis latrans,American Jackal,English,false
+3745,Canis latrans,Brush Wolf,English,false
+3745,Canis latrans,Prairie Wolf,English,false
+3745,Canis latrans,Kojote,German,false
+3745,Canis latrans,Coyote,English,true
+22689823,Hydropsalis cayennensis,White-tailed Nightjar,English,true
+22722724,Euphonia laniirostris,Thick-billed Euphonia,English,true
+22722760,Euphonia minuta,White-vented Euphonia,English,true
+22720398,Spinus xanthogastrus,Yellow-bellied Siskin,English,true
+22696286,Micrastur mirandollei,Slaty-backed Forest Falcon,English,false
+22696286,Micrastur mirandollei,Slaty-backed Forest-Falcon,English,false
+22696286,Micrastur mirandollei,Slaty-backed Forest-falcon,English,true
+22696229,Ibycter americanus,Red-throated Caracara,English,true
+22696261,Milvago chimachima,Yellow-headed Caracara,English,true
+22681939,Eubucco bourcierii,Red-headed Barbet,English,true
+22682200,Galbula ruficauda,Rufous-tailed Jacamar,English,true
+22682224,Jacamerops aureus,Great Jacamar,English,true
+22683649,Chloroceryle amazona,Amazon Kingfisher,English,true
+22683655,Chloroceryle inda,Green-and-rufous Kingfisher,English,true
+22683658,Chloroceryle aenea,American Pygmy-kingfisher,English,true
+22689636,Nyctibius grandis,Great Potoo,English,true
+22689646,Nyctibius griseus,Common Potoo,English,true
+22689642,Nyctibius jamaicensis,Common Potoo,English,false
+22689642,Nyctibius jamaicensis,Northern Potoo,English,true
+22693553,Jacana jacana,Wattled Jacana,English,true
+22694075,Vanellus chilensis,Southern Lapwing,English,true
+22691893,Eurypyga helias,Sunbittern,English,true
+61634649,Momotus lessonii,Blue-diademed Motmot,English,true
+22682995,Baryphthengus martii,Rufous Motmot,English,true
+22682986,Electron platyrhynchum,Broad-billed Motmot,English,true
+22682992,Eumomota superciliosa,Turquoise-browed Motmot,English,true
+22697733,Fregata minor,Great Frigatebird,English,false
+22697733,Fregata minor,Frégate du Pacifique,French,false
+22697733,Fregata minor,Great Frigatebird,English,true
+61418830,Piaya cayana,Squirrel Cuckoo,English,false
+61418830,Piaya cayana,Common Squirrel-cuckoo,English,true
+22684444,Tapera naevia,Striped Cuckoo,English,true
+22684452,Dromococcyx phasianellus,Pheasant Cuckoo,English,true
+22684431,Crotophaga major,Greater Ani,English,true
+22694799,Anous minutus,Noddi noir,French,false
+22694799,Anous minutus,Black Noddy,English,true
+2613,Bassariscus sumichrasti,Central American Cacomistle,English,false
+2613,Bassariscus sumichrasti,Babisuri,Spanish; Castilian,false
+2613,Bassariscus sumichrasti,Basáride,Spanish; Castilian,false
+2613,Bassariscus sumichrasti,Bassarai rusé,French,false
+2613,Bassariscus sumichrasti,Guayanoche,Spanish; Castilian,false
+2613,Bassariscus sumichrasti,Mico de Noche,Spanish; Castilian,false
+2613,Bassariscus sumichrasti,Mico Rayado,Spanish; Castilian,false
+2613,Bassariscus sumichrasti,Mittelamerikanisches Katzenfrett,German,false
+2613,Bassariscus sumichrasti,Cacomistle,English,true
+22690814,Paraclaravis mondetoura,Maroon-chested Ground Dove,English,false
+22690814,Paraclaravis mondetoura,Maroon-chested Ground-Dove,English,false
+22690814,Paraclaravis mondetoura,Maroon-chested Ground-dove,English,true
+55033,Hyalinobatrachium talamancae,Talamanca Glass Frog,English,true
+22721519,Arremon brunneinucha,Chestnut-capped Brush Finch,English,false
+22721519,Arremon brunneinucha,Chestnut-capped Brush-Finch,English,false
+22721519,Arremon brunneinucha,Chestnut-capped Brush-finch,English,true
+22721401,Arremonops conirostris,Black-striped Sparrow,English,true
+22733880,Notharchus hyperrhynchus,White-necked Puffbird,English,true
+61998257,Notharchus subtectus,Lesser Pied Puffbird,English,true
+22682298,Micromonacha lanceolata,Lanceolated Monklet,English,true
+22682331,Monasa morphoeus,White-fronted Nunbird,English,true
+22686464,Cypseloides cryptus,White-chinned Swift,English,true
+22686424,Streptoprocne rutila,Chestnut-collared Swift,English,true
+22686476,Streptoprocne zonaris,White-collared Swift,English,true
+22686701,Chaetura cinereiventris,Gray-rumped Swift,English,false
+22686701,Chaetura cinereiventris,Grey-rumped Swift,English,true
+22686759,Panyptila cayennensis,Lesser Swallow-tailed Swift,English,true
+22686756,Panyptila sanctihieronymi,Great Swallow-tailed Swift,English,true
+22703089,Dendrocolaptes picumnus,Black-banded Woodcreeper,English,true
+22702998,Xenops rutilus,Streaked Xenops,English,true
+22702858,Philydor rufum,Buff-fronted Foliage-gleaner,English,true
+22702910,Automolus ochrolaemus,Buff-throated Foliage-gleaner,English,true
+22687562,Amazilia boucardi,Amazilia de Manglar,Spanish; Castilian,false
+22687562,Amazilia boucardi,Mangrove Hummingbird,English,true
+22680774,Picumnus olivaceus,Olivaceous Piculet,English,true
+22733729,Melanerpes chrysauchen,Golden-naped Woodpecker,English,true
+22680850,Melanerpes rubricapillus,Red-crowned Woodpecker,English,true
+22680865,Melanerpes hoffmannii,Hoffmann's Woodpecker,English,true
+22694967,Leptodon cayanensis,Gray-headed Kite,English,false
+22694967,Leptodon cayanensis,Grey-headed Kite,English,true
+22696193,Spizaetus tyrannus,Black Hawk-Eagle,English,false
+22696193,Spizaetus tyrannus,Black Hawk-eagle,English,true
+22696120,Spizaetus melanoleucus,Black-and-white Hawk-Eagle,English,false
+22696120,Spizaetus melanoleucus,Black-and-White Hawk-Eagle,English,false
+22696120,Spizaetus melanoleucus,Aguila-azor Blanquinegra,Spanish; Castilian,false
+22696120,Spizaetus melanoleucus,Aguila-azor Chica,Spanish; Castilian,false
+22696120,Spizaetus melanoleucus,Aguila Blanquinegra,Spanish; Castilian,false
+22696120,Spizaetus melanoleucus,Black-and-white Hawk-eagle,English,true
+22695060,Harpagus bidentatus,Double-toothed Kite,English,true
+22695565,Accipiter superciliosus,Tiny Hawk,English,true
+22695669,Accipiter bicolor,Bicolored Hawk,English,true
+22695069,Ictinia plumbea,Plumbeous Kite,English,true
+22695842,Busarellus nigricollis,Black-collared Hawk,English,true
+22695729,Geranospiza caerulescens,Crane Hawk,English,true
+22695832,Buteogallus meridionalis,Savanna Hawk,English,true
+22695827,Buteogallus urubitinga,Great Black Hawk,English,false
+22695827,Buteogallus urubitinga,Great Black-Hawk,English,false
+22695827,Buteogallus urubitinga,Great Black Hawk,English,true
+22695754,Morphnarchus princeps,Barred Hawk,English,true
+22695880,Rupornis magnirostris,Roadside Hawk,English,true
+22695786,Pseudastur albicollis,White Hawk,English,true
+22695775,Leucopternis semiplumbeus,Busardo Semiplomizo,Spanish; Castilian,false
+22695775,Leucopternis semiplumbeus,Gavilán Semiplomizo,Spanish; Castilian,false
+22695775,Leucopternis semiplumbeus,Semiplumbeous Hawk,English,true
+22727766,Buteo nitidus,Grey-lined Hawk,English,true
+22690854,Leptotila verreauxi,White-tipped Dove,English,true
+22689731,Nyctidromus albicollis,Pauraque,English,false
+22689731,Nyctidromus albicollis,Pauraque,English,true
+103798640,Setophaga pitiayumi,Tropical Parula,English,true
+22683634,Megaceryle torquata,Ringed Kingfisher,English,true
+22683652,Chloroceryle americana,Green Kingfisher,English,true
+22694794,Anous stolidus,Common Noddy,English,false
+22694794,Anous stolidus,Noddi brun,French,false
+22694794,Anous stolidus,Brown Noddy,English,true
+22694740,Onychoprion fuscatus,Sterne fuligineuse,French,false
+22694740,Onychoprion fuscatus,Sooty Tern,English,true
+22684434,Crotophaga ani,Smooth-billed Ani,English,true
+22693550,Jacana spinosa,Northern Jacana,English,true
+22698557,Hydrobates melania,Black Storm Petrel,English,false
+22698557,Hydrobates melania,Black Storm-Petrel,English,false
+22698557,Hydrobates melania,Black Storm-petrel,English,true
+22697724,Fregata magnificens,Frégate superbe,French,false
+22697724,Fregata magnificens,Magnificent Frigatebird,English,true
+22694971,Chondrohierax uncinatus,Hook-billed Kite,English,true
+22695048,Rostrhamus sociabilis,Snail Kite,English,true
+22735514,Buteogallus anthracinus,Common Black-Hawk,English,false
+22735514,Buteogallus anthracinus,Common Black Hawk,English,true
+22695906,Geranoaetus albicaudatus,White-tailed Hawk,English,true
+22727773,Buteo plagiatus,Grey Hawk,English,true
+22695897,Buteo brachyurus,Short-tailed Hawk,English,true
+22695926,Buteo albonotatus,Zone-tailed Hawk,English,true
+22685553,Ara ambiguus,Guacamayo Ambiguo,Spanish; Castilian,false
+22685553,Ara ambiguus,Great Green Macaw,English,true
+174481,Iguana iguana,Iguana,Spanish; Castilian,false
+174481,Iguana iguana,Common Green Iguana,English,true
+198528,Tropidodipsas sartorii,Terrestrial Snail Sucker,English,true
+22678521,Crax rubra,Pavón Norteño,Spanish; Castilian,false
+22678521,Crax rubra,Great Curassow,English,true
+22690229,Patagioenas leucocephala,White-crowned Pigeon,English,true
+22684340,Coccyzus ferrugineus,Cocos Cuckoo,English,true
+20738,Steno bredanensis,Dauphin à Bec Etroit,French,false
+20738,Steno bredanensis,Delfín de Pico Largo,Spanish; Castilian,false
+20738,Steno bredanensis,Sténo,French,false
+20738,Steno bredanensis,Rough-toothed Dolphin,English,true
+22694296,Larus heermanni,Heermann's Gull,English,true
+22694552,Thalasseus elegans,Charrán elegante,Spanish; Castilian,false
+22694552,Thalasseus elegans,Gaviotín ,Spanish; Castilian,false
+22694552,Thalasseus elegans,Pagaza elegante,Spanish; Castilian,false
+22694552,Thalasseus elegans,Elegant Tern,English,true
+22682989,Electron carinatum,Keel-billed Motmot,English,true
+22695849,Buteogallus solitarius,Black Solitary Eagle,English,false
+22695849,Buteogallus solitarius,Montane Solitary Eagle,English,false
+22695849,Buteogallus solitarius,Aguila Solitaria,Spanish; Castilian,false
+22695849,Buteogallus solitarius,Black Solitary Eagle,English,true
+45430583,Amazona guatemalae,Northern Mealy Amazon,English,true
+22699191,Nesotriccus ridgwayi,Cocos Flycatcher,English,true
+22699767,Aphanotriccus capitalis,Tawny-chested Flycatcher,English,true
+22735434,Sturnella magna,Eastern Meadowlark,English,true
+22722558,Bangsia arcaei,Blue-and-gold Tanager,English,true
+22721692,Setophaga chrysoparia,Golden-cheeked Warbler,English,true
+22729498,Anas carolinensis,Green-winged Teal,English,true
+181500967,Ardea herodias,Great Blue Heron,English,true
+154632189,Chaetura vauxi,Vaux's Swift,English,true
+22685739,Eupsittula canicularis,Orange-fronted Parakeet,English,true
+103776650,Melozone cabanisi,Costa Rican Ground-sparrow,English,true
+22729867,Gallinago delicata,Wilson's Snipe,English,true

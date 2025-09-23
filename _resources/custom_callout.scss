@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+
+
+/* Mantiene el contenedor del icono, oculta solo el ::before */
+.callout-note .callout-icon::before {
+  content: none !important;
+}
+
+/* Imagen personalizada en el mismo contenedor */
+.callout-note .callout-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-image: url('posts/2025-09-01-hipotesis/imagenes/notes.png');
+  background-size: contain; /* ajusta a contenedor */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Título del callout-note */
+.callout-note .callout-header,
+.callout-note .callout-header p {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Cuerpo del callout-note */
+.callout-note .callout-body,
+.callout-note .callout-body p {
+  font-size: 1rem !important; /* fuerza el cambio */
+  line-height: 1.4;           /* opcional, ajusta espaciado */
+}

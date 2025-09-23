@@ -1,0 +1,166 @@
+---
+title: "Análisis de sentimientos"
+description: |
+  El análisis de sentimientos es un proceso de extracción de opiniones que tienen diferentes calificaciones, como positivo, negativo y neutral
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation_url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 01/01/2022
+citation: true
+draft: true
+categories:
+  - "Análisis de sentimientos"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(tm)
+library(SnowballC)
+library(tidytext)
+library(doc2concrete)
+library(SentimentAnalysis)
+library(sentimentr)
+library(syuzhet)
+library(meanr)
+library(peRspective)
+library(lexicon)
+library(wordcloud2)
+library(ggwordcloud)
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.textstats)
+library(quanteda.sentiment)
+library(quanteda.tidy)
+```
+
+```{r}
+texto <- readLines("rectoria.txt")
+```
+
+```{r}
+texto
+```
+
+### sentimentr
+
+```{r}
+texto_01 <- sentimentr::get_sentences(texto)
+texto_01
+```
+
+```{r}
+sent_01 <- sentimentr::sentiment(texto_01)
+sent_01
+```
+
+```{r}
+plot(sent_01)
+```
+
+### syuzhet
+
+```{r}
+texto_02 <- syuzhet::get_sentences(texto)
+texto_02
+```
+
+```{r}
+sent_02 <- get_sentiment(texto_02, method = "nrc", language = "spanish")
+sent_02
+```
+
+```{r}
+sent_df <- get_nrc_sentiment(texto_02, lang = "spanish")
+```
+
+```{r}
+sent_df
+```
+
+```{r}
+b <- sent_df |>
+  dplyr::summarise(across(c(1:8), sum)) |>
+  prop.table()
+b
+```
+
+```{r}
+colnames(b) <- c("enfado", "anticipación", "disgusto", "miedo", "felicidad", "tristeza", "sorpresa", "confianza")
+```
+
+```{r}
+b_long <- b |> pivot_longer(cols = 1:8, names_to = "sentimiento", values_to = "proporcion")
+```
+
+```{r}
+b_long$sentimiento <- factor(b_long$sentimiento)
+b_long
+```
+
+```{r}
+ggplot(b_long, aes(sentimiento, proporcion)) +
+  theme_minimal() +
+  geom_col(width = 0.02) +
+  geom_point(size = 6, color = "steelblue") +
+  geom_text(aes(label = round(proporcion, 2)), color = "white", size = 2)
+```
+
+```{r}
+wordcloud2(data = b_long)
+```
+
+```{r}
+ggplot(b_long, aes(label = sentimiento, size = proporcion)) +
+  geom_text_wordcloud() +
+  theme_minimal()
+```
+
+```{r}
+ggwordcloud2(b_long)
+```
+
+```{r}
+toks <- tokens(texto)
+toks
+```
+
+```{r}
+tokens_lookup(toks, data_dictionary_LSD2015, nested_scope = "dictionary", exclusive = FALSE)
+```
+
+```{r}
+pol <- textstat_polarity(toks, data_dictionary_LSD2015)
+```
+
+```{r}
+polarity(data_dictionary_LSD2015) <- 
+  list(pos = c("positive", "neg_negative"), neg = c("negative", "neg_positive"))
+```
+
+```{r}
+sent_pres <- data_corpus_inaugural %>%
+  corpus_subset(Year > 1970) %>%
+  textstat_polarity(data_dictionary_LSD2015)
+sent_pres
+```
+
+```{r}
+library("ggplot2")
+ggplot(pol) +
+    geom_point(aes(x = sentiment, y = reorder(doc_id, sentiment))) +
+    ylab("")
+```
+
+```{r}
+library("ggplot2")
+ggplot(sent_pres) +
+    geom_point(aes(x = sentiment, y = reorder(doc_id, sentiment))) +
+    ylab("")
+```

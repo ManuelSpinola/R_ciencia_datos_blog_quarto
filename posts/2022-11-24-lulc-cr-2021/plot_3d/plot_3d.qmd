@@ -1,0 +1,186 @@
+---
+title: "Untitled"
+editor: source
+---
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(rio)
+library(sf)
+library(stars)
+library(raster)
+library(rasterVis)
+library(terra)
+library(tidyterra)
+library(rnaturalearth)
+library(rmapshaper)
+library(exactextractr)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(supercells)
+library(ggdark)
+library(arcpullr)
+library(basemaps)
+library(rayshader)
+library(elevatr)
+library(here)
+```
+
+```{r}
+na <- ne_countries(continent = "north america", scale = 10, returnclass = "sf")
+```
+
+```{r}
+cr <- na |> dplyr::filter(iso_a3 == "CRI")
+```
+
+```{r}
+cr <- ms_filter_islands(cr, min_area = 1000000000)
+```
+
+```{r}
+cr_5367 <- st_transform(cr, crs = 5367)
+```
+
+```{r}
+cr_pseudo <- st_transform(cr, crs = 3857)
+```
+
+```{r}
+cr_dem <- get_elev_raster(cr, z = 10, clip = "locations")
+```
+
+```{r}
+cr_dem <- rast(cr_dem)
+```
+
+```{r}
+cr_dem_pseudo <- terra::project(cr_dem, "EPSG:3857")
+```
+
+```{r}
+writeRaster(cr_dem, file = "raster/cr_dem_pseudo.tif", overwrite = TRUE)
+```
+
+```{r}
+g <- basemap_geotif(cr, map_service = "esri", map_type = "world_imagery")
+```
+
+```{r}
+gr <- rast(g)
+```
+
+```{r}
+gr
+```
+
+```{r}
+plot(gr)
+```
+
+```{r}
+cr_satelite <- mask(gr, cr_pseudo)
+```
+
+```{r}
+plotRGB(cr_satelite)
+```
+
+```{r}
+names(cr_satelite) = c("r","g","b")
+```
+
+```{r}
+cr_satelite <- raster::stack(cr_satelite)
+```
+
+```{r}
+writeRaster(cr_satelite, file = "raster/cr_satelite.tif", overwrite = TRUE)
+```
+
+```{r}
+cr_dem_m <- rayshader::raster_to_matrix(cr_dem_pseudo)
+```
+
+```{r}
+cr_sat_m_r <- rayshader::raster_to_matrix(cr_satelite$r)
+cr_sat_m_g <- rayshader::raster_to_matrix(cr_satelite$g)
+cr_sat_m_b <- rayshader::raster_to_matrix(cr_satelite$b)
+```
+
+```{r}
+cr_sat_m = rayshader::raster_to_matrix(cr_satelite)
+```
+
+```{r}
+cr_sat_m_array = array(0,dim=c(nrow(cr_satelite),ncol(cr_satelite),3))
+```
+
+```{r}
+cr_sat_m_array[,,1] = cr_sat_m_r/184 #Red layer
+cr_sat_m_array[,,2] = cr_sat_m_g/184 #Blue layer
+cr_sat_m_array[,,3] = cr_sat_m_b/184 #Green layer
+```
+
+```{r}
+cr_sat_m_array = aperm(cr_sat_m_array, c(2,1,3))
+```
+
+```{r}
+plot_map(cr_sat_m_array)
+```
+
+```{r}
+cr_rgb_contrast = scales::rescale(cr_sat_m_array,to=c(0,1))
+```
+
+```{r}
+plot_map(cr_rgb_contrast)
+```
+
+```{r}
+plot_3d(cr_rgb_contrast,
+        cr_dem_m,
+        windowsize = c(1100,900),
+        zscale = 15,
+        shadowdepth = -50,
+        zoom=0.5,
+        phi=45,
+        theta=-45,
+        fov=70,
+        background = "white",
+        shadowcolor = "gray")
+```
+
+
+```{r}
+render_snapshot(here("plot_3d/cr_satelite_3d_b.png")
+```
+
+```{r}
+render_highquality(filename = here("plot_3d/cr_satelite_3d.png"),
+	lightintensity=1500,
+	lightaltitude=90)
+```
+
+
+```{r}
+plot_3d(cr_rgb_contrast,
+        cr_dem_m,
+        windowsize = c(1200,1000), 
+        solid = FALSE, 
+        zscale = 10,
+        phi = 45, 
+        zoom = 0.5, 
+        theta = -45,
+        shadowdepth = -100)
+```
+
+```{r}
+render_highquality(filename = here("plot_3d/cr_satelite_3d.png"),
+	lightintensity=1500,
+	lightaltitude=90)
+```

@@ -1,0 +1,578 @@
+---
+title: "Flujo de trabajo para la evaluación del cambio climático en la biodiversidad de América Central mediante el uso de datos abiertos y software libre"
+subtitle: "El uso de datos abiertos y software libre para evaluar el impacto del cambio climático sobre la biodiversidad en América Central"
+image: "imagenes/ac_circle.png"
+format:
+  html:
+    embed-resources: true
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+    
+  - name: Joel Sáenz
+    url: https://www.icomvis.una.ac.cr/index.php/joel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+
+  - name: Mónica Retamosa
+    url: https://www.icomvis.una.ac.cr/index.php/monica
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-4010-2998
+
+date: "2024-01-08"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+execute: 
+  echo: false
+  include: false
+code-fold: true
+code-summary: "Show the code"
+categories:
+  - "Cambio climático"
+  - "Distribución de especies"
+  - "Biodiversidad"
+  - "Datos abiertos"
+  - "Software libre"
+---
+
+# Modelaje de la distribución actual de la rana verde de ojos rojos
+
+Este es un flujo de trabajo de como realizar un análisis del impacto del cambio climático sobre la biodiversidad en América Central. En este caso utilizamos como ejemplo la rana verde de ojos rojos (*Agalychnis callidryas*).
+
+![](imagenes/ac_circle.png){fig-align="center" width="20%"}
+
+Para poder realizar el análisis es necesario instalar y cargar los siguientes paquetes de R [@R2023].
+
+```{r}
+#| message: false
+#| warning: false
+#| include: true
+#| echo: true
+library(tidyverse)
+library(here)
+library(spocc)
+library(sf)
+library(stars)
+library(terra)
+library(tidyterra)
+library(predicts)
+library(cageo)
+library(paisaje)
+library(ggsankey)
+library(gt)
+```
+
+::: callout-note
+Los paquetes [cageo](https://github.com/ManuelSpinola/cageo), [paisaje](https://github.com/ManuelSpinola/paisaje) y [ggsankey](https://github.com/davidsjoberg/ggsankey) se deben bajar desde el enlace que se provee al pinchar en los respectivos nombres.
+:::
+
+## 1. Obtención de los límites del área de estudio
+
+Para obtener los límites de América Central usamos el mapa **ca_outline_d** que se incluye en el paquete de R, cageo [@Spínola2023_a]
+
+::: callout-note
+El paquete de R, **cageo** contiene datos espaciales para America Central. El paquete se desarrolló para facilitar este flujo de trabajo.
+:::
+
+```{r}
+#| include: true
+#| echo: true
+ca <- ca_outline_d
+```
+
+```{r}
+#| include: true
+#| echo: true
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = ca)
+```
+
+## 2. Obtenención de los registros de la especie
+
+Para obtener los registros de la especie en el portal de datos [GBIF](https://www.gbif.org) usamos el paquete spocc [@Owens2023]
+
+```{r}
+#| include: true
+#| echo: true
+ac_gbif <- occ(query = "Agalychnis callidryas", from = "gbif", has_coords = TRUE, limit = 5000, geometry = st_bbox(ca))
+```
+
+Los registros obtenidos para la región de América Central los convertimos en una estructura de datos de 2 dimensiones (filas y columnas).
+
+```{r}
+#| include: true
+#| echo: true
+ac_gbif_df <- occ2df(ac_gbif) |>
+  drop_na() |>
+  mutate_if(is.character, as.factor)
+```
+
+```{r}
+#| include: true
+#| echo: true
+head(ac_gbif_df) |> gt() |> tab_options(table.font.size = 12)
+```
+
+Luego convertimos los registros en un objeto espacial, donde solo nos quedamos con los registros que se incluyen en la región continental de América Central
+
+```{r}
+#| warning: false
+#| include: true
+#| echo: true
+ac_gbif_sp <- st_as_sf(ac_gbif_df, coords = c("longitude", "latitude"), crs = 4326) |>
+  st_intersection(ca)
+```
+
+Se remueven los registros que puedan estar duplicados
+
+```{r}
+#| include: true
+#| echo: true
+ac_gbif_sp <- distinct(ac_gbif_sp)
+```
+
+Elaboramos un mapa que muestre los registros en la región de América Central
+
+```{r}
+#| include: true
+#| echo: true
+ggplot() +
+  geom_sf(data = ca) +
+  geom_sf(data = ac_gbif_sp)
+```
+
+## 3. Preparación de las variables ambientales
+
+Las variables ambientales a utilizar en este caso son las 19 variables bioclimáticas elaboradas por [WorldClim](https://www.worldclim.org/). Para obtener las variables para la región de América Central utilizamos el paquete de R, cacc [@Spínola2023_b]
+
+```{r}
+#| message: false
+#| warning: false
+#| include: true
+#| echo: true
+ca_bioc <- get_worldclim_historic(var = "bio",
+                      res = 2.5,
+                      aoi = ca)
+```
+
+
+Realizamos un mapa de las 19 variables bioclimáticas.
+
+```{r}
+#| include: true
+#| echo: true
+plot(ca_bioc, maxnl = 19)
+```
+
+## 4. Modelación
+
+### Ajuste del modelo
+
+Para modelar la distribución de la rana verde de ojos rojos usamo el algoritmo Maxent del paquete de R, predicts [@Hijmans2023]
+
+Primero transformamos el objeto **ac_gbif_sp** en un objeto terra
+
+```{r}
+ac_gbif_sp_t <- vect(ac_gbif_sp)
+```
+
+Luego dividimos los registros de ocurrencia en 5 subconjuntos y se dividen los datos en un subconjunto de entrenamiento y se mantiene un 20% para poner a prueba el modelo
+
+```{r}
+#| include: true
+#| echo: true
+sc <- folds(ac_gbif_sp_t, k=5)
+datos_prueba <- ac_gbif_sp_t[sc == 1, ]
+datos_entrenamiento <- ac_gbif_sp_t[sc != 1, ]
+```
+
+Ajustamos el modelo de maxent
+
+```{r}
+#| include: true
+#| echo: true
+modelo_maxent <- MaxEnt(ca_bioc, datos_entrenamiento)
+```
+
+Graficams la importancia de las variables.
+
+```{r}
+#| include: true
+#| echo: true
+plot(modelo_maxent)
+```
+
+### Predicción
+
+Predecimos la cálidad del hábitat para la especie para la región de América Central
+
+```{r}
+#| include: true
+#| echo: true
+mapa_maxent <- predict(modelo_maxent, ca_bioc)
+```
+
+Elaboramos un mapa con la calidad del hábitat
+
+```{r}
+#| include: true
+#| echo: true
+ggplot() +
+  theme_minimal() +
+  geom_spatraster(data = mapa_maxent) +
+  scale_fill_whitebox_c(name = "Calidad \ndel hábitat",
+                       palette = "Bl_Yl_Rd",
+                       na.value = NA,
+                       direction = 1)
+```
+
+### Evaluación
+
+Generamos datos de "background", en este caso 1000 puntos
+
+```{r}
+#| include: true
+#| echo: true
+bg <- backgroundSample(ca_bioc, 1000)
+```
+
+Para evaluar el modelo usamos los puntos de "background" con los datos de prueba que habíamos asignado previamente
+
+```{r}
+#| include: true
+#| echo: true
+evaluacion_01 <- pa_evaluate(modelo_maxent, p = datos_prueba, a = bg, x = ca_bioc)
+```
+
+Visualizamos diferentes métricas de evaluación
+
+```{r}
+#| include: true
+#| echo: true
+evaluacion_01
+```
+
+```{r}
+# Método 2
+
+presencia_prueba <- data.frame(extract(ca_bioc, datos_prueba))
+bg_prueba <- data.frame(extract(ca_bioc, bg))
+```
+
+```{r}
+evaluacion_02 <- pa_evaluate(modelo_maxent, p = presencia_prueba, a = bg_prueba)
+```
+
+```{r}
+evaluacion_02
+```
+
+```{r}
+# Método 3
+
+prueba_p <- predict(modelo_maxent, presencia_prueba)
+
+prueba_a <- predict(modelo_maxent, bg_prueba)
+```
+
+```{r}
+evaluacion_03 <- pa_evaluate(p = prueba_p, a = prueba_a)
+```
+
+```{r}
+evaluacion_03
+```
+
+Graficamos la evaluación del modelo.
+
+```{r}
+#| include: true
+#| echo: true
+plot(evaluacion_01, "ROC")
+```
+
+Obtenemos el threshold para este modelo para usarlo en la evaluación del impacto del cambio climático.
+
+```{r}
+threshold(evaluacion_01)
+```
+
+## 5. Evaluación del impacto del cambio climático
+
+Para evaluar el impacto del cambio climático sobre el hábitat de la rana verde de ojos rojos utilizamos un escenario de cambio climático.
+
+En este caso usaremos el escenario INM-CM4-8 para SSP5-8.5 y el intervalo de tiempo 2041 - 2060.
+
+::: callout-note
+El paquete de R, **paisaje** cuenta con funciones para bajar datos climatológicos para América Central. El paquete se desarrolló para facilitar este flujo de trabajo.
+:::
+
+```{r}
+#| include: true
+#| echo: true
+ca_bio_2041_2060 <- get_worldclim_future(var = "bioc",
+                    res = "2.5m",
+                    gcm = "INM-CM4-8",
+                    scenario = "585",
+                    time_range = "2041-2060",
+                    aoi = ca)
+```
+
+
+Renombramos las 19 variables bioclimáticas con el mismo nombre de las variables usadas en el modelo para el tiempo presente.
+
+```{r}
+#| include: true
+#| echo: true
+names(ca_bio_2041_2060) <- names(ca_bioc)
+```
+
+```{r}
+plot(ca_bioc)
+```
+
+```{r}
+plot(ca_bio_2041_2060)
+```
+
+Realizamos la predicción para el escenario climático escogido.
+
+```{r}
+#| include: true
+#| echo: true
+mapa_maxent_2041_2060 <- predict(modelo_maxent, ca_bio_2041_2060)
+```
+
+```{r}
+mapa_maxent_2041_2060
+```
+
+Elaboramos un mapa de la predicción.
+
+```{r}
+#| include: true
+#| echo: true
+ggplot() +
+  theme_minimal() +
+  geom_spatraster(data = mapa_maxent_2041_2060) +
+  scale_fill_whitebox_c(name = "Calidad \ndel hábitat",
+                       palette = "Bl_Yl_Rd",
+                       na.value = NA,
+                       direction = 1)
+```
+
+Combinamos ambos mapas para poder compararlos.
+
+```{r}
+#| include: true
+#| echo: true
+ambos <- c(mapa_maxent, mapa_maxent_2041_2060)
+```
+
+Le asignamos nombres a las capas.
+
+```{r}
+#| include: true
+#| echo: true
+names(ambos) <- c("Actual", "Futuro")
+```
+
+Como se puede ver, se registran cambios en la calidad del hábitat para el escenario climático utilizado.
+
+```{r}
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+ggplot() +
+  theme_minimal() +
+  geom_spatraster(data = ambos) +
+  facet_wrap(~ lyr) +
+  scale_fill_whitebox_c(name = "Calidad \ndel hábitat",
+                       palette = "Bl_Yl_Rd",
+                       na.value = NA,
+                       direction = 1)
+```
+
+Una manera de cuantificar los cambios en un escenario futuro es transformar la calidad del hábitat, por ejemplo, en 5 categorías.
+
+```{r}
+m <- c(0, 0.2, 1,
+       0.2, 0.4, 2,
+       0.4, 0.6, 3,
+       0.6, 0.8, 4,
+       0.8, 1, 5)
+```
+
+```{r}
+rclmat <- matrix(m, ncol = 3, byrow = TRUE)
+```
+
+```{r}
+clases <- data.frame(id = 1:5, cover=c("Muy bajo", "Bajo", "Medio", "Alto", "Muy alto"))
+```
+
+Lo hacemos para el mapa de calidad de hábitat actual.
+
+```{r}
+#| include: true
+#| echo: true
+mapa_maxent_c <- classify(mapa_maxent, rclmat, include.lowest = TRUE)
+```
+
+```{r}
+#| include: true
+#| echo: true
+levels(mapa_maxent_c) <- clases
+```
+
+```{r}
+plot(mapa_maxent_c)
+```
+
+Lo hacemos para el mapa de calidad de hábitat en el futuro.
+
+```{r}
+#| include: true
+#| echo: true
+mapa_maxent_2041_2060_c <- classify(mapa_maxent_2041_2060, rclmat, include.lowest = TRUE)
+```
+
+```{r}
+#| include: true
+#| echo: true
+levels(mapa_maxent_2041_2060_c) <- clases
+```
+
+```{r}
+plot(mapa_maxent_2041_2060_c)
+```
+
+Combinamos ambos mapas (rasters)
+
+```{r}
+#| include: true
+#| echo: true
+ambos_c <- c(mapa_maxent_c, mapa_maxent_2041_2060_c)
+```
+
+```{r}
+#| include: true
+#| echo: true
+names(ambos_c) <- c("Actual", "Futuro")
+```
+
+Elaboramos un gráfico con ambos mapas para hacer más fácil la comparación.
+
+```{r}
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+ggplot() +
+  theme_minimal() +
+  geom_spatraster(data = ambos_c, color = "black") +
+  facet_wrap(~ lyr) +
+  scale_fill_whitebox_d(name = "Calidad \ndel hábitat",
+                       palette = "Bl_Yl_Rd",
+                       na.value = NA,
+                       direction = 1)
+```
+
+Luego procesamos ambos mapas para poder contabilizar las celdas (pixeles) que corresponden a cada categoría de calidad del hábitat en el mapa actual y en el mapa futuro.
+
+```{r}
+#| include: true
+#| echo: true
+r_df <- as.data.frame(ambos_c) |>
+  drop_na()
+```
+
+```{r}
+r_df
+```
+
+```{r}
+#| include: true
+#| echo: true
+r_df_sankey <- r_df %>%
+  make_long(Actual, Futuro)
+```
+
+```{r}
+#| include: true
+#| echo: true
+r_df_sankey$node <- factor(r_df_sankey$node, levels = c("Muy bajo", "Bajo", "Medio", "Alto", "Muy alto"))
+```
+
+```{r}
+r_df_sankey
+```
+
+Elaboramos un sankey plot para visualizar la transformación de las celdas (pixeles) entre diferentes categorías de calidad del hábitat entre el mapa actual y el mapa futuro. .
+
+```{r}
+#| include: true
+#| echo: true
+ggplot(r_df_sankey, aes(x = x, 
+               next_x = next_x, 
+               node = node, 
+               next_node = next_node,
+               fill = factor(node),
+               label = node)) +
+  theme_sankey(base_size = 18) +
+  labs(x = NULL) +
+  geom_sankey(flow.alpha = 0.5
+                      , node.color = "black"
+                      ,show.legend = FALSE) +
+  geom_sankey_label(size = 3, color = "black", fill= "white", hjust = -0.5) +
+  scale_fill_brewer(palette = "Set1", direction=-1)
+```
+
+```{r}
+m <- c(0, 0.4620605, 0,
+       0.4620605, 1, 1)
+```
+
+```{r}
+rclmat <- matrix(m, ncol = 3, byrow = TRUE)
+```
+
+```{r}
+clases <- data.frame(id = 0:1, cond = c("Ausente", "Presente"))
+```
+
+```{r}
+clases
+```
+
+```{r}
+reference_points <- extract(ca_bio_2041_2060, vect(ac_gbif_sp), ID=FALSE)
+```
+
+```{r}
+r_mess <- mess(x = ca_bio_2041_2060, v = reference_points)
+```
+
+```{r}
+plot(r_mess)
+```
+
+```{r}
+r_mess_mask <- r_mess < 0
+```
+
+```{r}
+plot(r_mess_mask)
+```

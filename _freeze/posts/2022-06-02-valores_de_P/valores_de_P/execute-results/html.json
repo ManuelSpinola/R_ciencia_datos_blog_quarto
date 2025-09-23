@@ -1,0 +1,14 @@
+{
+  "hash": "4ec030f92ccee8c84de4fdd0052490e4",
+  "result": {
+    "markdown": "---\ntitle: \"Visualizando datos en escala Likert\"\nsubtitle: Como visualizar datos en Escala Likert\nimage: \"figura_01.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid_id: 0000-0002-7839-1908\ndate: 2022-05-11\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nbibliography: references.bib\nlang: es\ndraft: true\ncategories:\n  - \"Escala Likert\"\n  - \"Visualización de datos\"\n---\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

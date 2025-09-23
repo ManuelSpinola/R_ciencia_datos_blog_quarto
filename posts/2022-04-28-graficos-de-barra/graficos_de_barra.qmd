@@ -1,0 +1,150 @@
+---
+title: "Alternativas a los gráficos de barra o columna"
+subtitle: En esta entrada se muestran alternativas a los gráficos de barra o columna
+image: "ambos.png"
+author:
+  - name: "Manuel Spínola"
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: "2022-04-28"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+categories:
+  - "Gráficos"
+  - "Visualización de datos"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(palmerpenguins)
+library(magick)
+library(png)
+library(rsvg)
+library(svgtools)
+library(cowplot)
+library(patchwork)
+```
+
+```{r}
+#| include: false
+data("penguins")
+pin <- penguins |> drop_na()
+```
+
+```{r}
+#| include: false
+p <- image_read_svg("pin.svg")
+```
+
+```{r}
+#| include: false
+p_raster <- as.raster(p)
+```
+
+# Contexto
+
+El gráfico de barras o columnas es muy utilizado para visualizar información. En algunos casos se denomina gráfico de barras cuando las barras se muestran en posición horizontal y gráfico de columnas cuando las barras se muestran en posición vertical. Es un gráfico que generalmente incluye en el eje **x** a una variable categórica y en el eje **y** a la frecuencia o conteo de los elementos de las categorías o niveles de la variable (Figura 1).
+
+```{r}
+#| echo: false
+#| fig.cap: Figura 1. Gráfico de barras o columnas para mostrar la frecuencia de las categorías o niveles de una variable categórica.
+ggplot(pin, aes(fct_rev(fct_infreq(species)))) +
+  geom_bar(fill = "dodgerblue3") +
+  theme_minimal() +
+  labs(x = "Especie", y = "Frecuencia") +
+  inset_element(p_raster, 0.08, 0.83, 0.15, 0.97)
+```
+
+También se usa el gráfico de barras o columnas para representar un estadístico (p.e. el promedio) y su precisión de estimación (p.e. intervalo de confianza) a lo que se le llama barra de error (Figura 2). A estos gráficos tambien se les llama gráficos dinamita.
+
+```{r}
+#| include: false
+pin_error <- pin |>
+  group_by(species) |>
+  summarise(media = mean(body_mass_g),
+            ee = sd(body_mass_g)/sqrt(n()),
+            li = media - 1.96*ee,
+            ls = media + 1.96*ee) |>
+  ungroup()
+```
+
+```{r}
+#| echo: false
+#| fig.cap: Figura 2. Gráfico de barras o columnas para representar un estadístico como el promedio y su precisión de estimación, en este caso, un intervalo de confianza al 95%.
+ggplot(pin_error, aes(species, media)) +
+  theme_minimal() +
+  geom_col(color = "black", fill = "dodgerblue3") +
+  geom_errorbar(aes(species, media, ymin = li, ymax = ls), width = 0.2, color = "red") +
+  labs(x = "Especie", y = "Masa corporal (g)") +
+  inset_element(p_raster, 0.08, 0.83, 0.15, 0.97)
+```
+
+En ambos casos la información que provee la barra está representada en su altura (o borde superior), el ancho de la barra no provee ninguna información, por lo tanto ambos gráficos constituyen una forma ineficiente de presentar información.
+
+# Alternativas
+
+Para el caso del gráfico de barras que solo representa las frecuencia o conteos de las categorías o niveles en una variable categórica se puede usar un gráfico de lollipop o piruleta (Figura 3) o mejor aún, horizontal (Figura 4). En la forma horizontal no se tiene que rotar el texto del eje **x** cuando éstos son muy largos.
+
+```{r}
+#| include: false
+pin_conteo <- pin |>
+  group_by(species) |>
+  count()
+```
+
+```{r}
+#| echo: false
+#| fig.cap: Figura 3. Gráfico de lollipop o piruleta para mostrar el número de individuos por especie de pingüino.
+ggplot(pin_conteo, aes(fct_reorder(species, n), n)) +
+  theme_minimal() +
+  geom_col(width = 0.02, fill = "dodgerblue3") +
+  geom_point(pch = 21, size = 7, color = "orange", fill = "white") +
+  geom_text(aes(label = n), size = 3) +
+  labs(x = "Especie", y = "Frecuencia") +
+  inset_element(p_raster, 0.08, 0.83, 0.15, 0.97)
+```
+
+<br> <br>
+
+```{r}
+#| echo: false
+#| fig.cap: Figura 4. Gráfico de lollipop o piruleta horizontal para mostrar el número de individuos por especie de pingüino.
+ggplot(pin_conteo, aes(fct_reorder(species, n), n)) +
+  theme_minimal() +
+  geom_col(width = 0.03, fill = "dodgerblue3") +
+  geom_point(pch = 21, size = 7, color = "orange", fill = "white") +
+  geom_text(aes(label = n), size = 3) +
+  labs(x = "Especie", y = "Frecuencia") +
+  coord_flip() +
+  inset_element(p_raster, 0.08, 0.83, 0.15, 0.97)
+```
+
+Para el caso del gráfico dinamita la alternativa es un gráfico de punto y barra de error, que en este caso es el intervalo de confianza al 95% (Figura 5). Este tipo de gráfico se le conoce en inglés como "point range graph".
+
+```{r}
+#| echo: false
+#| fig.cap: Figura 5. Gráfico de punto y barra de error, donde el punto representa el promedio de la masa corporal (g) y las barras de error el intervalo de confianza al 95%.
+ggplot(pin_error, aes(species, media)) +
+  theme_minimal() +
+  geom_errorbar(aes(species, media, ymin = li, ymax = ls), width = 0.1, color = "red") +
+  geom_point(color = "blue") +
+  labs(x = "Especie", y = "Masa corporal (g)") +
+  ylim(0,5500) +
+  inset_element(p_raster, 0.08, 0.83, 0.15, 0.97)
+```
+
+Para los ejemplos usé los datos de pingüinos [@Horst2020], de los cuales se consideran 3 especies y su masa corporal en gramos. Los análisis y gráficos los realicé con R [@R2022] y el paquete ggplot2 [@Wickham2016].
+
+::: {#refs}
+:::

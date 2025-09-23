@@ -1,0 +1,223 @@
+---
+title: "Mapa de Uruguay"
+subtitle: Visualización de mapas de Costa Rica continental en la paleta de algunos pintores
+image: "imagenes/uruguay_satelite_3d.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 2022-10-17
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: true
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Visualización de datos"
+---
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(rio)
+library(knitr)
+library(sf)
+library(stars)
+library(raster)
+library(rasterVis)
+library(terra)
+library(tidyterra)
+library(rnaturalearth)
+library(rmapshaper)
+library(exactextractr)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(supercells)
+library(ggdark)
+library(arcpullr)
+library(basemaps)
+library(rayshader)
+library(elevatr)
+library(here)
+library(treemapify)
+library(ggthemes)
+library(patchwork)
+```
+
+```{r}
+
+#| out-width: 100%
+#| column: page
+#| label: fig-satelite
+#| fig-cap: Mapa 3D de Costa Rica.
+include_graphics("imagenes/cr_satelite_3d.png")
+```
+
+```{r}
+cr <- st_read("vectors/cr_5367.gpkg")
+```
+
+```{r}
+cr_r <- rast("rasters/lulc_cr_categorical_5367.tif")
+```
+
+```{r}
+
+#| message: false
+#| warning: false
+#| label: fig-cobertura
+#| fig-cap: "Mapa del uso y cobertura de la tierra en Costa Rica con una resolución de 10m, 2021."
+ggplot() +
+  dark_theme_minimal() +
+  geom_spatraster(data = cr_r, na.rm = TRUE) +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("darkgreen", "orange", "yellow", "magenta", "red", "grey", "blue", "#0096A0",  "#00CF75"), na.value = "transparent", na.translate = FALSE)
+```
+
+La mayor superficie de cobetura correspondió a la cobertura arbórea, seguida de los pastizales (@fig-cobertura, @fig-porcentajes).
+
+```{r}
+ca <- rast("rasters/ca.tif")
+pa <- rast("rasters/pa.tif")
+cu <- rast("rasters/cu.tif")
+ze <- rast("rasters/ze.tif")
+hh <- rast("rasters/hh.tif")
+mg <- rast("rasters/mg.tif")
+```
+
+```{r}
+pca <- ggplot() +
+  dark_theme_minimal() +
+  geom_spatvector(data = cr) +
+  geom_spatraster(data = ca) +
+  scale_fill_manual(values = "darkgreen", na.value = "transparent", na.translate = FALSE) +
+  theme(legend.position = "none") +
+  ggtitle("Cobertura arbórea")
+pca
+```
+
+```{r}
+ppa <- ggplot() +
+  dark_theme_minimal() +
+  geom_spatvector(data = cr) +
+  geom_spatraster(data = pa) +
+  scale_fill_manual(values = "yellow", na.value = "transparent", na.translate = FALSE) +
+  theme(legend.position = "none") +
+  ggtitle("Pastizales")
+ppa
+```
+
+```{r}
+pcu <- ggplot() +
+  dark_theme_minimal() +
+  geom_spatvector(data = cr) +
+  geom_spatraster(data = cu) +
+  scale_fill_manual(values = "magenta", na.value = "transparent", na.translate = FALSE) +
+  theme(legend.position = "none") +
+  ggtitle("Cultivos")
+pcu
+```
+
+```{r}
+pze <- ggplot() +
+  dark_theme_minimal() +
+  geom_spatvector(data = cr) +
+  geom_spatraster(data = ze) +
+  scale_fill_manual(values = "tomato", na.value = "transparent", na.translate = FALSE) +
+  theme(legend.position = "none") +
+  ggtitle("Zonas edificadas")
+pze
+```
+
+```{r}
+phh <- ggplot() +
+  dark_theme_minimal() +
+  geom_spatvector(data = cr) +
+  geom_spatraster(data = hh) +
+  scale_fill_manual(values = "#0096A0", na.value = "transparent", na.translate = FALSE) +
+  theme(legend.position = "none") +
+  ggtitle("Humedales herbáceos")
+phh
+```
+
+```{r}
+pmg <- ggplot() +
+  dark_theme_minimal() +
+  geom_spatvector(data = cr) +
+  geom_spatraster(data = mg) +
+  scale_fill_manual(values = "#00CF75", na.value = "transparent", na.translate = FALSE) +
+  theme(legend.position = "none") +
+  ggtitle("Manglar")
+pmg
+```
+
+```{r}
+#| include: true
+pca + ppa
+```
+
+```{r}
+#| include: true
+pcu + pze
+```
+
+```{r}
+#| include: true
+phh + pmg
+```
+
+```{r}
+area_table <- import("df/area_table.xlsx")
+area_table
+```
+
+```{r}
+#| include: true
+#| label: fig-porcentajes
+#| fig-cap: Porcentaje de los tipos de uso y cobertura de la tierra en Costa Rica, 2021.
+ggplot(area_table, aes(area = p, fill = value, label = paste(value, porc,sep = "\n"))) +
+  geom_treemap() +
+  geom_treemap_text(grow = F,
+                    reflow = T,
+                    colour = "black", 
+                    place = "centre",
+                    size = 10) +
+  scale_fill_tableau()
+```
+
+### Pixeles con similares características
+
+Los superpixeles es una colección de conceptos de segmentación que agrupan pixles con características similares. Se determinaron 533 superpixeles (@fig-superpixeles)
+
+```{r}
+slic <- st_read("supercells/supercells.gpkg")
+```
+
+```{r}
+#| include: true
+#| message: false
+#| warning: false
+#| label: fig-superpixeles
+#| fig-cap: Superpixeles del uso y cobertura de la tierra de Costa Rica, 2021. 
+ggplot() +
+  dark_theme_minimal() +
+  geom_spatraster(data = cr_r, na.rm = TRUE) +
+  scale_fill_manual(name = "Tipo de cobertura", values = c("darkgreen", "orange", "yellow", "magenta", "red", "grey", "blue", "#0096A0",  "#00CF75"), na.value = "transparent", na.translate = FALSE) +
+  geom_sf(data = slic, alpha = 0, color = "white")
+```
+
+El análisis lo realicé con R [@R2022], usando los paquetes quanteda supercells [@Nowosad2021], sf [@Pebesma2018], terra [@Hijmans2023] y ggplot2 [@Wickham2016].
+
+### Literatura citada
+
+::: {#refs}
+:::

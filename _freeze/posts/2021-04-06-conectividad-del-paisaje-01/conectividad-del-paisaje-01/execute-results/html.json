@@ -1,0 +1,14 @@
+{
+  "hash": "7eb5f656cc1abc1c9d86708c82480729",
+  "result": {
+    "markdown": "---\ntitle: \"Conectividad de las áreas protegidas de Costa Rica\"\ndescription: |\n  Indices de conectividad del paisaje de las áreas protegidas de Costa Rica\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation_url: http://www.icomvis.una.ac.cr/\n    orcid_id: 0000-0002-7839-1908\ndate: 03/30/2021\ncitation: true\ndraft: true\ncategories:\n  - \"Ecología del paisaje\"\n  - \"Conectividad del paisaje\"\n---\n\n\n\n# 1 Introducción\n\n\n\n\n\n\n\n\n\n\n\n# 2 Métodos\n\nPara este análisis se consideran las áreas protegidas terrestres de Costa Rica, excepto 1 patrimonio de la humanidad y los 10 sitios Ramsar incluídos en el país (UNEP-WCMC and IUCN 2021).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 1. Areas protegidas terrestres de Costa Rica, 2021.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2. Areas de Conservación de Costa Rica, 2021. ACA-HN: Arenal-Huetar Norte, ACA-T: Arenal-Tempisque, ACCVC: Cordillera Volcánica Central, ACG: Guanacaste, ACLA-C: La Amistad - Caribe, ACLA-P: La Amistad - Pacífico, ACOPAC: Pacífico Central, ACOSA: Osa, ACT: Tempisque, ACTO: Tortuguero.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Literatura Citada\n\nUNEP-WCMC and IUCN (2021), Protected Planet: The World Database on Protected Areas (WDPA)/The Global Database on Protected Areas Management Effectiveness (GD-PAME)\\] \\[On-line\\], February/2021, Cambridge, UK: UNEP-WCMC and IUCN. Available at: www.protectedplanet.net.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

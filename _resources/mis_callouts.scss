@@ -1,0 +1,161 @@
+/*-- scss:rules --*/
+
+
+// ======================================
+// Callouts personalizados para Quarto
+// ======================================
+
+// ======================================
+// Información
+// Azul claro de fondo con azul fuerte, suave y profesional
+// ======================================
+.callout-info {
+  background-color: #e8f4fd;
+  color: #0d47a1;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.callout-info h1,
+.callout-info h2,
+.callout-info h3 {
+  margin-top: 0;   /* evita que quede pegado al borde superior */
+  margin-bottom: 8px;  /* espacio controlado con el texto debajo */
+}
+
+
+.callout-info2 {
+  background-color: #e0f7fa;
+  color: #006064;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.callout-info2 h1,
+.callout-info2 h2,
+.callout-info2 h3 {
+  margin-top: 0;   /* evita que quede pegado al borde superior */
+  margin-bottom: 8px;  /* espacio controlado con el texto debajo */
+}
+
+// ======================================
+// Éxito / Confirmación
+// Verde claro de fondo con verde oscuro, transmite éxito o correcto
+// ======================================
+.callout-success {
+  background-color: #d0f0c0;
+  color: #2e7d32;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+// ======================================
+// Advertencia
+// Amarillo suave de fondo con marrón, típico para alertas
+// ======================================
+.callout-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+// ======================================
+// Error / Peligro
+// Rosa/rojo claro con rojo oscuro, para errores o cosas críticas
+// ======================================
+.callout-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+// ======================================
+// Neutral / Nota
+// Gris claro de fondo con gris oscuro, para notas o info general
+// ======================================
+.callout-neutral {
+  background-color: #f0f0f0;
+  color: #333333;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+// ======================================
+// Creativo / Informal
+// Naranja claro con naranja oscuro, más llamativo y amigable
+// ======================================
+.callout-creative {
+  background-color: #ffe0b2;
+  color: #e65100;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+// ======================================
+// Opcional: título dentro del callout
+// ======================================
+.callout-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+// Opcional: icono dentro del callout
+.callout-icon {
+  margin-right: 0.5em;
+}
+
+
+// ================================
+// Opcional: Título dentro del callout
+// ================================
+.callout-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+// Opcional: Icono dentro del callout
+.callout-icon {
+  margin-right: 0.5em;
+}
+
+////////////
+
+.red-block {
+  background-color: #f8d7da;
+  padding: 20px;   /* más espacio interno */
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.red-block h1,
+.red-block h2,
+.red-block h3 {
+  margin-top: 0;   /* evita que quede pegado al borde superior */
+  margin-bottom: 8px;  /* espacio controlado con el texto debajo */
+}
+
+
+.aqua-block {
+  background-color: #e0f7fa;
+  padding: 20px;   /* más espacio interno */
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.aqua-block h1,
+.aqua-block h2,
+.aqua-block h3 {
+  margin-top: 0;   /* evita que quede pegado al borde superior */
+  margin-bottom: 8px;  /* espacio controlado con el texto debajo */
+}
+
+

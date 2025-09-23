@@ -1,0 +1,16 @@
+{
+  "hash": "32f77fa17187db3d92d9cca216b6e0ff",
+  "result": {
+    "markdown": "---\ntitle: \"Análisis de la cobertura de la tierra de Costa Rica - 2021\"\nsubtitle: Visualización de mapas de Costa Rica continental en la paleta de algunos pintores\nimage: \"imagenes/portada.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: 2022-10-17\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nbibliography: references.bib\nlang: es\ndraft: false\nexecute: \n  echo: false\n  include: false\nproject:\n  render:\n    - lulc-cr-2021.qmd\ncategories:\n  - \"Visualización de datos\"\n---\n\n\n\n\n\nEl Uso y Cobertura de la tierra se refiere a la categorización o clasificación de las actividades humanas y elementos naturales del paisaje dentro de un marco de tiempo específico.\n\n\n![Mapa 3D de Costa Rica](plot_3d/cr_satelite_3d.png){fig-align=\"center\"}\n\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](lulc-cr-2021_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](lulc-cr-2021_files/figure-html/unnamed-chunk-7-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "lulc-cr-2021_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

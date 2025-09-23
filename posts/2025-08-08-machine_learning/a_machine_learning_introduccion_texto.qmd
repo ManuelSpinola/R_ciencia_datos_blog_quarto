@@ -1,0 +1,1269 @@
+---
+title: "Machine Learning (Aprendizaje Automático) supervisado"
+
+subtitle: "Guía práctica de Machine Learning supervisado"
+
+image: "imagenes/tree.png"
+
+author:
+  - name: "Manuel Spínola"
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+
+format:
+  html:
+    embed-resources: true
+
+date: "2025-08-11"
+
+citation: true
+
+toc: true
+toc-title: Tabla de contenido
+toc-location: right
+toc-depth: 4
+
+lang: es
+
+editor: source
+
+categories:
+  - "Ciencia de datos"
+  - "Machine learning"
+---
+
+```{r}
+#| messaqge: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(easystats)
+library(gt)
+library(fastml)
+```
+
+# 📌 ¿Qué es el machine learning (aprendizaje automático)?
+
+El machine learning (aprendizaje automático) es una rama de la inteligencia artificial que permite a las computadoras aprender patrones a partir de datos, sin ser programadas explícitamente. Se usa para hacer predicciones o tomar decisiones basadas en nuevos datos.
+
+# 📌 Tipos de aprendizaje y modelos
+
+Existen principalmente tres tipos:
+
+-   Aprendizaje supervisado: el modelo aprende a partir de datos etiquetados (con una variable respuesta conocida). Ej: predicción de precios.
+
+-   Aprendizaje no supervisado: el modelo encuentra patrones o estructuras en datos sin etiquetas. Ej: segmentación de clientes.
+
+-   Aprendizaje por refuerzo: el modelo aprende a través de ensayo y error, optimizando una recompensa.
+
+Los modelos son algoritmos que implementan estos tipos de aprendizaje (como árboles de decisión, redes neuronales, etc.).
+
+## Tabla comparativa de tipos de aprendizaje
+
+```{r}
+#| echo: false
+library(gt)
+library(dplyr)
+
+# Crear el data frame
+tabla <- tibble(
+  tipo = c("Supervisado", "No supervisado", "Por refuerzo"),
+  etiquetas = c("Sí", "No", "No directamente"),
+  objetivo = c(
+    "Predecir una salida (Y)",
+    "Encontrar estructuras (clusters, etc.)",
+    "Maximizar recompensa a largo plazo"
+  )
+)
+
+# Crear la tabla gt con encabezado coloreado y striping personalizado
+tabla |>
+  gt() |>
+  cols_label(
+    tipo = "Tipo de aprendizaje",
+    etiquetas = "¿Tiene etiquetas?",
+    objetivo = "¿Objetivo?"
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  ) |> 
+  tab_options(table.width = pct(100))
+```
+
+
+## Resumen: Tipos de Aprendizaje Automático
+
+```{r}
+#| echo: false
+library(gt)
+
+# Crear los datos
+ml_table <- tibble::tibble(
+  `Tipo de aprendizaje` = c("Aprendizaje supervisado", "Aprendizaje no supervisado", "Aprendizaje por refuerzo"),
+  `Descripción` = c(
+    "El modelo aprende a partir de datos etiquetados, es decir, cada entrada tiene una salida conocida.",
+    "El modelo encuentra patrones o estructuras ocultas en datos sin etiquetas.",
+    "El modelo aprende a través de ensayo y error, optimizando una señal de recompensa."
+  ),
+  `Ejemplos` = c(
+    "Regresión lineal, random forest, redes neuronales para clasificación.",
+    "Análisis de conglomerados (clustering), reducción de dimensionalidad (PCA).",
+    "Agentes que aprenden a jugar videojuegos o a controlar robots mediante retroalimentación."
+  )
+)
+
+# Crear tabla con gt
+gt(ml_table) |>
+  cols_label(
+    `Tipo de aprendizaje` = "Tipo",
+    `Descripción` = "¿Cómo aprende el modelo?",
+    `Ejemplos` = "Ejemplos comunes"
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+```
+
+
+
+
+# 📌 Clasificación vs Regresión
+
+Son los dos tipos principales de problemas en aprendizaje supervisado:
+
+- **Clasificación:** predice categorías o clases. Ej: “presente” o “ausente”.
+
+- **Regresión:** predice un valor numérico continuo. Ej: precio de una casa.
+
+# 📌 Flujo de trabajo típico en machine learning
+
+Pasos que normalmente se siguen al construir un modelo:
+
+1.  Cargar y explorar los datos.
+2.  Preprocesar (limpiar y transformar) los datos.
+3.  Dividir los datos en entrenamiento y prueba.
+4.  Entrenar el modelo.
+5.  Evaluar el modelo.
+6.  Ajustar hiperparámetros si es necesario.
+7.  Usar el modelo para predecir nuevos datos.
+
+# 📌 Diferencias entre Modelos Lineales y Algoritmos de Machine Learning
+
+Tanto los modelos lineales (como regresión lineal o logística) como algoritmos como Random Forest forman parte del mismo ecosistema, pero efectivamente tienen orígenes conceptuales distintos, y por eso muchas veces se hace una distinción sutil pero útil entre ellos.
+
+### 1. Modelos estadísticos clásicos
+
+- Ejemplos: regresión lineal, regresión logística, modelos lineales generalizados (GLM), GAM, etc.
+
+- Origen: estadística tradicional.
+
+- Características:
+
+  - Interpretables.
+  - Basados en suposiciones explícitas (linealidad, distribución de errores, etc.).
+  - Tienen una forma funcional definida, por ejemplo:
+
+$$
+Y = \beta_0 + \beta_1 X_1 + \dots + \epsilon).
+$$
+
+👉 En ML se los suele llamar:
+
+-   Modelos lineales
+
+-   Modelos paramétricos
+
+-   O simplemente “modelos estadísticos”
+
+---
+
+### 2. Algoritmos de aprendizaje automático (ML algorithms)
+
+-   Ejemplos: Random Forest, Gradient Boosting, Support Vector Machines, redes neuronales, k-NN, etc.
+
+- Origen: inteligencia artificial, ciencias de la computación.
+
+- Características:
+
+  - Menos supuestos estadísticos.
+  - Pueden modelar relaciones complejas y no lineales.
+  - A menudo considerados modelos de caja negra (menos interpretables).
+  - Suelen requerir más datos y computación.
+
+👉 En ML se los suele llamar:
+
+- Algoritmos de machine learning 
+
+- Modelos de aprendizaje no paramétrico 
+
+- Modelos complejos o no lineales
+
+---
+
+## Comparación entre modelos estadísticos clásicos y algoritmos de Machine Learning
+
+```{r}
+#| echo: false
+library(gt)
+library(tibble)
+
+# Crear tabla de comparación
+tabla <- tibble(
+  `Categoría` = c("Modelos estadísticos clásicos", "Algoritmos de Machine Learning"),
+  `Ejemplos` = c("Regresión lineal, regresión logística, GLM, GAM",
+                 "Random Forest, SVM, XGBoost, Redes neuronales, k-NN"),
+  `Origen` = c("Estadística tradicional", "Ciencias de la computación / IA"),
+  `Características` = c("Interpretables, basados en supuestos como linealidad y normalidad, fórmula funcional definida",
+                        "Menos supuestos, pueden modelar relaciones no lineales, suelen ser cajas negras"),
+  `Términos sugeridos` = c("Modelos lineales, modelos estadísticos, modelos paramétricos",
+                           "Algoritmos de ML, modelos complejos, modelos no paramétricos")
+)
+
+# Generar tabla con gt
+tabla_gt <- tabla |>
+  gt() |>
+  cols_label(
+    `Categoría` = "Categoría",
+    `Ejemplos` = "Ejemplos",
+    `Origen` = "Origen",
+    `Características` = "Características",
+    `Términos sugeridos` = "Términos sugeridos"
+  ) |>
+  cols_align(align = "left", columns = everything()) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+
+# Mostrar la tabla
+tabla_gt
+```
+
+📘 **Ejemplo en una frase:**
+
+“Se compararon modelos estadísticos clásicos (regresión logística) con algoritmos de machine learning (Random Forest, XGBoost) para predecir la presencia de la especie.”
+
+# 📌 Hiperparámetros en machine learning
+
+Los hiperparámetros son configuraciones externas al modelo que se establecen antes del entrenamiento y afectan su rendimiento. No se aprenden directamente de los datos, a diferencia de los parámetros del modelo (como coeficientes en regresión). 
+
+## Ejemplos comunes de hiperparámetros para algoritmos de regresión
+
+```{r}
+#| include: false
+#| label: tbl-fastml-regresion-ejemplos
+#| tbl-cap: Hiperparámetros por algoritmo de regresión con ejemplos
+#| echo: false
+library(gt)
+library(tibble)
+
+tabla <- tribble(
+  ~Algoritmo, ~Hiperparametros, ~Descripción, ~Ejemplos,
+
+  "Regresión lineal", 
+  "Intercepto, normalización", 
+  "Ajustar o no el intercepto; normalizar predictores para mejorar estabilidad.", 
+  "fit_intercept = TRUE, normalize = FALSE",
+
+  "Ridge", 
+  "Penalización (alpha)", 
+  "Evita sobreajuste reduciendo la magnitud de los coeficientes (L2).", 
+  "alpha = 1.0",
+
+  "Lasso", 
+  "Penalización (alpha), número máximo de iteraciones", 
+  "Puede reducir coeficientes a cero (L1), útil para selección de variables.", 
+  "alpha = 0.1, max_iter = 1000",
+
+  "Elastic Net", 
+  "Penalización (alpha), proporción L1 (l1_ratio), max_iter", 
+  "Combina Lasso y Ridge; útil cuando hay muchas variables correlacionadas.", 
+  "alpha = 0.1, l1_ratio = 0.5",
+
+  "Árbol de decisión", 
+  "Profundidad máxima, min muestras por división y hoja, max variables", 
+  "Controla la complejidad del árbol; puede sobreajustar si no se regula.", 
+  "max_depth = 5, min_samples_split = 10",
+
+  "Random Forest", 
+  "Número de árboles, profundidad máxima, muestras mínimas, variables", 
+  "Promedio de predicciones de varios árboles; mejora estabilidad.", 
+  "n_estimators = 100, max_features = 'sqrt'",
+
+  "XGBoost", 
+  "Número de árboles, tasa de aprendizaje, profundidad, subsample", 
+  "Boosting que mejora iterativamente; muy eficaz para datos estructurados.", 
+  "nrounds = 100, eta = 0.1, max_depth = 6",
+
+  "LightGBM", 
+  "Num hojas, tasa de aprendizaje, iteraciones, subsample", 
+  "Algoritmo de boosting rápido y eficiente; ideal para datasets grandes.", 
+  "num_leaves = 31, learning_rate = 0.05",
+
+  "SVM lineal", 
+  "C (penalización), tolerancia (epsilon)", 
+  "Modelo de regresión lineal con margen de error flexible.", 
+  "C = 1.0, epsilon = 0.1",
+
+  "SVM RBF", 
+  "C (penalización), gamma, tolerancia (epsilon)", 
+  "Kernel RBF permite modelar relaciones no lineales.", 
+  "C = 1.0, gamma = 'scale'",
+
+  "Vecinos más cercanos", 
+  "Número de vecinos (k), métrica de distancia, ponderación", 
+  "Predice a partir del promedio de vecinos más cercanos.", 
+  "n_neighbors = 5, weights = 'uniform'",
+
+  "Perceptrón multicapa (MLP)", 
+  "Capas ocultas, activación, tasa de aprendizaje, penalización", 
+  "Red neuronal para regresión; requiere ajuste fino de arquitectura.", 
+  "hidden = c(100, 50), activation = 'relu', alpha = 0.0001",
+
+  "PLS", 
+  "Número de componentes, escalado", 
+  "Reduce dimensionalidad conservando relación con variable respuesta.", 
+  "n_components = 5, scale = TRUE",
+
+  "Regresión bayesiana", 
+  "Alpha, lambda (parámetros del prior)", 
+  "Versión bayesiana de Ridge; introduce incertidumbre en los coeficientes.", 
+  "alpha = 1.0, lambda = 0.1"
+)
+
+# Crear tabla gt
+tabla %>%
+  gt() %>%
+  tab_header(
+    title = "Hiperparámetros por algoritmo de regresión (conceptuales + ejemplos)"
+  ) %>%
+  cols_label(
+    Algoritmo = "Algoritmo",
+    Hiperparametros = "Hiperparámetros comunes",
+    Descripción = "Descripción",
+    Ejemplos = "Ejemplos"
+  ) %>%
+  cols_width(
+    everything() ~ px(250)
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+```
+
+
+```{r}
+#| echo: false
+##| label: tbl-fastml-regresion-ejemplos-agnosticos
+##| tbl-cap: Hiperparámetros por algoritmo de regresión con ejemplos agnósticos
+
+library(gt)
+library(tibble)
+
+tabla <- tribble(
+  ~Algoritmo, ~Hiperparametros, ~Descripción, ~Ejemplos,
+
+  "Regresión lineal", 
+  "Intercepto, normalización", 
+  "Ajustar o no el intercepto; normalizar predictores para mejorar estabilidad.", 
+  "Con/sin intercepto; con/sin normalización",
+
+  "Ridge", 
+  "Penalización (L2)", 
+  "Evita sobreajuste reduciendo la magnitud de los coeficientes.", 
+  "Penalización moderada (e.g., 1.0)",
+
+  "Lasso", 
+  "Penalización (L1), número máximo de iteraciones", 
+  "Puede reducir coeficientes a cero; útil para selección de variables.", 
+  "Penalización baja (e.g., 0.1); 1000 iteraciones",
+
+  "Elastic Net", 
+  "Proporción L1 vs L2, penalización total, iteraciones", 
+  "Combina Lasso y Ridge; útil con muchas variables correlacionadas.", 
+  "Proporción 50/50; penalización 0.1",
+
+  "Árbol de decisión", 
+  "Profundidad máxima, min. muestras por división y hoja, variables por nodo", 
+  "Controla la complejidad del árbol para evitar sobreajuste.", 
+  "Profundidad = 5; mínimo 10 muestras por división",
+
+  "Random Forest", 
+  "Número de árboles, profundidad, muestras mínimas, variables por división", 
+  "Promedio de varios árboles para mejorar estabilidad.", 
+  "100 árboles; raíz cuadrada del total de variables por división",
+
+  "XGBoost", 
+  "Número de árboles, tasa de aprendizaje, profundidad, fracción de datos", 
+  "Boosting que mejora iterativamente; eficaz en datos estructurados.", 
+  "100 iteraciones; tasa de aprendizaje baja (e.g., 0.1)",
+
+  "LightGBM", 
+  "Número de hojas, tasa de aprendizaje, iteraciones, fracción de datos", 
+  "Boosting rápido y eficiente; ideal para conjuntos grandes.", 
+  "32 hojas; tasa de aprendizaje media (e.g., 0.05)",
+
+  "SVM lineal", 
+  "Penalización (C), margen de tolerancia (epsilon)", 
+  "Modelo lineal con margen de error flexible.", 
+  "Penalización media (e.g., 1.0); tolerancia baja",
+
+  "SVM RBF", 
+  "Penalización (C), ancho del kernel (gamma), tolerancia", 
+  "Kernel RBF permite capturar relaciones no lineales.", 
+  "Penalización 1.0; gamma pequeño (e.g., 0.01)",
+
+  "Vecinos más cercanos", 
+  "Número de vecinos (k), métrica de distancia, ponderación", 
+  "Promedia los valores de los vecinos más cercanos.", 
+  "5 vecinos; distancia euclidiana; ponderación uniforme",
+
+  "Perceptrón multicapa (MLP)", 
+  "Capas ocultas, función de activación, tasa de aprendizaje, regularización", 
+  "Red neuronal; requiere ajuste fino de arquitectura.", 
+  "2 capas; 100 y 50 neuronas; tasa de aprendizaje baja",
+
+  "PLS", 
+  "Número de componentes, escalado", 
+  "Extrae componentes que maximizan relación entre predictores y respuesta.", 
+  "5 componentes; predictores escalados",
+
+  "Regresión bayesiana", 
+  "Parámetros del prior (alpha, lambda)", 
+  "Introduce incertidumbre en los coeficientes con enfoque bayesiano.", 
+  "Prior informativo moderado"
+)
+
+# Crear tabla gt
+tabla %>%
+  gt() %>%
+  tab_header(
+    title = "Hiperparámetros por algoritmo de regresión",
+    subtitle = "Descripción y ejemplos agnósticos (sin referencia a sintaxis específica)"
+  ) %>%
+  cols_label(
+    Algoritmo = "Algoritmo",
+    Hiperparametros = "Hiperparámetros comunes",
+    Descripción = "Descripción",
+    Ejemplos = "Ejemplos conceptuales"
+  ) %>%
+  cols_width(
+    everything() ~ px(250)
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+```
+
+
+## Ejemplos comunes de hiperparámetros para algoritmos de clasificación
+
+```{r}
+#| include: false
+#| label: tbl-fastml-clasificacion-ejemplos
+#| tbl-cap: Hiperparámetros por algoritmo de clasificación con ejemplos
+#| echo: false
+library(gt)
+library(tibble)
+
+tabla <- tribble(
+  ~Algoritmo, ~Hiperparametros, ~Descripción, ~Ejemplos,
+
+  "Regresión logística", 
+  "Penalización (L1 o L2), regularización (C)", 
+  "Controla el sobreajuste penalizando los coeficientes.", 
+  "penalty = 'l2', C = 1.0",
+
+  "Regresión multinomial", 
+  "Penalización, método de optimización", 
+  "Clasificación multiclase basada en regresión logística.", 
+  "penalty = 'l1', solver = 'saga'",
+
+  "Árbol de decisión", 
+  "Profundidad máxima, min muestras para dividir, min muestras en hoja", 
+  "Limita la complejidad del árbol.", 
+  "max_depth = 5, min_samples_split = 10",
+
+  "C5.0 (reglas)", 
+  "Número de reglas, pruning, uso de boosting", 
+  "Clasificación basada en reglas interpretables.", 
+  "trials = 10 (boosting), winnow = TRUE",
+
+  "Random Forest", 
+  "Número de árboles, profundidad máxima, variables por división", 
+  "Modelo de conjunto con árboles aleatorios.", 
+  "n_estimators = 100, max_features = 'sqrt'",
+
+  "XGBoost", 
+  "Número de árboles, tasa de aprendizaje, profundidad, subsample", 
+  "Boosting con regularización avanzada.", 
+  "nrounds = 100, eta = 0.1, max_depth = 6",
+
+  "LightGBM", 
+  "Num hojas, tasa de aprendizaje, iteraciones, subsample", 
+  "Boosting rápido y eficiente.", 
+  "num_leaves = 31, learning_rate = 0.05",
+
+  "SVM lineal", 
+  "C (penalización), tolerancia (epsilon)", 
+  "Separación lineal de clases con margen óptimo.", 
+  "C = 1.0, epsilon = 0.1",
+
+  "SVM RBF", 
+  "C (penalización), gamma, epsilon", 
+  "Separación no lineal usando kernel radial.", 
+  "C = 1.0, gamma = 'scale'",
+
+  "Vecinos más cercanos", 
+  "Número de vecinos (k), métrica de distancia", 
+  "Clasificación basada en vecinos más cercanos.", 
+  "k = 5, metric = 'euclidean'",
+
+  "Naive Bayes", 
+  "Tipo de distribución, suavizado", 
+  "Clasificador probabilístico basado en independencia.", 
+  "laplace = 1 (suavizado)",
+
+  "Perceptrón multicapa (MLP)", 
+  "Capas ocultas, activación, tasa de aprendizaje", 
+  "Red neuronal multicapa con retropropagación.", 
+  "hidden = c(100, 50), activation = 'relu'",
+
+  "Discriminante lineal", 
+  "Priorización de clases, escalado", 
+  "Modelo lineal para separación de clases.", 
+  "prior = c(0.5, 0.5)",
+
+  "Discriminante cuadrático", 
+  "Escalado, covarianzas por clase", 
+  "Permite fronteras curvas entre clases.", 
+  "covariance = 'unpooled'",
+
+  "Árbol por bolsas (Bagging)", 
+  "Número de árboles, muestras por bootstrap", 
+  "Promedio de múltiples árboles para reducir varianza.", 
+  "trees = 50, bootstrap = TRUE"
+)
+
+# Crear tabla gt
+tabla %>%
+  gt() %>%
+  tab_header(
+    title = "Hiperparámetros por algoritmo de clasificación (conceptuales + ejemplos)"
+  ) %>%
+  cols_label(
+    Algoritmo = "Algoritmo",
+    Hiperparametros = "Hiperparámetros comunes",
+    Descripción = "Descripción",
+    Ejemplos = "Ejemplos"
+  ) %>%
+  cols_width(
+    everything() ~ px(250)
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+```
+
+```{r}
+#| echo: false
+##| label: tbl-fastml-clasificacion-ejemplos-agnosticos
+##| tbl-cap: Hiperparámetros por algoritmo de clasificación con ejemplos agnósticos
+
+library(gt)
+library(tibble)
+
+tabla <- tribble(
+  ~Algoritmo, ~Hiperparametros, ~Descripción, ~Ejemplos,
+
+  "Regresión logística", 
+  "Tipo de penalización (L1 o L2), fuerza de regularización", 
+  "Controla el sobreajuste penalizando los coeficientes.", 
+  "Penalización L2, regularización media",
+
+  "Regresión multinomial", 
+  "Tipo de penalización, método de optimización", 
+  "Clasificación multiclase basada en regresión logística.", 
+  "Penalización L1, optimización rápida",
+
+  "Árbol de decisión", 
+  "Profundidad máxima, mínimo de muestras por división y por hoja", 
+  "Limita la complejidad del árbol para evitar sobreajuste.", 
+  "Profundidad = 5, mínimo 10 muestras por división",
+
+  "C5.0 (reglas)", 
+  "Cantidad de reglas, uso de poda, aplicación de boosting", 
+  "Clasificación basada en reglas interpretables.", 
+  "10 iteraciones con boosting, poda activada",
+
+  "Random Forest", 
+  "Número de árboles, profundidad, número de variables por división", 
+  "Modelo de conjunto que combina muchos árboles.", 
+  "100 árboles, variables seleccionadas aleatoriamente por división",
+
+  "XGBoost", 
+  "Número de iteraciones, tasa de aprendizaje, profundidad, fracción de muestra", 
+  "Boosting con regularización avanzada para clasificación eficaz.", 
+  "100 iteraciones, tasa de aprendizaje = 0.1, profundidad = 6",
+
+  "LightGBM", 
+  "Número de hojas, tasa de aprendizaje, iteraciones, fracción de muestra", 
+  "Boosting eficiente especialmente para grandes conjuntos.", 
+  "32 hojas, tasa de aprendizaje media",
+
+  "SVM lineal", 
+  "Penalización (C), margen de tolerancia", 
+  "Separación lineal con margen óptimo.", 
+  "Penalización media, tolerancia baja",
+
+  "SVM RBF", 
+  "Penalización (C), gamma del kernel, tolerancia", 
+  "Kernel RBF para relaciones no lineales.", 
+  "Gamma pequeño, penalización media",
+
+  "Vecinos más cercanos", 
+  "Número de vecinos (k), métrica de distancia", 
+  "Clasificación en base a vecinos cercanos en el espacio.", 
+  "5 vecinos, distancia euclidiana",
+
+  "Naive Bayes", 
+  "Distribución asumida, suavizado", 
+  "Clasificador probabilístico basado en independencia de predictores.", 
+  "Distribución gaussiana, suavizado aplicado",
+
+  "Perceptrón multicapa (MLP)", 
+  "Capas ocultas, función de activación, tasa de aprendizaje", 
+  "Red neuronal multicapa entrenada por retropropagación.", 
+  "2 capas ocultas, activación ReLU, tasa de aprendizaje baja",
+
+  "Discriminante lineal", 
+  "Priorización de clases, escalado de variables", 
+  "Modelo lineal para separar clases con varianzas iguales.", 
+  "Clases balanceadas, predictores escalados",
+
+  "Discriminante cuadrático", 
+  "Escalado de variables, covarianza específica por clase", 
+  "Permite separación no lineal entre clases.", 
+  "Varianzas distintas por clase, escalado activado",
+
+  "Árbol por bolsas (Bagging)", 
+  "Número de árboles, tamaño de muestra bootstrap", 
+  "Promedia múltiples árboles sobre subconjuntos re-muestreados.", 
+  "50 árboles, muestras re-muestreadas con reemplazo"
+)
+
+# Crear tabla gt
+tabla %>%
+  gt() %>%
+  tab_header(
+    title = "Hiperparámetros por algoritmo de clasificación",
+    subtitle = "Descripción y ejemplos agnósticos (sin referencia a sintaxis específica)"
+  ) %>%
+  cols_label(
+    Algoritmo = "Algoritmo",
+    Hiperparametros = "Hiperparámetros comunes",
+    Descripción = "Descripción",
+    Ejemplos = "Ejemplos conceptuales"
+  ) %>%
+  cols_width(
+    everything() ~ px(250)
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+```
+
+
+# 📌 Evaluación y Validación en Machine Learning
+
+En el contexto de Machine Learning, validación y evaluación son dos conceptos fundamentales pero distintos en el proceso de construir y analizar modelos predictivos. Aquí te explico claramente cada uno:
+
+---
+
+### 🔄 1. Validación
+
+Validación es el proceso de ajustar y seleccionar modelos (por ejemplo, elegir hiperparámetros) utilizando un conjunto de datos diferente del de entrenamiento y del de prueba, llamado conjunto de validación.
+
+**Objetivo:**
+
+- Evitar el sobreajuste (overfitting)
+
+- Encontrar la mejor versión del modelo antes de evaluarlo definitivamente.
+
+**Tipos comunes de validación:**
+
+- Hold-out validation: dividir los datos en entrenamiento / validación / prueba.
+
+- Cross-validation (validación cruzada):
+
+- Se entrena y valida el modelo varias veces con diferentes particiones de los datos.
+
+- La más común es la k-fold cross-validation.
+
+---
+
+### ✅  2. Evaluación
+
+Evaluación es el proceso de medir el rendimiento de un modelo ya entrenado, generalmente utilizando datos que nunca ha visto durante el entrenamiento, llamados datos de prueba o test set.
+
+**Objetivo:** 
+
+- Saber qué tan bien generaliza el modelo a datos nuevos
+
+**Ejemplos de métricas de evaluación:**
+
+- Para regresión:
+    - RMSE (Root Mean Squared Error)
+    - MAE (Mean Absolute Error)
+    - R² (Coeficiente de determinación)
+
+- Para clasificación:
+    - Exactitud (accuracy)
+    - Precisión, recall, F1-score
+    - AUC-ROC
+    
+---
+
+🧠 **Analogía**
+
+Imagina que entrenás a un estudiante para un examen:
+
+- Entrenamiento: el estudiante estudia con ejercicios.
+
+- Validación: le das pruebas tipo ensayo para ver si está aprendiendo bien y ajustar su estudio.
+
+- Evaluación: es el examen real que toma para obtener su calificación.
+
+### Diferencias entre Validación y Evaluación en Machine Learning
+
+```{r}
+#| echo: false
+# Crear los datos
+tabla <- tibble::tibble(
+  Concepto = c("Validación", "Evaluación"),
+  `¿Cuándo se usa?` = c("Durante el entrenamiento", "Después de entrenar y validar"),
+  `¿Con qué datos?` = c("Conjunto de validación", "Conjunto de prueba"),
+  `¿Para qué sirve?` = c("Ajustar hiperparámetros, prevenir sobreajuste", 
+                         "Medir rendimiento final del modelo")
+)
+
+# Crear la tabla con gt
+tabla <- tabla %>%
+  gt() |>
+  cols_label(
+    Concepto = "Concepto",
+    `¿Cuándo se usa?` = "¿Cuándo se usa?",
+    `¿Con qué datos?` = "¿Con qué datos?",
+    `¿Para qué sirve?` = "¿Para qué sirve?"
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+
+# Mostrar la tabla
+tabla
+```
+
+# 📌 Detección y manejo del sobreajuste
+
+Detectar y manejar el sobreajuste (overfitting) es fundamental en machine learning, ya que un modelo sobreajustado aprende demasiado bien los datos de entrenamiento, incluyendo el ruido, y no generaliza bien a datos nuevos.
+
+---
+
+## ¿Cómo se detecta el sobreajuste?
+
+**1. Comparando desempeño en entrenamiento vs validación/test**
+
+- Evalúa el modelo en el conjunto de entrenamiento y en el conjunto de validación o test.
+
+- Indicadores de sobreajuste:
+
+- Muy buen desempeño en entrenamiento (por ejemplo, accuracy 98%)
+
+- Desempeño mucho peor en validación/test (por ejemplo, accuracy 72%)
+
+Esto se hace con métricas como:
+
+- Error cuadrático medio (RMSE)
+- Precisión, Recall, F1
+- AUC-ROC
+- etc., según el tipo de problema
+
+**2. Curvas de aprendizaje (learning curves)**
+
+-   Se grafican los errores en entrenamiento y validación a medida que se entrena el modelo con más datos.
+
+-   Si el error en validación se mantiene alto mientras el de entrenamiento baja, hay sobreajuste.
+
+---
+
+## ¿Cómo se maneja o reduce el sobreajuste?
+
+**1. Cross-validation**
+
+-   Técnicas como k-fold cross-validation te dan una evaluación más robusta.
+
+-   Ayuda a detectar si el buen desempeño es solo suerte en una partición de datos.
+
+**2. Reducir la complejidad del modelo**
+
+- Usar modelos más simples:
+- Menos nodos en un árbol
+- Menos capas o neuronas en una red
+- Menos términos en un modelo lineal
+- O regularizar el modelo (ver más abajo)
+
+**3. Regularización**
+
+- Penaliza la complejidad del modelo:
+- L1 (Lasso): fuerza a que coeficientes irrelevantes sean 0
+- L2 (Ridge): reduce la magnitud de los coeficientes
+- Algunos modelos que incluyen regularización:
+- glmnet, xgboost, keras, etc.
+
+**4. Más datos**
+
+- Aumentar el tamaño del conjunto de entrenamiento puede ayudar a que el modelo generalice mejor.
+
+**5. Data augmentation (especialmente en imágenes, texto)**
+
+- Crear versiones modificadas de los datos para entrenar (rotación, ruido, traducción…)
+
+**6. Early stopping**
+
+- Detener el entrenamiento tan pronto como el error de validación comience a aumentar.
+
+**7. Dropout y otras técnicas (redes neuronales)**
+
+- Dropout apaga neuronas aleatoriamente durante el entrenamiento para evitar dependencia excesiva.
+
+### Tabla comparativa de la detección y manejo del sobreajuste
+
+```{r}
+#| echo: false
+library(gt)
+
+tabla <- tibble::tibble(
+  Paso = c("Detección", "Manejo"),
+  Técnicas = c(
+    "Comparar métricas entre entrenamiento y validación; usar curvas de aprendizaje",
+    "Cross-validation, regularización (L1, L2), early stopping, modelos más simples"
+  )
+)
+
+tabla |>
+  gt() |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  ) |> 
+  tab_options(table.width = pct(100))
+```
+
+# 📌 Elección de métricas según el tipo de modelo
+
+La elección de métricas de evaluación es crucial para medir el rendimiento de un modelo de machine learning. Dependiendo del tipo de problema (regresión o clasificación), algunas métricas son más adecuadas que otras.
+
+### Tabla de métricas comunes para regresión
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gt)
+library(dplyr)
+
+tabla <- tibble::tibble(
+  `Métrica` = c(
+    "RMSE (Root Mean Squared Error)",
+    "MAE (Mean Absolute Error)",
+    "R² (Coeficiente de determinación)",
+    "MAPE (Mean Absolute Percentage Error)",
+    "MSE (Mean Squared Error)",
+    "Huber Loss"
+  ),
+  `Significado` = c(
+    "Raíz cuadrada del error cuadrático medio. Penaliza más los errores grandes.",
+    "Promedio del valor absoluto de los errores. Más robusto a outliers que el RMSE.",
+    "Proporción de la varianza explicada por el modelo. 1 es perfecto, 0 significa que no mejora sobre la media.",
+    "Porcentaje promedio del error absoluto. Útil para interpretar errores en términos relativos.",
+    "Promedio de los errores al cuadrado. Muy sensible a valores atípicos.",
+    "Combina MAE y MSE, penalizando menos los errores pequeños y siendo más robusto a outliers."
+  )
+)
+
+gt(tabla) |>
+  cols_label(
+    `Métrica` = "Métrica",
+    `Significado` = "Descripción"
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+```
+
+
+### Tabla de métricas comunes para clasificación binaria
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gt)
+library(dplyr)
+
+tabla <- tibble::tibble(
+  `Métrica` = c(
+    "Accuracy",
+    "Precision",
+    "Recall (Sensibilidad)",
+    "Especificidad",
+    "F1 Score",
+    "ROC AUC",
+    "Log Loss",
+    "MCC (Coeficiente de correlación de Matthews)",
+    "Cohen's Kappa (κ)"
+  ),
+  `Significado` = c(
+    "Proporción de predicciones correctas sobre el total de casos.",
+    "De los casos predichos como positivos, qué proporción es realmente positiva.",
+    "De los casos realmente positivos, qué proporción fue predicha correctamente.",
+    "De los casos realmente negativos, qué proporción fue predicha correctamente.",
+    "Media armónica entre precision y recall, útil cuando hay clases desbalanceadas.",
+    "Área bajo la curva ROC. Evalúa la capacidad del modelo para distinguir entre clases.",
+    "Penaliza las predicciones incorrectas con mayor severidad, útil para probabilidades.",
+    "Mide la calidad de las predicciones binarias, especialmente útil con clases desbalanceadas.",
+    "Mide el acuerdo entre predicción y verdad ajustado por azar; 1 es acuerdo perfecto, 0 es azar."
+  )
+)
+
+gt(tabla) |>
+  cols_label(
+    `Métrica` = "Métrica",
+    `Significado` = "Descripción"
+  ) |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  )
+```
+
+
+### Tabla de elección de métricas según el tipo de modelo
+
+```{r}
+#| echo: false
+library(tibble)
+library(gt)
+
+tabla <- tibble::tibble(
+  `Tipo de problema` = c("Regresión", "Regresión", "Regresión", "Clasificación", "Clasificación", "Clasificación", "Clasificación", "Clasificación"),
+  `Ejemplo` = c(
+    "Predecir precio de una casa",
+    "Predecir temperatura diaria",
+    "Predecir número de visitas",
+    "Detectar enfermedad (sí/no)",
+    "Clasificar correos como spam",
+    "Predicción de fraude bancario",
+    "Clasificación con clases desbalanceadas",
+    "Evaluar desempeño más allá del azar"
+  ),
+  `Métricas recomendadas` = c(
+    "RMSE, MAE, R²",
+    "RMSE, MAE",
+    "MAE, R²",
+    "Accuracy, Sensibilidad, Especificidad",
+    "F1 Score, ROC AUC",
+    "ROC AUC, F1 Score",
+    "Sensibilidad, F1 Score, ROC AUC",
+    "Kappa"
+  )
+)
+
+tabla |>
+  gt() |>
+  # Colorear encabezado
+  tab_style(
+    style = list(
+      cell_fill(color = "#004080"),      # azul oscuro
+      cell_text(color = "white", weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) |>
+  # Colorear filas impares
+  tab_style(
+    style = cell_fill(color = "#f0f8ff"),
+    locations = cells_body(rows = seq(1, nrow(tabla), 2))
+  ) |>
+  # Colorear filas pares
+  tab_style(
+    style = cell_fill(color = "white"),
+    locations = cells_body(rows = seq(2, nrow(tabla), 2))
+  ) |> 
+  tab_options(table.width = pct(100))
+```
+
+
+```{r}
+#| include: false
+#| echo: false
+
+# Algoritmos de regresión soportados por fastml
+
+library(tibble)
+library(gt)
+
+tibble::tibble(
+  Algoritmo = c(
+    "linear_reg",
+    "ridge_regression",
+    "lasso_regression",
+    "elastic_net",
+    "decision_tree",
+    "rand_forest",
+    "xgboost",
+    "lightgbm",
+    "svm_linear",
+    "svm_rbf",
+    "nearest_neighbor",
+    "mlp",
+    "pls",
+    "bayes_glm"
+  ),
+  Descripción = c(
+    "Regresión lineal clásica",
+    "Regresión con penalización L2 (Ridge)",
+    "Regresión con penalización L1 (Lasso)",
+    "Combinación de L1 y L2 (Elastic Net)",
+    "Árbol de decisión para regresión",
+    "Bosque aleatorio para regresión",
+    "Extreme Gradient Boosting",
+    "Light Gradient Boosting Machine",
+    "Máquinas de soporte vectorial (kernel lineal)",
+    "SVM con kernel radial (RBF)",
+    "Vecinos más cercanos para regresión",
+    "Perceptrón multicapa (red neuronal simple)",
+    "Regresión por componentes principales (PLS)",
+    "Regresión lineal bayesiana"
+  )
+) %>%
+  gt() %>%
+  tab_header(title = "Algoritmos de regresión soportados por fastml")
+```
+
+
+
+```{r}
+#| include: false
+#| echo: false
+
+# Algoritmos de clasificación soportados por fastml
+
+library(tibble)
+library(gt)
+
+tibble::tibble(
+  Algoritmo = c(
+    "logistic_reg",
+    "multinom_reg",
+    "decision_tree",
+    "C5_rules",
+    "rand_forest",
+    "xgboost",
+    "lightgbm",
+    "svm_linear",
+    "svm_rbf",
+    "nearest_neighbor",
+    "naive_Bayes",
+    "mlp",
+    "discrim_linear",
+    "discrim_quad",
+    "bag_tree"
+  ),
+  Descripción = c(
+    "Regresión logística binaria",
+    "Regresión logística multinomial",
+    "Árbol de decisión para clasificación",
+    "Reglas de decisión tipo C5.0",
+    "Bosque aleatorio para clasificación",
+    "Extreme Gradient Boosting",
+    "Light Gradient Boosting Machine",
+    "Máquinas de soporte vectorial (kernel lineal)",
+    "SVM con kernel radial (RBF)",
+    "Vecinos más cercanos (KNN)",
+    "Clasificador bayesiano ingenuo",
+    "Perceptrón multicapa (red neuronal simple)",
+    "Análisis discriminante lineal (LDA)",
+    "Análisis discriminante cuadrático (QDA)",
+    "Ensamble de árboles (bagging)"
+  )
+) %>%
+  gt() %>%
+  tab_header(title = "Algoritmos de clasificación soportados por fastml")
+```

@@ -1,0 +1,236 @@
+---
+title: "crbiodiversity: un paquete de R para buscar, descargar y visualizar datos de biodiversidad de Costa Rica"
+subtitle: Datos de biodiversidad de Costa Rica
+image: "imagenes/crbiodiversity_a.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 2023-06-19
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: true
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Biodiversidad de Costa Rica"
+---
+
+```{r}
+library(tidyverse)
+library(rio)
+library(motif)
+library(sf)
+library(stars)
+library(terra)
+library(tidyterra)
+library(crgeo)
+library(crgrids)
+```
+
+```{r}
+cr_5367 <- st_transform(cr_outline_c, 5367)
+```
+
+```{r}
+g_8km <- cr_grid_8km[cr_5367, ]
+```
+
+```{r}
+g_8km$id <- 1:nrow(g_8km)
+```
+
+```{r}
+g_8km
+```
+
+```{r}
+ac_r_s <- read_stars("rasters/raster_actual_ac_it_sdm.tif") |>
+  st_transform(5367)
+```
+
+```{r}
+ac_r_t <- rast("rasters/raster_actual_ac_it_sdm.tif") |>
+  project("EPSG:5367")
+```
+
+```{r}
+ac_r_t
+```
+
+```{r}
+ac_r_s_2061_2080 <- read_stars("rasters/raster_2061_2080_ac_it_sdm.tif") |>
+  st_transform(5367)
+```
+
+```{r}
+ac_r_t_2061_2080 <- rast("rasters/raster_2061_2080_ac_it_sdm.tif") |>
+  project("EPSG:5367")
+```
+
+```{r}
+ac_r_t_cat <- classify(ac_r_t, c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1), include.lowest = TRUE, brackets = TRUE)
+```
+
+```{r}
+ac_r_t_cat
+```
+
+```{r}
+ac_r_t_2061_2080_cat <- classify(ac_r_t_2061_2080, c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1), include.lowest = TRUE, brackets = TRUE)
+```
+
+```{r}
+ggplot() +
+  theme_minimal() +
+  geom_spatraster(data = ac_r_t_cat) +
+  scale_fill_viridis_d(na.value = NA)
+```
+
+```{r}
+ac_r_t_cat <- drop_na(ac_r_t_cat)
+```
+
+```{r}
+ac_r_t_2061_2080_cat <- drop_na(ac_r_t_2061_2080_cat)
+```
+
+```{r}
+freq(ac_r_t_cat)
+```
+
+```{r}
+ggplot() +
+  theme_minimal() +
+  geom_spatraster(data = ac_r_t_cat) +
+  scale_fill_viridis_d(option = "A") +
+  geom_spatvector(data = g_8km, fill = NA, color = "steelblue")
+```
+
+```{r}
+summary(ac_r_t_cat)
+```
+
+```{r}
+droplevels(ac_r_t_cat)
+```
+
+```{r}
+droplevels(ac_r_t_2061_2080_cat)
+```
+
+```{r}
+hi_cove = lsp_signature(ac_r_t_cat,
+                        type = "cove",
+                        threshold = 1,
+                        window = g_8km,
+                        normalization = "pdf")
+```
+
+```{r}
+hi_cove
+```
+
+```{r}
+hi_dist = lsp_to_dist(hi_cove, dist_fun = "jensen-shannon")
+```
+
+```{r}
+hi_hclust = hclust(hi_dist, method = "ward.D2")
+```
+
+```{r}
+plot(hi_hclust)
+```
+
+```{r}
+hi_clusters = cutree(hi_hclust, k = 4)
+```
+
+```{r}
+hi_cove2 = lsp_restructure(hi_cove)
+```
+
+```{r}
+hi_grid_sf = lsp_add_clusters(hi_cove2, hi_clusters, window = g_8km)
+```
+
+```{r}
+hi_grid_sf
+```
+
+```{r}
+hi_grid_sf$clust_factor <- factor(hi_grid_sf$clust)
+```
+
+```{r}
+ggplot() +
+  theme_minimal() +
+  geom_sf(data = hi_grid_sf, aes(fill = clust_factor)) +
+  scale_fill_viridis_d(name= "Cluster", option = "D", guide = guide_legend())
+```
+
+```{r}
+ggsave("motif.png")
+```
+
+```{r}
+g_8km$id = seq_len(nrow(g_8km))
+
+hi_cove = lsp_signature(ac_r_t_cat,
+                        type = "cove",
+                        window = g_8km,
+                        normalization = "pdf",
+                        threshold = 1)
+
+hi_dist = lsp_to_dist(hi_cove, dist_fun = "jensen-shannon")
+hi_hclust = hclust(hi_dist, method = "ward.D2")
+hi_clusters = cutree(hi_hclust, k = 4)
+hi_cove2 = lsp_restructure(hi_cove)
+hi_grid_sf = lsp_add_clusters(hi_cove2, hi_clusters, window = g_8km)
+plot(hi_grid_sf["clust"])
+```
+
+# Comparación
+
+```{r}
+droplevels(ac_r_s)
+```
+
+```{r}
+droplevels(ac_r_s_2061_2080)
+```
+
+```{r}
+compare_1 = lsp_compare(ac_r_t_cat, ac_r_t_2061_2080_cat,
+                        type = "cove",
+                        dist_fun = "jensen-shannon",
+                        window = g_8km["id"],
+                        threshold = 0.9)
+```
+
+```{r}
+compare_1
+```
+
+```{r}
+ggplot() +
+  theme_minimal() +
+  geom_stars(data = compare_1, aes(fill = dist)) +
+  coord_sf(datum = st_crs(5367)) +
+  scale_fill_viridis_c(name = "Distancia", option = "D", direction = -1, na.value = NA, guide = guide_legend())
+```
+
+0 indica no cambio, y hacie el 1 indicando cambios de mayor magnitud
+
+```{r}
+ggsave("mapas/cambio_en_patrones_espaciales.png", height = 8, width = 10)
+```

@@ -1,0 +1,34 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!posts/2022-02-02-proyecto-microbiomas"
+    - "!posts/2022-05-02-graficos-sunburst"
+    - "!posts/2022-10-18-uruguay-mapas"
+    - "!posts/2022-10-18-uruguay-mapas/analisis/"
+    - "!posts/2022-10-18-uruguay-mapas/plot_3d/"
+    - "!posts/2022-11-24-lulc-cr-2021/analisis/"
+    - "!posts/2022-11-24-lulc-cr-2021/plot_3d/"
+    - "!posts/2023-07-04-cc-en-ap"
+
+website:
+  title: "Blog sobre Ciencia de Datos"
+  site-url: https://mspinola-ciencia-de-datos.netlify.app
+  navbar:
+    right:
+      - ciencia_de_datos.qmd
+      - text: "Sobre el autor"
+        href: sobre_mi.qmd
+      - icon: github
+        href: https://github.com/
+
+format:
+  html:
+    theme:
+      - cosmo
+      - _resources/mis_callouts.scss
+      - _resources/navbar_banner.scss
+      
+
+editor: visual
+lang: es

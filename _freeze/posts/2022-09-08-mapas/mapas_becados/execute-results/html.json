@@ -1,0 +1,16 @@
+{
+  "hash": "b32119b36289398f23f2aefbf07ae0b5",
+  "result": {
+    "markdown": "---\ntitle: \"Mapa de los estudiantes becados en el UNA\"\nsubtitle: Representación espacial\nimage: \"imagenes/wordcloud.png\"\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation-url: http://www.icomvis.una.ac.cr/\n    orcid_id: 0000-0002-7839-1908\ndate: 2022-09-05\ncitation: true\ntoc: true\ntoc-title: Tabla de contenido\ntoc-location: left\ntoc-depth: 4\nbibliography: references.bib\nlang: es\ndraft: false\nexecute: \n  echo: false\n  include: false\ncategories:\n  - \"Datos espaciales\"\n---\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](mapas_becados_files/figure-html/unnamed-chunk-10-1.png){width=672}\n:::\n:::\n\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](mapas_becados_files/figure-html/unnamed-chunk-13-1.png){width=672}\n:::\n:::\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](mapas_becados_files/figure-html/unnamed-chunk-15-1.png){width=672}\n:::\n:::\n\n\n",
+    "supporting": [
+      "mapas_becados_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

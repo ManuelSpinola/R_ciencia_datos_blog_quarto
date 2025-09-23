@@ -1,0 +1,14 @@
+{
+  "hash": "19b080523486016935e4c6d6201f9cf6",
+  "result": {
+    "markdown": "---\ntitle: \"Análisis del hábitat del Vampiro (Desmodus rotundus) en Costa Rica\"\ndescription: |\n  Mapa probabilístico del hábitat idóneo para el vampiro (Desmodus rotundus) en Costa Rica\nauthor:\n  - name: Manuel Spínola\n    url: http://www.icomvis.una.ac.cr/index.php/manuel\n    affiliation: ICOMVIS - UNA\n    affiliation_url: http://www.icomvis.una.ac.cr/\n    orcid: 0000-0002-7839-1908\ndate: 03/20/2021\ncitation: true\ndraft: true\ncategories:\n  - \"Distribución de especies\"\n  - \"Análisis del hábitat\"\n  - \"Ecología del paisaje\"\n  - \"Análisis espacial\"\n---\n\n\n\n### El vampiro (Desmodus rotundus)\n\n::: {.cell}\n\n:::\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 1. Registros del vampiro (Desmodus rotundus) en Costa Rica.\n\n\n\nFigura 1. Registros del vampiro (Desmodus rotundus) en GBIF para Costa Rica.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

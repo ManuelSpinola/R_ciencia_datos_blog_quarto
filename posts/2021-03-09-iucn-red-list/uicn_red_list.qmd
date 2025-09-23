@@ -1,0 +1,536 @@
+---
+title: "La Lista Roja de la UICN de los vertebrados de Costa Rica"
+subtitle: En esta entrada se analizan las especies de vertebrados de Costa Rica incluídas en la Lista Roja de la UICN
+image: "fig_08.png"
+author:
+  - name: "Manuel Spínola"
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: "2022-04-16"
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+categories:
+  - "Especies amenazadas"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(rio)
+library(rredlist)
+library(rvest)
+library(g2r)
+library(highcharter)
+library(data.tree)
+library(echarts4r)
+library(sunburstR)
+library(htmltools)
+library(plotly)
+library(d3r)
+library(rphylopic)
+library(ggimage)
+library(ggtree)
+library(reactable)
+library(gt)
+library(formattable)
+library(knitr)
+library(kableExtra)
+library(fontawesome)
+library(here)
+library(ggiraphExtra)
+library(cowplot)
+library(ggthemes)
+```
+
+```{r}
+#| include: false
+IUCN_REDLIST_KEY <-  "7d13e3e7192efae47f232ff7b9e8d688af4c464bf522d645029378eb501193c7"
+```
+
+# ¿Qué es la Lista Roja de la UICN?
+
+La Lista Roja de Especies Amenzadas fue establecida por la Unión Internacional para la Conservación de la Naturaleza (UICN) en 1964. La lista está considerada un indicador de la condición de la biodiversidad en el planeta, incluyendo información sobre el estado global de la conservación de especies animales, plantas y hongos. La información contendida en la lista es considerada una valiosa herramienta par informar y promover la conservación de la biodiversidad a nivel mundial [@IUCN2021].
+
+La versión 3.1 de los criterios y categorías de la Lista Roja elaborada en el 2001 es la que se utiliza actualmente y consta de 9 categorías estructurados de la siguiente manera:
+
+-   `r text_spec("Extinta (EX)", background = "black", color = "white", bold = T)`
+
+-   `r text_spec("Extinta en estado silvestre (EW)", background = "purple", color = "white", bold = T)`
+
+-   `r text_spec("En peligro crítico (CR)", background = "#FF0000", color = "white", bold = T)`
+
+-   `r text_spec("En peligro (EN)", background = "#FF7F00", color = "black", bold = T)`
+
+-   `r text_spec("Vulnerable (VU)", background = "#FFF700", color = "black", bold = T)`
+
+-   `r text_spec("Casi amenazada (NT)", background = "#DFFF00", color = "black", bold = T)`
+
+-   `r text_spec("Preocupación menor (LC)", background = "#7FFF00", color = "black", bold = T)`
+
+-   `r text_spec("Datos insuficientes (DD)", background = "#b2beb5", color = "black", bold = T)`
+
+-   `r text_spec("No evaluado (NE)", background = "#dde2de", color = "black", bold = T)` (especie no evaluada para ninguna de las otras categorías)
+
+Las categorías VU, EN y CR integran al grupo de "especie amenazada". Las categorías "no evaluado" (NE) es para las especies que aún no han sido clasificadas y "datos insuficientes" (DD) para las especies que no poseen suficiente información para una clasificación rigurosa.
+
+La Lista Roja de la UICN para Costa Rica incluye 486 especies de vertebrados [@IUCN2021]. La mayoría de estas especies pertenecen al grupo de las aves (51 %, 246 de 486), y el menor número de especies lo aportan los actinopterigios (0,8 %, 4 de 486, Figura 1).
+
+<br>
+
+```{r}
+#| include: false
+vert <- data.frame(
+ name = c("Condrictios", "Actinopterigios", "Anfibios", "Reptiles", "Aves", "Mamíferos"),
+ value = c(72, 4, 129, 29, 246, 6)
+)
+```
+
+```{r}
+#| echo: false
+vert %>%
+  e_charts(name) %>%
+  e_pie(value, radius = c("50%", "70%")) %>%
+  e_labels(show = TRUE,
+           formatter = "{c} \n {d}%",
+           position = "inside") %>%
+  e_legend(right = 0, 
+           orient = "vertical")
+```
+
+Figura 1. Número (y porcentaje) de vertebrados incluídas en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+```{r}
+#| include: false
+red_all <- import("redlist_species_data_all_2021-03-14/simple_summary.csv")
+```
+
+```{r}
+#| include: false
+head(red_all)
+```
+
+```{r}
+#| include: false
+red_all <- red_all %>% mutate(across(where(is.character), as.factor))
+```
+
+```{r}
+#| include: false
+red_all <- rename(red_all, Clase = className, Categoría = redlistCategory, "Nombre científico" = scientificName, "Tendencia pob" = populationTrend)
+```
+
+```{r}
+#| include: false
+red_all$Clase <- recode_factor(red_all$Clase, "ACTINOPTERYGII" = "Actinopterigios", "AMPHIBIA" = "Anfibios", "AVES" = "Aves", "CHONDRICHTHYES" = "Condrictios", "MAMMALIA" = "Mamíferos", "REPTILIA" = "Reptiles")
+```
+
+```{r}
+#| include: false
+red_all$Clase <- fct_relevel(red_all$Clase, "Condrictios", "Actinopterigios", "Anfibios", "Reptiles")
+```
+
+```{r}
+#| include: false
+red_all$Categoría <- recode_factor(red_all$Categoría, "Critically Endangered" = "En peligro crítico", "Data Deficient" = "Datos insuficientes", "Endangered" = "En peligro", "Extinct" = "Extinta", "Least Concern" = "Preocupación menor", "Near Threatened" = "Casi amenazada")
+```
+
+```{r}
+#| include: false
+red_all_clase <- red_all %>%
+  group_by(Clase) %>%
+  summarise(Número = n())
+```
+
+```{r}
+#| include: false
+red_all_clase
+```
+
+```{r}
+#| include: false
+red_all_grouped <- red_all %>%
+  group_by(Clase, Categoría) %>%
+  summarise(Número = n()) %>%
+  ungroup()
+```
+
+```{r}
+#| include: false
+red_all_grouped
+```
+
+```{r}
+#| include: false
+sun <- data_to_hierarchical(red_all_grouped, c(Clase, Categoría), Número, colors = c(c("firebrick", "darkorange", "steelblue", "forestgreen")))
+```
+
+```{r}
+#| include: false
+#| echo: false
+hchart(sun, type = "sunburst")
+```
+
+```{r}
+#| include: false
+sunbu <- red_all_grouped %>% unite(Categoría, c("Clase", "Categoría"), sep = "-")
+```
+
+```{r}
+#| include: false
+sunbu
+```
+
+```{r}
+#| include: false
+#| echo: false
+sund2b(sunbu)
+```
+
+```{r}
+#| include: false
+sunbu <- red_all_grouped %>%
+  mutate(across(where(is.factor), as.character))
+```
+
+```{r}
+#| include: false
+sunbu
+```
+
+```{r}
+#| include: false
+sunbu <- select(sunbu, Categoría, Número)
+```
+
+```{r}
+#| include: false
+sunbu
+```
+
+```{r}
+#| include: false
+sunbu_con <- sunbu %>%
+  slice(1:6)
+
+sunbu_act <- sunbu %>%
+  slice(7)
+
+sunbu_anf <- sunbu %>%
+  slice(8:14)
+
+sunbu_rep <- sunbu %>%
+  slice(15:16)
+
+sunbu_ave <- sunbu %>%
+  slice(17:21)
+
+sunbu_mam <- sunbu %>%
+  slice(22:23)
+```
+
+```{r}
+#| include: false
+gg_iraph_extra_con <- red_all_grouped %>%
+  slice(1:6)
+
+gg_iraph_extra_act <- red_all_grouped %>%
+  slice(7)
+
+gg_iraph_extra_anf <- red_all_grouped %>%
+  slice(8:14)
+
+gg_iraph_extra_rep <- red_all_grouped %>%
+  slice(15:16)
+
+gg_iraph_extra_ave <- red_all_grouped %>%
+  slice(17:21)
+
+gg_iraph_extra_mam <- red_all_grouped %>%
+  slice(22:23)
+```
+
+# Condrictios
+
+Los condrictios representan el 15 % (72 en 486) de los vertebrados en la Lista Roja de la UICN para Costa Rica y cuentan con el mayor número de especies en catgoría Vulnerable, 21 especies (Figura 2).
+
+```{r}
+#| include: false
+#| echo: false
+sund2b(sunbu_con, rootLabel = "Condrictios")
+```
+
+```{r}
+#| echo: false
+ggDonut(gg_iraph_extra_con, aes(donuts = Categoría, count = Número), interactive = TRUE)
+```
+
+Figura 2. Especies de condrictios y sus categorías de conservación incluídas en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+# Actinopterigios
+
+Los actinopterigios solo representan el 0,8 % (4 en 486) de las especies de vertebrados en la Lista Roja de la UICN para Costa Rica y todas se encuentran en la categoría de Preocupación menor (Figura 3).
+
+```{r}
+#| include: false
+#| echo: false
+sund2b(sunbu_act, rootLabel = "Actinopterigios")
+```
+
+```{r}
+#| echo: false
+ggDonut(gg_iraph_extra_act, aes(donuts = Categoría, count = Número), start = 2.5 * pi/2 , interactive = TRUE)
+```
+
+Figura 3. Especies de actinopterigios y sus categorías de conservación incluídas en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+# Anfibios
+
+Los anfibios constituyen el 27 % (129 en 486) de las especies de vertebrados en la Lista Roja de la UICN para Costa Rica, es el único grupo que presenta especies extintas, 4 especies (Figura 4).
+
+```{r}
+#| include: false
+#| echo: false
+sund2b(sunbu_anf, rootLabel = "Anfibios")
+```
+
+```{r}
+#| echo: false
+ggDonut(gg_iraph_extra_anf, aes(donuts = Categoría, count = Número), interactive = TRUE)
+```
+
+Figura 4. Especies de anfibios y sus categorías de conservación incluídas en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+# Reptiles
+
+Los reptiles constituyen el 6 % (29 en 486) de las especies de vertebrados en la Lista Roja de la UICN para Costa Rica, con 1 especie en la categoría de En peligro y las demás especies en la categoría de Preocupación menor (Figura 5).
+
+```{r}
+#| include: false
+#| echo: false
+sund2b(sunbu_rep, rootLabel = "Reptiles")
+```
+
+```{r}
+#| echo: false
+ggDonut(gg_iraph_extra_rep, aes(donuts = Categoría, count = Número), start = 2.5 * pi/2, interactive = TRUE)
+```
+
+Figura 5. Especies de Reptiles y sus categorías de conservación incluídas en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+# Aves
+
+Las aves representan el 51 % (246 en 486) de las especies de vertebrados en la Lista Roja de la UICN para Costa Rica, con la mayor parte de las especies (227 de 246) en la categoría de Preocupación menor, y 1 especie en la categoría En peligro crítico (Figura 6).
+
+```{r}
+#| include: false
+#| echo: false
+sund2b(sunbu_ave, rootLabel = "Aves")
+```
+
+```{r}
+#| echo: false
+ggDonut(gg_iraph_extra_ave, aes(donuts = Categoría, count = Número), start = 3.5 * pi/2, interactive = TRUE)
+```
+
+Figura 6. Especies de aves y sus categorías de conservación incluídas en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+# Mamíferos
+
+Los mamíferos comprenden el 1,2 % (6 en 486) de las especies de vertebrados en la Lista Roja de la UICN para Costa Rica, con solo 1 especie en la categoría de Vulnerable (Figura 7).
+
+```{r}
+#| include: false
+#| echo: false
+sund2b(sunbu_mam, rootLabel = "Mamíferos")
+```
+
+```{r}
+#| echo: false
+ggDonut(gg_iraph_extra_mam, aes(donuts = Categoría, count = Número), start = 2.7 * pi/2, interactive = TRUE)
+```
+
+Figura 7. Especies de mamíferos y sus categorías de conservación incluídos en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+# Especies en categorías amenzadas
+
+En cuanto a las especies consideradas amenazadas, es decir en las categorías de En peligro crítico, En peligro y Vulnerable, los anfibios son el grupo con el mayor número de especies amenazadas, 56 especies, y en especial, con el mayor número de especies en categorías de mayor riesgo, 21 en peligro, y 20 en peligro crítico. Por otra parte, las condrictios son el grupo con mayor número de especies vulnerables, 21 especies (Figura 8).
+
+```{r}
+#| include: false
+amenazadas <- red_all_grouped %>%
+  filter(Categoría == "Vulnerable" | Categoría == "En peligro" | Categoría == "En peligro crítico")
+```
+
+```{r}
+#| include: false
+#| echo: false
+g2(amenazadas, asp(Clase, Categoría, color = Número)) %>% 
+  fig_polygon(
+    asp(label = Número),
+    lineWidth = 1,
+    stroke = "white") %>% 
+  gauge_color_blue()
+```
+
+```{r}
+#| include: false
+#| echo: false
+condric <- rphylopic::image_data("a3b3e80c-22f2-4b8f-a3ac-42fe1583e0be", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+actinop <- rphylopic::image_data("84c7e672-2593-44a6-a807-cffbd3156cc5", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+anfibios <- rphylopic::image_data("35237d88-e323-44dc-8349-b70fe078c5e7", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+reptiles <- rphylopic::image_data("5dec03d9-66a2-4033-b1a9-6dbb3485199f", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+aves <- rphylopic::image_data("ca1082e0-718c-48dc-a011-995511e48180", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+#| eval: false
+mamiferos <- rphylopic::image_data("7cd56d09-bc93-4974-9e87-65fa1f04652f", size = "512")[[1]]
+```
+
+```{r}
+#| include: false
+condric <- magick::image_read("condrictios.png")
+actinop <- magick::image_read("actinopterigios.png")
+anfibios <- magick::image_read("anfibios.png")
+reptiles <- magick::image_read("reptiles.png")
+aves <- magick::image_read("aves.png")
+mamiferos <- magick::image_read("mamiferos.png")
+```
+
+```{r}
+#| include: false
+#| echo: false
+#| eval: false
+ggplot(amenazadas, aes(Clase, Número, fill = Categoría)) +
+  geom_col() +
+  theme_minimal(base_size = 14) +
+  ylim(c(0,70)) +
+  ylab("Número de especies") +
+  scale_fill_manual(values = c("#FF0000", "#FF7F00", "#FFEF00")) +
+  add_phylopic(condric, alpha = 1, x = 1, y = 37, ysize = 8) +
+  add_phylopic(anfibios, alpha = 1, x = 2, y = 62, ysize = 8) +
+  add_phylopic(reptiles, alpha = 1, x = 3, y = 8, ysize = 10) +
+  add_phylopic(aves, alpha = 1, x = 4, y = 16, ysize = 8) +
+  add_phylopic(mamiferos, alpha = 1, x = 5, y = 8, ysize = 8)
+```
+
+```{r}
+#| echo: false
+ggplot(amenazadas, aes(Clase, Número, fill = Categoría)) +
+  geom_col() +
+  theme_minimal(base_size = 14) +
+  ylim(c(0,70)) +
+  ylab("Número de especies") +
+  scale_fill_manual(values = c("#FF0000", "#FF7F00", "#FFEF00")) +
+  draw_image(condric, x = 0.5, y = 38, scale = 12) +
+  draw_image(anfibios, x = 1.5, y = 62, scale = 10) +
+  draw_image(reptiles, x = 2.5, y = 8, scale = 12) +
+  draw_image(aves, x = 3.5, y = 16, scale = 10) +
+  draw_image(mamiferos, x = 4.5, y = 8, scale = 10)
+```
+
+Figura 8. Número de especies amenazadas de Condrictios, Anfibios, Reptiles, Aves y Mamíferos incluídas en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+```{r}
+#| include: false
+cuadro_critico <- red_all %>%
+  dplyr::select(Clase, "Nombre científico", Categoría, "Tendencia pob") %>%
+  dplyr::filter(Categoría == "En peligro crítico") %>%
+  droplevels() %>%
+  select(Clase, "Nombre científico", "Tendencia pob")
+```
+
+```{r}
+#| include: false
+cuadro_critico$`Tendencia pob` <- recode_factor(cuadro_critico$`Tendencia pob`, "Decreasing" = "Descendiendo", "Increasing" = "Aumentando", "Stable" = "Estable", "Unknown" = "Desconocida")
+```
+
+```{r}
+#| include: false
+cuadro_critico$Clase <- fct_relevel(cuadro_critico$Clase, "Condrictios", "Anfibios", "Aves")
+```
+
+Cuadro 1. Especies de vertebrados y su tendencia poblacional consideradas bajo la categoría "En peligro crítico" en la Lista Roja de la UICN para Costa Rica [@IUCN2021].
+
+-   Descendiendo: `r fa("arrow-down", fill = "red")`
+
+-   Desconocida: `r fa("question", fill = "black")`
+
+```{r}
+#| include: false
+cuadro_critico[,"Tendencia poblacional"] <- ""
+arrange(cuadro_critico, Clase)
+```
+
+```{r}
+#| include: false
+fa_png(name = "arrow-up", fill = "forestgreen")
+fa_png(name = "arrow-down", fill = "red")
+fa_png(name = "minus", fill = "black")
+fa_png(name = "question", fill = "black")
+```
+
+```{r}
+#| echo: false
+arrange(cuadro_critico, Clase) %>%
+  select(Clase, "Nombre científico", "Tendencia poblacional") %>%
+  kbl(booktabs = T, align = c("llc")) %>%
+  kable_paper(full_width = F) %>%
+  column_spec(1:2, color = "black", background = c(rep("mistyrose", 4), rep("lavender", 20), "papayawhip")) %>%
+  column_spec(3, image = spec_image(c("arrow-down.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "question.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "question.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "question.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "arrow-down.png", "question.png", "question.png", "question.png", "arrow-down.png", "arrow-down.png"), 50, 50))
+```
+
+<br> <br>
+
+Los análisis y gráficos los realicé con R [@R2022] y los paquetes ggplot2 [@Wickham2016], echarts4r [@Coene2022], ggiraphExtra [@Moon2020] y rphylopic [@Chamberlain2020].
+
+::: {#refs}
+:::
+
+```{r}
+#| include: false
+g2(red_all_grouped, asp(Clase, Categoría, color = Número)) %>% 
+  fig_polygon(
+    asp(label = Número),
+    lineWidth = 1,
+    stroke = "white") %>% 
+  gauge_color(c("indianred", "steelblue", "royalblue", "blue", "darkblue", "navy", "midnightblue"))
+```
+
+```{r}
+#| include: false
+g2(red_all_grouped, asp(Clase, Número, color = Categoría)) %>%
+  fig_interval(adjust("dodge")) %>%
+  gauge_color(c("firebrick", "orange", "steelblue"))
+```

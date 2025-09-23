@@ -1,0 +1,444 @@
+---
+title: "NDVI para Costa Rica 2020 - 2021"
+description: |
+  A short description of the post.
+image: preview.png
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation_url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 03/19/2021
+citation: true
+draft: true
+categories:
+  - "Ecología del paisaje"
+---
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(tidyverse)
+library(sf)
+library(stars)
+library(raster)
+library(rasterVis)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(ggthemes)
+library(colorspace)
+library(RColorBrewer)
+library(RCGLS)
+library(ncdf4)
+library(tidync)
+library(ncmeta)
+library(rgdal)
+library(RNetCDF)
+library(cubeview)
+library(tmap)
+library(tmaptools)
+library(mapdeck)
+library(patchwork)
+library(cowplot)
+library(ggpubr)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rmapshaper)
+```
+
+```{r, include=FALSE}
+# ndv1 1km
+un   <- "ManuelSpinola" 
+pw   <- "lobito101"
+tf   <- seq(as.Date("2019-06-01"), as.Date("2020-07-01"), by = "months")
+prod <- "ndvi" #Product name: fapar, fcover, lai, ndvi,  ss, swi, lst, ...
+res  <- "1km" #1km, 300m or 100m
+v    <- "v3"
+```
+
+```{r, include=FALSE}
+# ndv1 300m
+un   <- "ManuelSpinola" 
+pw   <- "lobito101"
+tf   <- seq(as.Date("2020-07-01"), as.Date("2021-03-01"), by = "days")
+prod <- "ndvi" #Product name: fapar, fcover, lai, ndvi,  ss, swi, lst, ...
+res  <- "300m" #1km, 300m or 100m
+v    <- "v2"
+```
+
+```{r, include=FALSE, eval=FALSE}
+download_CGLS_data(username = un, password = pw, timeframe = tf, product = prod, resolution = res, version = v)
+```
+
+```{r, include=FALSE}
+na <- ne_countries(continent = "north america", scale = 10, returnclass = "sf")
+```
+
+```{r, include=FALSE}
+cr <- na |> dplyr::filter(iso_a3 == "CRI")
+```
+
+```{r, include=FALSE}
+cr <- ms_filter_islands(cr, min_area = 1000000000)
+```
+
+```{r, include=FALSE}
+cr_grilla <- readOGR("grilla_cr_5367_8km.gpkg")
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_file_01 <- "ndvi_v3_1km_c_gls_NDVI_201906010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_02 <- "ndvi_v3_1km_c_gls_NDVI_201907010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_03 <- "ndvi_v3_1km_c_gls_NDVI_201908010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_04 <- "ndvi_v3_1km_c_gls_NDVI_201909010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_05 <- "ndvi_v3_1km_c_gls_NDVI_201910010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_06 <- "ndvi_v3_1km_c_gls_NDVI_201911010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_07 <- "ndvi_v3_1km_c_gls_NDVI_201912010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_08 <- "ndvi_v3_1km_c_gls_NDVI_202001010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_09 <- "ndvi_v3_1km_c_gls_NDVI_202002010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_10 <- "ndvi_v3_1km_c_gls_NDVI_202003010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_11 <- "ndvi_v3_1km_c_gls_NDVI_202004010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_12 <- "ndvi_v3_1km_c_gls_NDVI_202005010000_GLOBE_PROBAV_V3.0.1.nc"
+ndvi_file_13 <- "ndvi_v3_1km_c_gls_NDVI_202006010000_GLOBE_PROBAV_V3.0.1.nc"
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_300m_file_01 <- "c_gls_NDVI300_202007010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_02 <- "c_gls_NDVI300_202008010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_03 <- "c_gls_NDVI300_202009010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_04 <- "c_gls_NDVI300_202010010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_05 <- "c_gls_NDVI300_202011010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_06 <- "c_gls_NDVI300_202012010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_07 <- "c_gls_NDVI300_202101010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_08 <- "c_gls_NDVI300_202102010000_GLOBE_OLCI_V2.0.1.nc"
+ndvi_300m_file_09 <- "c_gls_NDVI300_202103010000_GLOBE_OLCI_V2.0.1.nc"
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_01 <- raster(ndvi_file_01)
+ndvi_02 <- raster(ndvi_file_02)
+ndvi_03 <- raster(ndvi_file_03)
+ndvi_04 <- raster(ndvi_file_04)
+ndvi_05 <- raster(ndvi_file_05)
+ndvi_06 <- raster(ndvi_file_06)
+ndvi_07 <- raster(ndvi_file_07)
+ndvi_08 <- raster(ndvi_file_08)
+ndvi_09 <- raster(ndvi_file_09)
+ndvi_10 <- raster(ndvi_file_10)
+ndvi_11 <- raster(ndvi_file_11)
+ndvi_12 <- raster(ndvi_file_12)
+ndvi_13 <- raster(ndvi_file_13)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_300m_01 <- raster(ndvi_300m_file_01)
+ndvi_300m_02 <- raster(ndvi_300m_file_02)
+ndvi_300m_03 <- raster(ndvi_300m_file_03)
+ndvi_300m_04 <- raster(ndvi_300m_file_04)
+ndvi_300m_05 <- raster(ndvi_300m_file_05)
+ndvi_300m_06 <- raster(ndvi_300m_file_06)
+ndvi_300m_07 <- raster(ndvi_300m_file_07)
+ndvi_300m_08 <- raster(ndvi_300m_file_08)
+ndvi_300m_09 <- raster(ndvi_300m_file_09)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_stack <- stack(ndvi_01, ndvi_02, ndvi_03, ndvi_04, ndvi_05, ndvi_06, ndvi_07, ndvi_08, ndvi_09, ndvi_10, ndvi_11, ndvi_12, ndvi_13)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_300m_stack <- stack(ndvi_300m_01, ndvi_300m_02, ndvi_300m_03, ndvi_300m_04, ndvi_300m_05, ndvi_300m_06, ndvi_300m_07, ndvi_300m_08, ndvi_300m_09)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_stack_crop <- crop(ndvi_stack, cr)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_300m_stack_crop <- crop(ndvi_300m_stack, cr)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_stack_mask <- mask(ndvi_stack_crop, cr)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_300m_stack_mask <- mask(ndvi_300m_stack_crop, cr)
+```
+
+```{r, include=FALSE, eval=FALSE}
+names(ndvi_stack_mask) <- c("ndvi_2019_06", "ndvi_2019_07", "ndvi_2019_08", "ndvi_2019_09", "ndvi_2019_10", "ndvi_2019_11", "ndvi_2019_12", "ndvi_2020_01", "ndvi_2020_02", "ndvi_2020_03", "ndvi_2020_04", "ndvi_2020_05", "ndvi_2020_06")
+```
+
+```{r, include=FALSE, eval=FALSE}
+names(ndvi_300m_stack_mask) <- c("ndvi_300m_2020_07", "ndvi_300m_2020_08", "ndvi_300m_2020_09", "ndvi_300m_2020_10", "ndvi_300m_2020_11", "ndvi_300m_2020_12", "ndvi_300m_2021_01", "ndvi_300m_2021_02", "ndvi_300m_2021_03")
+```
+
+```{r, include=FALSE, eval=FALSE}
+writeRaster(ndvi_stack_mask, filename = names(ndvi_stack_mask), bylayer = TRUE, format = "GTiff", overwrite = TRUE)
+```
+
+```{r, include=FALSE, eval=FALSE}
+writeRaster(ndvi_300m_stack_mask, filename = names(ndvi_300m_stack_mask), bylayer = TRUE, format = "GTiff", overwrite = TRUE)
+```
+
+```{r, include=FALSE, eval=FALSE}
+r1 <- raster("ndvi_2019_06.tif")
+r2 <- raster("ndvi_2019_07.tif")
+r3 <- raster("ndvi_2019_08.tif")
+r4 <- raster("ndvi_2019_09.tif")
+r5 <- raster("ndvi_2019_10.tif")
+r6 <- raster("ndvi_2019_11.tif")
+r7 <- raster("ndvi_2019_12.tif")
+r8 <- raster("ndvi_2020_01.tif")
+r9 <- raster("ndvi_2020_02.tif")
+r10 <- raster("ndvi_2020_03.tif")
+r11 <- raster("ndvi_2020_04.tif")
+r12 <- raster("ndvi_2020_05.tif")
+r13 <- raster("ndvi_2020_06.tif")
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_stack <- stack(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13)
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_stack_stars <- st_as_stars(ndvi_stack)
+```
+
+```{r, include=FALSE, eval=FALSE}
+r1 <- read_stars("ndvi_2019_06.tif")
+r2 <- read_stars("ndvi_2019_07.tif")
+r3 <- read_stars("ndvi_2019_08.tif")
+r4 <- read_stars("ndvi_2019_09.tif")
+r5 <- read_stars("ndvi_2019_10.tif")
+r6 <- read_stars("ndvi_2019_11.tif")
+r7 <- read_stars("ndvi_2019_12.tif")
+r8 <- read_stars("ndvi_2020_01.tif")
+r9 <- read_stars("ndvi_2020_02.tif")
+r10 <- read_stars("ndvi_2020_03.tif")
+r11 <- read_stars("ndvi_2020_04.tif")
+r12 <- read_stars("ndvi_2020_05.tif")
+r13 <- read_stars("ndvi_2020_06.tif")
+```
+
+```{r, include=FALSE}
+r1 <- read_stars("ndvi_300m_2020_07.tif")
+r2 <- read_stars("ndvi_300m_2020_08.tif")
+r3 <- read_stars("ndvi_300m_2020_09.tif")
+r4 <- read_stars("ndvi_300m_2020_10.tif")
+r5 <- read_stars("ndvi_300m_2020_11.tif")
+r6 <- read_stars("ndvi_300m_2020_12.tif")
+r7 <- read_stars("ndvi_300m_2021_01.tif")
+r8 <- read_stars("ndvi_300m_2021_02.tif")
+r9 <- read_stars("ndvi_300m_2021_03.tif")
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_stars <- c(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13)
+```
+
+```{r, include=FALSE}
+ndvi_300m_stars <- c(r1, r2, r3, r4, r5, r6, r7, r8, r9)
+```
+
+```{r, include=FALSE}
+ndvi_300m_merge <- merge(ndvi_300m_stars)
+```
+
+```{r, include=FALSE}
+st_crs(ndvi_300m_merge) <- 4326
+```
+
+```{r, include=FALSE}
+box <- st_bbox(cr) %>% 
+  st_as_sfc()
+```
+
+```{r, include=FALSE}
+st_crs(box) <- 4326
+```
+
+```{r, include=FALSE}
+ndvi_300m_merge <- st_crop(ndvi_300m_merge, box)
+```
+
+```{r, include = FALSE}
+st_crs(r1) <- 4326
+st_crs(r2) <- 4326
+st_crs(r3) <- 4326
+st_crs(r4) <- 4326
+st_crs(r5) <- 4326
+st_crs(r6) <- 4326
+st_crs(r7) <- 4326
+st_crs(r8) <- 4326
+st_crs(r9) <- 4326
+```
+
+```{r, include=FALSE, eval=FALSE}
+ndvi_01 <- st_crop(r1, box)
+ndvi_02 <- st_crop(r2, box)
+ndvi_03 <- st_crop(r3, box)
+ndvi_04 <- st_crop(r4, box)
+ndvi_05 <- st_crop(r5, box)
+ndvi_06 <- st_crop(r6, box)
+ndvi_07 <- st_crop(r7, box)
+ndvi_08 <- st_crop(r8, box)
+ndvi_09 <- st_crop(r9, box)
+ndvi_10 <- st_crop(r10, box)
+ndvi_11 <- st_crop(r11, box)
+ndvi_12 <- st_crop(r12, box)
+ndvi_13 <- st_crop(r13, box)
+```
+
+```{r, include=FALSE}
+ndvi_300m_01 <- st_crop(r1, box)
+ndvi_300m_02 <- st_crop(r2, box)
+ndvi_300m_03 <- st_crop(r3, box)
+ndvi_300m_04 <- st_crop(r4, box)
+ndvi_300m_05 <- st_crop(r5, box)
+ndvi_300m_06 <- st_crop(r6, box)
+ndvi_300m_07 <- st_crop(r7, box)
+ndvi_300m_08 <- st_crop(r8, box)
+ndvi_300m_09 <- st_crop(r9, box)
+```
+
+```{r, include=FALSE}
+p1 <- ggplot() + geom_stars(data = ndvi_300m_01) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p2 <- ggplot() + geom_stars(data = ndvi_300m_02) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p3 <- ggplot() + geom_stars(data = ndvi_300m_03) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p4 <- ggplot() + geom_stars(data = ndvi_300m_04) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p5 <- ggplot() + geom_stars(data = ndvi_300m_05) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p6 <- ggplot() + geom_stars(data = ndvi_300m_06) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p7 <- ggplot() + geom_stars(data = ndvi_300m_07) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p8 <- ggplot() + geom_stars(data = ndvi_300m_08) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p9 <- ggplot() + geom_stars(data = ndvi_300m_09) +
+  theme_bw() +
+  coord_equal() +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent") +
+  xlab("Longitud") +
+  ylab("Latitud")
+```
+
+```{r, include=FALSE}
+p10 <- ggplot() + theme_void()
+```
+
+```{r, echo=FALSE}
+ggarrange(p1, p2, common.legend = TRUE, legend = "right", labels = c("Julio 2020", "Agosto 2020"), vjust = 4)
+```
+
+```{r, echo=FALSE}
+ggarrange(p3, p4, common.legend = TRUE, legend = "right", labels = c("Setiembre 2020", "Octubre 2020"), vjust = 4)
+```
+
+```{r, echo=FALSE}
+ggarrange(p5, p6, common.legend = TRUE, legend = "right", labels = c("Noviembre 2020", "Diciembre 2020"), vjust = 4)
+```
+
+```{r, echo=FALSE}
+ggarrange(p7, p8, common.legend = TRUE, legend = "right", labels = c("Enero 2021", "Febrero 2021"), vjust = 4)
+```
+
+```{r, echo=FALSE}
+ggarrange(p10, p9, common.legend = TRUE, legend = "right", labels = c("", "Marzo 2021"), vjust = 4)
+```
+
+```{r, echo=FALSE, include=FALSE}
+ggplot() + geom_stars(data = ndvi_300m_merge) +
+  theme_bw() +
+  coord_equal() +
+  facet_wrap(~ attributes, nrow = 3) +
+  scale_x_discrete(expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0)) +
+  scale_fill_viridis_c(name = "NDVI", na.value = "transparent")
+```
+
+```{r, echo=FALSE, include=FALSE}
+tm_shape(ndvi_300m_merge) +
+  tm_raster(title = "NDVI", midpoint = NA) +
+  tm_layout(legend.outside = TRUE)
+```

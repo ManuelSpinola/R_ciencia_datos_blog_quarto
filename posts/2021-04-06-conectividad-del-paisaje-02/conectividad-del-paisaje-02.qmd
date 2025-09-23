@@ -1,0 +1,258 @@
+---
+title: "Conectividad del paisaje 02"
+description: |
+  A short description of the post.
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation_url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 01/01/2022
+citation: true
+draft: true
+execute:
+  eval: false
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+#| eval: false
+library(tidyverse)
+library(rio)
+library(rgdal)
+library(sf)
+library(stars)
+library(raster)
+library(rasterVis)
+library(landscapemetrics)
+library(landscapetools)
+library(motif)
+library(ggthemes)
+library(colorspace)
+library(RColorBrewer)
+library(here)
+library(ggthemes)
+library(ggpubr)
+library(kableExtra)
+library(Makurhini)
+library(lconnect)
+library(beepr)
+library(rmapshaper)
+library(wdpar)
+library(mapview)
+library(lwgeom)
+library(tmap)
+library(tmaptools)
+library(cleangeo)
+```
+
+```{r}
+#| eval: false
+cr_5367 <- st_read(here("cr_mapas/cr_gadm_5367.gpkg"))
+```
+
+```{r}
+#| include: false
+#| eval: false
+cob_s = read_stars(here("cr_cobertura/cobertura_cop_100_2019.tif"))
+```
+
+```{r}
+#| include: false
+#| eval: false
+st_crs(cob_s) <- 5367
+```
+
+```{r}
+#| eval: false
+lm_box <- st_bbox(c(xmin = 200000, xmax = 700000, ymax = 1250000, ymin = 850000), crs = st_crs(cr_5367))
+```
+
+```{r}
+#| eval: false
+cr_5367 <- st_crop(cr_5367, lm_box)
+```
+
+```{r}
+#| eval: false
+cr_5367 <- st_make_valid(cr_5367)
+```
+
+```{r}
+#| include: false
+#| eval: false
+cob_s <- st_crop(cob_s, lm_box)
+```
+
+```{r}
+#| include: false
+#| eval: false
+# raster to polygon
+polygons_s <- st_as_sf(cob_s)
+```
+
+```{r}
+#| include: false
+#| eval: false
+saveRDS(polygons_s, "polygons_s.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+polygons_s <- readRDS("polygons_s.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+polygons_s
+```
+
+```{r}
+#| include: false
+#| eval: false
+polygons_s <- polygons_s %>%
+  rename(categoria = cobertura_cop_100_2019.tif)
+```
+
+```{r}
+#| eval: false
+# dissolve polygons
+polygons_s_dissolve <- polygons_s %>% group_by(categoria) %>% summarize()
+beep()
+```
+
+```{r}
+#| eval: false
+saveRDS(polygons_s_dissolve, "polygons_s_dissolve.rds")
+```
+
+```{r}
+#| eval: false
+polygons_s_dissolve <- readRDS("polygons_s_dissolve.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+polygons_s_dissolve
+```
+
+```{r}
+#| include: false
+#| echo: false
+#| eval: false
+ggplot(polygons_s_dissolve) +
+  theme_minimal() +
+  geom_sf(aes(fill = categoria), size = 0.01) +
+  scale_fill_manual(name = "Tipo de uso de suelo", values = c("#282828", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000", "#0032C8", "#0096A0", "#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00", "#000080"), na.value = "transparent", na.translate = FALSE, labels = c("Sin dato", "Matorrales", "Vegetación herbácea", "Cultivo", "Urbano", "Cuerpos de agua", "Humedal herbáceo", "Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido", "Mar abierto")) +
+  coord_sf(datum = st_crs(5367))
+beep()
+```
+
+```{r}
+#| eval: false
+# dejar solo bosques
+forest_s <- dplyr::filter(polygons_s, categoria %in% c("Closed forest, deciduous", "Open forest, unknown", "Closed forest, evergreen", "Closed forest, mixed", "Open forest, deciduous", "Closed forest, unknown", "Open forest, evergreen", "Open forest, mixed"))
+```
+
+```{r}
+#| eval: false
+saveRDS(forest_s, "forest_s.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+forest_s <- readRDS("forest_s.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+forest_s$tipo <- "forest"
+```
+
+```{r}
+#| include: false
+#| eval: false
+plot(forest_s)
+```
+
+```{r}
+#| include: false
+#| echo: false
+#| eval: false
+ggplot(forest_s) +
+  theme_minimal() +
+  geom_sf(aes(fill = categoria), size = 0.01) +
+  scale_fill_manual(name = "Tipos de bosque", values = c("#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00"), na.value = "transparent", na.translate = FALSE, labels = c("Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido")) +
+  coord_sf(datum = st_crs(5367))
+beep()
+```
+
+```{r}
+#| include: false
+#| echo: false
+#| eval: false
+# only forest cover
+ggplot(forest_s) +
+  theme_minimal() +
+  geom_sf(aes(fill = tipo), size = 0.01) +
+  scale_fill_manual(name = "Tipos de bosque", values = "#007800", na.value = "transparent", na.translate = FALSE, labels = c("Bosque")) +
+  coord_sf(datum = st_crs(5367)) +
+  theme(legend.position = "none")
+```
+
+```{r}
+#| eval: false
+forest_s_dissolve <- forest_s %>% group_by(categoria) %>% summarize() 
+```
+
+```{r}
+#| eval: false
+saveRDS(forest_s_dissolve, "forest_s_dissolve.rds")
+```
+
+```{r}
+#| include: false
+#| eval: false
+forest_s_dissolve <- readRDS("forest_s_dissolve.rds")
+```
+
+```{r}
+#| include: false
+forest_s_dissolve$tipo <- "forest"
+```
+
+```{r}
+#| include: false
+#| echo: false
+ggplot(forest_s_dissolve) +
+  theme_minimal() +
+  geom_sf(aes(fill = categoria), size = 0.01) +
+  scale_fill_manual(name = "Tipos de bosque", values = c("#009900",  "#00CC00", "#4E751F", "#007800", "#8DB400", "#A0DC00", "#929900", "#648C00"), na.value = "transparent", na.translate = FALSE, labels = c("Bosque cerrado, siempre verde", "Bosque cerrado, deciduo", "Bosque cerrado, mixto", "Bosque cerrado, desconocido", "Bosque abierto, siempre verde", "Bosque abierto, deciduo", "Bosque abierto, mixto", "Bosque abierto, desconocido")) +
+  coord_sf(datum = st_crs(5367))
+```
+
+```{r}
+#| include: false
+0, 120, 0
+rgb(0, 120, 0, maxColorValue = 255)
+```
+
+```{r}
+#| include: false
+#| echo: false
+# only forest cover, igual a forest_s
+ggplot(forest_s_dissolve) +
+  theme_minimal() +
+  geom_sf(aes(fill = tipo), size = 0.01) +
+  scale_fill_manual(name = "Tipos de bosque", values = "#007800", na.value = "transparent", na.translate = FALSE, labels = c("Bosque")) +
+  coord_sf(datum = st_crs(5367)) +
+  theme(legend.position = "none")
+```

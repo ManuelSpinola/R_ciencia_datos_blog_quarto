@@ -1,0 +1,464 @@
+---
+title: "Análisis de texto de los discursos de investidura de las últimas 7 presidencias de Uruguay"
+subtitle: Análisis de los discursos de investidura de las últimas 7 presidencias de Uruguay
+image: "imagenes/wordcloud.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid_id: 0000-0002-7839-1908
+date: 2022-09-03
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Minería de texto"
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
+library(tm)
+library(SnowballC)
+library(tidytext)
+library(textdata)
+library(doc2concrete)
+library(SentimentAnalysis)
+library(sentimentr)
+library(syuzhet)
+library(meanr)
+library(peRspective)
+library(lexicon)
+library(wordcloud2)
+library(ggwordcloud)
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.textstats)
+library(quanteda.sentiment)
+library(quanteda.tidy)
+library(readtext)
+library(knitr)
+library(kableExtra)
+library(gt)
+library(gtExtras)
+library(ggthemes)
+library(PrettyCols)
+library(ggdendro)
+library(dendextend)
+library(factoextra)
+library(udpipe)
+```
+
+
+# Introducción
+
+La minería de texto es una rama específica del análisis de datos que busca analizar y extraer información de textos. Esta utiliza una serie de procesos para transformar documentos o recursos de texto desestructurados en información estructurada. La información estructurada puede utilizarse para descubrir patrones tales como tendencias en el uso de palabras, estructura sintáctica, sentimientos u opiniones, etc.
+
+
+```{r}
+datos <- readtext("discursos/*.txt",
+                  docvarsfrom = "filenames",
+                  dvsep = "-",
+                  docvarnames = c("Presidente", "Año"),
+                  encoding = "UTF-8")
+```
+
+```{r}
+datos$doc_id <- gsub(".txt", "", datos$doc_id)
+```
+
+```{r}
+datos
+```
+
+```{r}
+#| include: false
+doc_corpus <- corpus(datos)
+```
+
+```{r}
+doc_corpus
+```
+
+```{r}
+resumen <- summary(doc_corpus)
+resumen
+```
+
+
+```{r}
+#| label: tbl-oraciones
+#| tbl-cap: Número de oraciones en los discursos de investidura de los presidentes de Uruguay.
+resumen |>
+  arrange(factor(Text, levels = c("LacalleHerrera-1990", "Sanguinetti-1995", "Batlle-2000", "Vázquez-2005", "Mujica-2010", "Vázquez-2015", "LacallePou-2020"))) |>
+  gt() |>
+  cols_hide(columns = c(Types, Tokens, Presidente, Año)) |>
+  cols_label(
+    Text = md("**Presidente**"),
+    Sentences = md("**# Oraciones**"))
+```
+
+
+```{r}
+legibilidad <- textstat_readability(doc_corpus, measure = c("Flesch.Kincaid", "Dale.Chall", "FOG", "ELF"))
+```
+
+```{r}
+legibilidad |>
+  gt() |>
+  cols_label(
+    document = md("**Presidente**"))
+```
+
+# Extensión de los discursos
+
+La extensión de los discursos tuvo un rango de 83 a 239 frases, siendo los discursos de Mujica y Vázquez-2005 los que incluyeron el mayor y menor número de frases, respectivamente (@fig-extension). 
+
+```{r}
+#| include: true
+#| label: fig-extension
+#| fig-cap: Extensión de los discursos de investidura de los presidentes de Uruguay.
+ggplot(resumen, aes(x = reorder(x = Text, +Sentences), y = Sentences, group = 1, fill = Text)) +
+  theme_minimal() +
+  geom_col(width = 0.03) +
+  geom_point(size = 8, pch = 21) +
+  geom_text(aes(label = Sentences), size = 3, color = "white") +
+  ggtitle("Extensión del discurso Presidencial") +
+  xlab("Presidente") +
+  ylab("Frases") +
+  theme(legend.position="none") +
+  scale_fill_tableau() +
+  coord_flip()
+```
+
+
+```{r}
+doc_tokens <- tokens(doc_corpus, remove_punct = TRUE, remove_numbers = TRUE, remove_symbols = TRUE)
+```
+
+```{r}
+doc_tokens <- tokens_select(doc_tokens, pattern = c(stopwords("spanish"), "sino", "digo", "si", "así", "sólo", "veces", "mano", "josé", "hicieron", "aún", "cuya", "vez", "hecho", "tomar", "menos", "cada", "pues", "paso", "todas_personas", "norte", "manera", "manos", "ello", "llevar", "hidrógeno", "deporte", "alas", "rueda"), selection = "remove")
+```
+
+```{r}
+#| include: false
+doc_mw <- textstat_collocations(doc_tokens, size = 2, min_count = 3)
+```
+
+```{r}
+#| include: false
+doc_mw 
+```
+
+```{r}
+#| include: false
+doc_mw <- doc_mw |>
+  filter(lambda > 3)
+```
+
+
+```{r}
+#| include: true
+corpus_tokens <- tokens_compound(doc_tokens, doc_mw)
+```
+
+
+```{r}
+#| include: false
+doc_dfm <- dfm(corpus_tokens)
+```
+
+```{r}
+doc_dfm
+```
+
+# Frecuencia de uso de las palabras
+
+Los presidentes mencionaron ciertas palabras frecuentemente durante su discurso de investidura. Entre las 10 palabras más frecuentes se destaca "país", con una frecuencia de 111 (@fig-wordcloud_01, @fig-lollipop_01).
+
+```{r}
+#| include: true
+#| warning: false
+#| label: fig-wordcloud_01
+#| fig-cap: Gráfico de nube de palabras de los discursos de investidura de los presidentes de Uruguay.
+set.seed(100)
+textplot_wordcloud(doc_dfm, min_count = 5, random_order = FALSE, rotation = .25, min_size = 1, max_size = 4, color = RColorBrewer::brewer.pal(8, "Dark2"))
+```
+
+```{r}
+frec_palabras <- textstat_frequency(doc_dfm, n = 10)
+```
+
+```{r}
+frec_palabras
+```
+
+```{r}
+#| include: true
+#| label: fig-lollipop_01
+#| fig-cap: Frecuencia de las 10 palabras más mencionadas durante los discursos de investidura de los presidentes de Uruguay.
+frec_palabras %>% 
+  ggplot(aes(x = reorder(feature, frequency), y = frequency)) +
+  geom_col(width = 0.05, fill = "dodgerblue3") +
+  geom_point(size = 7, pch = 21, color = "black", fill = "orange") +
+  coord_flip() +
+  labs(x = NULL, y = "Frequency") +
+  geom_text(aes(label = frequency), size = 3.5) +
+  theme_minimal() +
+  xlab("Palabra") +
+  ylab("Frecuencia")
+```
+
+Cuado se compararon los discursos de los presidentes, la palabra "país" fue la más frecuente en el discurso de Sanguinetti y Lacalle Pou, 35 y 18 veces, respectivamente (@fig-wordcloud_02, @fig-lollipop_02).
+
+
+```{r}
+#| include: true
+#| warning: false
+#| label: fig-wordcloud_02
+#| fig-cap: Gráfico de nube de palabras de los discursos  de investidura de los presidentes de Uruguay.
+set.seed(100)
+textplot_wordcloud(doc_dfm, min_count = 5, random_order = FALSE, rotation = .25, min_size = 1, max_size = 4, color = RColorBrewer::brewer.pal(8, "Dark2"), comparison = TRUE)
+```
+
+
+```{r}
+doc_dfm_presidente  <- doc_dfm |>
+  dfm_group(groups = docname_)
+```
+
+
+```{r}
+frec_palabras_presidente <- textstat_frequency(doc_dfm_presidente, n = 10, groups = docname_) |>
+  as.data.frame()
+frec_palabras_presidente
+```
+
+```{r}
+frec_palabras_presidente <- frec_palabras_presidente |>
+  mutate_if(is.character, as.factor) |>
+  mutate(group = fct_relevel(group, levels = c("LacalleHerrera-1990", "Sanguinetti-1995", "Batlle-2000", "Vázquez-2005", "Mujica-2010", "Vázquez-2015", "LacallePou-2020")))
+frec_palabras_presidente
+```
+
+
+```{r}
+#| include: true
+#| label: fig-lollipop_02
+#| fig-cap: Frecuencia de las 10 palabras más mencionadas durante los discursos de investidura de los presidentes de Uruguay.
+frec_palabras_presidente |>
+  ggplot(aes(x = reorder_within(feature, frequency, group), y = frequency)) +
+  theme_minimal() +
+  geom_col(width = 0.05, fill = "dodgerblue3") +
+  geom_point(size = 4, pch = 21, color = "black", fill = "orange") +
+  scale_x_reordered() +
+  facet_wrap(~ group, scales = "free_y") +
+  geom_text(aes(label = frequency), size = 2) +
+  coord_flip() +
+  xlab("Palabra") +
+  ylab("Frecuencia")
+```
+
+# Dispersión léxica
+
+Este análisis permite ver la frecuencia de uso y el momento en el discurso en el que se usó la palabra.
+
+#### Para el caso de las palabras, **país** y **democracia**:
+
+```{r}
+#| include: true
+#| label: fig-textplot_01
+#| fig-cap: Frecuencia y dispersión de las palabras, país y democracia, durante los discursos de investidura de los presidentes de Uruguay.
+plot_01 <- textplot_xray(
+                kwic(doc_tokens, pattern = "país"),
+                kwic(doc_tokens, pattern = "democracia"))
+plot_01 +
+  aes(color = keyword) +
+  scale_color_tableau(name = "Palabra") +
+  xlab("Posición relativa de la palabra en el discurso") +
+  ylab("") +
+  ggtitle("")
+```
+
+La palabra país es empleada a través del discurso de los presidentes, excepto Vázquez-2015 que solo la menciona 1 vez. Sin embargo, la palabra democracia es usada de manera poco frecuente por todos los presidentes, excepto Sanguinetti (@fig-textplot_01).  
+
+#### Para el caso de las palabras, **economía** y **empleo**:
+
+```{r}
+#| include: true
+#| label: fig-textplot_02
+#| fig-cap: Frecuencia y dispersión de las palabras, economía y empleo, durante los discursos de investidura de los presidentes, Luis Guillermo Solís, Carlos Alvarado y Rodrigo Chaves.
+plot_02 <- textplot_xray(
+                kwic(doc_tokens, pattern = "economía"),
+                kwic(doc_tokens, pattern = "empleo"))
+plot_02 +
+  aes(color = keyword) +
+  scale_color_tableau(name = "Palabra") +
+  xlab("Posición relativa de la palabra en el discurso") +
+  ylab("") +
+  ggtitle("")
+```
+
+La palabra economía fue empleada por solo 4 presidentes y la palabra empleo fue solo mencionada en los discursos de Lacalle Herrera y Lacalle Pou (@fig-textplot_02).
+
+# Similitud y correlación entre los discursos
+
+La similitud de los discursos obtuvo valores relativamente bajos de correlación entre todos los presidentes (@fig-similitud).
+
+```{r}
+similitud <- textstat_simil(doc_dfm, method = "correlation", margin = "documents")
+```
+
+```{r}
+similitud_df <- similitud |>
+  as.matrix() |>
+  as.data.frame() |>
+  rownames_to_column(var = "presidente")
+```
+
+```{r}
+similitud_df_long <- similitud_df |>
+  pivot_longer(-presidente, names_to = "pres", values_to = "correlation")
+```
+
+
+```{r}
+similitud_df_long
+```
+
+```{r}
+#| include: true
+#| label: fig-similitud
+#| fig-cap: Similitud de los discursos de investidura de los presidentes de Uruguay.
+ggplot(similitud_df_long, aes(presidente, pres, fill = correlation)) +
+  geom_tile() +
+  scale_fill_gradient2_tableau(name = "Correlación", palette = "Orange-Blue Diverging") +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) +
+  xlab("") +
+  ylab("") +
+  geom_text(aes(label = round(correlation, 2)), color = "white")
+```
+
+La distancia o disimilaridad de los discursos permitió identificar 2 grupos, uno formado por Sanguinetti y Mujica y el otro por el resto de los presidentes (@fig-distancia).
+
+
+```{r}
+distancia <- textstat_dist(doc_dfm, method = "euclidean", margin = "documents")
+```
+
+```{r}
+hc_clust <- hclust(as.dist(distancia))
+```
+
+```{r}
+#| warning: false
+#| include: true
+#| label: fig-distancia
+#| fig-cap: Distancia o disimilaridad de los discursos de investidura de los presidentes de Uruguay.
+fviz_dend(hc_clust,
+          cex = 0.3,
+          k = 2,
+          color_labels_by_k = TRUE,
+          rect = FALSE,
+          main = "",
+          xlab = "",
+          ylab = "Altura")
+```
+
+
+# Análisis de sentimiento
+
+El análisis de sentimiento se usa para evaluar emociones, actitudes y opiniones de un texto. El discurso de investidura de Lacalle Pou fue el que presentó un menor número de palabras que reflejan emociones negativas (@fig-sent_neg) y menor número de palabras que reflejan emociones positivas  @fig-sent_pos).
+
+
+```{r}
+sentimientos <- tokens_lookup(corpus_tokens, dictionary = data_dictionary_LSD2015) |>
+  dfm() |>
+  textstat_frequency(groups = docname_) |>
+  as.data.frame() |>
+  mutate_if(is.character, as.factor) |>
+  mutate(group = fct_relevel(group, levels = c("LacalleHerrera-1990", "Sanguinetti-1995", "Batlle-2000", "Vázquez-2005", "Mujica-2010", "Vázquez-2015", "LacallePou-2020")))
+sentimientos
+```
+
+
+```{r}
+sentimientos_negativos <-
+  tokens_select(corpus_tokens, pattern =  data_dictionary_LSD2015[["negative"]]) |>
+  dfm() |>
+  textstat_frequency(groups = docname_) |>
+  as.data.frame() |>
+  mutate_if(is.character, as.factor) |>
+  mutate(group = fct_relevel(group, levels = c("LacalleHerrera-1990", "Sanguinetti-1995", "Batlle-2000", "Vázquez-2005", "Mujica-2010", "Vázquez-2015", "LacallePou-2020")))
+sentimientos_negativos
+```
+
+```{r}
+sentimientos_positivos <-
+  tokens_select(corpus_tokens, pattern =  data_dictionary_LSD2015[["positive"]]) |>
+  dfm() |>
+  textstat_frequency(groups = docname_)|>
+  as.data.frame() |>
+  mutate_if(is.character, as.factor) |>
+  mutate(group = fct_relevel(group, levels = c("LacalleHerrera-1990", "Sanguinetti-1995", "Batlle-2000", "Vázquez-2005", "Mujica-2010", "Vázquez-2015", "LacallePou-2020")))
+sentimientos_positivos
+```
+
+
+```{r}
+#| include: true
+#| label: fig-sent_neg
+#| fig-cap: Frecuencia de palabras que reflejan emociones negativas en los discursos de investidura de los presidentes de Uruguay.
+sentimientos_negativos |>
+  ggplot(aes(x = reorder_within(feature, frequency, group), y = frequency, fill = group)) +
+  theme_minimal() +
+  geom_col(width = 0.05, fill = "dodgerblue3", show.legend = FALSE) +
+  geom_point(size = 3, pch = 21, color = "black", fill = "orange") +
+  geom_text(aes(label = frequency), size = 2) +
+  facet_wrap(~ group, scales = "free_y") +
+  coord_flip() +
+  xlab("Palabra") +
+  ylab("Frecuencia") +
+  scale_x_reordered()
+```
+
+```{r}
+#| include: true
+#| label: fig-sent_pos
+#| fig-cap: Frecuencia de palabras que reflejan emociones positivas en los discursos de investidura de los presidentes de Uruguay.
+sentimientos_positivos |>
+  ggplot(aes(x = reorder_within(feature, frequency, group), y = frequency, fill = group)) +
+  theme_minimal() +
+  geom_col(width = 0.05, fill = "dodgerblue3", show.legend = FALSE) +
+  geom_point(size = 3, pch = 21, color = "black", fill = "orange") +
+  geom_text(aes(label = frequency), size = 2) +
+  facet_wrap(~ group, scales = "free_y") +
+  coord_flip() +
+  xlab("Palabra") +
+  ylab("Frecuencia") +
+  scale_x_reordered()   
+```
+
+El análisis lo realicé con R [@R2022], usando los paquetes quanteda [@Benoit2018] y factoextra [@Kassambara2020].
+
+### Literatura citada
+
+::: {#refs}
+:::
+
+
+
+

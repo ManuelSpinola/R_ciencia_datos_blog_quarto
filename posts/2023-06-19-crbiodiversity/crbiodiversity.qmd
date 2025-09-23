@@ -1,0 +1,139 @@
+---
+title: "crbiodiversity: un paquete de R para buscar, descargar y visualizar datos de biodiversidad de Costa Rica"
+subtitle: Datos de biodiversidad de Costa Rica
+image: "imagenes/crbiodiversity_a.png"
+author:
+  - name: Manuel Spínola
+    url: http://www.icomvis.una.ac.cr/index.php/manuel
+    affiliation: ICOMVIS - UNA
+    affiliation-url: http://www.icomvis.una.ac.cr/
+    orcid: 0000-0002-7839-1908
+date: 2023-06-19
+citation: true
+toc: true
+toc-title: Tabla de contenido
+toc-location: left
+toc-depth: 4
+bibliography: references.bib
+lang: es
+draft: false
+execute: 
+  echo: false
+  include: false
+categories:
+  - "Biodiversidad de Costa Rica"
+---
+
+```{r}
+#| include: true
+#| out-width: 40%
+#| fig-align: center
+library(knitr)
+include_graphics("imagenes/crbiodiversity_a.png")
+```
+
+# Descripción del paquete
+
+**crbiodiversity** es un paquete de R para buscar, descargar y visualizar datos de biodiversidad de Costa Rica.
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+install.packages("devtools")
+```
+
+Cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+library(devtools)
+```
+
+Luego proceder a instalar crgeo desde github:
+
+```{r}
+#| include: true
+#| echo: true
+#| eval: false
+#| message: false
+#| warning: false
+devtools::install_github("ManuelSpinola/crbiodiversity")
+```
+
+y cargar el paquete:
+
+```{r}
+#| include: true
+#| echo: true
+library(crbiodiversity)
+```
+
+Además instalar estos otros paquetes:
+
+```{r}
+#| include: true
+#| echo: true
+devtools::install_github("ManuelSpinola/crgeo")
+```
+
+```{r}
+#| include: true
+#| echo: true
+devtools::install_github("ManuelSpinola/crgrids")
+```
+
+Ejemplo del uso de crbiodiversity:
+
+```{r}
+#| message: false
+#| warning: false 
+#| include: true
+#| echo: true
+library(tidyverse)
+library(spocc)
+library(sf)
+library(crgeo)
+library(crgrids)
+library(crbiodiversity)
+```
+
+Buscar los registros del vampiro (Desmodus rotundus) con coordenadas geográficas para Costa Rica en los portales de datos [GBIF](https://www.gbif.org) e [iNaturalist](https://www.inaturalist.org/).
+
+```{r}
+#| include: true
+#| echo: true
+loc <- get_locations("Desmodus rotundus")
+```
+
+```{r}
+#| include: true
+#| echo: true
+head(loc)
+```
+
+Obtener los registros como objeto sf:
+
+```{r}
+#| include: true
+#| echo: true
+loc_sf <- get_locations("Desmodus rotundus", sf = TRUE)
+```
+
+```{r}
+#| include: true
+#| echo: true
+loc_sf
+```
+
+Visualizar los registros del vampiro (Desmodus rotundus) en una grilla de 8km x 8km.
+
+```{r}
+#| include: true
+#| echo: true
+get_map("Desmodus rotundus")
+```
+
+Para más información del paquete se puede visitar este enlace <https://github.com/ManuelSpinola/crbiodiversity>
