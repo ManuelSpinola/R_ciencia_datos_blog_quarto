@@ -15,6 +15,15 @@ _cache/
 *.html
 *.pdf
 
+# Archivos grandes
+*.tif
+*.gpkg
+*.sav
+
+# Carpetas de salida
+/.quarto/
+
+
 # Archivos raster grandes
 cr_cobertura/*.tif
 cr_grillas/*.gpkg
@@ -34,7 +43,6 @@ posts/2022-11-24-lulc-cr-2021/vectors/*.gpkg
 posts/2023-02-13-grillas-espaciales/grids/*.gpkg
 posts/2023-02-13-grillas-espaciales/ovs_grillas/*.gpkg
 posts/2023-02-13-grillas-espaciales/ovs_mapas_cr/*.gpkg
-posts/2023-07-04-cc-en-ap/rasters/*.tif
 posts/2023-12-06-actividad_2020_2022/datos/*.gpkg
 posts/2024-08-19-snitr/*.gpkg
 
