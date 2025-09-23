@@ -8,3 +8,9 @@
 # Carpeta de salida de Quarto
 /_site/
 .Rproj.user
+
+.Rhistory
+.RData
+_cache/
+*.html
+*.pdf
