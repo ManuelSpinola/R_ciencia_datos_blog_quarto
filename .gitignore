@@ -14,3 +14,31 @@
 _cache/
 *.html
 *.pdf
+
+# Rasters grandes
+cr_cobertura/*.tif
+posts/2021-04-06-conectividad-del-paisaje-01/*.tif
+posts/2022-10-18-uruguay-mapas/rasters/*.tif
+posts/2022-11-24-lulc-cr-2021/rasters/*.tif
+posts/2023-07-04-cc-en-ap/rasters/*.tif
+
+# Archivos GPKG grandes
+cr_grillas/*.gpkg
+cr_mapas/*.gpkg
+posts/2021-03-08-species-occurrences/*.gpkg
+posts/2021-04-06-conectividad-del-paisaje-01/*.gpkg
+posts/2021-07-21-clusters-del-paisaje/*.gpkg
+posts/2022-02-02-proyecto-microbiomas/datos/*.gpkg
+posts/2022-09-08-becados-una/datos/*.gpkg
+posts/2022-09-28-becados-una-dashboard/datos/*.gpkg
+posts/2022-10-18-uruguay-mapas/vectors/*.gpkg
+posts/2022-11-24-lulc-cr-2021/supercells/*.gpkg
+posts/2022-11-24-lulc-cr-2021/vectors/*.gpkg
+posts/2023-02-13-grillas-espaciales/grids/*.gpkg
+posts/2023-02-13-grillas-espaciales/ovs_grillas/*.gpkg
+posts/2023-02-13-grillas-espaciales/ovs_mapas_cr/*.gpkg
+posts/2023-12-06-actividad_2020_2022/datos/*.gpkg
+posts/2024-08-19-snitr/*.gpkg
+
+
+
