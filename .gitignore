@@ -1,5 +1,5 @@
 # Local Netlify folder
-.netlify
+.netlify/
 
 # Archivos temporales de Quarto
 /.quarto/
@@ -7,44 +7,47 @@
 
 # Carpeta de salida de Quarto
 /_site/
-.Rproj.user
+_cache/
 
+# Archivos de sesión y caché
+.Rproj.user/
 .Rhistory
 .RData
-_cache/
+
+# Archivos generados de reportes
 *.html
 *.pdf
 
-# Archivos grandes
+# Archivos grandes (raster, geopackage, datos pesados)
 *.tif
 *.gpkg
 *.sav
+*.tif.aux.xml
+*.gpkg.aux.xml
 
-# Carpetas de salida
-/.quarto/
-
-
-# Archivos raster grandes
-cr_cobertura/*.tif
-cr_grillas/*.gpkg
-cr_mapas/*.gpkg
+# Carpetas específicas con archivos grandes
+cr_cobertura/
+cr_grillas/
+cr_mapas/
 
 # Posts antiguos o grandes
-posts/2021-03-08-species-occurrences/*.gpkg
-posts/2021-04-06-conectividad-del-paisaje-01/*.gpkg
-posts/2021-04-06-conectividad-del-paisaje-01/*.tif
-posts/2021-07-21-clusters-del-paisaje/*.gpkg
-posts/2022-02-02-proyecto-microbiomas/datos/*.gpkg
-posts/2022-09-08-becados-una/datos/*.gpkg
-posts/2022-09-28-becados-una-dashboard/datos/*.gpkg
-posts/2022-11-24-lulc-cr-2021/rasters/*.tif
-posts/2022-11-24-lulc-cr-2021/supercells/*.gpkg
-posts/2022-11-24-lulc-cr-2021/vectors/*.gpkg
-posts/2023-02-13-grillas-espaciales/grids/*.gpkg
-posts/2023-02-13-grillas-espaciales/ovs_grillas/*.gpkg
-posts/2023-02-13-grillas-espaciales/ovs_mapas_cr/*.gpkg
-posts/2023-12-06-actividad_2020_2022/datos/*.gpkg
-posts/2024-08-19-snitr/*.gpkg
+posts/2021-03-08-species-occurrences/
+posts/2021-04-06-conectividad-del-paisaje-01/
+posts/2021-07-21-clusters-del-paisaje/
+posts/2022-02-02-proyecto-microbiomas/datos/
+posts/2022-09-08-becados-una/datos/
+posts/2022-09-28-becados-una-dashboard/datos/
 
+# Carpeta LULC
+posts/2022-11-24-lulc-cr-2021/rasters/
+posts/2022-11-24-lulc-cr-2021/supercells/
+posts/2022-11-24-lulc-cr-2021/vectors/
 
+# Carpeta grillas espaciales
+posts/2023-02-13-grillas-espaciales/grids/
+posts/2023-02-13-grillas-espaciales/ovs_grillas/
+posts/2023-02-13-grillas-espaciales/ovs_mapas_cr/
 
+# Otros datos pesados
+posts/2023-12-06-actividad_2020_2022/datos/
+posts/2024-08-19-snitr/
