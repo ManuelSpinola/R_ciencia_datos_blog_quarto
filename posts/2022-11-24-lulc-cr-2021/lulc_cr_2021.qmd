@@ -33,26 +33,23 @@ categories:
 #| message: false
 #| warning: false
 library(tidyverse)
+library(here)
 library(rio)
 library(knitr)
 library(sf)
 library(stars)
-library(raster)
-library(rasterVis)
 library(terra)
 library(tidyterra)
 library(rnaturalearth)
 library(rmapshaper)
 library(exactextractr)
 library(landscapemetrics)
-library(landscapetools)
 library(motif)
 library(supercells)
 library(arcpullr)
 library(basemaps)
 library(rayshader)
 library(elevatr)
-library(here)
 library(treemapify)
 library(ggthemes)
 library(ggdark)
@@ -77,11 +74,11 @@ include_graphics("imagenes/cr_satelite_3d.png")
 Para el análisis usé el producto ESA WorldCover cobertura de la tierra [@Zanaga2021-cf]. Este producto se basa en la clasisficación de 11 clases definidas por el Sistema de Clasificación de Cobertura de la Organización de las Naciones Unidas y la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO). Las categorías consideradas no necesariamente reflejan exactamente el actual uso de la tierra. Por ejemplo, este producto sobrestima la cobertura de pastizales [@Venter2022-cw]. Por lo tanto, las intepretaciones sobre las extensiones de cada categoría deben realizarse con cautela.
 
 ```{r}
-cr <- st_read("vectors/cr_5367.gpkg")
+cr <- st_read(here("vectors/cr_5367.gpkg"))
 ```
 
 ```{r}
-cr_r <- rast("rasters/lulc_cr_categorical_5367.tif")
+cr_r <- rast(here("rasters/lulc_cr_categorical_5367.tif"))
 ```
 
 ```{r}
@@ -91,18 +88,18 @@ cr_r <- rast("rasters/lulc_cr_categorical_5367.tif")
 #| label: fig-cobertura
 #| fig-cap: "Mapa del uso y cobertura de la tierra en Costa Rica con una resolución de 10m, 2021."
 ggplot() +
-  dark_theme_minimal() +
+  theme_minimal() +
   geom_spatraster(data = cr_r, na.rm = TRUE) +
   scale_fill_manual(name = "Tipo de cobertura", values = c("darkgreen", "orange", "yellow", "magenta", "red", "grey", "blue", "#0096A0",  "#00CF75"), na.value = "transparent", na.translate = FALSE)
 ```
 
 ```{r}
-ca <- rast("rasters/ca.tif")
-pa <- rast("rasters/pa.tif")
-cu <- rast("rasters/cu.tif")
-ze <- rast("rasters/ze.tif")
-hh <- rast("rasters/hh.tif")
-mg <- rast("rasters/mg.tif")
+ca <- rast(here("rasters/ca.tif"))
+pa <- rast(here("rasters/pa.tif"))
+cu <- rast(here("rasters/cu.tif"))
+ze <- rast(here("rasters/ze.tif"))
+hh <- rast(here("rasters/hh.tif"))
+mg <- rast(here("rasters/mg.tif"))
 ```
 
 ```{r}
@@ -210,7 +207,7 @@ p1 / p2
 La mayor superficie de cobetura correspondió a la cobertura arbórea (74%), seguida de los pastizales (21%) (@fig-cobertura, @fig-cobertura_b, @fig-porcentajes). Sin embrago, como se mencionó anteriormente, algunos usos y coberturas de la tierra pueden ser subestimados o sobreestimados, por lo que se requiere precaución en la intepretación de los porcentajes.
 
 ```{r}
-area_table <- import("df/area_table.xlsx")
+area_table <- import(here("data/area_table.xlsx"))
 area_table
 ```
 
@@ -233,7 +230,7 @@ ggplot(area_table, aes(area = p, fill = value, label = paste(value, porc,sep = "
 Los superpixeles son una colección de conceptos de segmentación que agrupan pixeles con características similares. Se determinaron 533 superpixeles que muestran un uso y cobertura de la tierra similares (@fig-superpixeles).
 
 ```{r}
-slic <- st_read("supercells/supercells.gpkg")
+slic <- st_read(here("vectors/supercells.gpkg"))
 ```
 
 ```{r}
@@ -243,7 +240,7 @@ slic <- st_read("supercells/supercells.gpkg")
 #| label: fig-superpixeles
 #| fig-cap: Superpixeles del uso y cobertura de la tierra de Costa Rica, 2021. 
 ggplot() +
-  dark_theme_minimal() +
+  theme_minimal() +
   geom_spatraster(data = cr_r, na.rm = TRUE) +
   scale_fill_manual(name = "Tipo de cobertura", values = c("darkgreen", "orange", "yellow", "magenta", "red", "grey", "blue", "#0096A0",  "#00CF75"), na.value = "transparent", na.translate = FALSE) +
   geom_sf(data = slic, alpha = 0, color = "white")

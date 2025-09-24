@@ -1,6 +1,8 @@
 ---
 title: "Untitled"
-editor: source
+format:
+  html:
+    embed-resources: true
 ---
 
 ```{r}
@@ -18,7 +20,6 @@ library(rnaturalearth)
 library(rmapshaper)
 library(exactextractr)
 library(landscapemetrics)
-library(landscapetools)
 library(motif)
 library(supercells)
 library(arcpullr)
@@ -48,12 +49,12 @@ cr_5367 <- st_transform(cr, crs = 5367)
 ```
 
 ```{r}
-st_write(cr_5367, here("posts/2022-11-24-lulc-cr-2021/vectors/cr_5367.gpkg"))
+st_write(here("vectors/cr_5367.gpkg"))
 ```
 
 
 ```{r}
-cr_r <- rast(here("posts/2022-11-24-lulc-cr-2021/raster/lulc_cr_categorical_5367.tif"))
+cr_r <- rast(here("rasters/lulc_cr_categorical_5367.tif"))
 ```
 
 
@@ -80,12 +81,12 @@ area_table
 ```
 
 ```{r}
-export(area_table, here(("posts/2022-11-24-lulc-cr-2021/df/area_table.xlsx")))
+export(area_table, here("data/area_table.xlsx"))
 ```
 
 
 ```{r}
-area |>
+area_table |>
   summarise(s = sum(ha))
 ```
 
@@ -126,12 +127,12 @@ levels(mg) <- cls
 ```
 
 ```{r}
-writeRaster(ca, "rasters/ca.tif", overwrite = TRUE)
-writeRaster(pa, "rasters/pa.tif", overwrite = TRUE)
-writeRaster(cu, "rasters/cu.tif", overwrite = TRUE)
-writeRaster(ze, "rasters/ze.tif", overwrite = TRUE)
-writeRaster(hh, "rasters/hh.tif", overwrite = TRUE)
-writeRaster(mg, "rasters/mg.tif", overwrite = TRUE)
+writeRaster(ca, here("rasters/ca.tif"), overwrite = TRUE, gdal = c("COMPRESS=LZW"))
+writeRaster(pa, here("rasters/pa.tif"), overwrite = TRUE, gdal = c("COMPRESS=LZW"))
+writeRaster(cu, here("rasters/cu.tif"), overwrite = TRUE, gdal = c("COMPRESS=LZW"))
+writeRaster(ze, here("rasters/ze.tif"), overwrite = TRUE, gdal = c("COMPRESS=LZW"))
+writeRaster(hh, here("rasters/hh.tif"), overwrite = TRUE, gdal = c("COMPRESS=LZW"))
+writeRaster(mg, here("rasters/mg.tif"), overwrite = TRUE, gdal = c("COMPRESS=LZW"))
 ```
 
 ```{r}
@@ -146,7 +147,7 @@ ggplot(area_table, aes(area = p, fill = value, label = paste(value, porc,sep = "
 ```
 
 ```{r}
-ggsave(here("posts/2022-11-24-lulc-cr-2021/plots/treemap.png"))
+ggsave(here("plots/treemap.png"))
 ```
 
 
@@ -180,7 +181,7 @@ slic
 ```
 
 ```{r}
-st_write(slic, "supercell.gpkg")
+st_write(slic, here("vectors/supercell.gpkg"))
 ```
 
 ```{r}
