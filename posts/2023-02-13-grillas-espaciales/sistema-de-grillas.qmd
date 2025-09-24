@@ -32,6 +32,7 @@ categories:
 #| message: false
 #| warning: false
 library(tidyverse)
+library(here)
 library(rio)
 library(glue)
 library(sf)
@@ -97,10 +98,10 @@ cr_5367 <- st_transform(cr_outline, crs = 5367)
 ```
 
 ```{r}
-g_8km <- st_read("grids/grid_8km.gpkg")
-g_4km <- st_read("grids/grid_4km.gpkg")
-g_2km <- st_read("grids/grid_2km.gpkg")
-g_1km <- st_read("grids/grid_1km.gpkg")
+g_8km <- st_read(here("vectors/grid_8km.gpkg"))
+g_4km <- st_read(here("vectors/grid_4km.gpkg"))
+g_2km <- st_read(here("vectors/grid_2km.gpkg"))
+g_1km <- st_read(here("vectors/grid_1km.gpkg"))
 ```
 
 ```{r}
@@ -120,7 +121,7 @@ La unidad de muestreo de 8km x 8km es la unidad de muestreo de mayor tamaño (@f
 #| include: true
 #| label: fig-celda_8
 #| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km.
-gg_grilla <- import("df_grillas/gg_grilla_8km.xlsx")
+gg_grilla <- import(here("data/gg_grilla_8km.xlsx"))
 ggplot(gg_grilla, aes(x, y)) +
   theme_minimal() +
   geom_tile(aes(fill = color), color = "black") +
@@ -142,7 +143,7 @@ ggplot(gg_grilla, aes(x, y)) +
 #| include: true
 #| label: fig-celda_4
 #| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km, constituida por 4 tétradas de 4km.
-gg_grilla <- import("df_grillas/gg_grilla_4km.xlsx")
+gg_grilla <- import(here("data/gg_grilla_4km.xlsx"))
 ggplot(gg_grilla, aes(x, y)) +
   theme_minimal() +
   geom_tile(aes(fill = color), color = "black") +
@@ -164,7 +165,7 @@ ggplot(gg_grilla, aes(x, y)) +
 #| include: true
 #| label: fig-celda_2
 #| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km, 16 tétradas de 2km x 2km y 64 celdas de 1km x 1 km.
-gg_grilla <- import("df_grillas/gg_grilla_2km.xlsx")
+gg_grilla <- import(here("data/gg_grilla_2km.xlsx"))
 ggplot(gg_grilla, aes(x, y)) +
   theme_minimal() +
   geom_tile(aes(fill = color), color = "black") +
@@ -186,7 +187,7 @@ ggplot(gg_grilla, aes(x, y)) +
 #| include: true
 #| label: fig-celda_1
 #| fig-cap: Detalle de la celda 1 de la grilla espacial de 8km x 8km, constituida por 4 tétradas de 4km, 16 tétradas de 2km x 2km y 64 celdas de 1km x 1 km.
-gg_grilla <- import("df_grillas/gg_grilla_1km.xlsx")
+gg_grilla <- import(here("data/gg_grilla_1km.xlsx"))
 ggplot(gg_grilla, aes(x, y)) +
   theme_minimal() +
   geom_tile(aes(fill = color), color = "black") +
